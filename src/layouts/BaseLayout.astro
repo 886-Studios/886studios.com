@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import SpeedInsights from "@vercel/speed-insights/astro";
 import GoogleAnalytics from "../components/GoogleAnalytics.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteNav from "../components/SiteNav.astro";
@@ -10,6 +11,7 @@ import {
   getRouteImagePreloads,
   getSearchEngineVerification,
   normalizePath,
+  productionAnalyticsEnabled,
   siteConfig,
 } from "../config/site";
 import {
@@ -212,6 +214,7 @@ const structuredDataJson = canonicalUrl
     </main>
     <SiteFooter hideSocials={hideFooterSocials} />
     <VercelAnalytics />
+    {productionAnalyticsEnabled && <SpeedInsights />}
     <script>
       import "../scripts/site";
     </script>
