@@ -1,4 +1,5 @@
 ---
+import ApplicationGuidePage from "../../components/pages/ApplicationGuidePage.astro";
 import ResourceArticlePage from "../../components/pages/ResourceArticlePage.astro";
 import { contentDates } from "../../data/contentDates.generated";
 import { resourceArticles } from "../../data/resourceArticles";
@@ -39,5 +40,5 @@ const faqSchema = getResourceFaqSchema(article, pagePath);
     ...(faqSchema ? [faqSchema] : []),
   ]}
 >
-  <ResourceArticlePage article={article} />
+  {article.slug === "application-guide" ? <ApplicationGuidePage /> : <ResourceArticlePage article={article} />}
 </BaseLayout>

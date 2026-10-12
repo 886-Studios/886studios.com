@@ -220,3 +220,12 @@ final result: passed
 - Identified a bright rightmost pixel column in Joseph's original photo. Added a 0.5% right-edge clip in the shared portrait component to hide that column and its resampling fringe without editing the source or changing his framing.
 - Confirmed the line is gone on the team directory and desktop/mobile profile previews after opening the refreshed server on port 4174. Evidence: `.artifacts/team/joseph-edge-fix.png`.
 - Astro check passed with zero diagnostics; whitespace check passed. Temporary review page moved out of public assets.
+
+### Application Guide replacement (2026-10-12)
+- Replaced the existing guide with the content and responsive layout from https://my-site-01161d08.ploy.build/resources/application-guide. Added a dedicated Astro component, scoped stylesheet, and locally hosted reference Geist font.
+- Matched the reading width, typography, section spacing, checklist grid, answer cards, FAQ content, purple CTAs, and flat background. The guide navigation now links to the program review page.
+- Compared source and local desktop screenshots; compared both 390px mobile screenshots together in the browser tool output. Verified the local mobile FAQ layout after its anchor finished scrolling. Screenshot evidence is in the task conversation rather than committed image artifacts.
+- Verified checklist and FAQ navigation in Chrome; confirmed every generated in-page anchor resolves. Existing site navigation, metadata, footer, and other resource routes remain integrated.
+- Validation: Astro check without diagnostics, all 43 tests, production build (102 pages), SEO validation (79 indexable pages), security validation, and whitespace checks passed. The production build requires network access to its existing public blog feed.
+- No remaining P0–P2 visual issues observed in the reviewed states. Minor shared navigation icon differences are retained.
+- Final result: passed.

@@ -1,5 +1,3 @@
-import { applicationUrl } from "../config/site";
-
 type ResourceLink = {
   label: string;
   href: string;
@@ -126,89 +124,9 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: "application-guide",
-    title: "Application Guide",
-    sections: [
-      {
-        title: "Pre-Application Checklist",
-        paragraphs: [
-          "Before you apply to an accelerator, make sure you are prepared to join one. Go through this checklist and ask yourself some questions.",
-        ],
-        cards: [
-          {
-            title: "Do you have a cofounder?",
-            body: "Some accelerators prioritize startups with a cofounder. If you don’t have one, begin to plan how you might get one and brainstorm what you would look for in a cofounder.",
-          },
-          {
-            title: "Is your LinkedIn professional?",
-            body: "Accelerators and potential investors do check your LinkedIn. Be authentic and transparent about work experience, technical skills, and portfolio. Keep photos and language professional.",
-          },
-          {
-            title: "Has your resume been updated?",
-            body: "Make sure your resume is up to date with the projects you are currently working on. This makes it easier for accelerators to track your professional timeline.",
-          },
-          {
-            title: "Are you working full-time on this startup?",
-            body: "Accelerators are looking for dedication from founders. Ask yourself how much time you currently spend on your company and whether other work may be distracting.",
-          },
-          {
-            title: "Can you communicate your pitch well?",
-            body: "Be prepared for questions in English. It is helpful to send a pre-read before meetings, use slides and graphics wisely, and practice the flow.",
-          },
-          {
-            title: "What do you hope to gain from the program?",
-            body: "Different programs fit different industries and stages. Consider whether you want mentors, demo day practice, community, rigorous coursework, or other outcomes.",
-          },
-        ],
-      },
-      {
-        title: "Choose An Accelerator",
-        paragraphs: [
-          "After going through the checklist, you may decide to apply to an accelerator. Depending on your company stage, industry, and timeline, the program you choose should fit your startup needs.",
-          "There are several options in Taiwan’s startup ecosystem. To apply to the ikigai Launchpad program, use the application link below.",
-        ],
-        links: [{ label: "Apply Now", href: applicationUrl }],
-      },
-      {
-        title: "How to Answer Application Questions",
-        paragraphs: [
-          "Accelerators get pitched many interesting startups with a lot of potential. If the person reading your application can’t understand the concept based on your explanation, they may pass. Knowing how to answer application questions is a valuable skill.",
-        ],
-        subsections: [
-          {
-            title: "STAR Method",
-            body: "For behavioral or personal questions, organize your answer around situation, task, action, and result. Keep the situation and task short, spend the most time on your actions, and reflect on what happened and what you learned.",
-          },
-          {
-            title: "Be Straightforward",
-            body: "When a question asks a simple “what,” do not add filler or marketing-speak. Add detail only when it is relevant and necessary.",
-          },
-          {
-            title: "Quantitative Data",
-            body: "Be truthful with market size, runway, revenue, expenses, and other metrics. Accelerators may check your data and ask how you calculated it.",
-          },
-          {
-            title: "Competition",
-            body: "Do not claim you have no competition. Competition can be any alternative a customer uses. We care more about your plan to overcome obstacles than an unrealistic claim that none exist.",
-          },
-        ],
-      },
-      {
-        title: "The One-Minute Introduction Video",
-        paragraphs: [
-          "Many accelerator applications ask for a short introduction video describing your team and startup. The goal is clarity, not production value.",
-        ],
-        list: [
-          "Keep the video to one minute.",
-          "Upload it to YouTube, allow embedding, and mark it as unlisted if needed.",
-          "Make sure the audio quality is clear.",
-          "Try not to read from a script; it should sound like a face-to-face conversation.",
-          "Make explanations simple and easy to understand.",
-          "Make sure all co-founders are included.",
-          "Do not add special effects or background music.",
-          "Do not use the video as a full product demo. Explain the team’s passion, why this idea, and why this journey.",
-        ],
-      },
-    ],
+    title: "Accelerator application guide",
+    intro:
+      "Prepare accelerator applications with a founder checklist, clear written answers, a one-minute video, and current ikigai Launchpad eligibility details.",
   },
   {
     slug: "founders-frequently-asked-questions",

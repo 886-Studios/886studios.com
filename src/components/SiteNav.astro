@@ -7,7 +7,9 @@ interface Props {
 
 const { currentPath } = Astro.props;
 const isResidencyPage = currentPath === "/launch-station" || currentPath === "/programs/launch-station";
-const navCta = isResidencyPage ? siteContent.programs.launchStation.joining.cta : siteContent.nav.cta;
+const isApplicationGuide = currentPath === "/resources/application-guide";
+const isProgramReview = isResidencyPage || isApplicationGuide;
+const navCta = isApplicationGuide ? { label: "Review program", href: "/ikigai-launchpad" } : isResidencyPage ? siteContent.programs.launchStation.joining.cta : siteContent.nav.cta;
 
 const isActiveNavItem = (href: string) => {
   if (href === "/ikigai-launchpad" || href === "/about") {
@@ -58,16 +60,16 @@ const isActiveNavItem = (href: string) => {
     <a
       class="nav-cta nav-cta--desktop"
       href={navCta.href}
-      target={isResidencyPage ? undefined : "_blank"}
-      rel={isResidencyPage ? undefined : "noopener noreferrer"}
-      data-analytics-event={isResidencyPage ? "program_interest" : "application_started"}
-      data-analytics-label={isResidencyPage ? "launch_station" : undefined}
+      target={isProgramReview ? undefined : "_blank"}
+      rel={isProgramReview ? undefined : "noopener noreferrer"}
+      data-analytics-event={isProgramReview ? "program_interest" : "application_started"}
+      data-analytics-label={isApplicationGuide ? "ikigai_launchpad" : isResidencyPage ? "launch_station" : undefined}
       data-analytics-placement="global_nav_desktop"
-      aria-describedby={isResidencyPage ? undefined : "nav-application-status"}
+      aria-describedby={isProgramReview ? undefined : "nav-application-status"}
     >
       {navCta.label}
     </a>
-    {!isResidencyPage && <span class="sr-only" id="nav-application-status">{siteContent.programs.launchpad.status.announcement}</span>}
+    {!isProgramReview && <span class="sr-only" id="nav-application-status">{siteContent.programs.launchpad.status.announcement}</span>}
     <button type="button" class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
       <span></span><span></span><span></span>
     </button>
@@ -110,16 +112,16 @@ const isActiveNavItem = (href: string) => {
       }
     </nav>
     <div class="mobile-drawer-footer">
-      {!isResidencyPage && <p class="mobile-application-status" id="mobile-application-status">{siteContent.programs.launchpad.status.announcement}</p>}
+      {!isProgramReview && <p class="mobile-application-status" id="mobile-application-status">{siteContent.programs.launchpad.status.announcement}</p>}
       <a
         class="btn-pri btn-pri--full"
         href={navCta.href}
-        target={isResidencyPage ? undefined : "_blank"}
-        rel={isResidencyPage ? undefined : "noopener noreferrer"}
-        data-analytics-event={isResidencyPage ? "program_interest" : "application_started"}
-        data-analytics-label={isResidencyPage ? "launch_station" : undefined}
+        target={isProgramReview ? undefined : "_blank"}
+        rel={isProgramReview ? undefined : "noopener noreferrer"}
+        data-analytics-event={isProgramReview ? "program_interest" : "application_started"}
+        data-analytics-label={isApplicationGuide ? "ikigai_launchpad" : isResidencyPage ? "launch_station" : undefined}
         data-analytics-placement="global_nav_mobile"
-        aria-describedby={isResidencyPage ? undefined : "mobile-application-status"}
+        aria-describedby={isProgramReview ? undefined : "mobile-application-status"}
       >
         {navCta.label}
       </a>
