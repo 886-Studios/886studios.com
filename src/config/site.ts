@@ -24,7 +24,7 @@ export const siteConfig = {
   ogLocale: "en_US",
   twitterSite: "@886Studios",
   themeColor: "#050507",
-  googleAnalyticsFallbackId: "G-HWJ420T1HT",
+  googleAnalyticsFallbackId: "G-F0SQCTQJME",
 } as const;
 
 export interface SearchEngineVerification {
