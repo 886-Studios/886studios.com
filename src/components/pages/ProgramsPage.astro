@@ -1,5 +1,6 @@
 ---
 import { siteContent } from "../../data/siteContent";
+import ProgramPerks from "../ProgramPerks.astro";
 
 const { launchpad, launchStation } = siteContent.programs;
 const pillarImageWidths = [640, 960, 1280];
@@ -282,16 +283,22 @@ const getPillarPhoto = (photo: (typeof launchpad.benefits)[number]["photo"]) => 
       </div>
     </section>
 
+    <ProgramPerks id="prog-perks" program={launchpad.name} />
+
     <section class="prog-faq reveal" id="faq" aria-labelledby="prog-faq-heading">
       <header class="prog-faq-header">
-        <p class="prog-band-label">Frequently Asked Questions</p>
-        <h2 class="prog-section-title prog-section-title--flush" id="prog-faq-heading">FAQ</h2>
+        <h2 class="prog-section-title prog-section-title--flush" id="prog-faq-heading">Frequently Asked Questions</h2>
       </header>
 
       <div class="prog-faq-list">
         {launchpad.faqs.map((faq) => (
           <details class="prog-faq-item">
-            <summary>{faq.question}</summary>
+            <summary>
+              <span>{faq.question}</span>
+              <svg class="prog-faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="m5 7.5 5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </summary>
             <div class="prog-faq-answer">
               <p>{faq.answer}</p>
               {"links" in faq && faq.links && (

@@ -3203,6 +3203,8 @@ body:has(.application-banner:not([hidden])) .site-main .page {
     }
 
     .prog-faq {
+      display: grid;
+      gap: var(--space-md);
       padding-bottom: var(--prog-section-half-gap);
     }
 
@@ -3210,20 +3212,33 @@ body:has(.application-banner:not([hidden])) .site-main .page {
       margin: 0;
     }
 
-    .prog-faq-header {
-      margin-bottom: clamp(24px, 2.5vw, 32px);
+    .prog-faq-header .prog-section-title {
+      font-size: clamp(1.75rem, 3.6vw, 3rem);
     }
 
     .prog-faq-list {
       width: 100%;
+      min-width: 0;
       margin: 0;
+      border-top: 1px solid var(--border-bright);
+    }
+
+    .prog-faq-item {
+      border-bottom: 1px solid var(--border-bright);
     }
 
     .prog-faq-item summary {
-      padding: clamp(20px, 2vw, 24px) 4px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 20px;
+      align-items: start;
+      gap: var(--space-sm);
+      min-height: 48px;
+      padding-block: var(--space-sm);
       color: var(--text-primary);
       cursor: pointer;
-      font-size: clamp(1rem, 1.35vw, 1.16rem);
+      list-style: none;
+      overflow-wrap: anywhere;
+      font-size: 1rem;
       font-weight: 650;
       letter-spacing: -0.01em;
       line-height: 1.45;
@@ -3231,12 +3246,38 @@ body:has(.application-banner:not([hidden])) .site-main .page {
     }
 
     .prog-faq-item summary::marker {
+      content: "";
+    }
+
+    .prog-faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .prog-faq-chevron {
+      margin-top: 0.1em;
       color: var(--purple-bright);
-      font-size: 0.76em;
+    }
+
+    .prog-faq-item[open] .prog-faq-chevron {
+      transform: rotate(180deg);
     }
 
     .prog-faq-item[open] summary {
       color: color-mix(in srgb, var(--purple-bright) 76%, var(--text-primary));
+    }
+
+    @media (hover: hover) {
+      .prog-faq-item summary:hover {
+        color: var(--purple-bright);
+      }
+
+      .prog-faq-links a:hover {
+        text-decoration-thickness: 2px;
+      }
+    }
+
+    .prog-faq-item summary:active {
+      color: var(--purple-bright);
     }
 
     .prog-faq-item summary:focus-visible {
@@ -3246,7 +3287,10 @@ body:has(.application-banner:not([hidden])) .site-main .page {
     }
 
     .prog-faq-answer {
-      padding: 10px 4px clamp(22px, 2.8vw, 32px);
+      display: grid;
+      gap: var(--space-sm);
+      padding-block: 0 var(--space-md);
+      overflow-wrap: anywhere;
     }
 
     .prog-faq-answer p {
@@ -3254,20 +3298,22 @@ body:has(.application-banner:not([hidden])) .site-main .page {
       width: 100%;
       max-width: none;
       color: var(--text-secondary);
-      font-size: 0.96rem;
-      line-height: 1.76;
+      font-size: 1rem;
+      line-height: 1.7;
     }
 
     .prog-faq-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 20px;
-      margin-top: 16px;
+      gap: var(--space-xs) var(--space-md);
     }
 
     .prog-faq-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
       color: var(--purple-bright);
-      font-size: 0.88rem;
+      font-size: var(--text-meta);
       font-weight: 650;
       text-underline-offset: 4px;
     }
@@ -3706,14 +3752,6 @@ body:has(.application-banner:not([hidden])) .site-main .page {
         left: 15px;
       }
 
-      .prog-faq-list {
-        margin-left: 0;
-      }
-
-      .prog-faq-answer {
-        padding-left: 4px;
-      }
-
       .prog-launch-name {
         font-size: 1.55rem;
       }
@@ -4068,7 +4106,6 @@ body:has(.application-banner:not([hidden])) .site-main .page {
 .resources-page {
   background: var(--bg);
   --res-section-space: clamp(56px, 6vw, 72px);
-  --res-divider-space: 24px;
   --res-ama-divider-space: 32px;
 }
 
@@ -4100,36 +4137,6 @@ body:has(.application-banner:not([hidden])) .site-main .page {
 
 .res-ama {
   padding-bottom: 0;
-}
-
-/* Section header */
-.res-section-hdr {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: var(--res-divider-space);
-}
-
-.res-section-hdr h2 {
-  margin-bottom: var(--space-xs);
-}
-
-.res-section-hdr p {
-  color: var(--text-secondary);
-  font-size: 16px;
-  line-height: 1.75;
-}
-
-.res-section-hdr a {
-  color: var(--purple-bright);
-  text-decoration-color: currentColor;
-  text-underline-offset: 3px;
-  transition: color 0.15s;
-}
-
-.res-section-hdr a:is(:hover, :focus-visible) {
-  color: var(--text-primary);
 }
 
 /* Library: topic labels lead into paired guides, in reading order. */
@@ -4299,107 +4306,6 @@ body:has(.application-banner:not([hidden])) .site-main .page {
   flex-shrink: 0;
 }
 
-/* ── Exclusive Perks ── */
-.res-perks-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--res-divider-space) 32px;
-}
-
-.res-perk-card {
-  min-width: 0;
-  padding: var(--res-divider-space) 0 0;
-  background: transparent;
-  border: 0;
-  border-top: 1px solid var(--border-bright);
-}
-
-.res-perk-label {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--text-primary);
-  line-height: 1.3;
-  margin-bottom: 12px;
-}
-
-.res-perk-tools {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.res-perk-tools li {
-  min-width: 0;
-}
-
-.res-perk-tool {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  min-height: 48px;
-  padding: 6px 0;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  text-decoration: none;
-  background: transparent;
-  border: 0;
-  border-radius: var(--r-sm);
-  transition:
-    color 180ms ease;
-}
-
-.res-perk-tool:hover {
-  color: var(--text-primary);
-}
-
-.res-perk-tool:focus-visible {
-  color: var(--text-primary);
-  outline: 2px solid var(--purple-bright);
-  outline-offset: 2px;
-}
-
-.res-perk-logo {
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
-  transition:
-    background-color 180ms ease,
-    border-color 180ms ease;
-}
-
-.res-perk-logo img {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-}
-
-/* Deel's official SVG includes clear space around the lettermark. */
-.res-perk-logo img[src="/assets/logos/deel.svg"] {
-  width: 30px;
-  height: 30px;
-}
-
-.res-perk-name {
-  min-width: 0;
-  line-height: 1.35;
-}
-
-.res-perk-tool:hover .res-perk-logo,
-.res-perk-tool:focus-visible .res-perk-logo {
-  background: var(--bg-elevated);
-  border-color: var(--border-accent);
-}
-
 /* ── Responsive ── */
 @media (max-width: 980px) {
   .res-library-group {
@@ -4424,15 +4330,6 @@ body:has(.application-banner:not([hidden])) .site-main .page {
     padding: var(--res-ama-divider-space) 0 0;
   }
 
-  .res-perks-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--res-divider-space) 40px;
-  }
-
-  .res-section-hdr {
-    flex-direction: column;
-    gap: 12px;
-  }
 }
 
 @media (max-width: 720px) {
@@ -4469,10 +4366,6 @@ body:has(.application-banner:not([hidden])) .site-main .page {
     padding: 0;
   }
 
-  .res-perks-grid {
-    grid-template-columns: 1fr;
-    gap: var(--res-divider-space);
-  }
 }
 
 /* ===========================
@@ -7797,7 +7690,6 @@ body:has(.application-banner:not([hidden])) .site-main .page {
     min-height: 32px;
   }
 
-  .res-perk-tool,
   .startup-store-badge {
     min-height: 40px;
   }

@@ -1027,66 +1027,79 @@ export const siteContent = {
       faqs: [
         {
           question: "When is the next batch?",
-          answer:
-            launchpadScheduleNote,
+          answer: `The next batch is ${launchpadNextBatch}. Application dates and the deadline have not been announced yet.`,
         },
         {
           question: "What are the investment terms?",
           answer:
-            "The standard deal is a $100,000 USD investment for 8% through a SAFE. There may also be potential for follow-on investment from Lifelike Capital.",
+            "The standard deal is a $100,000 USD investment for 8% through a SAFE. Follow-on investment from Lifelike Capital may also be available.",
         },
         {
-          question: "Where does the program take place? Is it in person?",
+          question: "Do I need to attend in person in Taipei?",
           answer:
-            "The program takes place in person in Taipei. All co-founders are expected to join on site for the core program, and office space is provided for the full 10 weeks.",
+            "Yes. The program takes place in Taipei, and all co-founders are expected to attend the core program in person. Office space is provided for the full 10 weeks.",
         },
         {
-          question: "What stage and industries do you invest in?",
+          question: "Which stages and industries do you invest in?",
           answer:
-            "We are industry-agnostic and work with early-stage companies from friends-and-family through pre-seed and seed. The market needs to be large and global enough to support a category-defining company.",
+            "We invest across industries in early-stage companies, from friends-and-family through pre-seed and seed. Your market needs to be large and global enough to support a category-defining company.",
         },
         {
-          question: "Do you only accept Taiwanese founders?",
-          answer: "Nope, we are open to founders anywhere.",
+          question: "Can founders outside Taiwan apply?",
+          answer: "Yes. We welcome founders from anywhere in the world.",
         },
         {
-          question: "Do I need a Taiwan entity to apply? Or any entity?",
+          question: "Do I need to incorporate before applying?",
           answer:
-            "No, you don't need any entity to apply. If you're accepted into the program, you'll typically need to set up a US entity to receive funding.",
+            "No. You do not need a legal entity in Taiwan or elsewhere to apply. If accepted, you will typically need to set up a US entity to receive funding.",
         },
         {
-          question: "Is there a program fee on top of the equity?",
-          answer: "No. The SAFE is the only ask.",
+          question: "Is there a program fee in addition to the equity?",
+          answer: "No. There is no additional program fee beyond the SAFE investment terms.",
         },
         {
-          question: "What is the duration of the program?",
+          question: "How long is the program?",
           answer:
-            "The program runs for 10 weeks and includes in-person working sessions, office hours, workshops, community programming, and fundraising help, and investor matching.",
+            "The program runs for 10 weeks. It includes in-person working sessions, office hours, workshops, community activities, fundraising support, and investor matching.",
         },
         {
-          question: "Do I need a co-founder or a technical background? Can I apply after raising?",
-          answer:
-            "A co-founder is not required, and founders who have already raised capital can apply. Non-technical founders should show credible technical capability on the founding team and a clear path to building the product.",
+          question: "Do I need a co-founder?",
+          answer: "No. You can apply as a solo founder.",
         },
         {
-          question: "What's the difference between 886 Studios and ikigai Launchpad?",
+          question: "Do I need a technical background?",
           answer:
-            "886 Studios is the venture firm. ikigai Launchpad is the accelerator program that we run.",
+            "Non-technical founders can apply. You should show credible technical capability on your founding team and a clear plan for building the product.",
+        },
+        {
+          question: "Can I apply if I have already raised funding?",
+          answer: "Yes. Founders who have already raised capital can apply.",
+        },
+        {
+          question: "How are 886 Studios and ikigai Launchpad related?",
+          answer:
+            "886 Studios is the venture firm that runs ikigai Launchpad, our accelerator program.",
         },
         {
           question: "What happens after the program ends?",
           answer:
-            "Support continues beyond week 10. We provide tailored introductions, resources, and company-building support based on each alumnus’s stage and funding needs, while the founder community remains active beyond the batch.",
+            "Support continues after the 10-week program. We provide introductions, resources, and help building your company based on your stage and funding needs. The founder community also stays active beyond the batch.",
         },
         {
-          question: "How should I prepare for interviews or ask another question?",
+          question: "How should I prepare for the first interview?",
           answer:
-            "The first interview is a 20-minute conversation with the 886 Studios team and does not require a pitch deck. Review the Interview Guidebook before meeting us, or contact the 886 team if your question is not covered here.",
+            "The first interview is a 20-minute conversation with the 886 Studios team. You do not need a pitch deck. Read the Interview Guidebook before we meet.",
           links: [
             {
               label: "Read the Interview Guidebook",
               href: "/interview-guidebook",
             },
+          ],
+        },
+        {
+          question: "Who can I contact with another question?",
+          answer: "Contact the 886 Studios team if your question is not covered here.",
+          links: [
             {
               label: "Contact 886 Studios",
               href: "/contact",
@@ -1354,7 +1367,6 @@ export const siteContent = {
     },
     perks: {
       title: "Exclusive Perks",
-      programHref: "/ikigai-launchpad",
       categories: [
         {
           title: "Engineering",

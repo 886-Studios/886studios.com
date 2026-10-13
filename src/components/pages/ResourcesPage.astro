@@ -45,51 +45,6 @@ const libraryGroups = [
       ))}
     </section>
 
-    <!-- Exclusive Perks -->
-    <section class="res-section res-perks" aria-labelledby="res-perks-heading">
-      <header class="res-section-hdr">
-        <div>
-          <h2 class="section-h2 section-h2--compact" id="res-perks-heading">{resources.perks.title}</h2>
-          <p>
-            Unlock these perks by working with us through{" "}
-            <a href={resources.perks.programHref}>ikigai Launchpad</a>{" "}
-            or <a href="/launch-station">Launch Station</a>.
-          </p>
-        </div>
-      </header>
-
-      <div class="res-perks-grid">
-        {resources.perks.categories.map((category, categoryIndex) => (
-          <section
-            class="res-perk-card"
-            aria-labelledby={`res-perk-category-${categoryIndex}`}
-          >
-            <h3 class="res-perk-label" id={`res-perk-category-${categoryIndex}`}>
-              {category.title}
-            </h3>
-            <ul class="res-perk-tools">
-              {category.items.map((item) => (
-                <li>
-                  <a
-                    class="res-perk-tool"
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span class="res-perk-logo">
-                      <img src={item.logoSrc} alt="" width="64" height="64" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
-                    </span>
-                    <span class="res-perk-name">{item.label}</span>
-                    <span class="sr-only"> (opens in a new tab)</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
-    </section>
-
     <!-- AMA Feature Card -->
     <section class="res-section res-ama" aria-labelledby="res-ama-heading">
       <div class="res-ama-card">

@@ -27,12 +27,19 @@ const linearLogo = await readFile(
   "utf8",
 );
 
-test("Founder AMA follows Exclusive Perks on the resources page", () => {
-  const perksPosition = resourcesPage.indexOf("<!-- Exclusive Perks -->");
-  const amaPosition = resourcesPage.indexOf("<!-- AMA Feature Card -->");
+test("Exclusive Perks appear on program pages before joining and FAQ, not in the resource library", async () => {
+  assert.doesNotMatch(resourcesPage, /resources\.perks|ProgramPerks|res-perks/);
+  assert.ok(resourcesPage.indexOf("<!-- AMA Feature Card -->") > resourcesPage.indexOf('aria-label="Resource library"'));
 
-  assert.ok(perksPosition >= 0);
-  assert.ok(amaPosition > perksPosition);
+  for (const [file, followingSection] of [
+    ["LaunchStationPage.astro", 'class="launch-station-joining"'],
+    ["ProgramsPage.astro", 'class="prog-faq reveal"'],
+  ]) {
+    const page = await readFile(new URL(`../src/components/pages/${file}`, import.meta.url), "utf8");
+    const perksPosition = page.indexOf("<ProgramPerks ");
+    assert.ok(perksPosition >= 0, `${file} must include partner perks`);
+    assert.ok(perksPosition < page.indexOf(followingSection), `${file} must place perks before the requested section`);
+  }
 });
 
 test("resource guides follow the topic reading order", () => {

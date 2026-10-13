@@ -1,5 +1,6 @@
 ---
 import { siteContent } from "../../data/siteContent";
+import ProgramPerks from "../ProgramPerks.astro";
 
 const { launchStation, launchpad } = siteContent.programs;
 ---
@@ -102,6 +103,8 @@ const { launchStation, launchpad } = siteContent.programs;
         {launchStation.activities.map((activity) => <li>{activity}</li>)}
       </ul>
     </section>
+
+    <ProgramPerks id="ls-perks" program={launchStation.title} />
 
     <section class="launch-station-joining" aria-labelledby="ls-joining-heading">
       <h2 id="ls-joining-heading">{launchStation.joining.title}</h2>
