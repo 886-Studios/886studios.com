@@ -18,13 +18,13 @@ const groupId = (title: string, index: number) =>
 
 <ecosystem-database class="ecosystem-database guide-container">
   <form class="database-controls" role="search" aria-label="Search ecosystem database" hidden>
-    <label>
+    <label for="ecosystem-search">
       <span>Search the database</span>
-      <input type="search" name="query" placeholder="Search names, industries, stages…" autocomplete="off" aria-controls="database-results" />
+      <input id="ecosystem-search" type="search" name="query" placeholder="Search names, industries, stages…" autocomplete="off" aria-controls="database-results" />
     </label>
-    <label>
+    <label for="ecosystem-category">
       <span>Category</span>
-      <select name="category" aria-controls="database-results">
+      <select id="ecosystem-category" name="category" aria-controls="database-results">
         <option value="">All categories</option>
         {groups.map((group, index) => <option value={index}>{group.title} ({group.entries.length})</option>)}
       </select>
@@ -70,12 +70,12 @@ const groupId = (title: string, index: number) =>
                   return (
                     <tr data-record data-search={[group.title, ...Object.values(entry)].join(" ").toLowerCase()}>
                       <th scope="row">{entry.name}</th>
-                      {columns.map((field) => <td>{entry[field.key] ?? <span class="database-missing"><span aria-hidden="true">—</span><span class="sr-only">Not listed</span></span>}</td>)}
+                      {columns.map((field) => <td>{entry[field.key] ?? <span class="database-missing">Not listed</span>}</td>)}
                       <td>
                         <div class="database-contact">
                           {entry.url && (website ? <a class="guide-link" href={website} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>{entry.url}{external && <span class="sr-only"> (opens in a new tab)</span>}</a> : <span>{entry.url}</span>)}
                           {entry.contact && <span>{entry.contact}</span>}
-                          {!entry.url && !entry.contact && <span class="database-missing"><span aria-hidden="true">—</span><span class="sr-only">Not listed</span></span>}
+                          {!entry.url && !entry.contact && <span class="database-missing">Not listed</span>}
                         </div>
                       </td>
                     </tr>
