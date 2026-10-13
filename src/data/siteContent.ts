@@ -1305,6 +1305,12 @@ export const siteContent = {
           "How SAFEs work, valuation caps, convertible note comparisons, and what founders should check before signing.",
       },
       {
+        title: "Cap Table Guide",
+        href: "/resources/cap-table-guide",
+        description:
+          "Understand ownership, dilution, option pools, and founder vesting with a step-by-step cap table example.",
+      },
+      {
         title: "Ecosystem Database",
         href: "/resources/ecosystem-database",
         description:

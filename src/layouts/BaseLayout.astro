@@ -204,7 +204,7 @@ const structuredDataJson = canonicalUrl
     />
     {structuredDataJson && <script type="application/ld+json" is:inline set:html={structuredDataJson} />}
   </head>
-  <body class:list={[currentPath === "/" && "is-home", isPortfolioProfilePage && "is-portfolio-profile", isManifestoPage && "is-manifesto", currentPath === "/resources/application-guide" && "is-application-guide", currentPath === "/incorporation-101" && "is-incorporation-guide", currentPath === "/resources/safe-note-guide" && "is-safe-guide"]}>
+  <body class:list={[currentPath === "/" && "is-home", isPortfolioProfilePage && "is-portfolio-profile", isManifestoPage && "is-manifesto", currentPath === "/resources/application-guide" && "is-application-guide", currentPath === "/incorporation-101" && "is-incorporation-guide", currentPath === "/resources/safe-note-guide" && "is-safe-guide", currentPath === "/resources/cap-table-guide" && "is-cap-table-guide"]}>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header>
       <SiteNav currentPath={currentPath} />

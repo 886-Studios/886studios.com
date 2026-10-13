@@ -1,0 +1,102 @@
+@font-face {
+  font-family: "Cap Table Guide Geist";
+  src: url("/assets/fonts/application-guide-geist.woff2") format("woff2");
+  font-weight: 400 750;
+  font-style: normal;
+  font-display: swap;
+}
+
+body.is-cap-table-guide {
+  --font-sans: "Cap Table Guide Geist", "Geist", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+body.is-cap-table-guide::after { content: none; }
+.is-cap-table-guide nav.site-nav {
+  position: relative;
+  background: var(--bg);
+  backdrop-filter: none;
+  border: 0;
+  box-shadow: none;
+}
+
+.cap-table-guide { color: var(--text-primary); }
+.cap-table-guide section { padding: 27px 0; }
+.cap-table-guide .cap-table-hero,
+.cap-table-guide .cap-table-faq { padding: 53px 0; }
+.cap-table-guide .cap-table-container { width: 100%; max-width: 860px; padding: 0 20px; margin: 0 auto; }
+.cap-table-guide :is(h1, h2, h3) { font-weight: 700; text-wrap: balance; }
+.cap-table-guide h1 { font-size: 30px; line-height: 1.1; letter-spacing: -0.03em; }
+.cap-table-guide h2 { font-size: 26px; line-height: 1.02; letter-spacing: -0.03em; }
+.cap-table-guide h3 { font-size: 21px; line-height: 1.02; letter-spacing: normal; }
+.cap-table-guide :is(p, li) { color: var(--text-secondary); font-size: 15px; line-height: 22.5008px; letter-spacing: normal; }
+.cap-table-guide .cap-table-link { color: inherit; text-decoration: underline; text-underline-offset: 4px; }
+.cap-table-guide .cap-table-link:hover { color: var(--text-primary); }
+.cap-table-guide .cap-table-small { color: var(--text-secondary); font-size: 14px; line-height: 20px; }
+.cap-table-guide .cap-table-inline { display: inline-block; }
+.cap-table-guide .cap-table-hero__back { margin-bottom: 32px; }
+.cap-table-guide .cap-table-hero__contents { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 14px; line-height: 20px; color: var(--text-secondary); }
+.cap-table-guide .cap-table-checks__list { list-style: disc; padding-left: 20px; }
+.cap-table-guide .cap-table-checks__list li + li { margin-top: 16px; }
+.cap-table-guide .cap-table-stack > * + * { margin-top: 28px; }
+.cap-table-guide .cap-table-faq__questions > * + * { margin-top: 32px; }
+.cap-table-guide .cap-table-anchor { scroll-margin-top: 32px; }
+.cap-table-guide .cap-table-table-scroll { position: relative; width: 100%; overflow-x: auto; }
+.cap-table-guide table { width: 100%; min-width: 720px; border-collapse: collapse; caption-side: bottom; font-size: 16px; line-height: 26px; }
+.cap-table-guide tr { border-bottom: 1px solid #28282a; }
+.cap-table-guide tbody tr:last-child { border-bottom: 0; }
+.cap-table-guide :is(th, td) { padding: 16px 8px; vertical-align: top; text-align: left; white-space: normal; }
+.cap-table-guide th { font-weight: 600; }
+.cap-table-guide td { color: var(--text-secondary); }
+.cap-table-guide thead th { padding: 8px; vertical-align: middle; font-weight: 500; }
+.cap-table-guide .cap-table-button {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 46px; min-height: calc(1lh + 18px); padding: 8px 24px;
+  font-size: 15px; font-weight: 700; line-height: 1.5; white-space: nowrap;
+  color: #fff; background: #6d28d9; border: 1px solid #8754e8;
+  border-radius: 999px; text-decoration: none;
+  box-shadow: 0 10px 28px rgba(139,92,246,.3), inset 0 1px 0 rgba(255,255,255,.2);
+  transition: background-color 180ms, border-color 180ms, box-shadow 180ms, transform 180ms;
+}
+.cap-table-guide .cap-table-button:hover {
+  background: #7c3aed; border-color: #a97df3; transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(139,92,246,.38), inset 0 1px 0 rgba(255,255,255,.26);
+}
+.cap-table-guide .mt-3 { margin-top: 12px; }
+.cap-table-guide .mt-4 { margin-top: 16px; }
+.cap-table-guide .mt-6 { margin-top: 24px; }
+.cap-table-guide .mt-7 { margin-top: 28px; }
+.cap-table-guide .mt-8 { margin-top: 32px; }
+.cap-table-guide .mt-9 { margin-top: 36px; }
+.cap-table-guide .mt-14 { margin-top: 56px; }
+@media (min-width: 768px) {
+  .cap-table-guide section { padding: 44px 0; }
+  .cap-table-guide .cap-table-hero, .cap-table-guide .cap-table-faq { padding: 88px 0; }
+  .cap-table-guide .cap-table-container { max-width: 884px; padding: 0 32px; }
+  .cap-table-guide h1 { font-size: 48px; }
+  .cap-table-guide h2 { line-height: 1.19; }
+  .cap-table-guide h3 { font-size: 22px; line-height: 1.19; }
+  .cap-table-guide :is(p, li) { font-size: 16px; line-height: 25.6px; }
+  .cap-table-guide p.cap-table-small { font-size: 16px; line-height: 25.6px; }
+  .cap-table-guide .cap-table-mobile-only { display: none; }
+}
+@media (max-width: 767px) {
+  html:has(body.is-cap-table-guide) { scrollbar-gutter: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cap-table-guide .cap-table-button { transition: none; }
+  .cap-table-guide .cap-table-button:hover { transform: none; }
+}
+
+.cap-table-guide .cap-table-contents__table table { min-width: 640px; }
+.cap-table-guide .cap-table-contents__table thead th:nth-child(1) { width: 26%; }
+.cap-table-guide .cap-table-contents__table thead th:nth-child(2) { width: 32%; }
+.cap-table-guide .cap-table-contents__table thead th:nth-child(3) { width: 42%; }
+.cap-table-guide .cap-table-example__table thead th { width: 20%; }
+.cap-table-guide .cap-table-example__steps { list-style: decimal; padding-left: 20px; }
+.cap-table-guide .cap-table-example__steps li + li { margin-top: 16px; }
+.cap-table-guide .cap-table-emphasis { color: var(--text-primary); font-weight: 600; }
+.cap-table-guide tfoot { border-top: 1px solid #28282a; background: #08080d; font-weight: 500; }
+.cap-table-guide tfoot tr { border-bottom: 0; }
+.cap-table-guide tfoot :is(th, td) { vertical-align: middle; color: var(--text-primary); font-weight: 600; }
+.cap-table-guide tfoot th { white-space: nowrap; }

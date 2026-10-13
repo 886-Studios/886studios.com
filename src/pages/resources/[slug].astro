@@ -1,5 +1,6 @@
 ---
 import ApplicationGuidePage from "../../components/pages/ApplicationGuidePage.astro";
+import CapTableGuidePage from "../../components/pages/CapTableGuidePage.astro";
 import SafeNoteGuidePage from "../../components/pages/SafeNoteGuidePage.astro";
 import ResourceArticlePage from "../../components/pages/ResourceArticlePage.astro";
 import { contentDates } from "../../data/contentDates.generated";
@@ -41,5 +42,5 @@ const faqSchema = getResourceFaqSchema(article, pagePath);
     ...(faqSchema ? [faqSchema] : []),
   ]}
 >
-  {article.slug === "application-guide" ? <ApplicationGuidePage /> : article.slug === "safe-note-guide" ? <SafeNoteGuidePage /> : <ResourceArticlePage article={article} />}
+  {article.slug === "application-guide" ? <ApplicationGuidePage /> : article.slug === "safe-note-guide" ? <SafeNoteGuidePage /> : article.slug === "cap-table-guide" ? <CapTableGuidePage /> : <ResourceArticlePage article={article} />}
 </BaseLayout>

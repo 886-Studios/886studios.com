@@ -7,7 +7,7 @@ interface Props {
 
 const { currentPath } = Astro.props;
 const isResidencyPage = currentPath === "/launch-station" || currentPath === "/programs/launch-station";
-const isPreparationGuide = ["/resources/application-guide", "/incorporation-101", "/resources/safe-note-guide"].includes(currentPath);
+const isPreparationGuide = ["/resources/application-guide", "/incorporation-101", "/resources/safe-note-guide", "/resources/cap-table-guide"].includes(currentPath);
 const isProgramReview = isResidencyPage || isPreparationGuide;
 const navCta = isPreparationGuide ? { label: "Review program", href: "/ikigai-launchpad" } : isResidencyPage ? siteContent.programs.launchStation.joining.cta : siteContent.nav.cta;
 

@@ -47,6 +47,7 @@ test("resource guides keep the requested display order", () => {
     "Application Guide",
     "Incorporation 101",
     "SAFE Note Guide",
+    "Cap Table Guide",
     "Ecosystem Database",
     "Interview Guidebook",
     "Y Combinator 101",
