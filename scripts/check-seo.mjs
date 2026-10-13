@@ -171,6 +171,12 @@ for (const filePath of htmlFiles) {
     }
 
     if (description) {
+      if (/(?:\.\.\.|…)\s*$/.test(description)) {
+        fail(`${route}: meta description ends with an ellipsis; write a complete summary`);
+      }
+      if (/&(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/i.test(description)) {
+        fail(`${route}: meta description contains a literal HTML entity after decoding`);
+      }
       if (description.length < 50 || description.length > 180) {
         fail(`${route}: meta description length is ${description.length}, expected 50-180 characters`);
       }

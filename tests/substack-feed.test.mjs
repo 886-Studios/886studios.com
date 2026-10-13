@@ -162,3 +162,16 @@ test("imported picture links are named and sources use the article column width"
   const articleLink = html.match(/<a\b[^>]*href="https:\/\/example.com\/article"[^>]*>/)?.[0];
   assert.ok(articleLink && !articleLink.includes("aria-label"));
 });
+
+test("feed summaries decode entities once and keep unsafe HTML out of article content", () => {
+  const { parseBlogFeed } = loadAdapter();
+  const xml = feed.replace("<pubDate>", `<description><![CDATA[<p>Pitch &amp; Connect: &#8220;founders&#8221; &lt; builders &gt; investors.</p><script>alert(1)</script>]]></description><pubDate>`);
+  const post = parseBlogFeed(xml)[0];
+  assert.equal(post.description, 'Pitch & Connect: “founders” < builders > investors.');
+  assert.equal(post.contentHtml, "<p>Lessons for founders.</p>");
+  assert.doesNotMatch(post.description, /alert|<script|&amp;/);
+
+  const fallback = parseBlogFeed(feed.replace("Lessons for founders.", "Founders &amp; builders share &#39;lessons&#39;."))[0];
+  assert.equal(fallback.description, "Founders & builders share 'lessons'.");
+  assert.ok(fallback.contentHtml.includes("&amp;"), "HTML must retain its output escaping");
+});

@@ -528,6 +528,11 @@ function toPlainText(value: string) {
     allowedTags: [],
     allowedAttributes: {},
   })
+    // sanitizeHtml returns escaped HTML; callers need text, which Astro/RSS
+    // escape again at the output boundary. Decode that serialization once.
+    .replace(/&(amp|lt|gt|quot|apos|#39);/g, (_, entity: string) => ({
+      amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", "#39": "'",
+    } as Record<string, string>)[entity] ?? _)
     .replace(/\s+/g, " ")
     .trim();
 }

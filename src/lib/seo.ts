@@ -1,4 +1,5 @@
 import { getCanonicalUrl, siteConfig } from "../config/site";
+import { profileDescriptions, portfolioDescriptions, resourceDescriptions } from "../data/metaDescriptions";
 import { contentDates } from "../data/contentDates.generated";
 import { partnerProfiles, type PartnerProfile } from "../data/partnerProfiles";
 import {
@@ -143,16 +144,24 @@ export function getMetaDescription(value: string, maxLength = 170) {
   const text = cleanText(value);
   if (text.length <= maxLength) return text;
 
-  const trimmed = text.slice(0, maxLength - 1);
-  const lastSpace = trimmed.lastIndexOf(" ");
-  return `${trimmed.slice(0, lastSpace > 120 ? lastSpace : trimmed.length).trim()}...`;
+  // Prefer whole sentences. If even the first sentence exceeds the budget,
+  // preserve its meaning and let the SEO length check request an editorial summary.
+  const sentences = [...new Intl.Segmenter("en", { granularity: "sentence" }).segment(text)]
+    .map(({ segment }) => segment.trim());
+  let summary = sentences[0] ?? text;
+  for (const sentence of sentences.slice(1)) {
+    if (`${summary} ${sentence}`.length > maxLength) break;
+    summary += ` ${sentence}`;
+  }
+  return summary;
 }
 
 export function getPortfolioDescription(company: PortfolioCompany) {
-  return getMetaDescription(company.description);
+  return portfolioDescriptions[company.slug] ?? getMetaDescription(company.description);
 }
 
 export function getProfileDescription(profile: PartnerProfile) {
+  if (profileDescriptions[profile.slug]) return profileDescriptions[profile.slug];
   const profileText = cleanText(profile.profile.map(profileParagraphToText).join(" "));
   if (profileText) return getMetaDescription(profileText);
 
@@ -165,6 +174,7 @@ export function getProfileDescription(profile: PartnerProfile) {
 }
 
 export function getResourceDescription(article: ResourceArticle) {
+  if (resourceDescriptions[article.slug]) return resourceDescriptions[article.slug];
   const firstSection = article.sections?.[0];
   const firstDirectoryGroup = article.directoryGroups?.[0];
   const genericPartnerIntro = article.intro?.startsWith("We asked ");
