@@ -1,16 +1,16 @@
 ---
-// Content and layout adapted from the supplied Incorporation 101 reference.
+import BackLink from "../BackLink.astro";
 import "../../styles/incorporation-guide.css";
 ---
 
 <div class="incorporation-guide">
   <section class="incorporation-hero">
     <div class="incorporation-container">
-      <a href="/resources" class="incorporation-hero__back incorporation-link incorporation-small incorporation-inline">Back to resources</a>
+      <BackLink href="/resources" label="resources" />
       <h1 class="incorporation-hero__title">Startup incorporation 101</h1>
       <p class="incorporation-hero__answer mt-6">Startup incorporation means creating a company with a legal identity separate from its owners. Before choosing where and how to incorporate, consider your customers, investors, team, tax obligations, and where the business will operate.</p>
       <p class="mt-4">This founder guide covers jurisdiction choices, US business structures, and options for an existing foreign company entering Taiwan. It is general information, not legal, tax, or immigration advice. Confirm your plan with qualified advisers in the countries involved.</p>
-      <a class="incorporation-hero__cta mt-7 incorporation-button" href="https://tally.so/r/m626gk">Request consultation</a>
+      <a class="incorporation-hero__cta mt-7 btn-pri" href="https://tally.so/r/m626gk">Request consultation</a>
       <nav aria-label="In this guide" class="incorporation-hero__contents mt-9 incorporation-small">
         <a href="#founder-checklist" class="incorporation-link">Founder checklist</a>
         <a href="#jurisdictions" class="incorporation-link">Jurisdictions</a>
@@ -63,9 +63,9 @@ import "../../styles/incorporation-guide.css";
     <div class="incorporation-container">
       <h2>How do common US business structures differ?</h2>
       <p class="mt-4">This comparison is US-specific. It does not describe Taiwan or Singapore tax treatment, and it is not a recommendation for a particular founder.</p>
-      <p class="mt-4 incorporation-mobile-only incorporation-small">Scroll the table sideways to read all four columns.</p>
+      <p id="incorporation-table-hint" class="mt-4 incorporation-mobile-only incorporation-small">Scroll the table sideways to read all four columns.</p>
       <div class="incorporation-structures__comparison mt-6">
-        <div role="region" aria-label="US business structure comparison, horizontally scrollable" tabindex="0" class="incorporation-table-scroll">
+        <div role="region" aria-label="US business structure comparison, horizontally scrollable" aria-describedby="incorporation-table-hint" tabindex="0" class="incorporation-table-scroll">
           <table>
             <caption class="mt-4 sr-only">Five common US business structures compared by ownership, federal tax treatment, and liability.</caption>
             <thead>
@@ -169,7 +169,7 @@ import "../../styles/incorporation-guide.css";
       <div class="incorporation-faq__consultation mt-12">
         <h2>Discuss your incorporation plan</h2>
         <p class="mt-4">Bring your checklist and planned operating locations to the conversation. For accelerator preparation, read our <a href="/resources/application-guide" class="incorporation-link">accelerator application guide</a>.</p>
-        <a class="mt-6 incorporation-button" href="https://tally.so/r/m626gk">Request consultation</a>
+        <a class="mt-6 btn-pri" href="https://tally.so/r/m626gk">Request consultation</a>
         <p class="mt-8 incorporation-small">Prepared by 886 Studios. Sources reviewed <time datetime="2026-10-12">October 12, 2026</time>. This guide is educational, not individualized legal, tax, or immigration advice. Confirm current requirements with qualified advisers before acting.</p>
       </div>
     </div>

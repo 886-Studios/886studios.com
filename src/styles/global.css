@@ -4072,10 +4072,6 @@ body:has(.application-banner:not([hidden])) .site-main .page {
   --res-ama-divider-space: 32px;
 }
 
-.resources-page .pg-hero {
-  padding-bottom: clamp(36px, 4vw, 48px);
-}
-
 .resources-page .btn-pri {
   padding-inline: 24px;
 }
@@ -4088,7 +4084,7 @@ body:has(.application-banner:not([hidden])) .site-main .page {
 .res-shell {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 0 32px clamp(80px, 8vw, 96px);
+  padding: 0 var(--space-lg) clamp(80px, 8vw, 96px);
 }
 
 /* Section base */
@@ -4099,7 +4095,7 @@ body:has(.application-banner:not([hidden])) .site-main .page {
 
 .res-library {
   border-top: none;
-  padding-top: clamp(24px, 3vw, 32px);
+  padding-top: 0;
 }
 
 .res-ama {
@@ -4116,29 +4112,24 @@ body:has(.application-banner:not([hidden])) .site-main .page {
 }
 
 .res-section-hdr h2 {
-  font-family: var(--font-display);
-  font-size: clamp(20px, 2.4vw, 28px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin-bottom: 12px;
+  margin-bottom: var(--space-xs);
 }
 
 .res-section-hdr p {
-  color: var(--text-muted);
-  font-size: 14px;
+  color: var(--text-secondary);
+  font-size: 16px;
   line-height: 1.75;
 }
 
 .res-section-hdr a {
-  color: var(--text-secondary);
-  text-decoration-color: #4b3a72;
+  color: var(--purple-bright);
+  text-decoration-color: currentColor;
   text-underline-offset: 3px;
   transition: color 0.15s;
 }
 
-.res-section-hdr a:hover {
-  color: var(--purple-bright);
+.res-section-hdr a:is(:hover, :focus-visible) {
+  color: var(--text-primary);
 }
 
 /* Library: topic labels lead into paired guides, in reading order. */
@@ -4250,19 +4241,14 @@ body:has(.application-banner:not([hidden])) .site-main .page {
 }
 
 .res-ama-body h2 {
-  font-family: var(--font-display);
-  font-size: clamp(26px, 3vw, 38px);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  margin-bottom: 16px;
+  margin-bottom: var(--space-sm);
 }
 
 .res-ama-lead {
-  color: var(--text-muted);
-  font-size: 14.5px;
-  line-height: 1.8;
-  margin-bottom: 24px;
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: var(--space-md);
 }
 
 .res-ama-panel {
@@ -4276,12 +4262,12 @@ body:has(.application-banner:not([hidden])) .site-main .page {
 }
 
 .res-ama-panel-label {
-  font-family: var(--font-body);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
 }
 
 .res-ama-steps {
@@ -4296,14 +4282,14 @@ body:has(.application-banner:not([hidden])) .site-main .page {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 13.5px;
+  font-size: var(--text-meta);
   color: var(--text-secondary);
   line-height: 1.5;
 }
 
 .res-step-num {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: var(--text-meta);
   font-weight: 500;
   color: var(--purple-bright);
   background: transparent;
@@ -4314,16 +4300,6 @@ body:has(.application-banner:not([hidden])) .site-main .page {
 }
 
 /* ── Exclusive Perks ── */
-.res-exclusive-eyebrow {
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 10px;
-}
-
 .res-perks-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -4459,21 +4435,22 @@ body:has(.application-banner:not([hidden])) .site-main .page {
   }
 }
 
+@media (max-width: 720px) {
+  .res-shell {
+    padding-inline: var(--space-md);
+  }
+}
+
 @media (max-width: 640px) {
   .resources-page {
     --res-section-space: 48px;
   }
 
-  .resources-page .pg-hero {
-    padding: 48px 20px 24px;
-  }
-
   .res-shell {
-    padding: 0 20px 80px;
+    padding-bottom: 80px;
   }
 
   .res-library {
-    padding-top: 24px;
     padding-bottom: 56px;
   }
 
@@ -4490,10 +4467,6 @@ body:has(.application-banner:not([hidden])) .site-main .page {
   .res-ama-card {
     gap: 0;
     padding: 0;
-  }
-
-  .res-ama-body h2 {
-    font-size: clamp(24px, 6vw, 32px);
   }
 
   .res-perks-grid {

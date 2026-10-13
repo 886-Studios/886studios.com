@@ -1,17 +1,6 @@
-@font-face {
-  font-family: "Incorporation Geist";
-  src: url("/assets/fonts/application-guide-geist.woff2") format("woff2");
-  font-weight: 400 750;
-  font-style: normal;
-  font-display: swap;
-}
-
-body.is-incorporation-guide {
-  --font-sans: "Incorporation Geist", "Geist", system-ui, -apple-system, sans-serif;
-  -webkit-font-smoothing: auto;
-  -moz-osx-font-smoothing: auto;
-}
+/* Keep the guide's open reading layout and use the shared Geist typography. */
 body.is-incorporation-guide::after { content: none; }
+
 .is-incorporation-guide nav.site-nav {
   position: relative;
   background: var(--bg);
@@ -21,73 +10,213 @@ body.is-incorporation-guide::after { content: none; }
 }
 
 .incorporation-guide { color: var(--text-primary); }
-.incorporation-guide section { padding: 27px 0; }
-.incorporation-guide .incorporation-hero,
-.incorporation-guide .incorporation-faq { padding: 53px 0; }
-.incorporation-guide .incorporation-container { width: 100%; max-width: 860px; padding: 0 20px; margin: 0 auto; }
-.incorporation-guide :is(h1, h2, h3) { font-weight: 700; text-wrap: balance; }
-.incorporation-guide h1 { font-size: 30px; line-height: 1.1; letter-spacing: -0.03em; }
-.incorporation-guide h2 { font-size: 26px; line-height: 1.02; letter-spacing: -0.03em; }
-.incorporation-guide h3 { font-size: 21px; line-height: 1.02; letter-spacing: normal; }
-.incorporation-guide :is(p, li) { color: var(--text-secondary); font-size: 15px; line-height: 22.5008px; letter-spacing: normal; }
-.incorporation-guide .incorporation-link { color: inherit; text-decoration: underline; text-underline-offset: 4px; }
-.incorporation-guide .incorporation-link:hover { color: var(--text-primary); }
-.incorporation-guide .incorporation-small { color: var(--text-secondary); font-size: 14px; line-height: 20px; }
-.incorporation-guide .incorporation-inline { display: inline-block; }
-.incorporation-guide .incorporation-hero__back { margin-bottom: 32px; }
-.incorporation-guide .incorporation-hero__contents { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 14px; line-height: 20px; color: var(--text-secondary); }
-.incorporation-guide .incorporation-checklist__questions { list-style: disc; padding-left: 20px; }
-.incorporation-guide .incorporation-checklist__questions li + li { margin-top: 16px; }
-.incorporation-guide .incorporation-stack > * + * { margin-top: 28px; }
-.incorporation-guide .incorporation-faq__questions > * + * { margin-top: 32px; }
-.incorporation-guide .incorporation-faq__consultation { padding-top: 32px; border-top: 1px solid #28282a; }
-.incorporation-guide .incorporation-anchor { scroll-margin-top: 32px; }
-.incorporation-guide .incorporation-table-scroll { position: relative; width: 100%; overflow-x: auto; }
-.incorporation-guide table { width: 100%; min-width: 760px; border-collapse: collapse; caption-side: bottom; font-size: 16px; line-height: 26px; }
-.incorporation-guide tr { border-bottom: 1px solid #28282a; }
-.incorporation-guide tbody tr:last-child { border-bottom: 0; }
-.incorporation-guide :is(th, td) { padding: 16px 8px; vertical-align: top; text-align: left; white-space: normal; }
+
+.incorporation-guide section { padding: var(--space-lg) 0; }
+
+.incorporation-guide .incorporation-hero {
+  padding: var(--space-xl) 0 var(--space-md);
+}
+
+.incorporation-guide .incorporation-faq {
+  padding-bottom: var(--space-3xl);
+}
+
+.incorporation-guide .incorporation-container {
+  width: 100%;
+  max-width: 884px;
+  padding-inline: var(--space-md);
+  margin-inline: auto;
+}
+
+.incorporation-guide :is(h1, h2, h3) {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-wrap: pretty;
+}
+
+.incorporation-guide h1 {
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.incorporation-guide h2 {
+  font-size: clamp(24px, 2.5vw, 28px);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.incorporation-guide h3 {
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.incorporation-guide :is(p, li) {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.incorporation-guide .incorporation-hero__answer {
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.incorporation-guide .incorporation-link {
+  color: var(--purple-bright);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 180ms ease;
+}
+
+.incorporation-guide .incorporation-link:is(:hover, :focus-visible) {
+  color: var(--text-primary);
+}
+
+.incorporation-guide .incorporation-small {
+  color: var(--text-secondary);
+  font-size: var(--text-meta);
+  line-height: 1.6;
+}
+
+.incorporation-guide .incorporation-inline {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.incorporation-guide .incorporation-hero__contents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-md);
+  padding-block: var(--space-xs);
+  border-block: 1px solid var(--border-bright);
+}
+
+.incorporation-guide .incorporation-hero__contents a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--text-secondary);
+  text-decoration-color: var(--border-bright);
+}
+
+.incorporation-guide .incorporation-hero__contents a:is(:hover, :focus-visible) {
+  color: var(--purple-bright);
+  text-decoration-color: currentColor;
+}
+
+.incorporation-guide .incorporation-checklist__questions {
+  list-style: disc;
+  padding-left: 22px;
+}
+
+.incorporation-guide .incorporation-checklist__questions li { padding-left: 4px; }
+.incorporation-guide .incorporation-checklist__questions li + li { margin-top: var(--space-xs); }
+.incorporation-guide .incorporation-checklist__questions li::marker { color: var(--purple-bright); }
+.incorporation-guide .incorporation-stack > * + * { margin-top: var(--space-lg); }
+.incorporation-guide .incorporation-faq__questions > * + * { margin-top: var(--space-xl); }
+
+.incorporation-guide .incorporation-faq__consultation {
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--border-bright);
+}
+
+.incorporation-guide .incorporation-anchor { scroll-margin-top: var(--space-lg); }
+
+.incorporation-guide .incorporation-table-scroll {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-color: var(--text-muted) var(--bg);
+  scrollbar-width: thin;
+}
+
+.incorporation-guide .incorporation-table-scroll:focus-visible {
+  outline-offset: 4px;
+}
+
+.incorporation-guide table {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: separate;
+  border-spacing: 0;
+  caption-side: bottom;
+  font-size: var(--text-meta);
+  line-height: 1.65;
+}
+
+.incorporation-guide :is(th, td) {
+  padding: var(--space-md) var(--space-sm);
+  vertical-align: top;
+  text-align: left;
+  white-space: normal;
+  border-bottom: 1px solid var(--border-bright);
+}
+
 .incorporation-guide th { font-weight: 600; }
 .incorporation-guide td { color: var(--text-secondary); }
-.incorporation-guide thead th { padding: 8px; vertical-align: middle; font-weight: 500; }
-.incorporation-guide thead th:nth-child(1) { width: 16%; }
-.incorporation-guide thead th:nth-child(2) { width: 23%; }
-.incorporation-guide thead th:nth-child(3) { width: 35%; }
+
+.incorporation-guide thead th {
+  padding-block: var(--space-sm);
+  vertical-align: bottom;
+  color: var(--text-secondary);
+}
+
+/* Keep the structure name in view while comparing columns on small screens. */
+.incorporation-guide tr > :first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  padding-left: 0;
+  background: var(--bg);
+  border-right: 1px solid var(--border-bright);
+}
+
+.incorporation-guide tr > :last-child { padding-right: 0; }
+.incorporation-guide thead th:nth-child(1) { width: 18%; }
+.incorporation-guide thead th:nth-child(2) { width: 24%; }
+.incorporation-guide thead th:nth-child(3) { width: 32%; }
 .incorporation-guide thead th:nth-child(4) { width: 26%; }
-.incorporation-guide .incorporation-button {
-  display: inline-flex; align-items: center; justify-content: center;
-  height: 46px; min-height: calc(1lh + 18px); padding: 8px 24px;
-  font-size: 15px; font-weight: 700; line-height: 1.5; white-space: nowrap;
-  color: #fff; background: #6d28d9; border: 1px solid #8754e8;
-  border-radius: 999px; text-decoration: none;
-  box-shadow: 0 10px 28px rgba(139,92,246,.3), inset 0 1px 0 rgba(255,255,255,.2);
-  transition: background-color 180ms, border-color 180ms, box-shadow 180ms, transform 180ms;
+
+.incorporation-guide .btn-pri {
+  justify-content: center;
+  padding: 10px var(--space-md);
 }
-.incorporation-guide .incorporation-button:hover {
-  background: #7c3aed; border-color: #a97df3; transform: translateY(-2px);
-  box-shadow: 0 14px 36px rgba(139,92,246,.38), inset 0 1px 0 rgba(255,255,255,.26);
-}
-.incorporation-guide .mt-3 { margin-top: 12px; }
-.incorporation-guide .mt-4 { margin-top: 16px; }
-.incorporation-guide .mt-6 { margin-top: 24px; }
-.incorporation-guide .mt-7 { margin-top: 28px; }
-.incorporation-guide .mt-8 { margin-top: 32px; }
-.incorporation-guide .mt-9 { margin-top: 36px; }
-.incorporation-guide .mt-12 { margin-top: 48px; }
+
+.incorporation-guide .btn-pri::after { content: none; }
+
+.incorporation-guide .mt-3 { margin-top: var(--space-xs); }
+.incorporation-guide .mt-4 { margin-top: var(--space-sm); }
+.incorporation-guide .mt-6 { margin-top: var(--space-md); }
+.incorporation-guide .mt-7 { margin-top: var(--space-lg); }
+.incorporation-guide .mt-8 { margin-top: var(--space-lg); }
+.incorporation-guide .mt-9 { margin-top: var(--space-xl); }
+.incorporation-guide .mt-12 { margin-top: var(--space-2xl); }
+
 @media (min-width: 768px) {
-  .incorporation-guide section { padding: 44px 0; }
-  .incorporation-guide .incorporation-hero, .incorporation-guide .incorporation-faq { padding: 88px 0; }
-  .incorporation-guide .incorporation-container { max-width: 884px; padding: 0 32px; }
-  .incorporation-guide h1 { font-size: 48px; }
-  .incorporation-guide h2 { line-height: 1.19; }
-  .incorporation-guide h3 { font-size: 22px; line-height: 1.19; }
-  .incorporation-guide :is(p, li) { font-size: 16px; line-height: 25.6px; }
+  .incorporation-guide section { padding: var(--space-xl) 0; }
+  .incorporation-guide .incorporation-hero { padding-top: var(--space-2xl); }
+  .incorporation-guide .incorporation-container { padding-inline: var(--space-lg); }
+}
+
+@media (min-width: 884px) {
   .incorporation-guide .incorporation-mobile-only { display: none; }
 }
+
 @media (max-width: 767px) {
   html:has(body.is-incorporation-guide) { scrollbar-gutter: auto; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .incorporation-guide .incorporation-button { transition: none; }
-  .incorporation-guide .incorporation-button:hover { transform: none; }
+
+  /* Each comparison column fits beside the pinned 120px structure label. */
+  .incorporation-guide table {
+    table-layout: fixed;
+    width: calc(300% - 240px);
+    min-width: 0;
+  }
+
+  .incorporation-guide thead th:nth-child(1) { width: 120px; }
+  .incorporation-guide thead th:nth-child(n + 2) { width: calc((100% - 120px) / 3); }
 }

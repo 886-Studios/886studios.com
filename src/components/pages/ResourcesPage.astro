@@ -5,10 +5,10 @@ import { siteContent } from "../../data/siteContent";
 const { resources } = siteContent;
 
 const libraryGroups = [
-  { id: "foundations", title: "Company foundations" },
-  { id: "fundraising", title: "Equity & fundraising" },
-  { id: "accelerators", title: "Accelerator preparation" },
-  { id: "ecosystem", title: "Explore the ecosystem" },
+  { id: "foundations", title: "Starting a company" },
+  { id: "fundraising", title: "Ownership & fundraising" },
+  { id: "accelerators", title: "Applying to accelerators" },
+  { id: "ecosystem", title: "Networks & programs" },
 ];
 
 ---
@@ -35,7 +35,7 @@ const libraryGroups = [
                   <h3 class="res-card-title" id={`res-guide-${item.href.split("/").pop()}`}>{item.title}</h3>
                   <p class="res-card-desc">{item.description}</p>
                   <span class="res-card-cta">
-                    {item.href.endsWith("ecosystem-database") ? "Explore database" : "Read guide"}
+                    {item.ctaLabel}
                   </span>
                 </a>
               </li>
@@ -49,7 +49,7 @@ const libraryGroups = [
     <section class="res-section res-perks" aria-labelledby="res-perks-heading">
       <header class="res-section-hdr">
         <div>
-          <h2 id="res-perks-heading">{resources.perks.title}</h2>
+          <h2 class="section-h2 section-h2--compact" id="res-perks-heading">{resources.perks.title}</h2>
           <p>
             Unlock these perks by working with us through{" "}
             <a href={resources.perks.programHref}>ikigai Launchpad</a>{" "}
@@ -94,7 +94,7 @@ const libraryGroups = [
     <section class="res-section res-ama" aria-labelledby="res-ama-heading">
       <div class="res-ama-card">
         <div class="res-ama-body">
-          <h2 id="res-ama-heading">{resources.ama.title}</h2>
+          <h2 class="section-h2 section-h2--compact" id="res-ama-heading">{resources.ama.title}</h2>
           <p class="res-ama-lead">{resources.ama.lead}</p>
           <a
             class="btn-pri"
@@ -105,12 +105,13 @@ const libraryGroups = [
             data-analytics-placement="resources_ama"
           >
             {resources.ama.ctaLabel}
+            <span class="sr-only"> (opens in a new tab)</span>
           </a>
         </div>
 
         <div class="res-ama-panel">
-          <p class="res-ama-panel-label">How it works</p>
-          <ol class="res-ama-steps">
+          <h3 class="res-ama-panel-label">How it works</h3>
+          <ol class="res-ama-steps" role="list">
             <li>
               <span class="res-step-num">1</span>
               <span>Submit your question anonymously</span>
