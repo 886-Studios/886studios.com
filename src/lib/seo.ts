@@ -50,7 +50,7 @@ export const pageMeta = {
     dateModified: "2026-08-27",
   },
   programs: {
-    title: "ikigai Launchpad | 886 Studios",
+    title: "ikigai Launchpad: Taipei Startup Accelerator | 886 Studios",
     description:
       "ikigai Launchpad is 886 Studios' 10-week, in-person Taipei accelerator with a standard $100K-for-8% SAFE, weekly mentor office hours, and investor access.",
     ogImage: `${siteConfig.url}/assets/programs/ikigai-audience-theater-1920.webp`,
@@ -60,7 +60,7 @@ export const pageMeta = {
     ogImageType: "image/webp",
   },
   launchStation: {
-    title: "Launch Station | 886 Studios",
+    title: "Launch Station: Taipei Founder Residency | 886 Studios",
     description:
       "Launch Station is 886 Studios' invitation-only, 90-day builder residency in Taipei. Rolling entry, free office space, startup perks, and community. No cost or equity.",
     ogImage: `${siteConfig.url}/assets/launch-station/prezzy-day.jpg`,
