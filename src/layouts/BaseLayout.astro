@@ -60,6 +60,7 @@ const {
 } = Astro.props;
 
 const currentPath = normalizePath(Astro.url.pathname);
+const isResourceGuide = currentPath.startsWith("/resources/") || ["/incorporation-101", "/interview-guidebook"].includes(currentPath);
 const isManifestoPage = currentPath === "/manifesto";
 const isPortfolioProfilePage = currentPath.startsWith("/portfolio/");
 const canonicalUrl = canonical === false ? undefined : canonical ?? getCanonicalUrl(currentPath);
@@ -204,7 +205,7 @@ const structuredDataJson = canonicalUrl
     />
     {structuredDataJson && <script type="application/ld+json" is:inline set:html={structuredDataJson} />}
   </head>
-  <body class:list={[currentPath === "/" && "is-home", isPortfolioProfilePage && "is-portfolio-profile", isManifestoPage && "is-manifesto", currentPath === "/resources/application-guide" && "is-application-guide", currentPath === "/incorporation-101" && "is-incorporation-guide", currentPath === "/resources/safe-note-guide" && "is-safe-guide", currentPath === "/resources/cap-table-guide" && "is-cap-table-guide"]}>
+  <body class:list={[currentPath === "/" && "is-home", isPortfolioProfilePage && "is-portfolio-profile", isManifestoPage && "is-manifesto", isResourceGuide && "is-resource-guide"]}>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header>
       <SiteNav currentPath={currentPath} />

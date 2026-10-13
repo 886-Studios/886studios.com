@@ -1,53 +1,49 @@
 ---
-// Full content and layout copied from the supplied SAFE note guide reference.
-import "../../styles/safe-note-guide.css";
+import ResourceGuide from "../ResourceGuide.astro";
+import ResourceGuideHero from "../ResourceGuideHero.astro";
 ---
 
-<div class="safe-guide">
-  <section class="safe-guide-hero">
-    <div class="safe-guide-container">
-      <a href="/resources" class="safe-guide-hero__back safe-guide-link safe-guide-small safe-guide-inline">Back to resources</a>
-      <h1 class="safe-guide-hero__title">What is a SAFE note? A founder&#x27;s guide</h1>
-      <p class="safe-guide-hero__answer mt-6">A SAFE (simple agreement for future equity) is a short contract in which an investor funds a startup now in exchange for the right to receive shares later. It usually converts into shares when the startup raises a priced equity round. A SAFE is not a loan: it has no interest rate and no maturity date.</p>
+<ResourceGuide>
+  <ResourceGuideHero title="What is a SAFE note? A founder's guide">
+      <p class="guide-lead mt-6">A SAFE (simple agreement for future equity) is a short contract in which an investor funds a startup now in exchange for the right to receive shares later. It usually converts into shares when the startup raises a priced equity round. A SAFE is not a loan: it has no interest rate and no maturity date.</p>
       <p class="mt-4">This guide explains how SAFEs convert, what a post-money valuation cap means, and how SAFEs differ from convertible notes. It also walks through ikigai Launchpad&#x27;s published investment terms. It is general information, not legal, tax, or investment advice.</p>
-      <a class="safe-guide-hero__cta mt-7 safe-guide-button" href="/ikigai-launchpad">Review program terms</a>
-      <nav aria-label="In this guide" class="safe-guide-hero__contents mt-9 safe-guide-small">
-        <a href="#how-a-safe-works" class="safe-guide-link">How it works</a>
-        <a href="#safe-comparison" class="safe-guide-link">SAFE vs convertible note</a>
-        <a href="#ikigai-example" class="safe-guide-link">Worked example</a>
-        <a href="#founder-checks" class="safe-guide-link">Before you sign</a>
-        <a href="#safe-faq" class="safe-guide-link">FAQs</a>
+      <a class="safe-guide-hero__cta mt-7 btn-pri" href="/ikigai-launchpad">Review program terms</a>
+      <nav aria-label="In this guide" class="guide-contents mt-9 guide-small">
+        <a href="#how-a-safe-works" class="guide-link">How it works</a>
+        <a href="#safe-comparison" class="guide-link">SAFE vs convertible note</a>
+        <a href="#ikigai-example" class="guide-link">Worked example</a>
+        <a href="#founder-checks" class="guide-link">Before you sign</a>
+        <a href="#safe-faq" class="guide-link">FAQs</a>
       </nav>
-    </div>
-  </section>
-  <section class="safe-guide-how safe-guide-anchor" id="how-a-safe-works">
-    <div class="safe-guide-container">
+  </ResourceGuideHero>
+  <section class="safe-guide-how guide-anchor" id="how-a-safe-works">
+    <div class="guide-container">
       <h2>How does a SAFE work?</h2>
       <p class="mt-4">The investor sends money now and signs one document. No shares are issued yet. When the startup later raises a priced equity round, the SAFE converts into preferred shares, usually on terms set by a valuation cap.</p>
-      <div class="safe-guide-how__topics mt-7 safe-guide-stack">
-        <div id="valuation-cap" class="safe-guide-anchor">
+      <div class="safe-guide-how__topics mt-7 guide-stack">
+        <div id="valuation-cap" class="guide-anchor">
           <h3>What is a valuation cap?</h3>
           <p class="mt-3">The valuation cap is the highest company valuation at which the SAFE converts. If the priced round values the company above the cap, the SAFE converts at the cap. That gives the early investor a better price than new investors in that round.</p>
         </div>
-        <div id="post-money-safe" class="safe-guide-anchor">
+        <div id="post-money-safe" class="guide-anchor">
           <h3>What does post-money mean?</h3>
           <p class="mt-3">On a post-money SAFE, the cap is the company&#x27;s valuation after the SAFE money is included. Ownership sold equals the investment divided by the post-money valuation cap. Founders can calculate how much of the company each SAFE sells before the priced round. Y Combinator has used the post-money SAFE as its standard since 2018 and describes pre-money SAFEs as legacy.</p>
         </div>
-        <div id="safe-conversion" class="safe-guide-anchor">
+        <div id="safe-conversion" class="guide-anchor">
           <h3>When does a SAFE convert?</h3>
           <p class="mt-3">A SAFE has no maturity date. It is designed to end when the investor receives stock, typically in an equity financing, or through other events defined in the document. The new money in that priced round then dilutes everyone, including the converted SAFE holders.</p>
         </div>
       </div>
-      <p class="mt-6">Source: <a href="https://www.ycombinator.com/safe/" class="safe-guide-link">Y Combinator&#x27;s SAFE overview</a> and <a href="https://www.ycombinator.com/documents" class="safe-guide-link">SAFE financing documents</a>. Always read the specific document you are asked to sign.</p>
+      <p class="mt-6">Source: <a href="https://www.ycombinator.com/safe/" class="guide-link">Y Combinator&#x27;s SAFE overview</a> and <a href="https://www.ycombinator.com/documents" class="guide-link">SAFE financing documents</a>. Always read the specific document you are asked to sign.</p>
     </div>
   </section>
-  <section class="safe-guide-comparison safe-guide-anchor" id="safe-comparison">
-    <div class="safe-guide-container">
+  <section class="safe-guide-comparison guide-anchor" id="safe-comparison">
+    <div class="guide-container">
       <h2>SAFE vs convertible note vs priced round</h2>
       <p class="mt-4">The main difference is that a convertible note is debt. It accrues interest and has a maturity date. A SAFE has neither, and a priced round sells shares at a set price immediately.</p>
-      <p class="mt-4 safe-guide-mobile-only safe-guide-small">Scroll the table sideways to read all columns.</p>
+      <p class="mt-4 guide-mobile-only guide-small">Scroll the table sideways to read all columns.</p>
       <div class="safe-guide-comparison__table mt-6">
-        <div role="region" aria-label="SAFE, convertible note and priced round comparison, horizontally scrollable" tabindex="0" class="safe-guide-table-scroll">
+        <div role="region" aria-label="SAFE, convertible note and priced round comparison, horizontally scrollable" tabindex="0" class="guide-table-scroll">
           <table>
             <caption class="mt-4 sr-only">SAFE, convertible note and priced round compared by structure, interest, maturity, pricing, paperwork and priority.</caption>
             <thead>
@@ -99,35 +95,35 @@ import "../../styles/safe-note-guide.css";
           </table>
         </div>
       </div>
-      <p class="mt-4">Summarized from <a href="https://www.ycombinator.com/safe/safe-vs-convertible-note" class="safe-guide-link">Y Combinator&#x27;s SAFE, convertible note and priced round comparison</a>. Specific documents can differ, so check the terms you are offered.</p>
+      <p class="mt-4">Summarized from <a href="https://www.ycombinator.com/safe/safe-vs-convertible-note" class="guide-link">Y Combinator&#x27;s SAFE, convertible note and priced round comparison</a>. Specific documents can differ, so check the terms you are offered.</p>
     </div>
   </section>
-  <section class="safe-guide-example safe-guide-anchor" id="ikigai-example">
-    <div class="safe-guide-container">
+  <section class="safe-guide-example guide-anchor" id="ikigai-example">
+    <div class="guide-container">
       <h2>Worked example: $100,000 for 8%</h2>
       <p class="mt-4">ikigai Launchpad&#x27;s published standard deal is a $100,000 USD investment for 8% through a SAFE, with no program fee on top. Here is how to read terms like these using post-money SAFE arithmetic.</p>
-      <div class="safe-guide-example__steps mt-7 safe-guide-stack">
-        <div id="implied-cap" class="safe-guide-anchor">
+      <div class="safe-guide-example__steps mt-7 guide-stack">
+        <div id="implied-cap" class="guide-anchor">
           <h3>What valuation does 8% imply?</h3>
           <p class="mt-3">On a post-money SAFE, ownership equals investment divided by the cap. Working backward, $100,000 divided by 8% is $1,250,000. Terms like these therefore correspond to a $1.25 million post-money valuation. This is arithmetic for illustration, not a statement of ikigai&#x27;s document terms. The signed documents control.</p>
         </div>
-        <div id="safe-stacking" class="safe-guide-anchor">
+        <div id="safe-stacking" class="guide-anchor">
           <h3>What happens when you sign more SAFEs?</h3>
           <p class="mt-3">Post-money SAFEs add up. Y Combinator&#x27;s example: five $100,000 SAFEs at a $5 million cap sell 10% of the company in total, not 2%. Keep a running total of everything you have sold before signing the next SAFE.</p>
         </div>
-        <div id="priced-round-dilution" class="safe-guide-anchor">
+        <div id="priced-round-dilution" class="guide-anchor">
           <h3>Does the 8% stay 8% forever?</h3>
           <p class="mt-3">No. Post-money SAFE ownership is measured before the new money in the next priced round. When that round closes, the new investors&#x27; shares dilute founders and converted SAFE holders alike.</p>
         </div>
       </div>
-      <p class="mt-6">Sources: <a href="/ikigai-launchpad" class="safe-guide-link">ikigai Launchpad program FAQ</a> and <a href="https://www.ycombinator.com/safe/safe-vs-convertible-note" class="safe-guide-link">Y Combinator&#x27;s SAFE guidance</a>.</p>
+      <p class="mt-6">Sources: <a href="/ikigai-launchpad" class="guide-link">ikigai Launchpad program FAQ</a> and <a href="https://www.ycombinator.com/safe/safe-vs-convertible-note" class="guide-link">Y Combinator&#x27;s SAFE guidance</a>.</p>
     </div>
   </section>
-  <section class="safe-guide-checks safe-guide-anchor" id="founder-checks">
-    <div class="safe-guide-container">
+  <section class="safe-guide-checks guide-anchor" id="founder-checks">
+    <div class="guide-container">
       <h2>What should founders check before signing a SAFE?</h2>
       <p class="mt-4">Usually the valuation cap is the main term to negotiate. These questions catch the details that change what you are actually selling.</p>
-      <ul class="safe-guide-checks__list mt-6">
+      <ul class="guide-list mt-6">
         <li>Is the cap post-money or pre-money? Post-money lets you calculate ownership sold right away.</li>
         <li>What is your running total? Add every SAFE you have signed before agreeing to the next one.</li>
         <li>Does the SAFE include a most-favored-nation (MFN) clause? An MFN holder can take better terms from SAFEs you issue later, so signing order matters.</li>
@@ -135,45 +131,45 @@ import "../../styles/safe-note-guide.css";
         <li>Is there a pro rata side letter? It can give the investor a right to invest in a later round.</li>
         <li>Does the form match where your company is incorporated? Y Combinator publishes separate SAFE versions for US companies and for companies formed in Canada, the Cayman Islands and Singapore.</li>
       </ul>
-      <p class="mt-6">If you are not yet incorporated, decide on your company structure before signing. ikigai Launchpad says accepted founders typically need a US entity to receive funding. Read <a href="/incorporation-101" class="safe-guide-link">Startup incorporation 101</a> and confirm the details with a lawyer licensed where your company is formed.</p>
+      <p class="mt-6">If you are not yet incorporated, decide on your company structure before signing. ikigai Launchpad says accepted founders typically need a US entity to receive funding. Read <a href="/incorporation-101" class="guide-link">Startup incorporation 101</a> and confirm the details with a lawyer licensed where your company is formed.</p>
     </div>
   </section>
-  <section class="safe-guide-faq safe-guide-anchor" id="safe-faq">
-    <div class="safe-guide-container">
+  <section class="safe-guide-faq guide-anchor" id="safe-faq">
+    <div class="guide-container">
       <h2>SAFE note FAQs</h2>
-      <div class="safe-guide-faq__questions mt-8">
-        <div id="safe-meaning" class="safe-guide-anchor">
+      <div class="guide-questions mt-8">
+        <div id="safe-meaning" class="guide-anchor">
           <h3>What does SAFE stand for?</h3>
           <p class="mt-3">SAFE stands for simple agreement for future equity. Y Combinator introduced it in late 2013 as a simpler alternative to convertible notes for early-stage fundraising.</p>
-          <a href="https://www.ycombinator.com/documents" class="mt-3 safe-guide-link safe-guide-small safe-guide-inline">Y Combinator SAFE documents</a>
+          <a href="https://www.ycombinator.com/documents" class="mt-3 guide-link guide-small guide-inline">Y Combinator SAFE documents</a>
         </div>
-        <div id="safe-debt" class="safe-guide-anchor">
+        <div id="safe-debt" class="guide-anchor">
           <h3>Is a SAFE a loan?</h3>
           <p class="mt-3">No. A SAFE is not debt: it has no interest rate and no maturity date. It is also not stock until it converts, typically into preferred shares when the startup raises an equity round.</p>
-          <a href="https://www.ycombinator.com/safe/" class="mt-3 safe-guide-link safe-guide-small safe-guide-inline">Y Combinator SAFE overview</a>
+          <a href="https://www.ycombinator.com/safe/" class="mt-3 guide-link guide-small guide-inline">Y Combinator SAFE overview</a>
         </div>
-        <div id="safe-ownership-formula" class="safe-guide-anchor">
+        <div id="safe-ownership-formula" class="guide-anchor">
           <h3>How much of my company does a post-money SAFE sell?</h3>
           <p class="mt-3">On a post-money valuation cap SAFE, ownership sold equals the investment amount divided by the post-money valuation cap. For example, $100,000 at a $1.25 million post-money cap is 8%. Several SAFEs add together.</p>
-          <a href="https://www.ycombinator.com/safe/safe-vs-convertible-note" class="mt-3 safe-guide-link safe-guide-small safe-guide-inline">Y Combinator SAFE comparison</a>
+          <a href="https://www.ycombinator.com/safe/safe-vs-convertible-note" class="mt-3 guide-link guide-small guide-inline">Y Combinator SAFE comparison</a>
         </div>
-        <div id="safe-never-converts" class="safe-guide-anchor">
+        <div id="safe-never-converts" class="guide-anchor">
           <h3>What if a SAFE never converts?</h3>
           <p class="mt-3">A SAFE has no maturity date, so it can stay outstanding without extension. It ends when the investor receives stock in an equity financing or through another event defined in the document, such as a sale or dissolution. Read those clauses in your specific SAFE.</p>
-          <a href="https://www.ycombinator.com/safe/" class="mt-3 safe-guide-link safe-guide-small safe-guide-inline">Y Combinator SAFE overview</a>
+          <a href="https://www.ycombinator.com/safe/" class="mt-3 guide-link guide-small guide-inline">Y Combinator SAFE overview</a>
         </div>
-        <div id="ikigai-safe-terms" class="safe-guide-anchor">
+        <div id="ikigai-safe-terms" class="guide-anchor">
           <h3>What are ikigai Launchpad&#x27;s investment terms?</h3>
           <p class="mt-3">ikigai Launchpad&#x27;s published standard deal is a $100,000 USD investment for 8% through a SAFE. The program says there is no program fee on top and accepted founders typically need a US entity to receive funding. Check current terms on the program page.</p>
-          <a href="/ikigai-launchpad" class="mt-3 safe-guide-link safe-guide-small safe-guide-inline">ikigai Launchpad program FAQ</a>
+          <a href="/ikigai-launchpad" class="mt-3 guide-link guide-small guide-inline">ikigai Launchpad program FAQ</a>
         </div>
       </div>
-      <div class="safe-guide-faq__next mt-14">
+      <div class="guide-next mt-14">
         <h2>Preparing to raise your first round?</h2>
-        <p class="mt-4">Review ikigai Launchpad&#x27;s terms, then prepare with our <a href="/resources/application-guide" class="safe-guide-link">accelerator application guide</a> and <a href="/incorporation-101" class="safe-guide-link">Startup incorporation 101</a>.</p>
-        <a class="mt-6 safe-guide-button" href="/ikigai-launchpad">Review program</a>
-        <p class="mt-8 safe-guide-small">Prepared by 886 Studios. Sources reviewed <time datetime="2026-10-13">October 13, 2026</time>. This guide is educational, not legal, tax, or investment advice. Have a qualified lawyer review any financing document before you sign.</p>
+        <p class="mt-4">Review ikigai Launchpad&#x27;s terms, then prepare with our <a href="/resources/application-guide" class="guide-link">accelerator application guide</a> and <a href="/incorporation-101" class="guide-link">Startup incorporation 101</a>.</p>
+        <a class="mt-6 btn-pri" href="/ikigai-launchpad">Review program</a>
+        <p class="mt-8 guide-small">Prepared by 886 Studios. Sources reviewed <time datetime="2026-10-13">October 13, 2026</time>. This guide is educational, not legal, tax, or investment advice. Have a qualified lawyer review any financing document before you sign.</p>
       </div>
     </div>
   </section>
-</div>
+</ResourceGuide>

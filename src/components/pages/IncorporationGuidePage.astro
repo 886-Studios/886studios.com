@@ -1,30 +1,26 @@
 ---
-import BackLink from "../BackLink.astro";
-import "../../styles/incorporation-guide.css";
+import ResourceGuide from "../ResourceGuide.astro";
+import ResourceGuideHero from "../ResourceGuideHero.astro";
 ---
 
-<div class="incorporation-guide">
-  <section class="incorporation-hero">
-    <div class="incorporation-container">
-      <BackLink href="/resources" label="resources" />
-      <h1 class="incorporation-hero__title">Startup incorporation 101</h1>
-      <p class="incorporation-hero__answer mt-6">Startup incorporation means creating a company with a legal identity separate from its owners. Before choosing where and how to incorporate, consider your customers, investors, team, tax obligations, and where the business will operate.</p>
+<ResourceGuide>
+  <ResourceGuideHero title="Startup incorporation 101">
+      <p class="guide-lead mt-6">Startup incorporation means creating a company with a legal identity separate from its owners. Before choosing where and how to incorporate, consider your customers, investors, team, tax obligations, and where the business will operate.</p>
       <p class="mt-4">This founder guide covers jurisdiction choices, US business structures, and options for an existing foreign company entering Taiwan. It is general information, not legal, tax, or immigration advice. Confirm your plan with qualified advisers in the countries involved.</p>
       <a class="incorporation-hero__cta mt-7 btn-pri" href="https://tally.so/r/m626gk">Request consultation</a>
-      <nav aria-label="In this guide" class="incorporation-hero__contents mt-9 incorporation-small">
-        <a href="#founder-checklist" class="incorporation-link">Founder checklist</a>
-        <a href="#jurisdictions" class="incorporation-link">Jurisdictions</a>
-        <a href="#business-structures" class="incorporation-link">US structures</a>
-        <a href="#taiwan-offices" class="incorporation-link">Taiwan offices</a>
-        <a href="#incorporation-faq" class="incorporation-link">FAQs</a>
+      <nav aria-label="In this guide" class="guide-contents mt-9 guide-small">
+        <a href="#founder-checklist" class="guide-link">Founder checklist</a>
+        <a href="#jurisdictions" class="guide-link">Jurisdictions</a>
+        <a href="#business-structures" class="guide-link">US structures</a>
+        <a href="#taiwan-offices" class="guide-link">Taiwan offices</a>
+        <a href="#incorporation-faq" class="guide-link">FAQs</a>
       </nav>
-    </div>
-  </section>
-  <section class="incorporation-checklist incorporation-anchor" id="founder-checklist">
-    <div class="incorporation-container">
+  </ResourceGuideHero>
+  <section class="incorporation-checklist guide-anchor" id="founder-checklist">
+    <div class="guide-container">
       <h2>What should founders decide first?</h2>
       <p class="mt-4">Bring answers to these questions before choosing a jurisdiction or entity.</p>
-      <ul class="incorporation-checklist__questions mt-6">
+      <ul class="guide-list mt-6">
         <li>Are you planning to take in revenue soon? If so, how soon?</li>
         <li>Where will you take in revenue?</li>
         <li>Do you plan on having investors? If so, are they Taiwanese or international?</li>
@@ -33,40 +29,40 @@ import "../../styles/incorporation-guide.css";
         <li>Will you need permission to live or work in Taiwan?</li>
       </ul>
       <p class="mt-6">Your structure affects fundraising, taxes, filing obligations, and personal liability. Registering a company should not be treated as automatic permission to live or work in a country. Discuss immigration requirements separately with a qualified adviser.</p>
-      <p class="mt-4">For the business-structure decision, see the <a href="https://www.sba.gov/business-guide/launch-your-business/choose-business-structure" class="incorporation-link">US Small Business Administration&#x27;s overview</a>.</p>
+      <p class="mt-4">For the business-structure decision, see the <a href="https://www.sba.gov/business-guide/launch-your-business/choose-business-structure" class="guide-link">US Small Business Administration&#x27;s overview</a>.</p>
     </div>
   </section>
-  <section class="incorporation-jurisdictions incorporation-anchor" id="jurisdictions">
-    <div class="incorporation-container">
+  <section class="incorporation-jurisdictions guide-anchor" id="jurisdictions">
+    <div class="guide-container">
       <h2>Where should a startup incorporate?</h2>
       <p class="mt-4">Choose a jurisdiction around your operating plan, not a headline tax rate. First distinguish forming a new business from registering a presence for an existing foreign company.</p>
-      <div class="incorporation-jurisdictions__countries mt-7 incorporation-stack">
-        <div id="taiwan-jurisdiction" class="incorporation-anchor">
+      <div class="incorporation-jurisdictions__countries mt-7 guide-stack">
+        <div id="taiwan-jurisdiction" class="guide-anchor">
           <h3>Taiwan</h3>
           <p class="mt-3">For an existing foreign company entering Taiwan, the government&#x27;s Gold Card overview distinguishes a subsidiary, branch, and representative office. They differ in legal identity and whether they can conduct profit-seeking business. A representative office is not a substitute for an entity permitted to sell goods or services locally.</p>
-          <p class="mt-3"><a href="#taiwan-offices" class="incorporation-link">Compare the Taiwan office options below</a>, then confirm current registration and foreign-investment requirements for your ownership and activities.</p>
+          <p class="mt-3"><a href="#taiwan-offices" class="guide-link">Compare the Taiwan office options below</a>, then confirm current registration and foreign-investment requirements for your ownership and activities.</p>
         </div>
-        <div id="singapore-jurisdiction" class="incorporation-anchor">
+        <div id="singapore-jurisdiction" class="guide-anchor">
           <h3>Singapore</h3>
           <p class="mt-3">For an existing foreign business, ACRA lists routes including a separate local subsidiary, a foreign-company branch, and a temporary representative office. A representative office cannot earn income. ACRA requires foreign businesses to engage a corporate service provider for registration. This guidance is different from the process for an individual foreign founder starting a new business.</p>
-          <p class="mt-3">Start with <a href="https://www.acra.gov.sg/register/foreign-business/ways-to-set-up/" class="incorporation-link">ACRA&#x27;s foreign-business registration overview</a> and follow the guidance that matches your situation.</p>
+          <p class="mt-3">Start with <a href="https://www.acra.gov.sg/register/foreign-business/ways-to-set-up/" class="guide-link">ACRA&#x27;s foreign-business registration overview</a> and follow the guidance that matches your situation.</p>
         </div>
-        <div id="us-jurisdiction" class="incorporation-anchor">
+        <div id="us-jurisdiction" class="guide-anchor">
           <h3>United States</h3>
           <p class="mt-3">Separate the state-law entity choice from its federal tax treatment. An LLC is not automatically taxed as a corporation, and S corporation status has eligibility restrictions. If you expect investors, discuss their entity requirements before filing.</p>
-          <p class="mt-3">Use the <a href="https://www.sba.gov/business-guide/launch-your-business/choose-business-structure" class="incorporation-link">SBA&#x27;s structure guide</a> and the <a href="https://www.irs.gov/businesses/small-businesses-self-employed/limited-liability-company-llc" class="incorporation-link">IRS explanation of LLC tax classifications</a> as starting points.</p>
+          <p class="mt-3">Use the <a href="https://www.sba.gov/business-guide/launch-your-business/choose-business-structure" class="guide-link">SBA&#x27;s structure guide</a> and the <a href="https://www.irs.gov/businesses/small-businesses-self-employed/limited-liability-company-llc" class="guide-link">IRS explanation of LLC tax classifications</a> as starting points.</p>
         </div>
       </div>
     </div>
   </section>
-  <section class="incorporation-structures incorporation-anchor" id="business-structures">
-    <div class="incorporation-container">
+  <section class="incorporation-structures guide-anchor" id="business-structures">
+    <div class="guide-container">
       <h2>How do common US business structures differ?</h2>
       <p class="mt-4">This comparison is US-specific. It does not describe Taiwan or Singapore tax treatment, and it is not a recommendation for a particular founder.</p>
-      <p id="incorporation-table-hint" class="mt-4 incorporation-mobile-only incorporation-small">Scroll the table sideways to read all four columns.</p>
+      <p id="incorporation-table-hint" class="mt-4 guide-mobile-only guide-small">Scroll the table sideways to read all four columns.</p>
       <div class="incorporation-structures__comparison mt-6">
-        <div role="region" aria-label="US business structure comparison, horizontally scrollable" aria-describedby="incorporation-table-hint" tabindex="0" class="incorporation-table-scroll">
-          <table>
+        <div role="region" aria-label="US business structure comparison, horizontally scrollable" aria-describedby="incorporation-table-hint" tabindex="0" class="guide-table-scroll">
+          <table class="guide-table--incorporation">
             <caption class="mt-4 sr-only">Five common US business structures compared by ownership, federal tax treatment, and liability.</caption>
             <thead>
               <tr>
@@ -112,66 +108,66 @@ import "../../styles/incorporation-guide.css";
         </div>
       </div>
       <p class="mt-4">US overview based on SBA and IRS guidance. Confirm state rules, tax elections, and your own circumstances.</p>
-      <p class="mt-6">For the details, read the <a href="https://www.sba.gov/business-guide/launch-your-business/choose-business-structure" class="incorporation-link">SBA structure comparison</a>, <a href="https://www.irs.gov/businesses/small-businesses-self-employed/limited-liability-company-llc" class="incorporation-link">IRS LLC classifications</a>, and <a href="https://www.irs.gov/businesses/small-businesses-self-employed/s-corporations" class="incorporation-link">IRS S corporation eligibility rules</a>. The S corporation summary above is not the full eligibility test.</p>
+      <p class="mt-6">For the details, read the <a href="https://www.sba.gov/business-guide/launch-your-business/choose-business-structure" class="guide-link">SBA structure comparison</a>, <a href="https://www.irs.gov/businesses/small-businesses-self-employed/limited-liability-company-llc" class="guide-link">IRS LLC classifications</a>, and <a href="https://www.irs.gov/businesses/small-businesses-self-employed/s-corporations" class="guide-link">IRS S corporation eligibility rules</a>. The S corporation summary above is not the full eligibility test.</p>
     </div>
   </section>
-  <section class="incorporation-offices incorporation-anchor" id="taiwan-offices">
-    <div class="incorporation-container">
+  <section class="incorporation-offices guide-anchor" id="taiwan-offices">
+    <div class="guide-container">
       <h2>Representative office, subsidiary, or branch in Taiwan?</h2>
       <p class="mt-4">These options concern an existing foreign company&#x27;s Taiwan presence. They are not interchangeable with forming a startup for the first time.</p>
-      <div class="incorporation-offices__options mt-7 incorporation-stack">
-        <div id="taiwan-representative-office" class="incorporation-anchor">
+      <div class="incorporation-offices__options mt-7 guide-stack">
+        <div id="taiwan-representative-office" class="guide-anchor">
           <h3>Representative office</h3>
           <p class="mt-3">A Taiwan representative office has no separate corporate personality and cannot conduct profit-seeking activities such as selling goods or providing revenue-generating services. It may perform permitted activities for its overseas principal, including gathering market information, procurement, and signing contracts. Its rights and obligations belong to the foreign parent.</p>
         </div>
-        <div id="taiwan-subsidiary" class="incorporation-anchor">
+        <div id="taiwan-subsidiary" class="guide-anchor">
           <h3>Subsidiary</h3>
           <p class="mt-3">A subsidiary is a separate legal entity that is controlled by another company, known as the parent company.<!-- --> In Taiwan, it can conduct permitted profit-seeking business and has its own corporate personality. Review registration, foreign-investment restrictions, accounting, and tax obligations. Separate legal identity does not automatically make a subsidiary cheaper or more tax-efficient.</p>
         </div>
-        <div id="taiwan-branch" class="incorporation-anchor">
+        <div id="taiwan-branch" class="guide-anchor">
           <h3>Branch</h3>
           <p class="mt-3">The branch business structure involves establishing a branch office in a foreign country, which operates as an extension of the parent company.<!-- --> A Taiwan branch has no independent corporate personality, so its rights and obligations belong to the foreign parent. It can conduct permitted profit-seeking business in Taiwan. It remains subject to applicable Taiwan requirements; it is not governed only by the parent&#x27;s home-country laws.</p>
         </div>
       </div>
-      <p class="mt-6">Source: <a href="https://goldcard.nat.gov.tw/en/why-taiwan/foreign-startups-in-taiwan-3-options-for-foreign-corporate-entities-to-set-up-companies-in-taiwan/" class="incorporation-link">Taiwan Gold Card&#x27;s foreign-company overview</a>, published July 6, 2022. Use it for the structural distinctions, not as a current quote for tax rates, filing fees, or setup timelines.</p>
+      <p class="mt-6">Source: <a href="https://goldcard.nat.gov.tw/en/why-taiwan/foreign-startups-in-taiwan-3-options-for-foreign-corporate-entities-to-set-up-companies-in-taiwan/" class="guide-link">Taiwan Gold Card&#x27;s foreign-company overview</a>, published July 6, 2022. Use it for the structural distinctions, not as a current quote for tax rates, filing fees, or setup timelines.</p>
     </div>
   </section>
-  <section class="incorporation-faq incorporation-anchor" id="incorporation-faq">
-    <div class="incorporation-container">
+  <section class="incorporation-faq guide-anchor" id="incorporation-faq">
+    <div class="guide-container">
       <h2>Startup incorporation FAQs</h2>
-      <div class="incorporation-faq__questions mt-8">
-        <div id="llc-versus-corporation" class="incorporation-anchor">
+      <div class="guide-questions mt-8">
+        <div id="llc-versus-corporation" class="guide-anchor">
           <h3>Is an LLC the same as a C corporation?</h3>
           <p class="mt-3">No. A US LLC is formed under state law, while its federal tax classification depends on its ownership and elections. An eligible LLC can elect corporate tax treatment. Legal form and tax classification are different decisions.</p>
-          <a href="https://www.irs.gov/businesses/small-businesses-self-employed/limited-liability-company-llc" class="mt-3 incorporation-link incorporation-small incorporation-inline">IRS LLC guidance</a>
+          <a href="https://www.irs.gov/businesses/small-businesses-self-employed/limited-liability-company-llc" class="mt-3 guide-link guide-small guide-inline">IRS LLC guidance</a>
         </div>
-        <div id="foreign-founder-s-corporation" class="incorporation-anchor">
+        <div id="foreign-founder-s-corporation" class="guide-anchor">
           <h3>Can a foreign founder be an S corporation shareholder?</h3>
           <p class="mt-3">Not every foreign founder is eligible. IRS rules exclude nonresident alien shareholders and impose other ownership restrictions. Citizenship and tax residency are different concepts. Ask a tax adviser to determine your status and check the complete eligibility rules.</p>
-          <a href="https://www.irs.gov/businesses/small-businesses-self-employed/s-corporations" class="mt-3 incorporation-link incorporation-small incorporation-inline">IRS S corporation requirements</a>
+          <a href="https://www.irs.gov/businesses/small-businesses-self-employed/s-corporations" class="mt-3 guide-link guide-small guide-inline">IRS S corporation requirements</a>
         </div>
-        <div id="representative-office-revenue" class="incorporation-anchor">
+        <div id="representative-office-revenue" class="guide-anchor">
           <h3>Can a Taiwan representative office earn revenue?</h3>
           <p class="mt-3">A Taiwan representative office cannot conduct profit-seeking activities such as selling goods or providing revenue-generating services. It may carry out permitted non-profit-seeking activities for its overseas principal. A subsidiary or branch may conduct permitted profit-seeking business, subject to the applicable restrictions.</p>
-          <a href="https://goldcard.nat.gov.tw/en/why-taiwan/foreign-startups-in-taiwan-3-options-for-foreign-corporate-entities-to-set-up-companies-in-taiwan/" class="mt-3 incorporation-link incorporation-small incorporation-inline">Taiwan Gold Card office comparison</a>
+          <a href="https://goldcard.nat.gov.tw/en/why-taiwan/foreign-startups-in-taiwan-3-options-for-foreign-corporate-entities-to-set-up-companies-in-taiwan/" class="mt-3 guide-link guide-small guide-inline">Taiwan Gold Card office comparison</a>
         </div>
-        <div id="branch-versus-subsidiary" class="incorporation-anchor">
+        <div id="branch-versus-subsidiary" class="guide-anchor">
           <h3>Is a Taiwan branch separate from its parent company?</h3>
           <p class="mt-3">No. A Taiwan branch does not have an independent corporate personality; its rights and obligations belong to the foreign parent. A Taiwan subsidiary has a separate corporate personality. This distinction alone does not determine which option has the lower total cost or tax burden.</p>
-          <a href="https://goldcard.nat.gov.tw/en/why-taiwan/foreign-startups-in-taiwan-3-options-for-foreign-corporate-entities-to-set-up-companies-in-taiwan/" class="mt-3 incorporation-link incorporation-small incorporation-inline">Taiwan Gold Card structural distinctions</a>
+          <a href="https://goldcard.nat.gov.tw/en/why-taiwan/foreign-startups-in-taiwan-3-options-for-foreign-corporate-entities-to-set-up-companies-in-taiwan/" class="mt-3 guide-link guide-small guide-inline">Taiwan Gold Card structural distinctions</a>
         </div>
-        <div id="ikigai-company-registration" class="incorporation-anchor">
+        <div id="ikigai-company-registration" class="guide-anchor">
           <h3>Do I need a company to apply to ikigai Launchpad?</h3>
           <p class="mt-3">No. ikigai Launchpad&#x27;s published FAQ says company registration is not required when applying. It says accepted participants typically need a US entity. Check the current program terms before incorporating for that purpose.</p>
-          <a href="/ikigai-launchpad" class="mt-3 incorporation-link incorporation-small incorporation-inline">ikigai Launchpad&#x27;s program FAQ</a>
+          <a href="/ikigai-launchpad" class="mt-3 guide-link guide-small guide-inline">ikigai Launchpad&#x27;s program FAQ</a>
         </div>
       </div>
-      <div class="incorporation-faq__consultation mt-12">
+      <div class="guide-next mt-12">
         <h2>Discuss your incorporation plan</h2>
-        <p class="mt-4">Bring your checklist and planned operating locations to the conversation. For accelerator preparation, read our <a href="/resources/application-guide" class="incorporation-link">accelerator application guide</a>.</p>
+        <p class="mt-4">Bring your checklist and planned operating locations to the conversation. For accelerator preparation, read our <a href="/resources/application-guide" class="guide-link">accelerator application guide</a>.</p>
         <a class="mt-6 btn-pri" href="https://tally.so/r/m626gk">Request consultation</a>
-        <p class="mt-8 incorporation-small">Prepared by 886 Studios. Sources reviewed <time datetime="2026-10-12">October 12, 2026</time>. This guide is educational, not individualized legal, tax, or immigration advice. Confirm current requirements with qualified advisers before acting.</p>
+        <p class="mt-8 guide-small">Prepared by 886 Studios. Sources reviewed <time datetime="2026-10-12">October 12, 2026</time>. This guide is educational, not individualized legal, tax, or immigration advice. Confirm current requirements with qualified advisers before acting.</p>
       </div>
     </div>
   </section>
-</div>
+</ResourceGuide>

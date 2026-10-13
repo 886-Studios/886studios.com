@@ -1,0 +1,18 @@
+---
+import BackLink from "./BackLink.astro";
+
+interface Props {
+  title: string;
+  backHref?: string;
+  backLabel?: string;
+}
+const { title, backHref = "/resources", backLabel = "resources" } = Astro.props;
+---
+
+<section class="guide-hero" aria-labelledby="guide-title">
+  <div class="guide-container">
+    <BackLink href={backHref} label={backLabel} />
+    <h1 id="guide-title">{title}</h1>
+    <slot />
+  </div>
+</section>
