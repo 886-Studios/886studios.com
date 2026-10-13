@@ -1,0 +1,232 @@
+---
+import ResourceGuide from "../ResourceGuide.astro";
+import ResourceGuideHero from "../ResourceGuideHero.astro";
+---
+
+<ResourceGuide>
+  <ResourceGuideHero title="What is a cap table? A founder's guide">
+      <p class="guide-lead mt-6">A cap table (capitalization table) is the record of who owns a company. It lists every shareholder and every right to future shares, including founders, employee stock options, SAFEs and investors. For each holder it shows how much they own, usually as shares and a percentage.</p>
+      <p class="mt-4">This guide shows what goes on a cap table and walks through one example from founding to a priced round. It also covers how option pools, founder vesting and SAFEs change founder ownership. It is general information, not legal, tax, or investment advice.</p>
+      <a class="cap-table-hero__cta mt-7 btn-pri" href="/resources/safe-note-guide">Read SAFE guide</a>
+      <nav aria-label="In this guide" class="guide-contents mt-9 guide-small">
+        <a href="#whats-on-a-cap-table" class="guide-link">What it shows</a>
+        <a href="#cap-table-example" class="guide-link">Worked example</a>
+        <a href="#option-pool" class="guide-link">Option pools</a>
+        <a href="#founder-vesting" class="guide-link">Vesting and 83(b)</a>
+        <a href="#cap-table-checks" class="guide-link">Founder checks</a>
+        <a href="#cap-table-faq" class="guide-link">FAQs</a>
+      </nav>
+  </ResourceGuideHero>
+  <section class="cap-table-contents guide-anchor" id="whats-on-a-cap-table">
+    <div class="guide-container">
+      <h2>What does a cap table show?</h2>
+      <p class="mt-4">An early-stage cap table usually has four kinds of entries. Each row shows the holder, the type of security and their share of the company.</p>
+      <p class="mt-4 guide-mobile-only guide-small">Scroll the table sideways to read all columns.</p>
+      <div class="cap-table-contents__table mt-6">
+        <div role="region" aria-label="Cap table line items, horizontally scrollable" tabindex="0" class="guide-table-scroll">
+          <table class="guide-table--three">
+            <caption class="mt-4 sr-only">Common entries on an early-stage startup cap table, who holds them and what they represent.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Entry</th>
+                <th scope="col">Who holds it</th>
+                <th scope="col">What it means</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Common stock</th>
+                <td>Founders, and early employees who buy shares</td>
+                <td>Usually the first shares issued, often subject to vesting</td>
+              </tr>
+              <tr>
+                <th scope="row">Option pool</th>
+                <td>Employees and advisors, now and in future</td>
+                <td>Shares reserved for stock options, split into granted and unissued</td>
+              </tr>
+              <tr>
+                <th scope="row">SAFEs and convertible notes</th>
+                <td>Early investors</td>
+                <td>Rights to future shares; not shares until they convert</td>
+              </tr>
+              <tr>
+                <th scope="row">Preferred stock</th>
+                <td>Investors in a priced round</td>
+                <td>Shares sold at a set price, usually with extra rights</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="fully-diluted" class="mt-8 guide-anchor">
+        <h3>What is fully diluted ownership?</h3>
+        <p class="mt-3">Fully diluted ownership counts every share that exists or could exist: issued stock, the whole option pool (granted and unissued) and convertible securities such as SAFEs. Issued ownership counts only shares already issued, so it overstates what founders will hold. Y Combinator&#x27;s post-money SAFE measures ownership on a similarly broad basis, so track your stake the same way.</p>
+      </div>
+      <p class="mt-6">Source: <a href="https://www.ycombinator.com/safe/calculator" class="guide-link">Y Combinator&#x27;s SAFE conversion calculator and FAQ</a>, which defines the company capitalization a post-money SAFE uses.</p>
+    </div>
+  </section>
+  <section class="cap-table-example guide-anchor" id="cap-table-example">
+    <div class="guide-container">
+      <h2>Cap table example: from founding to a priced round</h2>
+      <p class="mt-4">This hypothetical company shows how each event dilutes existing holders. The SAFE step uses the same arithmetic as ikigai Launchpad&#x27;s published $100,000 for 8% deal, explained in our <a href="/resources/safe-note-guide#ikigai-example" class="guide-link">SAFE guide</a>.</p>
+      <ol class="guide-list mt-6">
+        <li><span class="guide-emphasis">Founding.</span> Two founders split the company evenly, 50% each.</li>
+        <li><span class="guide-emphasis">Option pool.</span> The company reserves 10% of its shares for future hires. New shares dilute both founders equally, to 45% each.</li>
+        <li><span class="guide-emphasis">SAFE.</span> The company signs a $100,000 post-money SAFE at a $1.25 million cap, which sells 8%. Everyone else keeps 92% of their previous stake: each founder holds 41.4% and the pool 9.2%.</li>
+        <li><span class="guide-emphasis">Priced round.</span> New investors buy 20% in a priced round. The SAFE converts, and every existing holder keeps 80% of their stake. Each founder ends at 33.12%.</li>
+      </ol>
+      <p class="mt-6 guide-mobile-only guide-small">Scroll the table sideways to read all columns.</p>
+      <div class="cap-table-example__table mt-6">
+        <div role="region" aria-label="Illustrative cap table across four stages, horizontally scrollable" tabindex="0" class="guide-table-scroll">
+          <table class="guide-table--five guide-table--numeric">
+            <caption class="mt-4 sr-only">Fully diluted ownership of a hypothetical startup at founding, after a 10% option pool, after a $100,000 post-money SAFE for 8%, and after a priced round selling 20%.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Holder</th>
+                <th scope="col">At founding</th>
+                <th scope="col">After 10% option pool</th>
+                <th scope="col">After $100K SAFE for 8%</th>
+                <th scope="col">After round selling 20%</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Founder A</th>
+                <td>50%</td>
+                <td>45%</td>
+                <td>41.4%</td>
+                <td>33.12%</td>
+              </tr>
+              <tr>
+                <th scope="row">Founder B</th>
+                <td>50%</td>
+                <td>45%</td>
+                <td>41.4%</td>
+                <td>33.12%</td>
+              </tr>
+              <tr>
+                <th scope="row">Option pool</th>
+                <td><span aria-hidden="true">–</span><span class="sr-only">None</span></td>
+                <td>10%</td>
+                <td>9.2%</td>
+                <td>7.36%</td>
+              </tr>
+              <tr>
+                <th scope="row">SAFE investor</th>
+                <td><span aria-hidden="true">–</span><span class="sr-only">None</span></td>
+                <td><span aria-hidden="true">–</span><span class="sr-only">None</span></td>
+                <td>8%</td>
+                <td>6.4%</td>
+              </tr>
+              <tr>
+                <th scope="row">New investors</th>
+                <td><span aria-hidden="true">–</span><span class="sr-only">None</span></td>
+                <td><span aria-hidden="true">–</span><span class="sr-only">None</span></td>
+                <td><span aria-hidden="true">–</span><span class="sr-only">None</span></td>
+                <td>20%</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th scope="row">Total</th>
+                <td>100%</td>
+                <td>100%</td>
+                <td>100%</td>
+                <td>100%</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <p class="mt-6">These numbers are for illustration only. The example assumes the priced round values the company above the SAFE&#x27;s cap and adds no new option pool. A priced round can also add a new or larger pool, covered in the next section. Real cap tables track share counts and prices as well as percentages. Post-money SAFE arithmetic follows <a href="https://www.ycombinator.com/safe/" class="guide-link">Y Combinator&#x27;s SAFE guidance</a>.</p>
+    </div>
+  </section>
+  <section class="cap-table-pool guide-anchor" id="option-pool">
+    <div class="guide-container">
+      <h2>How does an option pool affect founder ownership?</h2>
+      <p class="mt-4">An option pool is a block of shares the company reserves for future stock option grants to employees and advisors. Creating or enlarging a pool adds shares, so it dilutes the people already on the cap table. Which holders it dilutes depends on when the pool is created.</p>
+      <div class="cap-table-pool__topics mt-7 guide-stack">
+        <div id="existing-pool" class="guide-anchor">
+          <h3>A pool that exists before you sign SAFEs</h3>
+          <p class="mt-3">A post-money SAFE counts the existing pool, both granted and unissued, in its company capitalization. SAFE holders are therefore not diluted by that pool. Founders carry it.</p>
+        </div>
+        <div id="new-pool" class="guide-anchor">
+          <h3>A new or larger pool in a priced round</h3>
+          <p class="mt-3">When a priced round adds or increases a pool, that dilutes founders and SAFE holders but not the new investors. The size of the pool is therefore part of the deal. Ask whether a term sheet&#x27;s valuation includes a pool increase, and size the pool to the hires you actually plan.</p>
+        </div>
+      </div>
+      <p class="mt-6">Source: <a href="https://www.ycombinator.com/safe/calculator" class="guide-link">Y Combinator&#x27;s SAFE conversion calculator FAQ</a>. You can use the calculator to model SAFEs, a pool and a priced round together.</p>
+    </div>
+  </section>
+  <section class="cap-table-vesting guide-anchor" id="founder-vesting">
+    <div class="guide-container">
+      <h2>How does founder vesting show up on a cap table?</h2>
+      <p class="mt-4">A cap table shows the shares each founder holds, but vesting decides when those shares are fully earned. Until shares vest, the company can usually buy back a departing founder&#x27;s unvested shares. That is why a founder&#x27;s listed stake and vested stake can differ.</p>
+      <div class="cap-table-vesting__topics mt-7 guide-stack">
+        <div id="vesting-schedule" class="guide-anchor">
+          <h3>What is a typical vesting schedule?</h3>
+          <p class="mt-3">The most common setup is four years with a one-year cliff. Nothing vests in the first year. On the first anniversary, 25% vests. After that, 1/48 of the original grant vests each month until the fourth year ends. Carta reports this structure for both founders and early employees.</p>
+          <a href="https://carta.com/learn/equity/stock-options/vesting/" class="mt-3 guide-link guide-small guide-inline">Carta: vesting explained</a>
+        </div>
+        <div id="83b-election" class="guide-anchor">
+          <h3>What is an 83(b) election?</h3>
+          <p class="mt-3">In the US, a founder who receives unvested stock can file an 83(b) election. It tells the IRS to tax the stock&#x27;s value at the time of transfer rather than when it vests. The election must be filed no later than 30 days after the stock is transferred, using IRS Form 15620 or a written statement. Ask a tax advisor before you are issued shares so you do not miss the window.</p>
+          <a href="https://www.irs.gov/pub/irs-pdf/f15620.pdf" class="mt-3 guide-link guide-small guide-inline">IRS Form 15620 and instructions</a>
+        </div>
+      </div>
+      <p class="mt-6">The 83(b) election is part of US federal tax law. Founders taxed in other countries should check their local rules. Our <a href="/incorporation-101" class="guide-link">Startup incorporation 101</a> guide compares common company structures.</p>
+    </div>
+  </section>
+  <section class="cap-table-checks guide-anchor" id="cap-table-checks">
+    <div class="guide-container">
+      <h2>What should founders check on their cap table?</h2>
+      <p class="mt-4">Investors review the cap table during diligence. These checks keep yours accurate before a SAFE, an accelerator or a priced round.</p>
+      <ul class="guide-list mt-6">
+        <li>Keep one source of truth. Update the cap table every time you issue shares, grant options or sign a SAFE.</li>
+        <li>Match it to signed documents. Every row should trace back to a stock purchase agreement, option grant or SAFE.</li>
+        <li>Read ownership fully diluted. Include the whole option pool and all outstanding SAFEs and notes.</li>
+        <li>Keep a running SAFE total. Post-money SAFEs add together, so total what you have sold before signing the next one.</li>
+        <li>Model the next round before you negotiate. Check how the new money and any pool increase change your stake.</li>
+        <li>Confirm founder vesting is documented and, for US founders, that each 83(b) election was filed on time.</li>
+      </ul>
+    </div>
+  </section>
+  <section class="cap-table-faq guide-anchor" id="cap-table-faq">
+    <div class="guide-container">
+      <h2>Cap table FAQs</h2>
+      <div class="guide-questions mt-8">
+        <div id="cap-table-meaning" class="guide-anchor">
+          <h3>What does cap table stand for?</h3>
+          <p class="mt-3">Cap table is short for capitalization table. It records a company&#x27;s shareholders, its option pool and its convertible securities such as SAFEs, with each holder&#x27;s ownership.</p>
+          <a href="https://www.ycombinator.com/safe/calculator" class="mt-3 guide-link guide-small guide-inline">Y Combinator SAFE calculator</a>
+        </div>
+        <div id="safes-on-cap-table" class="guide-anchor">
+          <h3>Do SAFEs appear on a cap table?</h3>
+          <p class="mt-3">Yes. A SAFE is not stock until it converts, but it should be listed and counted in fully diluted ownership. On a post-money SAFE, the ownership sold equals the investment divided by the post-money valuation cap.</p>
+          <a href="https://www.ycombinator.com/safe/" class="mt-3 guide-link guide-small guide-inline">Y Combinator SAFE overview</a>
+        </div>
+        <div id="option-pool-dilution" class="guide-anchor">
+          <h3>Who does an option pool dilute?</h3>
+          <p class="mt-3">A pool that exists before post-money SAFEs are signed dilutes founders, not those SAFE holders. A new or larger pool created in a priced round dilutes founders and SAFE holders, but not the new investors.</p>
+          <a href="https://www.ycombinator.com/safe/calculator" class="mt-3 guide-link guide-small guide-inline">Y Combinator SAFE calculator FAQ</a>
+        </div>
+        <div id="standard-vesting" class="guide-anchor">
+          <h3>What is standard founder vesting?</h3>
+          <p class="mt-3">Four years with a one-year cliff is the most common schedule. 25% vests after the first year, then the rest vests monthly over the next three years.</p>
+          <a href="https://carta.com/learn/equity/stock-options/vesting/" class="mt-3 guide-link guide-small guide-inline">Carta: vesting explained</a>
+        </div>
+        <div id="83b-deadline" class="guide-anchor">
+          <h3>What is the deadline for an 83(b) election?</h3>
+          <p class="mt-3">An 83(b) election must be filed with the IRS no later than 30 days after the stock is transferred. It applies to US taxpayers receiving unvested stock. Ask a tax advisor before you are issued shares.</p>
+          <a href="https://www.irs.gov/pub/irs-pdf/f15620.pdf" class="mt-3 guide-link guide-small guide-inline">IRS Form 15620 instructions</a>
+        </div>
+      </div>
+      <div class="guide-next mt-14">
+        <h2>Preparing to raise your first round?</h2>
+        <p class="mt-4">Read our <a href="/resources/safe-note-guide" class="guide-link">SAFE note guide</a> and <a href="/incorporation-101" class="guide-link">Startup incorporation 101</a>, then prepare with the <a href="/resources/application-guide" class="guide-link">accelerator application guide</a>. ikigai Launchpad publishes its investment terms on the program page.</p>
+        <a class="mt-6 btn-pri" href="/ikigai-launchpad">Review program</a>
+        <p class="mt-8 guide-small">Prepared by 886 Studios. Sources reviewed <time datetime="2026-10-13">October 13, 2026</time>. This guide is educational, not legal, tax, or investment advice. Have a qualified lawyer or tax advisor review your cap table and equity documents.</p>
+      </div>
+    </div>
+  </section>
+</ResourceGuide>

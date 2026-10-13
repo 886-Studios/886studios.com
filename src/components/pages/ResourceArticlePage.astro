@@ -1,167 +1,113 @@
 ---
-import BackLink from "../BackLink.astro";
+import EcosystemDatabase from "../EcosystemDatabase.astro";
+import ResourceGuide from "../ResourceGuide.astro";
+import ResourceGuideHero from "../ResourceGuideHero.astro";
 import type { ResourceArticle } from "../../data/resourceArticles";
-import {
-  getSafeExternalHttpsHref,
-  getSafeInternalOrHttpsHref,
-  isExternalHttpsHref,
-} from "../../lib/urls";
+import { getSafeInternalOrHttpsHref, isExternalHttpsHref } from "../../lib/urls";
 
 const { article } = Astro.props as { article: ResourceArticle };
+const isFaqIndex = article.slug === "founders-frequently-asked-questions";
+const sections = article.sections ?? [];
+const groups = article.directoryGroups ?? [];
+const sectionId = (title: string, index: number) =>
+  `${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}-${index + 1}`;
+const contents = [...sections, ...groups].map((section, index) => ({
+  title: section.title,
+  id: sectionId(section.title, index),
+}));
+// An article without a separate introduction opens with its existing first paragraph.
+const intro = article.intro ?? sections[0]?.paragraphs?.[0];
 ---
 
-<div class="page resource-article-page">
-  <section class="pg-hero resource-article-hero" aria-labelledby="resource-article-title">
-    <div class="pg-hero-glow"></div>
-    <BackLink href={article.parent?.href ?? "/resources"} label={article.parent?.label ?? "Resources"} />
-    <h1 class="resource-article-title" id="resource-article-title">{article.title}</h1>
-    {article.intro && <p class="resource-article-intro">{article.intro}</p>}
-  </section>
-  <div class="pg-divider"></div>
+<ResourceGuide database={groups.length > 0}>
+  <ResourceGuideHero
+    title={article.title}
+    backHref={article.parent?.href}
+    backLabel={article.parent?.label}
+  >
+    {intro && <p class="guide-lead mt-6">{intro}</p>}
+    {contents.length > 1 && groups.length === 0 && (
+      <nav aria-label="In this guide" class="guide-contents guide-small mt-9">
+        {contents.map((item) => <a class="guide-link" href={`#${item.id}`}>{item.title}</a>)}
+      </nav>
+    )}
+  </ResourceGuideHero>
 
-  <article class="resource-article-shell">
-    {article.sections?.map((section) => (
-      <section class="resource-article-section">
-        <h2>{section.title}</h2>
-
-        {section.paragraphs?.map((paragraph: string) => <p>{paragraph}</p>)}
-
-        {section.list && (
-          <ul class="resource-list">
-            {section.list.map((item: string) => <li>{item}</li>)}
-          </ul>
+  {sections.map((section, index) => (
+    <section class:list={[isFaqIndex && "guide-topic-group"]} id={contents[index].id} aria-labelledby={`${contents[index].id}-title`}>
+      <div class:list={["guide-container guide-prose", isFaqIndex && "guide-topic-section"]}>
+        <h2 id={`${contents[index].id}-title`}>{section.title}</h2>
+        {section.paragraphs?.map((paragraph, paragraphIndex) =>
+          !article.intro && index === 0 && paragraphIndex === 0 ? null : <p>{paragraph}</p>
         )}
-
+        {section.list && <ul class="guide-list">{section.list.map((item) => <li>{item}</li>)}</ul>}
         {section.subsections && (
-          <div class="resource-subsection-grid">
+          <div class="guide-stack">
             {section.subsections.map((subsection) => (
-              <div class="resource-subsection">
+              <div>
                 <h3>{subsection.title}</h3>
                 {subsection.body && <p>{subsection.body}</p>}
-                {subsection.list && (
-                  <ul class="resource-list">
-                    {subsection.list.map((item: string) => <li>{item}</li>)}
-                  </ul>
-                )}
+                {subsection.list && <ul class="guide-list">{subsection.list.map((item) => <li>{item}</li>)}</ul>}
               </div>
             ))}
           </div>
         )}
-
         {section.cards && (
-          <div class="resource-card-list">
+          <ul class="guide-topic-links guide-stack" role="list">
             {section.cards.map((card) => {
               const href = getSafeInternalOrHttpsHref(card.href);
-              const CardTag = href ? "a" : "div";
-
               return (
-                <CardTag class:list={["resource-info-card", !href && "resource-info-card--static"]} href={href}>
-                  <h3>
-                    {card.title}
-                    {href && <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>}
-                  </h3>
-                  {card.meta && <div class="resource-card-meta">{card.meta}</div>}
+                <li>
+                  <h3>{href ? <a class="guide-link" href={href}>{card.title}</a> : card.title}</h3>
+                  {card.meta && <div class="guide-meta">{card.meta}</div>}
                   {card.body && <p>{card.body}</p>}
-                </CardTag>
+                </li>
               );
             })}
+          </ul>
+        )}
+        {section.quotes && (
+          <div class="guide-quotes mt-7">
+            {section.quotes.map((quote) => (
+              <figure>
+                <blockquote><p>“{quote.text}”</p></blockquote>
+                <figcaption>
+                  <span class="guide-quote-author">{quote.author}</span>
+                  {quote.role && <span class="guide-quote-role">{quote.role}</span>}
+                </figcaption>
+              </figure>
+            ))}
           </div>
         )}
-
         {section.table && (
-          <div class="resource-table-wrap" tabindex="0" role="region" aria-label={`${section.title} table`}>
-            <table class="resource-table">
-              <thead>
-                <tr>
-                  {section.table.headers.map((header: string) => <th>{header}</th>)}
-                </tr>
-              </thead>
-              <tbody>
-                {section.table.rows.map((row: string[]) => (
-                  <tr>
-                    {row.map((cell: string) => <td>{cell}</td>)}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <>
+            <p class="guide-mobile-only guide-small">Scroll the table sideways to read all columns.</p>
+            <div class="guide-table-scroll mt-6" tabindex="0" role="region" aria-label={`${section.title} table, horizontally scrollable`}>
+              <table style={`--guide-table-columns: ${section.table.headers.length}`}>
+                <caption class="sr-only">{section.title}</caption>
+                <thead><tr>{section.table.headers.map((header) => <th scope="col">{header}</th>)}</tr></thead>
+                <tbody>{section.table.rows.map((row) => <tr>{row.map((cell, cellIndex) => cellIndex === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>)}</tbody>
+              </table>
+            </div>
+          </>
         )}
-
         {section.links && (
-          <div class="resource-link-row">
+          <div class="guide-links">
             {section.links.map((link) => {
               const href = getSafeInternalOrHttpsHref(link.href);
               if (!href) return null;
-
+              const external = isExternalHttpsHref(href);
               return (
-                <a
-                  class="card-cta"
-                  href={href}
-                  target={isExternalHttpsHref(href) ? "_blank" : undefined}
-                  rel={isExternalHttpsHref(href) ? "noopener noreferrer" : undefined}
-                >
-                  {link.label}
+                <a class="guide-link guide-inline" href={href} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
+                  {link.label}{external && <span class="sr-only"> (opens in a new tab)</span>}
                 </a>
               );
             })}
           </div>
         )}
-      </section>
-    ))}
+      </div>
+    </section>
+  ))}
 
-    {article.directoryGroups?.map((group) => (
-      <section class="resource-directory-section">
-        <h2>{group.title}</h2>
-        <div class="resource-directory-grid">
-          {group.entries.map((entry) => {
-            const websiteHref =
-              getSafeExternalHttpsHref(entry.href) ??
-              getSafeExternalHttpsHref(entry.url ? `https://${entry.url}` : undefined);
-
-            return (
-              <article class="resource-directory-card">
-                <div class="resource-directory-top">
-                  <h3>{entry.name}</h3>
-                  {entry.year && <span>{entry.year}</span>}
-                </div>
-                {entry.focus && <p>{entry.focus}</p>}
-                <dl>
-                  {entry.url && (
-                    <>
-                      <dt>Website</dt>
-                      <dd>
-                        {websiteHref ? (
-                          <a href={websiteHref} target="_blank" rel="noopener noreferrer">{entry.url}</a>
-                        ) : (
-                          entry.url
-                        )}
-                      </dd>
-                    </>
-                  )}
-                  {entry.contact && (
-                    <>
-                      <dt>Contact</dt>
-                      <dd>{entry.contact}</dd>
-                    </>
-                  )}
-                  {entry.range && (
-                    <>
-                      <dt>Range</dt>
-                      <dd>{entry.range}</dd>
-                    </>
-                  )}
-                  {entry.stage && (
-                    <>
-                      <dt>Stage</dt>
-                      <dd>{entry.stage}</dd>
-                    </>
-                  )}
-                </dl>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-    ))}
-  </article>
-</div>
+  {groups.length > 0 && <EcosystemDatabase groups={groups} />}
+</ResourceGuide>

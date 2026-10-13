@@ -4,7 +4,12 @@ import { siteContent } from "../../data/siteContent";
 
 const { resources } = siteContent;
 
-const libraryColors = ["gold", "jade", "purple", "jade", "purple", "gold"];
+const libraryGroups = [
+  { id: "foundations", title: "Starting a company" },
+  { id: "fundraising", title: "Ownership & fundraising" },
+  { id: "accelerators", title: "Applying to accelerators" },
+  { id: "ecosystem", title: "Networks & programs" },
+];
 
 ---
 
@@ -20,28 +25,31 @@ const libraryColors = ["gold", "jade", "purple", "jade", "purple", "gold"];
   <div class="res-shell">
 
     <section class="res-section res-library" aria-label="Resource library">
-      <div class="res-card-grid">
-        {resources.libraryItems.map((item, i) => (
-          <a
-            class={`res-card res-card--${libraryColors[i]}`}
-            href={item.href}
-            aria-label={item.title}
-          >
-            <h2 class="res-card-title">{item.title}</h2>
-            <p class="res-card-desc">{item.description}</p>
-            <div class="res-card-footer">
-              <span class="res-card-cta">Read guide</span>
-            </div>
-          </a>
-        ))}
-      </div>
+      {libraryGroups.map((group) => (
+        <section class="res-library-group" aria-labelledby={`res-group-${group.id}`}>
+          <h2 class="res-library-heading" id={`res-group-${group.id}`}>{group.title}</h2>
+          <ul class="res-card-grid" role="list">
+            {resources.libraryItems.filter((item) => item.group === group.id).map((item) => (
+              <li>
+                <a class="res-card" href={item.href} aria-labelledby={`res-guide-${item.href.split("/").pop()}`}>
+                  <h3 class="res-card-title" id={`res-guide-${item.href.split("/").pop()}`}>{item.title}</h3>
+                  <p class="res-card-desc">{item.description}</p>
+                  <span class="res-card-cta">
+                    {item.ctaLabel}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
     </section>
 
     <!-- Exclusive Perks -->
     <section class="res-section res-perks" aria-labelledby="res-perks-heading">
       <header class="res-section-hdr">
         <div>
-          <h2 id="res-perks-heading">{resources.perks.title}</h2>
+          <h2 class="section-h2 section-h2--compact" id="res-perks-heading">{resources.perks.title}</h2>
           <p>
             Unlock these perks by working with us through{" "}
             <a href={resources.perks.programHref}>ikigai Launchpad</a>{" "}
@@ -86,7 +94,7 @@ const libraryColors = ["gold", "jade", "purple", "jade", "purple", "gold"];
     <section class="res-section res-ama" aria-labelledby="res-ama-heading">
       <div class="res-ama-card">
         <div class="res-ama-body">
-          <h2 id="res-ama-heading">{resources.ama.title}</h2>
+          <h2 class="section-h2 section-h2--compact" id="res-ama-heading">{resources.ama.title}</h2>
           <p class="res-ama-lead">{resources.ama.lead}</p>
           <a
             class="btn-pri"
@@ -97,12 +105,13 @@ const libraryColors = ["gold", "jade", "purple", "jade", "purple", "gold"];
             data-analytics-placement="resources_ama"
           >
             {resources.ama.ctaLabel}
+            <span class="sr-only"> (opens in a new tab)</span>
           </a>
         </div>
 
         <div class="res-ama-panel">
-          <p class="res-ama-panel-label">How it works</p>
-          <ol class="res-ama-steps">
+          <h3 class="res-ama-panel-label">How it works</h3>
+          <ol class="res-ama-steps" role="list">
             <li>
               <span class="res-step-num">1</span>
               <span>Submit your question anonymously</span>

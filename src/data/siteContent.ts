@@ -1281,46 +1281,74 @@ export const siteContent = {
     ],
     libraryItems: [
       {
+        group: "foundations",
         title: "Founders FAQs",
         href: "/resources/founders-frequently-asked-questions",
+        ctaLabel: "Read answers",
         description:
-          "Seasoned founders answer the most common questions on co-founders, investor relations, and networking.",
+          "Get advice from experienced founders on choosing co-founders, working with investors, and building your network.",
       },
       {
-        title: "Application Guide",
-        href: "/resources/application-guide",
-        description:
-          "A step-by-step checklist to prepare your team, pitch, and materials before applying to any accelerator.",
-      },
-      {
+        group: "foundations",
         title: "Incorporation 101",
         href: "/incorporation-101",
+        ctaLabel: "Read guide",
         description:
-          "Jurisdiction comparisons, common business structures, and practical guidance on forming your company.",
+          "Compare where to incorporate, understand business structures, and plan how to set up your company.",
       },
       {
-        title: "Ecosystem Database",
-        href: "/resources/ecosystem-database",
+        group: "fundraising",
+        title: "Cap Table Guide",
+        href: "/resources/cap-table-guide",
+        ctaLabel: "Read guide",
         description:
-          "A curated directory of accelerators, VC firms, co-working spaces, and communities across Taiwan.",
+          "See who owns what and how ownership changes, with a worked example covering employee options and founder vesting.",
       },
       {
+        group: "fundraising",
+        title: "SAFE Note Guide",
+        href: "/resources/safe-note-guide",
+        ctaLabel: "Read guide",
+        description:
+          "Understand SAFE funding, valuation caps, and how SAFEs compare with convertible notes, including what to check before signing.",
+      },
+      {
+        group: "accelerators",
+        title: "Application Guide",
+        href: "/resources/application-guide",
+        ctaLabel: "Read guide",
+        description:
+          "Use a checklist to prepare your team, pitch, and application materials for an accelerator.",
+      },
+      {
+        group: "accelerators",
         title: "Interview Guidebook",
         href: "/interview-guidebook",
+        ctaLabel: "Read guide",
         description:
-          "How 886 program interviews work, what we look for, and how to prepare your team and pitch.",
+          "Prepare for an 886 program interview: learn the format, what we look for, and how to explain your startup.",
       },
       {
+        group: "ecosystem",
+        title: "Ecosystem Database",
+        href: "/resources/ecosystem-database",
+        ctaLabel: "Browse directory",
+        description:
+          "Find accelerators, venture capital firms, co-working spaces, and founder communities across Taiwan.",
+      },
+      {
+        group: "ecosystem",
         title: "Y Combinator 101",
         href: "/resources/y-combinator-101",
+        ctaLabel: "Read guide",
         description:
-          "Partner notes, application tips, and mock interview prep from YC visiting partners and experienced founders.",
+          "Prepare your Y Combinator application and interview with advice from YC visiting partners and experienced founders.",
       },
     ],
     ama: {
       title: "Have more questions?",
       lead:
-        "about your business, fundraising, industry, or want feedback on your idea from our partners? let us know!",
+        "Ask our partners about your business, fundraising, or industry, or get feedback on your idea.",
       ctaLabel: "Founder AMA",
       ctaHref: "https://tally.so/r/m626gk",
     },

@@ -1,29 +1,25 @@
 ---
-// Content and layout adapted from the supplied Application Guide on 2026-10-12.
-import "../../styles/application-guide.css";
+import ResourceGuide from "../ResourceGuide.astro";
+import ResourceGuideHero from "../ResourceGuideHero.astro";
 ---
 
-<div class="application-guide">
-  <section class="guide-hero">
-    <div class="guide-container">
-      <a href="/resources" class="guide-hero__back guide-link">Back to resources</a>
-      <h1 class="guide-hero__title">Accelerator application guide</h1>
-      <p class="guide-hero__summary mt-6">To prepare an accelerator application, check the program&#x27;s eligibility, explain what your company does, support your claims with measured results, and introduce your founding team. Follow the current application form&#x27;s instructions for written answers and video.</p>
+<ResourceGuide>
+  <ResourceGuideHero title="Accelerator application guide">
+      <p class="guide-lead mt-6">To prepare an accelerator application, check the program&#x27;s eligibility, explain what your company does, support your claims with measured results, and introduce your founding team. Follow the current application form&#x27;s instructions for written answers and video.</p>
       <p class="mt-4">This guide combines 886 Studios&#x27; application advice with current ikigai Launchpad program details. It is a preparation checklist, not an application form or a statement that applications are open.</p>
-      <a class="guide-hero__cta mt-7 guide-button" href="#checklist">Use the checklist</a>
-      <nav aria-label="In this guide" class="guide-hero__contents mt-9">
+      <a class="guide-hero__cta mt-7 btn-pri" href="#checklist">Use the checklist</a>
+      <nav aria-label="In this guide" class="guide-contents mt-9">
         <a href="#program-fit" class="guide-link">Program fit</a>
         <a href="#application-answers" class="guide-link">Written answers</a>
         <a href="#intro-video" class="guide-link">Introduction video</a>
         <a href="#application-faq" class="guide-link">Application FAQs</a>
       </nav>
-    </div>
-  </section>
+  </ResourceGuideHero>
   <section class="guide-checklist" id="checklist">
     <div class="guide-container">
       <h2>Before you apply</h2>
       <p class="mt-4">Before you apply to an accelerator, make sure you are prepared to join one. Go through this checklist and ask yourself some questions.</p>
-      <div class="guide-checklist__items mt-9">
+      <div class="guide-stack mt-9">
         <div class="guide-checklist__item">
           <h3>Do you have a cofounder?</h3>
           <p class="mt-3">Some accelerators prioritize startups with a cofounder. If you don’t have one, begin to plan how you might get one and brainstorm what you would look for in a cofounder.</p>
@@ -70,7 +66,7 @@ import "../../styles/application-guide.css";
     <div class="guide-container">
       <h2>Write clear application answers</h2>
       <p class="mt-4">Accelerators get pitched many interesting startups with a lot of potential. If the person reading your application can’t understand the concept based on your explanation, they may pass. Knowing how to answer application questions is a valuable skill.</p>
-      <div class="guide-answers__items mt-7">
+      <div class="guide-stack mt-7">
         <div class="guide-answers__item">
           <h3>The STAR method</h3>
           <p class="mt-3">For behavioral or personal questions, organize your answer around situation, task, action, and result. Keep the situation and task short, spend the most time on your actions, and reflect on what happened and what you learned.</p>
@@ -96,7 +92,7 @@ import "../../styles/application-guide.css";
       <h2>Prepare your introduction video</h2>
       <p class="mt-4">Many accelerator applications ask for a short introduction video describing your team and startup. The goal is clarity, not production value.</p>
       <p class="mt-4">If a one-minute video is requested, use the checklist below. Follow the current form&#x27;s length and upload instructions if they differ.</p>
-      <ul class="guide-video__checklist mt-6">
+      <ul class="guide-list mt-6">
         <li>Keep the video to one minute.</li>
         <li>Upload it to YouTube, allow embedding, and mark it as unlisted if needed.</li>
         <li>Make sure the audio quality is clear.</li>
@@ -111,44 +107,44 @@ import "../../styles/application-guide.css";
   <section class="guide-faq" id="application-faq">
     <div class="guide-container">
       <h2>Application FAQs</h2>
-      <div class="guide-faq__answers mt-8">
-        <div id="application-preparation" class="guide-faq__answer">
+      <div class="guide-questions mt-8">
+        <div id="application-preparation" class="guide-anchor">
           <h3>What should I prepare for accelerator applications?</h3>
           <p class="mt-3">Prepare a clear company description, current founder profiles and resumes, measured business results, and an explanation of why the accelerator fits your team. If a founder video is requested, follow that application&#x27;s length and upload instructions. Each accelerator sets its own requirements; this preparation guide does not replace its application form.</p>
           <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="#application-answers">886 Studios&#x27; written-answer guidance</a></span>.</p>
         </div>
-        <div id="founder-eligibility" class="guide-faq__answer">
+        <div id="founder-eligibility" class="guide-anchor">
           <h3>Can I apply to ikigai Launchpad without a co-founder or company entity?</h3>
           <p class="mt-3">Yes. ikigai Launchpad accepts solo founders, and no incorporated entity is required to apply. The founding team still needs credible technical or domain capability. If accepted, founders will typically need to establish a US entity to receive funding. These are ikigai Launchpad&#x27;s requirements, not rules for every accelerator.</p>
           <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/ikigai-launchpad">ikigai Launchpad&#x27;s eligibility FAQ</a></span>.</p>
         </div>
-        <div id="international-founders" class="guide-faq__answer">
+        <div id="international-founders" class="guide-anchor">
           <h3>Can international founders apply to ikigai Launchpad?</h3>
           <p class="mt-3">Yes. ikigai Launchpad is open to founders from anywhere. The 10-week core program takes place in person in Taipei, and all co-founders are expected to join on site. Founders should be working full-time, or ready to work full-time, and able to attend the batch in Taipei.</p>
           <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/ikigai-launchpad">ikigai Launchpad&#x27;s attendance and eligibility details</a></span>.</p>
         </div>
-        <div id="application-timing" class="guide-faq__answer">
+        <div id="application-timing" class="guide-anchor">
           <h3>When can I apply to the next ikigai Launchpad batch?</h3>
           <p class="mt-3">The next ikigai Launchpad batch is Spring 2027. As of October 12, 2026, application dates and the deadline have not been announced on the program page. Check that page for updated timing before submitting; this guide does not confirm that applications are open.</p>
           <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/ikigai-launchpad">ikigai Launchpad&#x27;s application timeline</a></span>.</p>
         </div>
-        <div id="business-metrics" class="guide-faq__answer">
+        <div id="business-metrics" class="guide-anchor">
           <h3>What business numbers should I prepare for an accelerator interview?</h3>
           <p class="mt-3">886 Studios&#x27; Interview Guidebook asks founders to prepare monthly operating expenses, runway, previous funding, and user or revenue metrics if applicable. Be ready to explain how you calculated each figure. Report measured results honestly and keep forecasts separate from results you have already achieved.</p>
           <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/interview-guidebook">886 Studios&#x27; Interview Guidebook</a></span><span> and <a class="guide-link" href="#application-answers">the written-answer guidance</a></span>.</p>
         </div>
-        <div id="interview-format" class="guide-faq__answer">
+        <div id="interview-format" class="guide-anchor">
           <h3>Do I need a pitch deck for an ikigai Launchpad interview?</h3>
           <p class="mt-3">Check the format in your interview invitation. The ikigai Launchpad program FAQ describes the first interview as a 20-minute conversation with no pitch deck. The separate Interview Guidebook describes a 30-minute call with a five-minute deck presentation and product demo. These published instructions differ, so confirm the expected format with 886 Studios if your invitation is unclear.</p>
           <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/ikigai-launchpad">ikigai Launchpad&#x27;s interview FAQ</a></span><span> and <a class="guide-link" href="/interview-guidebook">the Interview Guidebook</a></span>.</p>
         </div>
       </div>
       <p class="guide-faq__sources mt-7">Prepared by 886 Studios. Program and interview source pages checked on <time datetime="2026-10-12">October 12, 2026</time>. Follow the current program page and your interview invitation if their instructions change.</p>
-      <div class="guide-faq__next mt-10">
+      <div class="guide-next mt-10">
         <h2>Check your next step</h2>
         <p class="mt-4">Review the current program details and application timing before you apply. Use the preparation checklist now so your answers are ready when the next application window is announced.</p>
-        <a class="mt-6 guide-button" href="/ikigai-launchpad">Review the program</a>
+        <a class="mt-6 btn-pri" href="/ikigai-launchpad">Review the program</a>
       </div>
     </div>
   </section>
-</div>
+</ResourceGuide>

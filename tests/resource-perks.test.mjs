@@ -35,7 +35,7 @@ test("Founder AMA follows Exclusive Perks on the resources page", () => {
   assert.ok(amaPosition > perksPosition);
 });
 
-test("resource guides keep the requested display order", () => {
+test("resource guides follow the topic reading order", () => {
   const library = content.slice(
     content.indexOf("    libraryItems: ["),
     content.indexOf("    ama: {"),
@@ -44,10 +44,12 @@ test("resource guides keep the requested display order", () => {
 
   assert.deepEqual(titles, [
     "Founders FAQs",
-    "Application Guide",
     "Incorporation 101",
-    "Ecosystem Database",
+    "Cap Table Guide",
+    "SAFE Note Guide",
+    "Application Guide",
     "Interview Guidebook",
+    "Ecosystem Database",
     "Y Combinator 101",
   ]);
 });

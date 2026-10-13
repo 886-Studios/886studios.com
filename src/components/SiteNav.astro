@@ -7,9 +7,9 @@ interface Props {
 
 const { currentPath } = Astro.props;
 const isResidencyPage = currentPath === "/launch-station" || currentPath === "/programs/launch-station";
-const isApplicationGuide = currentPath === "/resources/application-guide";
-const isProgramReview = isResidencyPage || isApplicationGuide;
-const navCta = isApplicationGuide ? { label: "Review program", href: "/ikigai-launchpad" } : isResidencyPage ? siteContent.programs.launchStation.joining.cta : siteContent.nav.cta;
+const isPreparationGuide = currentPath.startsWith("/resources/") || ["/incorporation-101", "/interview-guidebook"].includes(currentPath);
+const isProgramReview = isResidencyPage || isPreparationGuide;
+const navCta = isPreparationGuide ? { label: "Review program", href: "/ikigai-launchpad" } : isResidencyPage ? siteContent.programs.launchStation.joining.cta : siteContent.nav.cta;
 
 const isActiveNavItem = (href: string) => {
   if (href === "/ikigai-launchpad" || href === "/about") {
@@ -63,7 +63,7 @@ const isActiveNavItem = (href: string) => {
       target={isProgramReview ? undefined : "_blank"}
       rel={isProgramReview ? undefined : "noopener noreferrer"}
       data-analytics-event={isProgramReview ? "program_interest" : "application_started"}
-      data-analytics-label={isApplicationGuide ? "ikigai_launchpad" : isResidencyPage ? "launch_station" : undefined}
+      data-analytics-label={isPreparationGuide ? "ikigai_launchpad" : isResidencyPage ? "launch_station" : undefined}
       data-analytics-placement="global_nav_desktop"
       aria-describedby={isProgramReview ? undefined : "nav-application-status"}
     >
@@ -119,7 +119,7 @@ const isActiveNavItem = (href: string) => {
         target={isProgramReview ? undefined : "_blank"}
         rel={isProgramReview ? undefined : "noopener noreferrer"}
         data-analytics-event={isProgramReview ? "program_interest" : "application_started"}
-        data-analytics-label={isApplicationGuide ? "ikigai_launchpad" : isResidencyPage ? "launch_station" : undefined}
+        data-analytics-label={isPreparationGuide ? "ikigai_launchpad" : isResidencyPage ? "launch_station" : undefined}
         data-analytics-placement="global_nav_mobile"
         aria-describedby={isProgramReview ? undefined : "mobile-application-status"}
       >

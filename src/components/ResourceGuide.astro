@@ -1,0 +1,8 @@
+---
+import "../styles/resource-guide.css";
+const { database = false } = Astro.props;
+---
+
+<article class:list={["resource-guide", database && "resource-guide--database"]}>
+  <slot />
+</article>
