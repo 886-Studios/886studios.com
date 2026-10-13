@@ -341,6 +341,15 @@ calendar every 30 minutes and commits only when event data changes; no API key i
 Past events remain in the archive after leaving Luma's feed, while unpublished future events
 are removed. For a manual refresh, run `npm run events:sync` and review the diff.
 
+`/events` uses `CollectionPage` and `ItemList` structured data linking to the individual
+Luma pages. Do not add `Event` rich-result markup to this listing: Google's
+[event guidelines](https://developers.google.com/search/docs/appearance/structured-data/event#technical-guidelines)
+require a dedicated single-event page. Supporting Event rich results on this domain would
+require local event detail pages with visible, verified descriptions, venue addresses,
+hosts, and applicable ticket/speaker details. After deploying this correction, inspect
+`/events` in Search Console and start validation for the old Event warnings; they may
+remain in the report until Google recrawls the page.
+
 The workflow validates each candidate on a temporary branch and waits for Vercel before
 updating `main`. It records its own completed `Validate` status because token-created
 pushes do not trigger another Actions run. A failed check, a ten-minute deployment timeout,

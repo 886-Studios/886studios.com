@@ -301,6 +301,27 @@ for (const filePath of htmlFiles) {
           }
         }
 
+        if (route === "/events") {
+          if (!types.includes("CollectionPage")) fail(`${route}: expected CollectionPage schema`);
+          // Also catch Event nodes nested inside an ItemList, not just graph roots.
+          if (/"@type"\s*:\s*(?:"Event"|\[[^\]]*"Event")/.test(JSON.stringify(schema))) {
+            fail(`${route}: Event rich-result markup belongs on single-event detail pages`);
+          }
+          const eventList = graph.find((node) => node["@id"] === `${productionOrigin}/events#events`);
+          const archive = JSON.parse(await readFile(path.join(projectRoot, "src/data/luma-events.json"), "utf8"));
+          const items = eventList?.itemListElement;
+          if (eventList?.["@type"] !== "ItemList" || !Array.isArray(items)) {
+            fail(`${route}: missing event ItemList`);
+          } else {
+            if (items.length !== archive.events.length) fail(`${route}: event list does not match the archive`);
+            for (const event of archive.events) {
+              if (!items.some((item) => item.name === event.title && item.url === event.url)) {
+                fail(`${route}: event list is missing ${event.title} or its detail link`);
+              }
+            }
+          }
+        }
+
         for (const event of graph.filter((node) => node["@type"] === "Event")) {
           if (!event.name || !event.startDate || !event.location || !event.url) {
             fail(`${route}: Event schema is missing a required factual field`);

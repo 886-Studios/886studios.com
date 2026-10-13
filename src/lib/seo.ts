@@ -491,48 +491,16 @@ export function getResourcesItemListSchema() {
 }
 
 export function getEventsStructuredData(events: LumaEventCard[]): JsonLdObject[] {
-  const eventSchemas = events.flatMap((event) => {
-    if (!event.url) return [];
-
-    const location = event.isOnline
-      ? {
-          "@type": "VirtualLocation",
-          url: event.url,
-        }
-      : event.locationName && event.locationName !== "Location TBD"
-        ? {
-            "@type": "Place",
-            name: event.locationName,
-          }
-        : undefined;
-
-    if (!location) return [];
-
-    const eventId = `${siteConfig.url}/events#event-${event.id.replace(/[^a-zA-Z0-9_-]+/g, "-")}`;
-
-    return [{
-      "@type": "Event",
-      "@id": eventId,
-      name: event.title,
-      startDate: event.startAt,
-      endDate: event.endAt,
-      eventStatus: "https://schema.org/EventScheduled",
-      eventAttendanceMode: event.isOnline
-        ? "https://schema.org/OnlineEventAttendanceMode"
-        : "https://schema.org/OfflineEventAttendanceMode",
-      location,
-      image: event.coverUrl ? [event.coverUrl] : undefined,
-      url: event.url,
-    } satisfies JsonLdObject];
-  });
-
+  // This collection links to event detail pages on Luma. Google requires Event
+  // markup on a dedicated single-event page, not a calendar/listing page:
+  // https://developers.google.com/search/docs/appearance/structured-data/event#technical-guidelines
   const eventList = getItemListSchema(
     `${siteConfig.url}/events#events`,
     "886 Studios events",
     events.map((event) => ({ name: event.title, url: event.url })),
   );
 
-  return [eventList, ...eventSchemas];
+  return [eventList];
 }
 
 export function getPersonSchema(profile: PartnerProfile): JsonLdObject {
