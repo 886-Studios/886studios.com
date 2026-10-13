@@ -1,0 +1,147 @@
+---
+import type { ResourceArticle } from "../data/resourceArticles";
+import { getSafeInternalOrHttpsHref, isExternalHttpsHref } from "../lib/urls";
+import "../styles/ecosystem-database.css";
+
+interface Props { groups: NonNullable<ResourceArticle["directoryGroups"]> }
+const { groups } = Astro.props;
+const total = groups.reduce((count, group) => count + group.entries.length, 0);
+const fields = [
+  { key: "focus", label: "Focus" },
+  { key: "year", label: "Year" },
+  { key: "stage", label: "Stage" },
+  { key: "range", label: "Range" },
+] as const;
+const groupId = (title: string, index: number) =>
+  `${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}-${index + 1}`;
+---
+
+<ecosystem-database class="ecosystem-database guide-container">
+  <form class="database-controls" role="search" aria-label="Search ecosystem database" hidden>
+    <label>
+      <span>Search the database</span>
+      <input type="search" name="query" placeholder="Search names, industries, stages…" autocomplete="off" aria-controls="database-results" />
+    </label>
+    <label>
+      <span>Category</span>
+      <select name="category" aria-controls="database-results">
+        <option value="">All categories</option>
+        {groups.map((group, index) => <option value={index}>{group.title} ({group.entries.length})</option>)}
+      </select>
+    </label>
+  </form>
+  <noscript>
+    <nav class="guide-contents" aria-label="Database categories">
+      {groups.map((group, index) => <a class="guide-link" href={`#${groupId(group.title, index)}`}>{group.title}</a>)}
+    </nav>
+  </noscript>
+  <div class="database-summary">
+    <p role="status" aria-live="polite" aria-atomic="true" data-result-count>{total} entries across {groups.length} categories</p>
+    <button class="guide-link" type="button" data-reset hidden>Clear filters</button>
+  </div>
+  <p class="database-scroll-hint guide-small">Scroll tables sideways to compare all details.</p>
+  <div id="database-results">
+    {groups.map((group, index) => {
+      const id = groupId(group.title, index);
+      const columns = fields.filter((field) => group.entries.some((entry) => entry[field.key]));
+      return (
+        <section class="database-group" id={id} data-group={index} aria-labelledby={`${id}-title`}>
+          <div class="database-group-heading">
+            <h2 id={`${id}-title`}>{group.title}</h2>
+            <span class="guide-small" data-group-count>{group.entries.length} entries</span>
+          </div>
+          <div class="guide-table-scroll" tabindex="0" role="region" aria-label={`${group.title}, horizontally scrollable table`}>
+            <table class="database-table" style={`--database-table-width: ${440 + columns.reduce((width, field) => width + (field.key === 'year' ? 80 : field.key === 'focus' ? 280 : 160), 0)}px`}>
+              <caption class="sr-only">{group.title}</caption>
+              <colgroup>
+                <col class="database-name-column" />
+                {columns.map((field) => <col class={`database-${field.key}-column`} />)}
+                <col class="database-contact-column" />
+              </colgroup>
+              <thead><tr>
+                <th scope="col">Organization</th>
+                {columns.map((field) => <th scope="col">{field.label}</th>)}
+                <th scope="col">Website & contact</th>
+              </tr></thead>
+              <tbody>
+                {group.entries.map((entry) => {
+                  const website = getSafeInternalOrHttpsHref(entry.href) ?? getSafeInternalOrHttpsHref(entry.url ? `https://${entry.url}` : undefined);
+                  const external = website && isExternalHttpsHref(website);
+                  return (
+                    <tr data-record data-search={[group.title, ...Object.values(entry)].join(" ").toLowerCase()}>
+                      <th scope="row">{entry.name}</th>
+                      {columns.map((field) => <td>{entry[field.key] ?? <span class="database-missing"><span aria-hidden="true">—</span><span class="sr-only">Not listed</span></span>}</td>)}
+                      <td>
+                        <div class="database-contact">
+                          {entry.url && (website ? <a class="guide-link" href={website} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>{entry.url}{external && <span class="sr-only"> (opens in a new tab)</span>}</a> : <span>{entry.url}</span>)}
+                          {entry.contact && <span>{entry.contact}</span>}
+                          {!entry.url && !entry.contact && <span class="database-missing"><span aria-hidden="true">—</span><span class="sr-only">Not listed</span></span>}
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      );
+    })}
+  </div>
+  <div class="database-empty" hidden>
+    <h2>No matching entries</h2>
+    <p>Try another search or clear the filters to browse all entries.</p>
+  </div>
+</ecosystem-database>
+
+<script>
+  class EcosystemDatabase extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.ready) return;
+      this.dataset.ready = "true";
+      const form = this.querySelector<HTMLFormElement>("form")!;
+      const search = form.querySelector<HTMLInputElement>("input")!;
+      const category = form.querySelector<HTMLSelectElement>("select")!;
+      const count = this.querySelector<HTMLElement>("[data-result-count]")!;
+      const reset = this.querySelector<HTMLButtonElement>("[data-reset]")!;
+      const empty = this.querySelector<HTMLElement>(".database-empty")!;
+      const hint = this.querySelector<HTMLElement>(".database-scroll-hint")!;
+      const groups = [...this.querySelectorAll<HTMLElement>("[data-group]")].map((element) => ({
+        element,
+        count: element.querySelector<HTMLElement>("[data-group-count]")!,
+        rows: [...element.querySelectorAll<HTMLTableRowElement>("[data-record]")],
+      }));
+      const update = () => {
+        const terms = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+        let matches = 0;
+        let categories = 0;
+        for (const group of groups) {
+          let visible = 0;
+          for (const row of group.rows) {
+            row.hidden = (category.value !== "" && category.value !== group.element.dataset.group) || !terms.every((term) => row.dataset.search!.includes(term));
+            if (!row.hidden) visible++;
+          }
+          group.element.hidden = visible === 0;
+          group.count.textContent = `${visible} ${visible === 1 ? "entry" : "entries"}`;
+          if (visible) categories++;
+          matches += visible;
+        }
+        count.textContent = `${matches} ${matches === 1 ? "entry" : "entries"} across ${categories} ${categories === 1 ? "category" : "categories"}`;
+        reset.hidden = !search.value && !category.value;
+        empty.hidden = matches !== 0;
+        hint.hidden = matches === 0;
+      };
+      form.hidden = false;
+      form.addEventListener("submit", (event) => event.preventDefault());
+      search.addEventListener("input", update);
+      category.addEventListener("change", update);
+      reset.addEventListener("click", () => {
+        form.reset();
+        update();
+        search.focus();
+      });
+      update();
+    }
+  }
+  if (!customElements.get("ecosystem-database")) customElements.define("ecosystem-database", EcosystemDatabase);
+</script>

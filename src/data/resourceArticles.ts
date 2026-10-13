@@ -15,6 +15,12 @@ type ResourceTable = {
   rows: string[][];
 };
 
+type ResourceQuote = {
+  text: string;
+  author: string;
+  role?: string;
+};
+
 type ResourceSubsection = {
   title: string;
   body?: string;
@@ -26,6 +32,7 @@ type ResourceSection = {
   paragraphs?: string[];
   list?: string[];
   cards?: ResourceCard[];
+  quotes?: ResourceQuote[];
   links?: ResourceLink[];
   table?: ResourceTable;
   subsections?: ResourceSubsection[];
@@ -78,21 +85,21 @@ export const resourceArticles: ResourceArticle[] = [
       },
       {
         title: "Partner Notes",
-        cards: [
+        quotes: [
           {
-            title: "Kevin Lin",
-            meta: "Twitch Co-founder · YC Visiting Partner",
-            body: "Dig deep. Research. Know the landscape. Understand the problem deeply.",
+            author: "Kevin Lin",
+            role: "Twitch Co-founder · YC Visiting Partner",
+            text: "Dig deep. Research. Know the landscape. Understand the problem deeply.",
           },
           {
-            title: "Lyle Fong",
-            meta: "Lithium, now Khoros, Co-founder · YC Visiting Partner",
-            body: "Helping founders figure out what actually matters at their stage of company, then focusing all their efforts on that is usually the first step in building a great business.",
+            author: "Lyle Fong",
+            role: "Lithium, now Khoros, Co-founder · YC Visiting Partner",
+            text: "Helping founders figure out what actually matters at their stage of company, then focusing all their efforts on that is usually the first step in building a great business.",
           },
           {
-            title: "Holly Liu",
-            meta: "Kabam Co-founder, PKO Investments Co-founder · YC Visiting Partner",
-            body: "It’s better to know more about the problem and your customers than your product.",
+            author: "Holly Liu",
+            role: "Kabam Co-founder, PKO Investments Co-founder · YC Visiting Partner",
+            text: "It’s better to know more about the problem and your customers than your product.",
           },
         ],
       },

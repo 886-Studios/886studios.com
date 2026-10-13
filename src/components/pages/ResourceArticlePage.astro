@@ -1,10 +1,12 @@
 ---
+import EcosystemDatabase from "../EcosystemDatabase.astro";
 import ResourceGuide from "../ResourceGuide.astro";
 import ResourceGuideHero from "../ResourceGuideHero.astro";
 import type { ResourceArticle } from "../../data/resourceArticles";
 import { getSafeInternalOrHttpsHref, isExternalHttpsHref } from "../../lib/urls";
 
 const { article } = Astro.props as { article: ResourceArticle };
+const isFaqIndex = article.slug === "founders-frequently-asked-questions";
 const sections = article.sections ?? [];
 const groups = article.directoryGroups ?? [];
 const sectionId = (title: string, index: number) =>
@@ -17,14 +19,14 @@ const contents = [...sections, ...groups].map((section, index) => ({
 const intro = article.intro ?? sections[0]?.paragraphs?.[0];
 ---
 
-<ResourceGuide>
+<ResourceGuide database={groups.length > 0}>
   <ResourceGuideHero
     title={article.title}
     backHref={article.parent?.href}
     backLabel={article.parent?.label}
   >
     {intro && <p class="guide-lead mt-6">{intro}</p>}
-    {contents.length > 1 && (
+    {contents.length > 1 && groups.length === 0 && (
       <nav aria-label="In this guide" class="guide-contents guide-small mt-9">
         {contents.map((item) => <a class="guide-link" href={`#${item.id}`}>{item.title}</a>)}
       </nav>
@@ -32,8 +34,8 @@ const intro = article.intro ?? sections[0]?.paragraphs?.[0];
   </ResourceGuideHero>
 
   {sections.map((section, index) => (
-    <section id={contents[index].id} aria-labelledby={`${contents[index].id}-title`}>
-      <div class="guide-container guide-prose">
+    <section class:list={[isFaqIndex && "guide-topic-group"]} id={contents[index].id} aria-labelledby={`${contents[index].id}-title`}>
+      <div class:list={["guide-container guide-prose", isFaqIndex && "guide-topic-section"]}>
         <h2 id={`${contents[index].id}-title`}>{section.title}</h2>
         {section.paragraphs?.map((paragraph, paragraphIndex) =>
           !article.intro && index === 0 && paragraphIndex === 0 ? null : <p>{paragraph}</p>
@@ -63,6 +65,19 @@ const intro = article.intro ?? sections[0]?.paragraphs?.[0];
               );
             })}
           </ul>
+        )}
+        {section.quotes && (
+          <div class="guide-quotes mt-7">
+            {section.quotes.map((quote) => (
+              <figure>
+                <blockquote><p>“{quote.text}”</p></blockquote>
+                <figcaption>
+                  <span class="guide-quote-author">{quote.author}</span>
+                  {quote.role && <span class="guide-quote-role">{quote.role}</span>}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         )}
         {section.table && (
           <>
@@ -94,35 +109,5 @@ const intro = article.intro ?? sections[0]?.paragraphs?.[0];
     </section>
   ))}
 
-  {groups.map((group, index) => {
-    const id = contents[sections.length + index].id;
-    return (
-      <section id={id} aria-labelledby={`${id}-title`}>
-        <div class="guide-container guide-prose">
-          <h2 id={`${id}-title`}>{group.title}</h2>
-          <div class="guide-directory">
-            {group.entries.map((entry) => {
-              const websiteHref = getSafeInternalOrHttpsHref(entry.href) ?? getSafeInternalOrHttpsHref(entry.url ? `https://${entry.url}` : undefined);
-              const external = websiteHref && isExternalHttpsHref(websiteHref);
-              return (
-                <article>
-                  <div class="guide-directory-heading">
-                    <h3>{entry.name}</h3>
-                    {entry.year && <span class="guide-small">{entry.year}</span>}
-                  </div>
-                  {entry.focus && <p>{entry.focus}</p>}
-                  <dl>
-                    {entry.url && <><dt>Website</dt><dd>{websiteHref ? <a class="guide-link" href={websiteHref} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>{entry.url}{external && <span class="sr-only"> (opens in a new tab)</span>}</a> : entry.url}</dd></>}
-                    {entry.contact && <><dt>Contact</dt><dd>{entry.contact}</dd></>}
-                    {entry.range && <><dt>Range</dt><dd>{entry.range}</dd></>}
-                    {entry.stage && <><dt>Stage</dt><dd>{entry.stage}</dd></>}
-                  </dl>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-    );
-  })}
+  {groups.length > 0 && <EcosystemDatabase groups={groups} />}
 </ResourceGuide>
