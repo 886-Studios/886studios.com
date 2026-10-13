@@ -174,6 +174,10 @@ async function generateContentDates() {
   const resourceRecordDates = await getResourceRecordDates();
   const resourceTemplateDate = getFileDate("src/components/pages/ResourceArticlePage.astro");
   const contentDates = {
+    "/": maxDate(
+      await getSiteContentDate("home"),
+      getFileDate("src/components/pages/HomePage.astro"),
+    ),
     "/ikigai-launchpad": maxDate(
       await getSiteContentDate("programs", "launchpad"),
       getFileDate("src/components/pages/ProgramsPage.astro"),

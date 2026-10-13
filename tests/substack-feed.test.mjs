@@ -133,3 +133,32 @@ test("legacy batch names are consistent in imported titles, summaries, body text
   const unrelated = feed.replace("Founder lessons", "YC S'25 and Fall 2026 applications");
   assert.equal(parseBlogFeed(unrelated)[0].title, "YC S'25 and Fall 2026 applications");
 });
+
+test("imported picture links are named and sources use the article column width", () => {
+  const { parseBlogFeed } = loadAdapter();
+  const imageUrl = "https://substack-post-media.s3.amazonaws.com/public/images/banner_1456x762.webp";
+  const sourceSet = "https://example.com/banner-480.webp 480w, https://example.com/banner-960.webp 960w";
+  const html = parseBlogFeed(feed.replace("<p>Lessons for founders.</p>", `
+    <a href="${imageUrl}"><picture>
+      <source type="image/webp" srcset="${sourceSet}" sizes="100vw" media="(min-width: 400px)">
+      <img src="${imageUrl}" alt="" sizes="100vw">
+    </picture></a>
+    <a href="${imageUrl}?download=1" aria-label="View the original banner" onclick="alert(1)"><img src="${imageUrl}" alt=""></a>
+    <a href="https://example.com/article">Read the article</a>
+  `))[0].contentHtml;
+
+  const sourceTag = html.match(/<source\b[^>]*>/)?.[0];
+  const imageTag = html.match(/<img\b[^>]*>/)?.[0];
+  const sizes = 'sizes="(max-width: 820px) calc(100vw - 40px), 760px"';
+  assert.ok(sourceTag?.includes(sizes));
+  assert.ok(imageTag?.includes(sizes));
+  assert.ok(sourceTag.includes(`srcset="${sourceSet}"`));
+  assert.ok(sourceTag.includes('type="image/webp"'));
+  assert.ok(sourceTag.includes('media="(min-width: 400px)"'));
+  assert.ok(imageTag.includes('alt=""'));
+  assert.ok(html.includes('aria-label="Open full-size image"'));
+  assert.ok(html.includes('aria-label="View the original banner"'));
+  assert.ok(!html.includes("onclick"));
+  const articleLink = html.match(/<a\b[^>]*href="https:\/\/example.com\/article"[^>]*>/)?.[0];
+  assert.ok(articleLink && !articleLink.includes("aria-label"));
+});

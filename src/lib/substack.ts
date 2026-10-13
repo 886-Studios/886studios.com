@@ -93,6 +93,7 @@ const parser = new XMLParser({
 });
 
 const supportedImagePattern = /\.(?:avif|gif|jpe?g|png|webp)(?:[?#]|$)/i;
+const blogContentImageSizes = "(max-width: 820px) calc(100vw - 40px), 760px";
 const substackImageHost = "substack-post-media.s3.amazonaws.com";
 const substackCdnHost = "substackcdn.com";
 let substackPostsPromise: Promise<BlogPost[]> | undefined;
@@ -432,7 +433,7 @@ function sanitizePostHtml(html: string, normalizeText: (value: string) => string
       "ul",
     ],
     allowedAttributes: {
-      a: ["href", "target", "rel"],
+      a: ["href", "target", "rel", "aria-label"],
       figure: ["class"],
       img: ["src", "srcset", "sizes", "alt", "title", "width", "height", "loading", "decoding"],
       source: ["src", "srcset", "sizes", "type", "media"],
@@ -467,10 +468,20 @@ function sanitizePostHtml(html: string, normalizeText: (value: string) => string
           attribs: {
             ...attributes,
             href: safeHref,
+            ...(isSupportedImage(safeHref)
+              ? { "aria-label": normalizeText(attributes["aria-label"]?.trim() || "Open full-size image") }
+              : {}),
             ...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {}),
           },
         };
       },
+      source: (tagName, attributes) => ({
+        tagName,
+        attribs: {
+          ...attributes,
+          sizes: blogContentImageSizes,
+        },
+      }),
       img: (tagName, attributes) => {
         const dimensions = getImageDimensions(attributes.src ?? "");
         const optimizedSrc = getBlogImageUrl(attributes.src ?? "", 760);
@@ -491,7 +502,7 @@ function sanitizePostHtml(html: string, normalizeText: (value: string) => string
             height: attributes.height ?? String(dimensions.height),
             loading: "lazy",
             decoding: "async",
-            sizes: "(max-width: 820px) calc(100vw - 40px), 760px",
+            sizes: blogContentImageSizes,
           },
         };
       },

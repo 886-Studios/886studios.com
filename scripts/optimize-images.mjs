@@ -62,6 +62,13 @@ const singleImages = [
     width: 512,
     quality: 84,
   },
+  // Directory portraits render at up to 200 CSS px; keep originals for profiles.
+  ...["james-hong-portrait", "patryk-chojecki"].map((name) => ({
+    source: `headshots/team/${name}.webp`,
+    output: `headshots/team/${name}-400.webp`,
+    width: 400,
+    quality: 84,
+  })),
 ];
 
 const toWebp = async (sourcePath, outputPath, width, quality) => {

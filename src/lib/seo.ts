@@ -1,4 +1,5 @@
 import { getCanonicalUrl, siteConfig } from "../config/site";
+import { contentDates } from "../data/contentDates.generated";
 import { partnerProfiles, type PartnerProfile } from "../data/partnerProfiles";
 import {
   brand,
@@ -47,7 +48,7 @@ export const pageMeta = {
   home: {
     title: siteConfig.defaultTitle,
     description: siteConfig.defaultDescription,
-    dateModified: "2026-08-27",
+    dateModified: contentDates["/"],
   },
   programs: {
     title: "ikigai Launchpad: Taipei Startup Accelerator | 886 Studios",
