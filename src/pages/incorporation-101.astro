@@ -1,5 +1,5 @@
 ---
-import ResourceArticlePage from "../components/pages/ResourceArticlePage.astro";
+import IncorporationGuidePage from "../components/pages/IncorporationGuidePage.astro";
 import { contentDates } from "../data/contentDates.generated";
 import { standaloneResourceArticles } from "../data/resourceArticles";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -35,5 +35,5 @@ const faqSchema = getResourceFaqSchema(article, pagePath);
     ...(faqSchema ? [faqSchema] : []),
   ]}
 >
-  <ResourceArticlePage article={article} />
+  <IncorporationGuidePage />
 </BaseLayout>

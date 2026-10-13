@@ -1299,6 +1299,12 @@ export const siteContent = {
           "Jurisdiction comparisons, common business structures, and practical guidance on forming your company.",
       },
       {
+        title: "SAFE Note Guide",
+        href: "/resources/safe-note-guide",
+        description:
+          "How SAFEs work, valuation caps, convertible note comparisons, and what founders should check before signing.",
+      },
+      {
         title: "Ecosystem Database",
         href: "/resources/ecosystem-database",
         description:

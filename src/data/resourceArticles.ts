@@ -129,6 +129,12 @@ export const resourceArticles: ResourceArticle[] = [
       "Prepare accelerator applications with a founder checklist, clear written answers, a one-minute video, and current ikigai Launchpad eligibility details.",
   },
   {
+    slug: "safe-note-guide",
+    title: "What is a SAFE note? A founder's guide",
+    intro:
+      "Learn how a SAFE note works, how post-money valuation caps set ownership, how SAFEs compare with convertible notes, and what to check before signing.",
+  },
+  {
     slug: "founders-frequently-asked-questions",
     title: "Founders FAQs",
     intro:
@@ -1169,154 +1175,9 @@ export const resourceArticles: ResourceArticle[] = [
 export const standaloneResourceArticles: ResourceArticle[] = [
   {
     slug: "incorporation-101",
-    title: "Incorporation 101",
-    sections: [
-      {
-        title: "Get Started",
-        list: [
-          "Are you planning to take in revenue soon? If so, how soon?",
-          "Where will you take in revenue?",
-          "Do you plan on having investors? If so, are they Taiwanese or international?",
-          "How many employees are you planning on hiring?",
-          "How do you plan to fundraise?",
-          "Do you provide a visa for yourself in Taiwan?",
-        ],
-      },
-      {
-        title: "Jurisdictions",
-        paragraphs: [
-          "Jurisdiction is a crucial component for creating a company, as it determines the legal implications and regulatory framework in which the company will operate, taxation, and other obligations. Careful consideration helps ensure legal compliance, protects the interests of the company and its owners, and optimizes business operations.",
-        ],
-        links: [
-          { label: "Taiwan", href: "https://www.886studios.com/incorporation-101" },
-          {
-            label: "Singapore",
-            href: "https://www.886studios.com/incorporation-101",
-          },
-          {
-            label: "United States",
-            href: "https://www.886studios.com/incorporation-101",
-          },
-        ],
-      },
-      {
-        title: "Common Business Structures",
-        table: {
-          headers: ["Business Structure", "Ownership", "Taxes", "Liability"],
-          rows: [
-            [
-              "LLC",
-              "One or more persons can have ownership.",
-              "Corporate tax or personal tax and self-employment tax.",
-              "Owners are not personally liable for the company's liability.",
-            ],
-            [
-              "Partnership",
-              "More than one person.",
-              "Personal tax and self-employment tax. Limited liability partners are excluded.",
-              "Partners have unlimited liability unless it is registered as a limited liability partnership.",
-            ],
-            [
-              "C-Corporation",
-              "One or more than one person.",
-              "Corporate tax needs to be paid.",
-              "Owners are not personally liable.",
-            ],
-            [
-              "S-Corporation",
-              "One or more than one, but limited to 100 people, and all need to be US citizens or residents.",
-              "Personal tax applies to S-corporations.",
-              "Business owners are not personally liable for the company's liability.",
-            ],
-            [
-              "Sole Proprietorship",
-              "One person who runs the company.",
-              "Personal tax and self-employment tax.",
-              "Unlimited personal liability.",
-            ],
-          ],
-        },
-      },
-      {
-        title: "Representative Office",
-        paragraphs: [
-          "A representative office is a business structure that allows a company to establish a presence in a foreign country without engaging in commercial activities.",
-        ],
-        subsections: [
-          {
-            title: "Pros",
-            list: [
-              "Simple establishment",
-              "No registered capital requirement",
-              "Easy maintenance",
-            ],
-          },
-          {
-            title: "Cons",
-            list: [
-              "Limited business scope",
-              "Not a legal entity; all liabilities are borne by the parent company",
-            ],
-          },
-        ],
-      },
-      {
-        title: "Subsidiary",
-        paragraphs: [
-          "A subsidiary is a separate legal entity that is controlled by another company, known as the parent company.",
-        ],
-        subsections: [
-          {
-            title: "Pros",
-            list: [
-              "Tax advantages",
-              "Loss management",
-              "Easy to establish",
-              "Synergize with other subsidiaries",
-            ],
-          },
-          {
-            title: "Cons",
-            list: [
-              "More legalities",
-              "Complex financials",
-              "Increased liability",
-            ],
-          },
-        ],
-      },
-      {
-        title: "Branch",
-        paragraphs: [
-          "The branch business structure involves establishing a branch office in a foreign country, which operates as an extension of the parent company.",
-        ],
-        subsections: [
-          {
-            title: "Pros",
-            list: [
-              "Parent organization maintains a greater level of control",
-              "A branch office is governed by the laws of the parent company’s country",
-              "Costs less to establish",
-              "Offers the parent company greater tax benefits",
-            ],
-          },
-          {
-            title: "Cons",
-            list: [
-              "More difficult for the parent organization to explore new business opportunities",
-              "The parent organization is liable for branch office debt or legal problems",
-              "Hiring for branch office",
-            ],
-          },
-        ],
-        links: [
-          {
-            label: "Sign up here for a free consultation meeting!",
-            href: "https://tally.so/r/m626gk",
-          },
-        ],
-      },
-    ],
+    title: "Startup incorporation 101",
+    intro:
+      "Compare startup incorporation options, US business structures, and Taiwan subsidiaries, branches, and representative offices. A founder guide with sources.",
   },
   {
     slug: "interview-guidebook",
