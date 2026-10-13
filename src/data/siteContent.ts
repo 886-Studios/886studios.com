@@ -1281,48 +1281,56 @@ export const siteContent = {
     ],
     libraryItems: [
       {
+        group: "foundations",
         title: "Founders FAQs",
         href: "/resources/founders-frequently-asked-questions",
         description:
           "Seasoned founders answer the most common questions on co-founders, investor relations, and networking.",
       },
       {
-        title: "Application Guide",
-        href: "/resources/application-guide",
-        description:
-          "A step-by-step checklist to prepare your team, pitch, and materials before applying to any accelerator.",
-      },
-      {
+        group: "foundations",
         title: "Incorporation 101",
         href: "/incorporation-101",
         description:
           "Jurisdiction comparisons, common business structures, and practical guidance on forming your company.",
       },
       {
-        title: "SAFE Note Guide",
-        href: "/resources/safe-note-guide",
-        description:
-          "How SAFEs work, valuation caps, convertible note comparisons, and what founders should check before signing.",
-      },
-      {
+        group: "fundraising",
         title: "Cap Table Guide",
         href: "/resources/cap-table-guide",
         description:
           "Understand ownership, dilution, option pools, and founder vesting with a step-by-step cap table example.",
       },
       {
-        title: "Ecosystem Database",
-        href: "/resources/ecosystem-database",
+        group: "fundraising",
+        title: "SAFE Note Guide",
+        href: "/resources/safe-note-guide",
         description:
-          "A curated directory of accelerators, VC firms, co-working spaces, and communities across Taiwan.",
+          "How SAFEs work, valuation caps, convertible note comparisons, and what founders should check before signing.",
       },
       {
+        group: "accelerators",
+        title: "Application Guide",
+        href: "/resources/application-guide",
+        description:
+          "A step-by-step checklist to prepare your team, pitch, and materials before applying to any accelerator.",
+      },
+      {
+        group: "accelerators",
         title: "Interview Guidebook",
         href: "/interview-guidebook",
         description:
           "How 886 program interviews work, what we look for, and how to prepare your team and pitch.",
       },
       {
+        group: "ecosystem",
+        title: "Ecosystem Database",
+        href: "/resources/ecosystem-database",
+        description:
+          "A curated directory of accelerators, VC firms, co-working spaces, and communities across Taiwan.",
+      },
+      {
+        group: "ecosystem",
         title: "Y Combinator 101",
         href: "/resources/y-combinator-101",
         description:

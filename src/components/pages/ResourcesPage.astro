@@ -4,7 +4,12 @@ import { siteContent } from "../../data/siteContent";
 
 const { resources } = siteContent;
 
-const libraryColors = ["gold", "jade", "purple", "jade", "purple", "gold"];
+const libraryGroups = [
+  { id: "foundations", title: "Company foundations" },
+  { id: "fundraising", title: "Equity & fundraising" },
+  { id: "accelerators", title: "Accelerator preparation" },
+  { id: "ecosystem", title: "Explore the ecosystem" },
+];
 
 ---
 
@@ -20,21 +25,24 @@ const libraryColors = ["gold", "jade", "purple", "jade", "purple", "gold"];
   <div class="res-shell">
 
     <section class="res-section res-library" aria-label="Resource library">
-      <div class="res-card-grid">
-        {resources.libraryItems.map((item, i) => (
-          <a
-            class={`res-card res-card--${libraryColors[i]}`}
-            href={item.href}
-            aria-label={item.title}
-          >
-            <h2 class="res-card-title">{item.title}</h2>
-            <p class="res-card-desc">{item.description}</p>
-            <div class="res-card-footer">
-              <span class="res-card-cta">Read guide</span>
-            </div>
-          </a>
-        ))}
-      </div>
+      {libraryGroups.map((group) => (
+        <section class="res-library-group" aria-labelledby={`res-group-${group.id}`}>
+          <h2 class="res-library-heading" id={`res-group-${group.id}`}>{group.title}</h2>
+          <ul class="res-card-grid" role="list">
+            {resources.libraryItems.filter((item) => item.group === group.id).map((item) => (
+              <li>
+                <a class="res-card" href={item.href} aria-labelledby={`res-guide-${item.href.split("/").pop()}`}>
+                  <h3 class="res-card-title" id={`res-guide-${item.href.split("/").pop()}`}>{item.title}</h3>
+                  <p class="res-card-desc">{item.description}</p>
+                  <span class="res-card-cta">
+                    {item.href.endsWith("ecosystem-database") ? "Explore database" : "Read guide"}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
     </section>
 
     <!-- Exclusive Perks -->

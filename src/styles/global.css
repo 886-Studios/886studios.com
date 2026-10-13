@@ -4141,102 +4141,93 @@ body:has(.application-banner:not([hidden])) .site-main .page {
   color: var(--purple-bright);
 }
 
-/* ── Library Card Grid ── */
+/* Library: topic labels lead into paired guides, in reading order. */
+.res-library-group {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  align-items: baseline;
+  gap: var(--space-lg);
+  padding-block: var(--space-lg);
+  border-top: 1px solid var(--border-bright);
+}
+
+.res-library-group:last-child {
+  padding-bottom: 0;
+}
+
+.res-library-heading {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--text-secondary);
+  text-wrap: wrap;
+}
+
 .res-card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--res-divider-space) 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-lg);
+  list-style: none;
+}
+
+.res-card-grid > li {
+  min-width: 0;
 }
 
 .res-card {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: var(--res-divider-space) 0 0;
-  background: transparent;
-  border-top: 1px solid var(--border-bright);
-  border-radius: 0;
+  gap: var(--space-xs);
+  height: 100%;
   text-decoration: none;
   color: inherit;
-  position: relative;
-  overflow: hidden;
-  transition:
-    border-color 0.18s,
-    color 0.18s;
-}
-
-.res-card:hover {
-  border-color: var(--text-secondary);
-}
-.res-card--gold:hover {
-  border-color: var(--text-secondary);
-}
-.res-card--jade:hover {
-  border-color: var(--text-secondary);
-}
-.res-card--purple:hover {
-  border-color: var(--text-secondary);
-}
-
-.res-card-top {
-  display: flex;
-  align-items: center;
-  min-height: 16px;
-  margin-bottom: 2px;
-}
-
-.res-card-tag {
-  font-family: var(--font-body);
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.res-card-tag--gold {
-  color: var(--text-muted);
-}
-
-.res-card-tag--jade {
-  color: var(--text-muted);
-}
-
-.res-card-tag--purple {
-  color: var(--text-muted);
 }
 
 .res-card-title {
-  font-size: 15.5px;
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  color: var(--text-primary);
-}
-
-.res-card-desc {
-  color: var(--text-muted);
-  font-size: 14px;
-  line-height: 1.7;
-  flex: 1;
-}
-
-.res-card-footer {
-  padding-top: 8px;
-  margin-top: auto;
-}
-
-.res-card-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12.5px;
+  font-size: 20px;
   font-weight: 600;
-  color: var(--text-muted);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  text-wrap: wrap;
   transition: color 0.15s;
 }
 
-.res-card:hover .res-card-cta {
+.res-card-desc {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.res-card-cta {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 4px;
+  font-size: var(--text-meta);
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.15s;
+}
+
+.res-card:focus-visible {
+  outline-offset: 8px;
+}
+
+.res-card:is(:hover, :focus-visible) :is(.res-card-title, .res-card-cta) {
+  color: var(--purple-bright);
+}
+
+.res-card:is(:hover, :focus-visible) .res-card-cta {
+  text-decoration-color: currentColor;
+}
+
+.res-card:active :is(.res-card-title, .res-card-cta) {
   color: var(--text-primary);
 }
 
@@ -4435,8 +4426,9 @@ body:has(.application-banner:not([hidden])) .site-main .page {
 
 /* ── Responsive ── */
 @media (max-width: 980px) {
-  .res-card-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .res-library-group {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-md);
   }
 
   .res-ama-card {
@@ -4485,8 +4477,14 @@ body:has(.application-banner:not([hidden])) .site-main .page {
     padding-bottom: 56px;
   }
 
+  .res-library-group {
+    gap: var(--space-sm);
+    padding-block: var(--space-md);
+  }
+
   .res-card-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-lg);
   }
 
   .res-ama-card {
