@@ -59,5 +59,5 @@ export const resourceDescriptions: Record<string, string> = {
   "engagement-during-fundraising": "Read 886 Studios partners' advice on keeping interested investors engaged throughout fundraising and maintaining momentum in your investor conversations.",
   "negotiating-with-lead-investors": "Explore firsthand advice from 886 Studios partners on negotiating with potential lead investors and navigating the relationships behind a funding round.",
   "incorporation-101": "Compare startup incorporation options, business structures, and setup considerations with the 886 Studios guide for founders planning their company.",
-  "interview-guidebook": "Prepare for an ikigai Launchpad interview with guidance on the format, what the team looks for, and how to explain your startup clearly.",
+  "interview-guidebook": "Prepare for your first ikigai Launchpad interview: a 20-minute conversation with the 886 Studios team about your startup. You don’t need a pitch deck.",
 };

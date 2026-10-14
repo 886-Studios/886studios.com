@@ -1339,7 +1339,7 @@ export const siteContent = {
         href: "/interview-guidebook",
         ctaLabel: "Read guide",
         description:
-          "Prepare for an 886 program interview: learn the format, what we look for, and how to explain your startup.",
+          "Prepare for your first ikigai Launchpad interview: a 20-minute conversation with the 886 Studios team. No pitch deck needed.",
       },
       {
         group: "ecosystem",

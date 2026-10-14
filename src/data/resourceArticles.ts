@@ -133,7 +133,7 @@ export const resourceArticles: ResourceArticle[] = [
     slug: "application-guide",
     title: "Accelerator application guide",
     intro:
-      "Prepare accelerator applications with a founder checklist, clear written answers, a one-minute video, and current ikigai Launchpad eligibility details.",
+      "Prepare accelerator applications with a founder checklist, clear written answers, a one-minute video, and ikigai Launchpad eligibility and first interview guidance.",
   },
   {
     slug: "safe-note-guide",
@@ -1197,17 +1197,18 @@ export const standaloneResourceArticles: ResourceArticle[] = [
     title: "Interview Guidebook",
     sections: [
       {
-        title: "The Basics",
+        title: "The First Interview",
         paragraphs: [
-          "All 886 program interviews are conducted over 30-minute time slots via Zoom. We expect all co-founders to be on the call. In return, expect 1-2 of our partners to present, in addition to our operating team and program directors.",
-          "Due to time constraints we ask for your pitch to be concise. Teams are given 5 minutes to present, in which we expect you to walk us through your deck and do a brief demonstration of your product. The remainder of the 25 minutes is reserved for Q&A and discussion.",
+          "The first ikigai Launchpad interview is a 20-minute conversation with the 886 Studios team. You don’t need a pitch deck. Come ready to discuss your team, the problem you’re solving, what you’re building, and what you’ve learned so far.",
+          "The first interview takes place via Zoom. We expect all co-founders to be on the call. In return, expect 1-2 of our partners to be present, in addition to our operating team and program directors.",
         ],
       },
       {
         title: "How to Prepare",
         list: [
           "Online Etiquette - Preemptively address potential technical issues. Have resources prepared and accessible, and make sure Zoom works without interruptions or updates.",
-          "Your Pitch - Don’t try to memorize a script. Prepare talking points and conduct market research beforehand, but aim to be familiar enough that you do not rely heavily on notes.",
+          "The Conversation - Don’t try to memorize a script. Prepare concise talking points and conduct market research beforehand, but aim to be familiar enough that you do not rely heavily on notes.",
+          "Your Questions - Think about what you would like to ask the 886 Studios team about ikigai Launchpad and how it could support your startup.",
         ],
       },
       {
@@ -1215,6 +1216,7 @@ export const standaloneResourceArticles: ResourceArticle[] = [
         list: [
           "Progress - We are interested in seeing the progress you have made since applying or contacting us.",
           "About You - Be ready to describe your team's size, experience, the problem you are solving, and why solving it is personally significant to you.",
+          "Your Product - Be ready to explain what you are building, who it is for, and how it addresses the problem.",
           "Data - Be ready to share monthly operating expenses, runway, previous funding, and user or revenue metrics if applicable.",
         ],
       },
