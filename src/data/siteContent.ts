@@ -1490,7 +1490,7 @@ export const siteContent = {
         eyebrow: "Who We Are",
         title: "",
         paragraphs: [
-          "886 Studios is a Taipei-based venture firm and startup accelerator supporting early-stage founders building for global markets. Our partners include the founders of Twitch, Kabam, RedOctane (creators of Guitar Hero), Playdom, OrbitBaby, HTC Vive, and other successful companies.",
+          "886 Studios is a Taipei-based venture firm that runs ikigai Launchpad, a startup accelerator supporting early-stage founders building for global markets. Our partners include the founders of Twitch, Kabam, RedOctane (creators of Guitar Hero), Playdom, OrbitBaby, HTC Vive, and other successful companies.",
           "Our portfolio spans industries and geographies, including Discord, OURA, Crunchyroll, Gogoro, P. LEAGUE+, KKBOX, and more. We back ambitious early-stage founders with a commitment to empowering Taiwan's startup ecosystem.",
           "What makes 886 Studios unique is our ability to combine Silicon Valley experience with deep knowledge of Taiwan's talent and market strengths. Based in Taipei, we serve as a bridge between Taiwan and Silicon Valley.",
         ],

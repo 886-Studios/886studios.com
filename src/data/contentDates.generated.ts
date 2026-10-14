@@ -4,7 +4,7 @@ export const contentDates: Readonly<Record<string, string>> = {
   "/ikigai-launchpad": "2026-10-13",
   "/incorporation-101": "2026-10-13",
   "/interview-guidebook": "2026-10-13",
-  "/launch-station": "2026-10-13",
+  "/launch-station": "2026-10-14",
   "/resources": "2026-10-13",
   "/resources/application-guide": "2026-10-13",
   "/resources/cap-table-guide": "2026-10-13",
