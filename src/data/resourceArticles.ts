@@ -148,6 +148,12 @@ export const resourceArticles: ResourceArticle[] = [
       "Learn what a cap table shows, how fully diluted ownership works, and how SAFEs, option pools, vesting and new rounds change founder ownership.",
   },
   {
+    slug: "term-sheet-guide",
+    title: "What is a term sheet?",
+    intro:
+      "Learn to read your first startup term sheet, understand valuation and investor rights, and prepare for negotiation with examples and a review checklist.",
+  },
+  {
     slug: "founders-frequently-asked-questions",
     title: "Founders FAQs",
     intro:

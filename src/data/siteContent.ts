@@ -1326,6 +1326,14 @@ export const siteContent = {
           "Understand SAFE funding, valuation caps, and how SAFEs compare with convertible notes, including what to check before signing.",
       },
       {
+        group: "fundraising",
+        title: "Term Sheet Guide",
+        href: "/resources/term-sheet-guide",
+        ctaLabel: "Read guide",
+        description:
+          "Read your first term sheet with confidence. Learn the key terms, work through ownership examples, and prepare questions before signing.",
+      },
+      {
         group: "accelerators",
         title: "Application Guide",
         href: "/resources/application-guide",

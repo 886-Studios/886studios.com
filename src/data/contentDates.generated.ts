@@ -5,7 +5,7 @@ export const contentDates: Readonly<Record<string, string>> = {
   "/incorporation-101": "2026-10-13",
   "/interview-guidebook": "2026-10-14",
   "/launch-station": "2026-10-14",
-  "/resources": "2026-10-14",
+  "/resources": "2026-10-16",
   "/resources/application-guide": "2026-10-14",
   "/resources/cap-table-guide": "2026-10-13",
   "/resources/choosing-the-right-co-founder": "2026-10-13",
@@ -19,6 +19,7 @@ export const contentDates: Readonly<Record<string, string>> = {
   "/resources/lessons-learned": "2026-10-13",
   "/resources/negotiating-with-lead-investors": "2026-10-13",
   "/resources/safe-note-guide": "2026-10-13",
+  "/resources/term-sheet-guide": "2026-10-16",
   "/resources/the-role-of-expertise": "2026-10-13",
   "/resources/warm-introductions": "2026-10-13",
   "/resources/y-combinator-101": "2026-10-13"

@@ -45,6 +45,7 @@ export const portfolioDescriptions: Record<string, string> = {
 };
 
 export const resourceDescriptions: Record<string, string> = {
+  "term-sheet-guide": "Reading your first startup term sheet? Learn valuation, dilution, investor rights and red flags through clear examples and questions to ask before signing.",
   "y-combinator-101": "Prepare your YC application with advice from experienced founders, former YC Partners, and 886 Partners, plus links to application and interview resources.",
   "application-guide": "Prepare your accelerator application with a founder checklist, written answers, a one-minute video, and ikigai Launchpad eligibility details from 886 Studios.",
   "safe-note-guide": "Learn how SAFE notes work, how valuation caps affect ownership, how SAFEs compare with convertible notes, and what founders should check before signing.",

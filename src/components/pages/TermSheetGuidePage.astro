@@ -1,0 +1,264 @@
+---
+import ResourceGuide from "../ResourceGuide.astro";
+import ResourceGuideHero from "../ResourceGuideHero.astro";
+---
+<ResourceGuide>
+  <ResourceGuideHero title="What is a term sheet?">
+    <p class="guide-lead mt-6">A term sheet is a short document that outlines a proposed startup investment: how much money comes in, how much ownership investors get, and what decisions they can influence. The investment terms are usually non-binding, but confidentiality and exclusivity clauses can create obligations before any money arrives.</p>
+    <p class="mt-4">Your first term sheet can introduce unfamiliar terms that affect your company for years. This guide explains what they mean, shows how the numbers work and gives you questions to ask before signing.</p>
+    <p class="mt-4 guide-small">The examples use US seed and Series A priced equity rounds, where investors buy shares at an agreed price. Founders in Taiwan and Southeast Asia should check the company structure and governing law with local counsel. This is educational information, not legal, tax, or investment advice.</p>
+    <a href="#term-sheet-checks" class="mt-7 btn-pri">Jump to the checklist</a>
+    <nav aria-label="In this guide" class="mt-9 guide-contents guide-small">
+      <a href="#first-term-sheet" class="guide-link">Start here</a>
+      <a href="#term-sheet-basics" class="guide-link">Is it binding?</a>
+      <a href="#economic-terms" class="guide-link">Economic terms</a>
+      <a href="#liquidation-preference-example" class="guide-link">Exit example</a>
+      <a href="#control-terms" class="guide-link">Control terms</a>
+      <a href="#term-sheet-vs-safe" class="guide-link">Term sheet vs SAFE</a>
+      <a href="#term-sheet-checks" class="guide-link">Founder checks</a>
+      <a href="#term-sheet-faq" class="guide-link">FAQs</a>
+    </nav>
+  </ResourceGuideHero>
+  <section id="first-term-sheet" class="guide-anchor">
+    <div class="guide-container">
+      <h2>How to read your first term sheet</h2>
+      <p class="mt-4">Read the offer in three passes. Mark anything you cannot yet explain to a co-founder or advisor.</p>
+      <ol class="guide-list mt-6">
+        <li><span class="guide-emphasis">Follow the money.</span> How much reaches the company, when does it arrive, and what percentage will everyone own afterward?</li>
+        <li><span class="guide-emphasis">Follow the decisions.</span> Who gets a board seat, and which decisions will need investor approval?</li>
+        <li><span class="guide-emphasis">Follow the commitments.</span> What becomes binding when you sign, and what still has to happen before the money arrives?</li>
+      </ol>
+      <p class="mt-6">Ask a lawyer who works on startup financings to review the document before you sign. Bring your business questions and ask for an estimate of legal costs through closing.</p>
+      <p class="mt-4">If you have not started raising yet, use the <a href="/resources/cap-table-guide" class="guide-link">cap table guide</a> to map who owns your company. It will make the examples below easier to follow.</p>
+    </div>
+  </section>
+  <section id="term-sheet-basics" class="guide-anchor">
+    <div class="guide-container">
+      <h2>Is a term sheet legally binding?</h2>
+      <p class="mt-4">A signed term sheet usually does not commit the investor to fund. No-shop and confidentiality provisions are commonly binding, and some jurisdictions may impose a duty to negotiate in good faith. The wording and governing law matter. Ask your lawyer to identify every obligation that takes effect when you sign.</p>
+      <p class="mt-4">A no-shop clause, also called exclusivity, restricts competing financing or sale discussions for an agreed period. Check its scope, exceptions, expiry and any extension. Confidentiality limits how the terms can be shared. For example, ask whether you can discuss the offer with your co-founder and professional advisors. Source: <a href="https://www.mccarter.com/wp-content/uploads/2020/12/AnatomyTermSheet_Q42020_FINAL.pdf" class="guide-link">McCarter &amp; English, Anatomy of a Term Sheet</a>.</p>
+      <h3 class="mt-10">What happens after you sign a term sheet?</h3>
+      <p class="mt-4">Investors carry out <span class="guide-emphasis">due diligence</span>, checking your cap table, contracts and ownership of the product or technology. Lawyers negotiate the <span class="guide-emphasis">definitive documents</span>, the full legal agreements for the investment.</p>
+      <p class="mt-4"><span class="guide-emphasis">Closing</span> is when the agreed conditions are met and the transaction is completed. Confirm when funds arrive and whether some money comes later in separate payments, called tranches. For a US priced equity round, the NVCA model set includes:</p>
+      <ul class="mt-6 guide-list"><li>Certificate of incorporation, which sets the rights of the new preferred stock</li>
+      <li>Stock purchase agreement, which covers the sale of the shares</li>
+      <li>Investors&#x27; rights agreement, which covers information, registration and pro rata rights</li>
+      <li>Voting agreement, which covers board composition and how shareholders vote</li>
+      <li>Right of first refusal and co-sale agreement, which covers transfers of founder shares</li>
+      </ul>
+      <p class="mt-4">Base hiring and spending commitments on available cash, allowing for the possibility that closing takes longer than planned.</p>
+      <p class="mt-6">Sources: <a href="https://www.ycombinator.com/series_a_term_sheet/" class="guide-link">Y Combinator Series A term sheet guide</a> and <a href="https://nvca.org/model-legal-documents/" class="guide-link">NVCA model legal documents</a>.</p>
+    </div>
+  </section>
+  <section id="economic-terms" class="guide-anchor">
+    <div class="guide-container">
+      <h2>Key economic terms in a startup term sheet</h2>
+      <p class="mt-4">Economic terms affect ownership after the round and how sale proceeds are divided. The explanations below draw on <a href="https://www.ycombinator.com/series_a_term_sheet/" class="guide-link">Y Combinator&#x27;s standard Series A term sheet</a>. Use them as reference points when discussing your own deal.</p>
+      <h3 class="mt-10 guide-anchor" id="pre-money-vs-post-money">Pre-money vs post-money valuation: a simple example</h3>
+      <p class="mt-4">Pre-money valuation is the agreed value of the company before the new investment. Post-money valuation adds the new money. If you raise US$1 million at a US$4 million pre-money valuation, the post-money valuation is US$5 million. The new investor owns 20%: $1 million divided by $5 million.</p>
+      <p class="mt-4">If you and your co-founder each owned 50% before that round, you would each own 40% afterward. That decrease in ownership percentage is <span class="guide-emphasis">dilution</span>. This simple example assumes no SAFEs, convertible notes or option pool changes. The investment goes into the company; it is not a personal payout to the founders.</p>
+      <p class="mt-4">Ask for a <span class="guide-emphasis">fully diluted cap table</span>. It includes shares already issued and potential shares, such as employee options and converting investments. Confirm which items the round’s documents count.</p>
+      <p class="mt-6 guide-mobile-only guide-small">Scroll the table sideways to read all columns.</p>
+      <div class="mt-6">
+        <div role="region" aria-label="Term sheet economic terms, horizontally scrollable" tabindex="0" class="guide-table-scroll">
+          <table class="guide-table--three">
+            <caption class="mt-4 sr-only">Economic terms in a startup term sheet, what each means, and questions a first-time founder can ask.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Term</th><th scope="col">What it means</th><th scope="col">Ask before signing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Valuation</th><td>The agreed company value used to price the round. The price per share also depends on which shares are counted.</td><td>Is this pre-money or post-money? What will I own after every SAFE and option pool change?</td>
+              </tr>
+              <tr>
+                <th scope="row">Option pool</th><td>Shares reserved for future employees. If the pool is counted in the pre-money valuation, its cost falls on existing holders.</td><td>Which planned hires does the pool cover? How much is already available?</td>
+              </tr>
+              <tr>
+                <th scope="row">Liquidation preference</th><td>What investors receive before common stockholders in a sale or wind-down.</td><td>Is it 1x non-participating? Can we model what everyone receives at several sale prices?</td>
+              </tr>
+              <tr>
+                <th scope="row">Dividends</th><td>Payments attached to investor shares. Cumulative dividends can build up over time and increase what investors receive before founders.</td><td>Do dividends accumulate even when the company does not pay them?</td>
+              </tr>
+              <tr>
+                <th scope="row">Anti-dilution</th><td>Protects investors if a later round sells shares at a lower price, called a down round. It can increase the shares they receive when their preferred stock converts.</td><td>Is the formula broad-based weighted average or full ratchet? How would each affect our ownership in a down round?</td>
+              </tr>
+              <tr>
+                <th scope="row">Pro rata rights</th><td>The right to invest more money in a future round to maintain an ownership percentage.</td><td>Who gets this right, and how much room would it leave for new investors?</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="mt-6">Ask your lawyer to model anti-dilution protection in a down round. Pro rata rights work differently: the investor must put in more money to buy additional shares.</p>
+      <h3 class="mt-10">Which economic terms are red flags?</h3>
+      <p class="mt-4">Y Combinator flags the following terms in its Series A guidance. If you see one, ask your lawyer to model its effect and discuss why the investor wants it:</p>
+      <ul class="mt-6 guide-list"><li>A liquidation preference above 1x, giving investors priority for more than their original investment before common stockholders are paid. Debt and senior claims may still come first.</li>
+      <li>Participating preferred, so investors take their money back and also share in what is left.</li>
+      <li>Cumulative dividends, which raise the amount investors receive first every year.</li>
+      <li>Warrant coverage, which gives investors extra ownership without paying for it at the agreed valuation.</li>
+      </ul>
+      <h3 class="mt-10">How does the option pool change the valuation?</h3>
+      <p class="mt-4">If the new option pool is included in the pre-money share count, existing holders bear that dilution. Consider a separate example: a $20 million pre-money valuation, a $5 million investment and a new pool equal to 10% of the company after the round. Assume no outstanding SAFEs, notes or existing options.</p>
+      <p class="mt-4">The investor owns 20%, the pool takes 10%, and existing holders keep 70%. At the round price, their shares represent $17.5 million of the $25 million post-money value. All dollar examples use US dollars.</p>
+      <p class="mt-4">Size the unallocated pool from your hiring plan and check how much is already available. A percentage without a hiring plan can hide avoidable dilution. Source: <a href="https://www.mccarter.com/wp-content/uploads/2020/12/AnatomyTermSheet_Q42020_FINAL.pdf" class="guide-link">McCarter &amp; English, Anatomy of a Term Sheet</a>. See who a pool dilutes in our <a href="/resources/cap-table-guide#option-pool" class="guide-link">cap table guide</a>.</p>
+    </div>
+  </section>
+  <section id="liquidation-preference-example" class="guide-anchor">
+    <div class="guide-container">
+      <h2>Liquidation preference example: who gets paid in a sale?</h2>
+      <p class="mt-4">Founders usually hold common stock. Investors in a priced round usually buy preferred stock, which carries extra rights. A liquidation preference is one of those rights: it sets the investor’s priority for receiving proceeds when the company is sold or wound down. “1x” means an amount equal to the original investment, subject to the money available.</p>
+      <p class="mt-4">A hypothetical investor pays $5 million for 20% of a company. Here is how three sale prices split between the investor and common stockholders (founders, employees and other common holders).</p>
+      <ol class="mt-6 guide-list"><li><span class="guide-emphasis">Non-participating.</span> The investor chooses its $5 million preference or converts to common stock and takes 20% of the proceeds, whichever pays more. At $25 million, both choices pay the same. Above that, conversion pays more. If available proceeds are below $5 million, it cannot receive the full preference.</li>
+      <li><span class="guide-emphasis">Participating.</span> The investor takes $5 million first, then 20% of what remains. This example assumes there is no cap on participation.</li>
+      </ol>
+      <p class="mt-6 guide-mobile-only guide-small">Scroll the table sideways to read all columns.</p>
+      <div class="mt-6">
+        <div role="region" aria-label="Liquidation preference example at three sale prices, horizontally scrollable" tabindex="0" class="guide-table-scroll">
+          <table class="guide-table--five guide-table--numeric">
+            <caption class="mt-4 sr-only">Sale proceeds to a $5 million investor holding 20% and to common stockholders, under 1x non-participating and 1x participating preferences, at $10 million, $25 million and $50 million sales.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Sale price</th><th scope="col">Investors, 1x non-participating</th><th scope="col">Common, non-participating</th><th scope="col">Investors, 1x participating</th><th scope="col">Common, participating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">$10M sale</th><td>$5M</td><td>$5M</td><td>$6M</td><td>$4M</td>
+              </tr>
+              <tr>
+                <th scope="row">$25M sale</th><td>$5M</td><td>$20M</td><td>$9M</td><td>$16M</td>
+              </tr>
+              <tr>
+                <th scope="row">$50M sale</th><td>$10M</td><td>$40M</td><td>$14M</td><td>$36M</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="mt-6">At a $10 million sale, participating preferred leaves $4 million for common stockholders, compared with $5 million under non-participating preferred. The investor owns 20% in both cases. Your ownership percentage alone does not tell you what you would receive in a sale.</p>
+      <p class="mt-4">This simplified example excludes debt, transaction costs and other preferred share classes. Y Combinator&#x27;s standard term sheet uses a 1x non-participating preference and treats participation as non-standard. Source: <a href="https://www.ycombinator.com/series_a_term_sheet/" class="guide-link">Y Combinator Series A term sheet guide</a>.</p>
+    </div>
+  </section>
+  <section id="control-terms" class="guide-anchor">
+    <div class="guide-container">
+      <h2>Board seats, protective provisions and founder control</h2>
+      <p class="mt-4">Owning most of the shares does not automatically mean you can make every decision. Read the board rules and investor approval rights alongside your ownership percentage. Think about decisions you may face soon: hiring a senior leader, raising again or accepting an acquisition offer.</p>
+      <h3 class="mt-10">How should the board be set up?</h3>
+      <p class="mt-4">In Y Combinator&#x27;s standard term sheet, founders keep board control 2 to 1: two seats chosen by common stockholders and one by the investor. A 2-2-1 board, with two founder seats, two investor seats and one independent seat, leaves founders without a majority. Check how the independent director is chosen and whether a founder seat depends on continued employment. Board membership, voting power and employment are separate rights.</p>
+      <h3 class="mt-10">What are protective provisions?</h3>
+      <p class="mt-4">Protective provisions list decisions that need the preferred stockholders&#x27; approval, even if the board agrees. Two important examples are the right to block a future financing or a company sale. Watch for extra clauses that require the investor director to approve operating decisions such as the budget, executive hires or a pivot.</p>
+      <p class="mt-4">Ask: “If we want to raise another round or sell the company, exactly whose approval do we need?” Have your lawyer point to the clauses that answer it.</p>
+      <h3 class="mt-10">What are drag-along rights and founder vesting?</h3>
+      <p class="mt-4">A drag-along can require shareholders to support a sale when specified approvals and conditions are met. Check whose consent triggers it.</p>
+      <p class="mt-4">Founder vesting sets when you fully earn your shares; a departing founder’s unvested shares may be subject to company repurchase. The round may introduce or reset that schedule. Check whether time already worked counts and whether there is a new cliff, the initial period before any shares vest. The four-year schedule with a one-year cliff is explained in our <a href="/resources/cap-table-guide#founder-vesting" class="guide-link">cap table guide</a>.</p>
+      <p class="mt-6">Source: <a href="https://www.ycombinator.com/series_a_term_sheet/" class="guide-link">Y Combinator Series A term sheet guide</a>.</p>
+    </div>
+  </section>
+  <section id="term-sheet-vs-safe" class="guide-anchor">
+    <div class="guide-container">
+      <h2>Term sheet vs SAFE: what is the difference?</h2>
+      <p class="mt-4">A term sheet summarizes a proposed deal. A SAFE (Simple Agreement for Future Equity) is an investment contract: investors provide money now for rights that usually convert into shares in a later priced round. It also sets out what happens if the company is sold or shuts down.</p>
+      <p class="mt-4">A SAFE is not debt. A term sheet can describe either an equity or a debt financing, so check the investment type. This comparison covers a priced equity round, where investors buy shares at closing.</p>
+      <p class="mt-6 guide-mobile-only guide-small">Scroll the table sideways to read all columns.</p>
+      <div class="mt-6">
+        <div role="region" aria-label="Priced round term sheet and SAFE comparison, horizontally scrollable" tabindex="0" class="guide-table-scroll">
+          <table class="guide-table--three">
+            <caption class="mt-4 sr-only">A priced round under a term sheet compared with a SAFE by what investors get, price, control terms and paperwork.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Feature</th><th scope="col">Priced round (term sheet)</th><th scope="col">SAFE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">What investors get</th><td>Preferred shares at closing</td><td>A right to shares later</td>
+              </tr>
+              <tr>
+                <th scope="row">Price</th><td>Agreed valuation and share count set the price</td><td>Set when it converts, usually limited by a valuation cap</td>
+              </tr>
+              <tr>
+                <th scope="row">Control terms</th><td>Often board seats and protective provisions</td><td>Standard YC SAFEs do not grant a board seat; check amendments and side letters</td>
+              </tr>
+              <tr>
+                <th scope="row">Paperwork</th><td>Term sheet, then several definitive documents</td><td>A SAFE contract, sometimes with a side letter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="mt-6">Summarized from <a href="https://www.ycombinator.com/safe/" class="guide-link">Y Combinator&#x27;s SAFE overview</a> and <a href="https://nvca.org/model-legal-documents/" class="guide-link">NVCA model legal documents</a>. Specific documents can differ.</p>
+      <p class="mt-4">ikigai Launchpad, the startup accelerator run by Taipei-based venture firm 886 Studios, publishes its SAFE investment terms on the <a href="/ikigai-launchpad" class="guide-link">program page</a>. Our <a href="/resources/safe-note-guide#ikigai-example" class="guide-link">SAFE guide</a> walks through the ownership calculation. At conversion, check which class of preferred stock each SAFE receives and how its liquidation preference is calculated in the final documents.</p>
+    </div>
+  </section>
+  <section id="term-sheet-checks" class="guide-anchor">
+    <div class="guide-container">
+      <h2>What should founders check before signing a term sheet?</h2>
+      <p class="mt-4">Bring these questions to your legal review and discuss them with any co-founders. For each answer, note the clause or cap table calculation that supports it.</p>
+      <ul class="guide-list mt-6">
+        <li><span class="guide-emphasis">Ownership:</span> “What percentage will each founder own after this round, including the option pool and every converting SAFE or note?”</li>
+        <li><span class="guide-emphasis">Sale proceeds:</span> “What would each holder receive if we sold below, at or above the round valuation?”</li>
+        <li><span class="guide-emphasis">Decisions:</span> “Who appoints each director, and which decisions need separate investor approval?”</li>
+        <li><span class="guide-emphasis">Founder shares:</span> “Does my vesting change? What happens to my shares and board seat if I leave?”</li>
+        <li><span class="guide-emphasis">Restrictions:</span> “When does exclusivity end, who can see these terms, and which costs must we pay even if the deal falls through?”</li>
+        <li><span class="guide-emphasis">Funding:</span> “How much arrives at the first closing? What conditions apply to the rest?”</li>
+        <li><span class="guide-emphasis">Timing:</span> “When does this offer expire, and can we agree on enough time for legal review?”</li>
+      </ul>
+      <h3 class="mt-10">How to prepare for the negotiation</h3>
+      <p class="mt-4">Choose the changes that matter most and explain why. If you have co-founders, agree on those priorities together. For example, connect the option pool request to the hires you plan to make, or explain how an approval requirement could affect a decision you expect to face.</p>
+      <p class="mt-4">Use the same cap table and sale scenarios to compare offers. A higher valuation can come with terms that change your eventual payout or decision-making rights. If an investor calls a clause “standard,” ask your lawyer what it does in your specific deal.</p>
+      <p class="mt-4">You can say: “Thanks for sending this. We’re reviewing the ownership model and approval rights with our counsel. Could we walk through the option pool assumptions and closing conditions together?”</p>
+    </div>
+  </section>
+  <section id="term-sheet-faq" class="guide-anchor">
+    <div class="guide-container">
+      <h2>Term sheet FAQs</h2>
+      <div class="mt-8 guide-questions">
+        <div id="negotiate-first-term-sheet" class="guide-anchor">
+          <h3>Can a first-time founder negotiate a term sheet?</h3>
+          <p class="mt-3">Yes. You can ask for changes and explanations. What an investor will accept depends on the company, market and alternatives available to each side. Prioritize the terms that affect your ownership, decisions and ability to close, with help from a lawyer familiar with startup financing.</p>
+          <a href="/resources/negotiating-with-lead-investors" class="mt-3 guide-link guide-inline guide-small">886 partners on negotiating with lead investors</a>
+        </div>
+        <div id="term-sheet-template" class="guide-anchor">
+          <h3>Where can I find a startup term sheet template?</h3>
+          <p class="mt-3">Y Combinator publishes a Series A term sheet example, and the NVCA provides model venture financing documents. Use them to learn the vocabulary and compare provisions with your lawyer. A US template needs review before you use it for a different jurisdiction or deal.</p>
+          <a href="https://www.ycombinator.com/series_a_term_sheet/" class="mt-3 guide-link guide-inline guide-small">Y Combinator Series A term sheet template</a>
+        </div>
+        <div id="term-sheet-binding" class="guide-anchor">
+          <h3>Is a term sheet legally binding?</h3>
+          <p class="mt-3">Investment terms are usually non-binding, but no-shop and confidentiality clauses commonly bind the parties. Other obligations can depend on the wording and governing law. A signed term sheet alone does not guarantee the investment will close.</p>
+          <a href="https://www.mccarter.com/wp-content/uploads/2020/12/AnatomyTermSheet_Q42020_FINAL.pdf" class="mt-3 guide-link guide-inline guide-small">McCarter &amp; English, Anatomy of a Term Sheet</a>
+        </div>
+        <div id="no-shop-length" class="guide-anchor">
+          <h3>How long is a no-shop period?</h3>
+          <p class="mt-3">The parties negotiate the length. McCarter &amp; English cited 30 to 90 days in its Q4 2020 guide, but that is historical context rather than a current benchmark. Check the exact expiry, restricted activities and extension terms in your document.</p>
+          <a href="https://www.mccarter.com/wp-content/uploads/2020/12/AnatomyTermSheet_Q42020_FINAL.pdf" class="mt-3 guide-link guide-inline guide-small">McCarter &amp; English, Anatomy of a Term Sheet</a>
+        </div>
+        <div id="non-participating-preference" class="guide-anchor">
+          <h3>What is a 1x non-participating liquidation preference?</h3>
+          <p class="mt-3">In a sale, the investor chooses its original investment back or converts to common stock for its share of the proceeds, whichever pays more. It cannot take both, and the payout is limited by available proceeds. Y Combinator&#x27;s standard Series A term sheet uses this preference.</p>
+          <a href="https://www.ycombinator.com/series_a_term_sheet/" class="mt-3 guide-link guide-inline guide-small">Y Combinator Series A term sheet guide</a>
+        </div>
+        <div id="term-sheet-red-flags" class="guide-anchor">
+          <h3>What are red flags in a term sheet?</h3>
+          <p class="mt-3">Y Combinator names a liquidation preference above 1x, participating preferred, cumulative dividends and warrant coverage. It also warns about boards where founders lose majority control.</p>
+          <a href="https://www.ycombinator.com/series_a_term_sheet/" class="mt-3 guide-link guide-inline guide-small">Y Combinator Series A term sheet guide</a>
+        </div>
+        <div id="after-term-sheet" class="guide-anchor">
+          <h3>What happens after a term sheet is signed?</h3>
+          <p class="mt-3">Lawyers draft the definitive documents, such as the stock purchase agreement, investors&#x27; rights agreement and voting agreement. Funding follows the agreed signing and closing process once the required conditions are met. A round may have multiple closings or milestone-based tranches.</p>
+          <a href="https://nvca.org/model-legal-documents/" class="mt-3 guide-link guide-inline guide-small">NVCA model legal documents</a>
+        </div>
+      </div>
+      <div class="mt-14 guide-next">
+        <h2>Preparing to negotiate with investors?</h2>
+        <p class="mt-4">In our <a href="/resources/negotiating-with-lead-investors" class="guide-link">founder Q&amp;A on negotiating with lead investors</a>, 886 Studios partner Kevin Chou points to company growth, market conditions and alternative offers as sources of negotiating leverage. Read his perspective alongside the checklist before your next investor conversation.</p>
+        <p class="mt-4">Continue with the <a href="/resources/safe-note-guide" class="guide-link">SAFE note guide</a> or build your ownership model with the <a href="/resources/cap-table-guide" class="guide-link">cap table guide</a>.</p>
+        <p class="mt-4">Exploring support for your first company? Learn about ikigai Launchpad, the startup accelerator run by 886 Studios, and prepare with our <a href="/resources/application-guide" class="guide-link">accelerator application guide</a>.</p>
+        <a href="/ikigai-launchpad" class="mt-6 btn-pri">Review program</a>
+        <p class="mt-8 guide-small">Prepared by <a href="/about" class="guide-link">886 Studios</a>. Sources reviewed <time datetime="2026-10-16">October 16, 2026</time>. This guide is educational, not legal, tax, or investment advice. Have a qualified lawyer review any term sheet before you sign.</p>
+      </div>
+    </div>
+  </section>
+</ResourceGuide>

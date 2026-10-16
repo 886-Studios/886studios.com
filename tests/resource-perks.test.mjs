@@ -54,6 +54,7 @@ test("resource guides follow the topic reading order", () => {
     "Incorporation 101",
     "Cap Table Guide",
     "SAFE Note Guide",
+    "Term Sheet Guide",
     "Application Guide",
     "Interview Guidebook",
     "Ecosystem Database",
