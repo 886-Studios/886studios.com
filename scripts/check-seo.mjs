@@ -1,5 +1,6 @@
 import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
+import { hasValidBrandTitle } from "./lib/seo-title.mjs";
 
 const projectRoot = process.cwd();
 const distRoot = path.join(projectRoot, "dist");
@@ -133,7 +134,7 @@ for (const filePath of htmlFiles) {
   const h1Count = (html.match(/<h1\b/gi) ?? []).length;
   if (isIndexable && h1Count !== 1) fail(`${route}: expected one H1, found ${h1Count}`);
 
-  if (isIndexable && (!title?.startsWith("886 Studios |") && !title?.endsWith("| 886 Studios"))) {
+  if (isIndexable && !hasValidBrandTitle(route, title)) {
     fail(`${route}: title does not use the standard 886 Studios brand pattern`);
   }
   if (title?.includes("—")) fail(`${route}: title contains an em dash`);
