@@ -3,15 +3,10 @@ import PageHero from "../PageHero.astro";
 import { siteContent } from "../../data/siteContent";
 
 const { about } = siteContent;
-const [titleBeforeSticker, titleAfterSticker] = about.title.split(" real ");
 ---
 
 <div class="page" id="page-about">
-  <PageHero title={about.title} lead={about.lead} accentHeader>
-    <Fragment slot="title">
-      {titleBeforeSticker}{" "}<span class="founder-sticker"><span class="founder-sticker-text">real</span></span>{" "}{titleAfterSticker}
-    </Fragment>
-  </PageHero>
+  <PageHero title={about.title} lead={about.lead} accentHeader />
   <div class="section about-content">
     <div class="about-cols reveal">
       {
@@ -121,33 +116,4 @@ const [titleBeforeSticker, titleAfterSticker] = about.title.split(" real ");
     border-top: 0;
   }
 
-  .founder-sticker {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    vertical-align: middle;
-    margin-inline: 0.06em 0.12em;
-    min-height: calc(1.5em + 4px);
-    padding: 0 0.42em;
-    border: 2px solid #e9dfff;
-    border-radius: 6px;
-    background: #c4a8ff;
-    color: #241045;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 24%);
-    font-size: 0.5em;
-    font-weight: 750;
-    font-style: italic;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    white-space: nowrap;
-    transform: translateY(-0.12em) rotate(-9deg);
-  }
-
-  .founder-sticker-text {
-    /* Center the visible letter height, excluding the font's line-box space. */
-    display: block;
-    text-box-trim: trim-both;
-    text-box-edge: cap alphabetic;
-  }
 </style>
