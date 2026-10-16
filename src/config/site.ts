@@ -12,7 +12,7 @@ export const applicationUrl = "https://tally.so/r/w5p4jQ";
 export const siteConfig = {
   name: "886 Studios",
   url: "https://www.886studios.com",
-  defaultTitle: "886 Studios | Taipei Venture Firm",
+  defaultTitle: "886 Studios | Taipei Venture Firm Behind ikigai Launchpad",
   defaultDescription:
     "886 Studios is a Taipei-based venture firm that runs ikigai Launchpad, a startup accelerator helping early-stage founders build global technology companies.",
   defaultOgImage: "https://www.886studios.com/assets/886-studios-preview.png",

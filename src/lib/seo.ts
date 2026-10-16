@@ -52,7 +52,7 @@ export const pageMeta = {
     dateModified: contentDates["/"],
   },
   programs: {
-    title: "ikigai Launchpad: Taipei Startup Accelerator | 886 Studios",
+    title: "ikigai Launchpad | Startup Accelerator in Taipei",
     description:
       "ikigai Launchpad is 886 Studios' 10-week, in-person Taipei accelerator with a standard $100K-for-8% SAFE, weekly mentor office hours, and investor access.",
     ogImage: `${siteConfig.url}/assets/programs/ikigai-audience-theater-1920.webp`,
