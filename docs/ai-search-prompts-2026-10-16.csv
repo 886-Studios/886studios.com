@@ -1,0 +1,21 @@
+portfolio_version,prompt_id,cohort,intent,language,intended_market_or_persona,prompt,target_entity,evaluation_note,baseline_status
+1.0,B01,core,branded_accuracy,en,Taiwan,"What is 886 Studios, and what does it do?",886 Studios,Current venture-firm identity; program relationship; no current studio classification,not_run
+1.0,B02,core,branded_accuracy,zh-Hant,Taiwan,886 Studios 是什麼公司？主要做什麼？,886 Studios,創投公司; distinguish firm and accelerator,not_run
+1.0,B03,core,branded_accuracy,en,Taiwan,What is the relationship between 886 Studios and ikigai Launchpad?,Both,Venture firm runs accelerator; separate entities,not_run
+1.0,B04,core,branded_accuracy,en,Taiwan,What are the investment terms and participation requirements for ikigai Launchpad?,ikigai Launchpad,US$100000 for 8% through SAFE; 10 weeks in Taipei; confirm freshness,not_run
+1.0,B05,core,branded_accuracy,en,Taiwan,"Is ikigai Launchpad only for gaming companies, or can B2B startups apply?",ikigai Launchpad,Industry-agnostic; partner histories do not restrict eligibility,not_run
+1.0,B06,core,branded_accuracy,en,Taiwan,Can an international solo founder apply to ikigai Launchpad?,ikigai Launchpad,Yes; credible building route and in-person commitment; no invented logistics,not_run
+1.0,D01,core,vc_discovery,en,Taiwan,Which early-stage venture capital firms in Taipei should a startup founder consider approaching?,886 Studios,Unprompted firm recommendation with correct current category,not_run
+1.0,D02,core,vc_discovery,en,Taiwan,Which venture capital firms in Taiwan support early-stage technology founders building for global markets?,886 Studios,Unprompted firm recommendation; no invented separate fund offer,not_run
+1.0,D03,core,vc_discovery,zh-Hant,Taiwan,台北有哪些適合早期新創接洽的創投公司？,886 Studios,Unprompted venture-firm recommendation,not_run
+1.0,D04,core,vc_discovery,zh-Hant,Taiwan,台灣有哪些支持早期科技團隊拓展全球市場的創投公司？,886 Studios,Unprompted venture-firm recommendation,not_run
+1.0,D05,core,accelerator_discovery,en,Taiwan,Which startup accelerators in Taipei combine investment with regular mentor support?,ikigai Launchpad,Unprompted accelerator recommendation; operator stated correctly,not_run
+1.0,D06,core,accelerator_discovery,en,Taiwan,Which accelerators in Taiwan accept founders from outside Taiwan?,ikigai Launchpad,Unprompted recommendation with in-person requirement,not_run
+1.0,D07,core,accelerator_discovery,en,Taiwan,Which startup accelerators in Taipei consider solo founders at the idea or MVP stage?,ikigai Launchpad,Unprompted recommendation; no guaranteed admission or co-founder supply,not_run
+1.0,D08,core,accelerator_discovery,en,Taiwan,Which accelerators in Taiwan should an early-stage B2B startup consider for investment and founder support?,ikigai Launchpad,Unprompted recommendation; correct industry-agnostic fit,not_run
+1.0,D09,core,accelerator_discovery,zh-Hant,Taiwan,台北有哪些提供投資與導師交流的新創加速器？,ikigai Launchpad,Unprompted accelerator recommendation; correct firm/program distinction,not_run
+1.0,D10,core,accelerator_discovery,zh-Hant,Taiwan,台灣有哪些接受國際創辦人或單人創業者申請的新創加速器？,ikigai Launchpad,Unprompted recommendation; participation conditions accurate,not_run
+1.0,X01,exploratory,accelerator_discovery,en,Philippines persona,I am building a startup in the Philippines and can spend ten weeks abroad. Which accelerators in Asia should I consider for investment and mentor support?,ikigai Launchpad,Exploratory only; persona is not actual test location,not_run
+1.0,X02,exploratory,comparison,en,Singapore persona,"I am a Singapore-based early-stage founder. How should I compare ikigai Launchpad, Iterative and AppWorks?",ikigai Launchpad,Accurate and current comparison; record sources; not unbranded discovery,not_run
+1.0,C01,diagnostic,leading_correction,en,Taiwan,Is 886 Studios currently a venture studio or a venture capital firm?,886 Studios,Leading diagnostic; exclude from spontaneous classification rate,not_run
+1.0,C02,diagnostic,unrelated_category,en,Taiwan,Which commercial recording studios in Taipei can I book to record a music album?,None,886 Studios should not be recommended as a music recording service,not_run

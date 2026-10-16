@@ -150,9 +150,16 @@ export function parseBlogFeed(xml: string): BlogPost[] {
     const publishedAt = readValue(item.pubDate);
     const rawContent = readValue(item["content:encoded"]);
     const slug = getSlug(substackUrl);
-    const normalizeText = (value: string) => normalizeEditorialText(
-      legacyBatchPosts.has(slug) ? normalizeBatchNames(value) : value,
-    );
+    // Owner-approved correction for this announcement; preserve other archive durations.
+    const correctProgramLength = slug === "ikigai-launchpad-spring-2026-sp26";
+    const normalizeText = (value: string) => {
+      const corrected = correctProgramLength
+        ? value.replace(/\b12-week program\b/g, "10-week program")
+        : value;
+      return normalizeEditorialText(
+        legacyBatchPosts.has(slug) ? normalizeBatchNames(corrected) : corrected,
+      );
+    };
     const title = normalizeText(readValue(item.title));
 
     if (!title || !slug || !substackUrl || !rawContent || !isValidDate(publishedAt)) {
@@ -183,6 +190,7 @@ export function parseBlogFeed(xml: string): BlogPost[] {
       description,
       substackUrl,
       publishedAt: new Date(publishedAt).toISOString(),
+      updatedAt: correctProgramLength ? "2026-10-14T00:00:00.000Z" : undefined,
       author:
         substackAuthorOverrides[slug] ||
         readValue(item["dc:creator"]) ||

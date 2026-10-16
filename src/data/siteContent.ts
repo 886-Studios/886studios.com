@@ -763,8 +763,11 @@ export const siteContent = {
   programs: {
     launchpad: {
       name: "ikigai Launchpad",
-      lead:
-        "Our flagship program. $100K USD, mentor office hours, investor intros, and support beyond the batch. From refining their vision to building lasting connections, we help founders move their companies forward. Join us in Taipei.",
+      lead: {
+        intro: "ikigai Launchpad is the flagship accelerator run by",
+        operator: { label: "886 Studios", href: "/about" },
+        body: "$100K USD, mentor office hours, investor intros, and support beyond the batch. From refining their vision to building lasting connections, we help founders move their companies forward. Join us in Taipei.",
+      },
       status: {
         announcement: launchpadScheduleNote,
         summary: `Next batch: ${launchpadNextBatch}.`,
@@ -786,7 +789,7 @@ export const siteContent = {
         {
           label: "Investment",
           value: "$100K USD",
-          note: "",
+          note: "For 8% through a SAFE",
         },
         {
           label: "Length",

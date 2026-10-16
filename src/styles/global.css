@@ -2293,6 +2293,12 @@ body:has(.application-banner:not([hidden])) .site-main .page {
       overflow-wrap: break-word;
     }
 
+    .prog-lead a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+
     .prog-hero-actions {
       display: flex;
       flex-wrap: wrap;

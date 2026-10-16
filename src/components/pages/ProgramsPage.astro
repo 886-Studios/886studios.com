@@ -37,7 +37,9 @@ const getPillarPhoto = (photo: (typeof launchpad.benefits)[number]["photo"]) => 
           aria-hidden="true"
         />
       </h1>
-      <p class="prog-lead">{launchpad.lead}</p>
+      <p class="prog-lead">
+        {launchpad.lead.intro}{" "}<a href={launchpad.lead.operator.href}>{launchpad.lead.operator.label}</a>.{" "}{launchpad.lead.body}
+      </p>
       <div class="prog-hero-actions">
         <a
           class="btn-pri prog-cta"

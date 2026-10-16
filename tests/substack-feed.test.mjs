@@ -134,6 +134,29 @@ test("legacy batch names are consistent in imported titles, summaries, body text
   assert.equal(parseBlogFeed(unrelated)[0].title, "YC S'25 and Fall 2026 applications");
 });
 
+test("the Spring 2026 program length correction reaches article and feed text without changing other posts", () => {
+  const { parseBlogFeed } = loadAdapter();
+  const slug = "ikigai-launchpad-spring-2026-sp26";
+  const xml = feed
+    .replace("Founder lessons", "Our 12-week program")
+    .replace("<pubDate>", "<description>Our 12-week program</description><pubDate>")
+    .replace("<p>Lessons for founders.</p>", '<p>Here is what the 12-week program includes:</p><p>Apply by January 31, 2026.</p><a href="https://example.com/12-week-program">Details</a>');
+  const corrected = parseBlogFeed(xml.replace("/p/founder-lessons", `/p/${slug}`))[0];
+  assert.equal(corrected.title, "Our 10-week program");
+  assert.equal(corrected.description, "Our 10-week program");
+  assert.match(corrected.contentHtml, /Here is what the 10-week program includes:/);
+  assert.match(corrected.contentHtml, /Apply by January 31, 2026\./);
+  assert.match(corrected.contentHtml, /href="https:\/\/example.com\/12-week-program"/);
+  assert.equal(corrected.publishedAt, "2026-08-11T00:00:00.000Z");
+  assert.equal(corrected.updatedAt, "2026-10-14T00:00:00.000Z");
+
+  const unrelated = parseBlogFeed(xml)[0];
+  assert.equal(unrelated.title, "Our 12-week program");
+  assert.equal(unrelated.description, "Our 12-week program");
+  assert.match(unrelated.contentHtml, /12-week program/);
+  assert.equal(unrelated.updatedAt, undefined);
+});
+
 test("imported picture links are named and sources use the article column width", () => {
   const { parseBlogFeed } = loadAdapter();
   const imageUrl = "https://substack-post-media.s3.amazonaws.com/public/images/banner_1456x762.webp";

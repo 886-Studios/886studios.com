@@ -117,13 +117,13 @@ export const resourceArticles: ResourceArticle[] = [
         title: "Read More",
         links: [
           {
-            label: "Advice from Michael Seibel",
+            label: "Michael Seibel on X",
             href: "https://twitter.com/mwseibel",
           },
           {
             label:
               "Article - YC’s latest batch sure was a lot of ‘maybe AI can do… this?’",
-            href: "https://techcrunch.com/",
+            href: "https://techcrunch.com/2023/04/08/ycs-latest-batch-sure-was-a-lot-of-maybe-ai-can-do-this/",
           },
         ],
       },
@@ -812,6 +812,11 @@ export const resourceArticles: ResourceArticle[] = [
         title: "Venture Capital",
         entries: [
           {
+            name: "886 Studios",
+            url: "www.886studios.com",
+            href: "https://www.886studios.com/",
+          },
+          {
             name: "BE Health",
             url: "www.behealthventures.com",
             href: "https://www.behealthventures.com/",
@@ -893,11 +898,6 @@ export const resourceArticles: ResourceArticle[] = [
       {
         title: "Venture Studios",
         entries: [
-          {
-            name: "886 Studios",
-            url: "www.886studios.com",
-            href: "https://www.886studios.com/",
-          },
           {
             name: "Elmntri",
             url: "elmntri.com",

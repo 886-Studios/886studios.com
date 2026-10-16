@@ -11,7 +11,7 @@ export const contentDates: Readonly<Record<string, string>> = {
   "/resources/cap-table-guide": "2026-10-13",
   "/resources/choosing-the-right-co-founder": "2026-10-13",
   "/resources/dos-and-donts": "2026-10-13",
-  "/resources/ecosystem-database": "2026-10-13",
+  "/resources/ecosystem-database": "2026-10-16",
   "/resources/encouraging-leadership": "2026-10-13",
   "/resources/engagement-during-fundraising": "2026-10-13",
   "/resources/finding-a-co-founder": "2026-10-13",

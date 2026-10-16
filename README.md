@@ -474,16 +474,18 @@ drawer uses the same hierarchy. Edit it in `siteContent.nav.items`.
 | About us | Blog | `/blog` | Local articles and ikigai Insights |
 | About us | In the News | `/newsroom` | Media coverage |
 | | Contact us | `/contact` | Application, email, and community links |
-| Hidden | Manifesto | `/manifesto` | Direct URL only; draft placeholder content; noindex |
 
 Team and Newsroom use
 `src/components/AboutTeam.astro` and `src/components/AboutNews.astro`, also shared
 with the `/about` page. Profiles live at `/team/<slug>`; former `/about/<legacy-slug>`
 profile URLs redirect to them.
 
-The former `/about/manifesto`, `/about/team`, and `/about/newsroom` paths redirect
+The former `/about/team` and `/about/newsroom` paths redirect
 to their root-level routes. `/programs` redirects to `/ikigai-launchpad`, and
 `/programs/launch-station` redirects to `/launch-station`.
+
+The Manifesto draft is archived in `src/archived/manifesto.astro`. Neither
+`/manifesto` nor `/about/manifesto` is published; both return 404.
 
 Rising Star is archived in `src/archived/rising-star.astro`. Its `/rising-star` and
 `/community/rising-star` routes are unpublished and return 404. To restore the

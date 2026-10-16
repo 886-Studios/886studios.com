@@ -163,11 +163,6 @@
       "permanent": true
     },
     {
-      "source": "/about/manifesto/:path*",
-      "destination": "/manifesto",
-      "permanent": true
-    },
-    {
       "source": "/about/team/:path*",
       "destination": "/team",
       "permanent": true
@@ -312,7 +307,7 @@
     },
     {
       "source": "/career/:path*",
-      "destination": "/about#about-careers-title",
+      "destination": "/team#careers",
       "permanent": true
     },
     {
@@ -342,7 +337,7 @@
     },
     {
       "source": "/resources/launch-station-program-perks/:path*",
-      "destination": "/resources#res-perks-heading",
+      "destination": "/launch-station#ls-perks-heading",
       "permanent": true
     },
     {
