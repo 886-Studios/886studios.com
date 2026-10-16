@@ -1049,6 +1049,10 @@ export const siteContent = {
           answer: "Yes. We welcome founders from anywhere in the world.",
         },
         {
+          question: "What language are the interviews and program conducted in?",
+          answer: "All interviews and the entire program are conducted in English.",
+        },
+        {
           question: "Do I need to incorporate before applying?",
           answer:
             "No. You do not need a legal entity in Taiwan or elsewhere to apply. If accepted, you will typically need to set up a US entity to receive funding.",
