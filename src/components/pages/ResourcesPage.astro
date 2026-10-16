@@ -9,7 +9,10 @@ const libraryGroups = [
   { id: "fundraising", title: "Ownership & fundraising" },
   { id: "accelerators", title: "Applying to accelerators" },
   { id: "ecosystem", title: "Networks & programs" },
-];
+].map((group) => ({
+  ...group,
+  count: resources.libraryItems.filter((item) => item.group === group.id).length,
+})).filter((group) => group.count > 0);
 
 ---
 
@@ -25,24 +28,62 @@ const libraryGroups = [
   <div class="res-shell">
 
     <section class="res-section res-library" aria-label="Resource library">
-      {libraryGroups.map((group) => (
-        <section class="res-library-group" aria-labelledby={`res-group-${group.id}`}>
-          <h2 class="res-library-heading" id={`res-group-${group.id}`}>{group.title}</h2>
-          <ul class="res-card-grid" role="list">
-            {resources.libraryItems.filter((item) => item.group === group.id).map((item) => (
-              <li>
-                <a class="res-card" href={item.href} aria-labelledby={`res-guide-${item.href.split("/").pop()}`}>
-                  <h3 class="res-card-title" id={`res-guide-${item.href.split("/").pop()}`}>{item.title}</h3>
-                  <p class="res-card-desc">{item.description}</p>
-                  <span class="res-card-cta">
-                    {item.ctaLabel}
-                  </span>
-                </a>
-              </li>
+      <resource-library>
+        <div class="res-library-toolbar">
+          <div class="res-library-title">
+            <h2 class="sr-only">Resource library</h2>
+            <p class="res-library-count" role="status" aria-atomic="true" data-result-count>
+              {resources.libraryItems.length} resources
+            </p>
+            <button class="res-library-reset" type="button" hidden>Clear filters</button>
+          </div>
+          <form class="res-library-search" role="search" aria-label="Search resource library" data-library-control hidden>
+            <label class="sr-only" for="resource-search">Search resources</label>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 4.5 4.5" />
+            </svg>
+            <input id="resource-search" type="search" placeholder="Search resources…" autocomplete="off" aria-controls="resource-results" />
+          </form>
+        </div>
+
+        <div class="res-library-topics" data-library-control hidden>
+          <div class="res-library-filters" role="group" aria-label="Filter resources by topic">
+            <button type="button" class="res-topic" data-topic="" aria-pressed="true" aria-controls="resource-results">
+              All topics <span>{resources.libraryItems.length}</span>
+            </button>
+            {libraryGroups.map((group) => (
+              <button type="button" class="res-topic" data-topic={group.id} aria-pressed="false" aria-controls="resource-results">
+                {group.title} <span>{group.count}</span>
+              </button>
             ))}
-          </ul>
-        </section>
-      ))}
+          </div>
+          <label class="res-library-select" for="resource-topic">
+            <span class="sr-only">Filter resources by topic</span>
+            <select id="resource-topic" aria-controls="resource-results">
+              <option value="">All topics ({resources.libraryItems.length})</option>
+              {libraryGroups.map((group) => <option value={group.id}>{group.title} ({group.count})</option>)}
+            </select>
+          </label>
+        </div>
+
+        <ul class="res-library-list" id="resource-results" role="list">
+          {resources.libraryItems.map((item, index) => (
+            <li data-resource data-group={item.group} data-search={`${item.title} ${item.description} ${libraryGroups.find((group) => group.id === item.group)?.title ?? ""}`.toLowerCase()}>
+              <a class="res-library-link" href={item.href} aria-labelledby={`resource-title-${index}`}>
+                <h3 class="res-library-item-title" id={`resource-title-${index}`}>{item.title}</h3>
+                <p class="res-library-description">{item.description}</p>
+                <span class="sr-only">{item.ctaLabel}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div class="res-library-empty" hidden>
+          <h3>No matching resources</h3>
+          <p>Try a different search or clear the filters to browse all resources.</p>
+        </div>
+        <button class="res-library-more" type="button" aria-controls="resource-results" hidden>Show more resources</button>
+      </resource-library>
     </section>
 
     <!-- AMA Feature Card -->
@@ -86,3 +127,69 @@ const libraryGroups = [
 
   </div>
 </div>
+
+<script>
+  class ResourceLibrary extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.ready) return;
+      this.dataset.ready = "true";
+
+      const search = this.querySelector<HTMLInputElement>("input")!;
+      const select = this.querySelector<HTMLSelectElement>("select")!;
+      const topics = [...this.querySelectorAll<HTMLButtonElement>("[data-topic]")];
+      const records = [...this.querySelectorAll<HTMLLIElement>("[data-resource]")];
+      const count = this.querySelector<HTMLElement>("[data-result-count]")!;
+      const empty = this.querySelector<HTMLElement>(".res-library-empty")!;
+      const reset = this.querySelector<HTMLButtonElement>(".res-library-reset")!;
+      const more = this.querySelector<HTMLButtonElement>(".res-library-more")!;
+      const pageSize = 8;
+      let visibleLimit = pageSize;
+
+      const update = () => {
+        const terms = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+        const matches = records.filter((record) =>
+          (!select.value || record.dataset.group === select.value) &&
+          terms.every((term) => record.dataset.search!.includes(term)),
+        );
+        const visible = new Set(matches.slice(0, visibleLimit));
+        records.forEach((record) => { record.hidden = !visible.has(record); });
+        topics.forEach((topic) => {
+          topic.setAttribute("aria-pressed", String(topic.dataset.topic === select.value));
+        });
+        const noun = matches.length === 1 ? "resource" : "resources";
+        count.textContent = visible.size < matches.length
+          ? `${visible.size} of ${matches.length} ${noun}`
+          : `${matches.length} ${noun}`;
+        empty.hidden = matches.length !== 0;
+        reset.hidden = !search.value && !select.value;
+        more.hidden = visible.size === matches.length;
+        more.textContent = `Show ${Math.min(pageSize, matches.length - visible.size)} more`;
+      };
+
+      const filter = () => { visibleLimit = pageSize; update(); };
+      this.querySelector("form")!.addEventListener("submit", (event) => event.preventDefault());
+      search.addEventListener("input", filter);
+      select.addEventListener("change", filter);
+      topics.forEach((topic) => topic.addEventListener("click", () => {
+        select.value = topic.dataset.topic!;
+        filter();
+      }));
+      reset.addEventListener("click", () => {
+        search.value = "";
+        select.value = "";
+        filter();
+        search.focus();
+      });
+      more.addEventListener("click", () => {
+        const previouslyVisible = new Set(records.filter((record) => !record.hidden));
+        visibleLimit += pageSize;
+        update();
+        records.find((record) => !record.hidden && !previouslyVisible.has(record))?.querySelector("a")?.focus();
+      });
+      this.querySelectorAll<HTMLElement>("[data-library-control]").forEach((control) => { control.hidden = false; });
+      update();
+    }
+  }
+
+  if (!customElements.get("resource-library")) customElements.define("resource-library", ResourceLibrary);
+</script>
