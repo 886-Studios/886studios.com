@@ -1226,6 +1226,7 @@ export const siteContent = {
   },
   resources: {
     title: "Resources Library",
+    // External coverage only; ikigai Insights articles belong in the blog.
     newsItems: [
       {
         title: "ikigai Launchpad Debuts in Taipei, Showcasing Taiwan’s Next Generation Startups",
@@ -1268,18 +1269,6 @@ export const siteContent = {
         },
       },
       {
-        title: "A look into ikigai: an inside look into the first few weeks of ikigai #02",
-        href: "https://886studios.substack.com/p/a-look-into-ikigai",
-        source: "ikigai Insights",
-        publishedAt: "2025-07-21",
-        image: {
-          src: "/assets/resources/news/inside-ikigai-960.webp",
-          alt: "The ikigai #02 founders gathered outdoors",
-          width: 1920,
-          height: 1440,
-        },
-      },
-      {
         title: "團隊崩潰、FBI上門到獲得大咖合作，AI數據公司Preciser成「最靠近NBA的台灣新創」",
         href: "https://meet.bnext.com.tw/articles/view/52115",
         source: "Meet Global",
@@ -1299,7 +1288,7 @@ export const siteContent = {
         href: "/resources/founders-frequently-asked-questions",
         ctaLabel: "Read answers",
         description:
-          "Get advice from experienced founders on choosing co-founders, working with investors, and building your network.",
+          "Get founder advice on co-founders, investors, and building your network.",
       },
       {
         group: "foundations",
@@ -1307,7 +1296,7 @@ export const siteContent = {
         href: "/incorporation-101",
         ctaLabel: "Read guide",
         description:
-          "Compare where to incorporate, understand business structures, and plan how to set up your company.",
+          "Choose where and how to incorporate your startup.",
       },
       {
         group: "fundraising",
@@ -1315,7 +1304,7 @@ export const siteContent = {
         href: "/resources/cap-table-guide",
         ctaLabel: "Read guide",
         description:
-          "See who owns what and how ownership changes, with a worked example covering employee options and founder vesting.",
+          "Understand startup ownership, dilution, and employee options.",
       },
       {
         group: "fundraising",
@@ -1323,7 +1312,7 @@ export const siteContent = {
         href: "/resources/safe-note-guide",
         ctaLabel: "Read guide",
         description:
-          "Understand SAFE funding, valuation caps, and how SAFEs compare with convertible notes, including what to check before signing.",
+          "Learn how SAFEs work and what to check before signing.",
       },
       {
         group: "fundraising",
@@ -1331,7 +1320,7 @@ export const siteContent = {
         href: "/resources/term-sheet-guide",
         ctaLabel: "Read guide",
         description:
-          "Read your first term sheet with confidence. Learn the key terms, work through ownership examples, and prepare questions before signing.",
+          "Understand the key terms and tradeoffs in your first term sheet.",
       },
       {
         group: "accelerators",
@@ -1339,7 +1328,7 @@ export const siteContent = {
         href: "/resources/application-guide",
         ctaLabel: "Read guide",
         description:
-          "Use a checklist to prepare your team, pitch, and application materials for an accelerator.",
+          "Prepare your pitch and application for an accelerator.",
       },
       {
         group: "accelerators",
@@ -1347,7 +1336,7 @@ export const siteContent = {
         href: "/interview-guidebook",
         ctaLabel: "Read guide",
         description:
-          "Prepare for your first ikigai Launchpad interview: a 20-minute conversation with the 886 Studios team. No pitch deck needed.",
+          "Know what to expect in your ikigai Launchpad interview.",
       },
       {
         group: "ecosystem",
@@ -1355,7 +1344,7 @@ export const siteContent = {
         href: "/resources/ecosystem-database",
         ctaLabel: "Browse directory",
         description:
-          "Find accelerators, venture capital firms, co-working spaces, and founder communities across Taiwan.",
+          "Find startup programs, investors, and founder communities in Taiwan.",
       },
       {
         group: "ecosystem",
@@ -1363,7 +1352,7 @@ export const siteContent = {
         href: "/resources/y-combinator-101",
         ctaLabel: "Read guide",
         description:
-          "Prepare your Y Combinator application and interview with advice from YC visiting partners and experienced founders.",
+          "Prepare for Y Combinator with application and interview advice.",
       },
     ],
     ama: {

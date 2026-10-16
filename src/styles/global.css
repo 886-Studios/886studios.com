@@ -4133,7 +4133,7 @@ body:has(.application-banner:not([hidden])) .site-main .page {
 }
 
 .res-ama {
-  padding-bottom: 0;
+  padding: 0;
 }
 
 /* Library: one scan path, with controls that scale independently of articles. */
@@ -4160,7 +4160,8 @@ resource-library ::selection {
 }
 
 .res-library-toolbar {
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 15rem);
   gap: var(--space-md);
   margin-bottom: var(--space-xs);
 }
@@ -4179,7 +4180,6 @@ resource-library ::selection {
 
 .res-library-search {
   position: relative;
-  flex: 0 1 288px;
   min-width: 0;
 }
 
@@ -4227,7 +4227,7 @@ resource-library ::selection {
 }
 
 .res-library-topics {
-  margin-bottom: var(--space-xs);
+  min-width: 0;
 }
 
 .res-library-filters {
@@ -4283,7 +4283,7 @@ resource-library ::selection {
 
 .res-library-link {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr);
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
   align-items: baseline;
   gap: 8px var(--res-row-gap);
   margin-inline: calc(-1 * var(--space-xs));
@@ -4479,12 +4479,8 @@ resource-library ::selection {
 
   .res-library-toolbar {
     align-items: stretch;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .res-library-search {
-    flex-basis: auto;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xs);
   }
 
   .res-library-search input,
@@ -4499,6 +4495,7 @@ resource-library ::selection {
   .res-library-link {
     grid-template-columns: minmax(0, 1fr);
     align-items: start;
+    row-gap: 4px;
   }
 }
 
@@ -8089,7 +8086,8 @@ resource-library ::selection {
   }
 
   #page-about .divider--spaced,
-  #page-team .divider--spaced {
+  #page-team .divider--spaced,
+  #page-resources .divider--spaced {
     margin: 46px 0;
   }
 
