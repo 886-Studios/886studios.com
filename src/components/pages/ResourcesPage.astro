@@ -5,10 +5,10 @@ import { siteContent } from "../../data/siteContent";
 const { resources } = siteContent;
 
 const libraryGroups = [
-  { id: "foundations", title: "Starting a company" },
-  { id: "fundraising", title: "Ownership & fundraising" },
-  { id: "accelerators", title: "Applying to accelerators" },
-  { id: "ecosystem", title: "Networks & programs" },
+  { id: "foundations", title: "Startup fundamentals" },
+  { id: "fundraising", title: "Finance & funding" },
+  { id: "accelerators", title: "Programs" },
+  { id: "ecosystem", title: "Ecosystem" },
 ].map((group) => ({
   ...group,
   count: resources.libraryItems.filter((item) => item.group === group.id).length,
