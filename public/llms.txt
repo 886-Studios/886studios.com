@@ -18,6 +18,7 @@ Canonical website: https://www.886studios.com/
 
 ## Founder resources
 
+- [Burn rate and runway guide](https://www.886studios.com/resources/burn-rate-runway-guide): Definitions, formulas, a hypothetical Taiwan startup example, and a cash-planning checklist for bootstrapped founders.
 - [Resource library](https://www.886studios.com/resources): Guides covering accelerator applications, incorporation, interviews, fundraising, and the Taiwan startup ecosystem.
 - [Application guide](https://www.886studios.com/resources/application-guide): Preparation guidance for startup accelerator applications.
 - [Y Combinator (YC) application guide](https://www.886studios.com/resources/y-combinator-101): A founder-focused guide to YC applications, interviews, and accelerator preparation.

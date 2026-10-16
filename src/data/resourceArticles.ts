@@ -73,13 +73,13 @@ export const resourceArticles: ResourceArticle[] = [
       {
         title: "Overview",
         paragraphs: [
-          "If you have your application ready, send it to us and schedule for a mock interview.",
+          "Have a question about preparing your application? Send us your question through our Founder AMA form. For YC's own application guidance, read How to Apply to Y Combinator.",
         ],
         links: [
-          { label: "YC Mock Interview", href: "https://tally.so/r/m626gk" },
+          { label: "Ask an application question", href: "https://tally.so/r/m626gk" },
           {
-            label: "Application Template",
-            href: "https://www.886studios.com/resources/y-combinator-101",
+            label: "How to Apply to Y Combinator",
+            href: "https://www.ycombinator.com/howtoapply.html",
           },
         ],
       },
@@ -152,6 +152,12 @@ export const resourceArticles: ResourceArticle[] = [
     title: "What is a term sheet?",
     intro:
       "Learn to read your first startup term sheet, understand valuation and investor rights, and prepare for negotiation with examples and a review checklist.",
+  },
+  {
+    slug: "burn-rate-runway-guide",
+    title: "What are burn rate and runway?",
+    intro:
+      "Calculate startup burn rate and runway with plain-English formulas, a Taiwan startup example, and a practical checklist for early-stage founders.",
   },
   {
     slug: "founders-frequently-asked-questions",
@@ -1205,7 +1211,7 @@ export const standaloneResourceArticles: ResourceArticle[] = [
       {
         title: "The First Interview",
         paragraphs: [
-          "The first ikigai Launchpad interview is a 20-minute conversation with the 886 Studios team. You don’t need a pitch deck. Come ready to discuss your team, the problem you’re solving, what you’re building, and what you’ve learned so far.",
+          "Your first ikigai Launchpad interview is a 20-minute conversation with us. You don’t need a pitch deck. Come ready to discuss your team, the problem you’re solving, what you’re building, and what you’ve learned so far.",
           "The first interview takes place via Zoom. We expect all co-founders to be on the call. In return, expect 1-2 of our partners to be present, in addition to our operating team and program directors.",
         ],
       },
@@ -1214,7 +1220,7 @@ export const standaloneResourceArticles: ResourceArticle[] = [
         list: [
           "Online Etiquette - Preemptively address potential technical issues. Have resources prepared and accessible, and make sure Zoom works without interruptions or updates.",
           "The Conversation - Don’t try to memorize a script. Prepare concise talking points and conduct market research beforehand, but aim to be familiar enough that you do not rely heavily on notes.",
-          "Your Questions - Think about what you would like to ask the 886 Studios team about ikigai Launchpad and how it could support your startup.",
+          "Your Questions - Think about what you would like to ask us about ikigai Launchpad and how it could support your startup.",
         ],
       },
       {

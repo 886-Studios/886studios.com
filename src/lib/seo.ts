@@ -198,6 +198,7 @@ export function getResourcePageTitle(article: ResourceArticle) {
     "cap-table-guide": "What is a cap table? Founder guide",
     "safe-note-guide": "What is a SAFE note? Founder guide",
     "term-sheet-guide": "Startup Term Sheet Guide: Terms & Examples",
+    "burn-rate-runway-guide": "Startup Burn Rate & Runway: A Founder’s Guide",
     "ecosystem-database": "Taiwan Startup Ecosystem Database",
     "founders-frequently-asked-questions": "Founder FAQs",
     "incorporation-101": "Startup Incorporation Guide",

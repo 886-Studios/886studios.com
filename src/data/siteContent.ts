@@ -1092,7 +1092,7 @@ export const siteContent = {
         {
           question: "How should I prepare for the first interview?",
           answer:
-            "The first interview is a 20-minute conversation with the 886 Studios team. You do not need a pitch deck. Read the Interview Guidebook before we meet.",
+            "Your first interview with us lasts 20 minutes. You do not need a pitch deck. Read the Interview Guidebook before we meet.",
           links: [
             {
               label: "Read the Interview Guidebook",
@@ -1102,7 +1102,7 @@ export const siteContent = {
         },
         {
           question: "Who can I contact with another question?",
-          answer: "Contact the 886 Studios team if your question is not covered here.",
+          answer: "Contact us if your question isn’t covered here.",
           links: [
             {
               label: "Contact 886 Studios",
@@ -1325,6 +1325,14 @@ export const siteContent = {
         ctaLabel: "Read guide",
         description:
           "Understand the key terms and tradeoffs in your first term sheet.",
+      },
+      {
+        group: "fundraising",
+        title: "Burn Rate & Runway Guide",
+        href: "/resources/burn-rate-runway-guide",
+        ctaLabel: "Read guide",
+        description:
+          "Calculate how long your startup's cash will last, with formulas and a worked example.",
       },
       {
         group: "accelerators",

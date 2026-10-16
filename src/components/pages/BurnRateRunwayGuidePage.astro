@@ -1,0 +1,144 @@
+---
+import ResourceGuide from "../ResourceGuide.astro";
+import ResourceGuideHero from "../ResourceGuideHero.astro";
+---
+
+<ResourceGuide>
+  <ResourceGuideHero title="What are burn rate and runway?">
+    <p class="guide-lead mt-6">Burn rate is how much cash your startup spends each month. Net burn subtracts the cash collected from customers. Runway is how long your available cash will last at that pace: divide available cash by monthly net burn. The result is an estimate, assuming spending and collections stay the same.</p>
+    <p class="mt-4">For an early-stage founder, these numbers help answer a practical question: how much time do we have to test our idea, learn from customers, and reach our next milestone? This guide covers pre-revenue and early-revenue teams, with a worked example for a startup operating in Taiwan.</p>
+    <nav aria-label="In this guide" class="guide-contents mt-9 guide-small">
+      <a href="#gross-vs-net-burn" class="guide-link">Gross vs net burn</a>
+      <a href="#calculate-runway" class="guide-link">Calculate runway</a>
+      <a href="#runway-example" class="guide-link">Worked example</a>
+      <a href="#runway-mistakes" class="guide-link">Common mistakes</a>
+      <a href="#founder-checklist" class="guide-link">Founder checklist</a>
+      <a href="#runway-faq" class="guide-link">FAQs</a>
+    </nav>
+  </ResourceGuideHero>
+
+  <section id="gross-vs-net-burn" class="guide-anchor">
+    <div class="guide-container">
+      <h2>What is the difference between gross burn and net burn?</h2>
+      <p class="mt-4">Gross burn shows the cash going out to run the business. Net burn shows how much operating cash you lose after customer payments come in. If you have no operating receipts, the two are equal.</p>
+      <p class="mt-4 guide-mobile-only guide-small">Scroll the table sideways to read all columns.</p>
+      <div class="guide-table-scroll mt-6" role="region" aria-label="Gross burn, net burn and runway comparison, horizontally scrollable" tabindex="0">
+        <table class="guide-table--three">
+          <caption class="sr-only">Burn rate and runway definitions and calculations for an early-stage startup.</caption>
+          <thead><tr><th scope="col">Metric</th><th scope="col">What it tells you</th><th scope="col">Calculation</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Gross burn</th><td>Monthly cash spent on operations</td><td>Add operating cash payments for the month</td></tr>
+            <tr><th scope="row">Net burn</th><td>Monthly operating cash shortfall</td><td>Gross burn minus operating cash receipts</td></tr>
+            <tr><th scope="row">Runway</th><td>Months your cash can cover that shortfall</td><td>Available cash divided by positive monthly net burn</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-6">Use the same month and currency for both sides of the calculation. State what you include, especially if you also have equipment purchases or debt repayments. Source: <a href="https://carta.com/learn/startups/metrics/burn-rate/" class="guide-link">Carta's burn rate guide</a>.</p>
+    </div>
+  </section>
+
+  <section id="calculate-runway" class="guide-anchor">
+    <div class="guide-container">
+      <h2>How do you calculate startup runway?</h2>
+      <ol class="guide-list mt-6">
+        <li><span class="guide-emphasis">Find your available cash.</span> Add the company cash you can actually use. Exclude restricted funds and investment that has not arrived. Record the balance date.</li>
+        <li><span class="guide-emphasis">Calculate monthly net burn.</span> Subtract operating cash collected from operating cash paid. For a simple starting estimate, average the last three complete months, then check whether that period reflects how you operate today.</li>
+        <li><span class="guide-emphasis">Divide cash by net burn.</span> If you have US$120,000 available and burn US$10,000 a month, your static runway is 12 months. This assumes no change in burn and no additional cash requirements.</li>
+      </ol>
+      <p class="mt-6">If you have just started, build a monthly budget instead. Label it a forecast, because you do not yet have a spending history. For a team about to hire or launch, forecast each month's receipts and payments rather than assuming the historical average will continue.</p>
+      <p class="mt-4">Source: <a href="https://stripe.com/guides/atlas/business-banking-solutions-for-optimal-cash-management" class="guide-link">Stripe Atlas on runway and cash forecasting</a>. The three-month starting window here is a practical suggestion, not a reporting requirement.</p>
+      <h3 class="mt-10">Is burn rate the same as an accounting loss?</h3>
+      <p class="mt-3">No. Revenue can be recorded before a customer pays, and some accounting expenses do not involve a current cash payment. For runway, track when money reaches or leaves the account. Keep fundraising separate from operating receipts: a new investment adds cash, but does not make the business's operating burn smaller.</p>
+      <p class="mt-4">The <a href="https://www.sec.gov/about/reports-publications/investorpubsbegfinstmtguide" class="guide-link">SEC's guide to financial statements</a> explains the distinction between profit and cash flow, and separates operating, investing and financing cash movements.</p>
+    </div>
+  </section>
+
+  <section id="runway-example" class="guide-anchor">
+    <div class="guide-container">
+      <h2>Worked example: runway for a startup in Taiwan</h2>
+      <p class="mt-4">A hypothetical two-founder team has received US$100,000. At an illustrative exchange rate of NT$32 per US$1, that is NT$3,200,000. After paying NT$200,000 in setup costs, it has NT$3,000,000 left. These are teaching assumptions, not market cost benchmarks, a live exchange rate, or an example of an actual portfolio company.</p>
+      <p class="mt-4">The team pays NT$300,000 a month to operate and collects NT$50,000 from customers. Its net burn is NT$250,000, giving it 12 months of static runway. Now compare three possible plans from that same starting cash balance.</p>
+      <p class="mt-4 guide-mobile-only guide-small">Scroll the table sideways to compare the scenarios.</p>
+      <div class="guide-table-scroll mt-6" role="region" aria-label="Hypothetical startup runway scenarios in Taiwan dollars, horizontally scrollable" tabindex="0">
+        <table class="guide-table--five guide-table--numeric">
+          <caption class="sr-only">Each scenario starts with NT$3,000,000 and assumes constant monthly payments and collections, with no other cash flows.</caption>
+          <thead><tr><th scope="col">Scenario</th><th scope="col">Monthly cash paid</th><th scope="col">Monthly cash collected</th><th scope="col">Monthly net burn</th><th scope="col">Runway</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Current plan</th><td>NT$300,000</td><td>NT$50,000</td><td>NT$250,000</td><td>12 months</td></tr>
+            <tr><th scope="row">Hire now, adding NT$100,000 a month</th><td>NT$400,000</td><td>NT$50,000</td><td>NT$350,000</td><td>About 8.6 months</td></tr>
+            <tr><th scope="row">No customer collections, no new hire</th><td>NT$300,000</td><td>NT$0</td><td>NT$300,000</td><td>10 months</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-6">The hire changes the estimate by about 3.4 months. The decision is whether the work that person can unlock justifies the shorter runway. Name the milestone, estimate its cost, and decide what evidence would make you continue or change the plan.</p>
+      <p class="mt-4">For USD funding and TWD expenses, use a consistent planning currency and show your exchange-rate assumption. If the dollars remain unconverted, test a less favorable rate and include conversion fees. A future change in the rate cannot change cash you have already converted.</p>
+    </div>
+  </section>
+
+  <section id="runway-mistakes" class="guide-anchor">
+    <div class="guide-container">
+      <h2>What can make your runway estimate misleading?</h2>
+      <div class="guide-stack mt-7">
+        <div>
+          <h3>Counting promises as cash</h3>
+          <p>Separate signed customer contracts, unpaid invoices and investor interest from money received. A signed <a href="/resources/term-sheet-guide" class="guide-link">term sheet</a> is not cash in the bank. Put uncertain receipts in a separate scenario.</p>
+        </div>
+        <div>
+          <h3>Missing payments that do not happen every month</h3>
+          <p>List equipment, annual renewals, deposits, taxes and loan repayments in the months they are due. If you set cash aside for a payment before calculating runway, do not subtract that same payment again. A monthly average can hide a cash shortage before the next customer pays.</p>
+        </div>
+        <div>
+          <h3>Assuming today's costs will stay the same</h3>
+          <p>Add planned salaries, employer costs and cloud usage to the forecast. Credits can reduce a bill temporarily, but they cannot pay payroll. Model the bill after credits expire. Keep a founder's personal living-cost budget separate from the company's, and include any salary the company actually plans to pay.</p>
+        </div>
+      </div>
+      <p class="mt-6">For cash timing and liquidity, see <a href="https://stripe.com/guides/atlas/business-banking-solutions-for-optimal-cash-management" class="guide-link">Stripe Atlas's cash management guide</a>. For payments outside operations, see the <a href="https://www.sec.gov/about/reports-publications/investorpubsbegfinstmtguide" class="guide-link">SEC's cash flow explanation</a>.</p>
+    </div>
+  </section>
+
+  <section id="founder-checklist" class="guide-anchor">
+    <div class="guide-container">
+      <h2>How should bootstrapped founders plan their runway?</h2>
+      <p class="mt-4">When you are funding the business yourself, runway is about how long you can keep building. Start with the money you have set aside, the costs of running the business, and the personal expenses you still need to cover. A simple spreadsheet is enough to make those assumptions visible.</p>
+      <ul class="guide-list mt-6">
+        <li><span class="guide-emphasis">Set a business budget.</span> Write down how much cash you have committed to the startup. Keep the savings you need for personal living costs separate, so the same money does not appear in both budgets.</li>
+        <li><span class="guide-emphasis">List the costs of keeping it running.</span> Include software, hosting, contractors and any salary you pay yourself. Add one-time purchases and annual renewals in the months they fall due.</li>
+        <li><span class="guide-emphasis">Check your personal runway too.</span> If the business does not pay you, work out how you will cover rent, food and other essentials. Low business spending alone does not tell you how long you can keep working on it.</li>
+        <li><span class="guide-emphasis">Choose the next thing you need to learn.</span> That might be whether someone will pay for a pilot or return to use the product. Set a time and spending budget for that test before committing to more tools or hiring.</li>
+        <li><span class="guide-emphasis">Plan for slower sales.</span> Check how long you can continue if customer payments arrive later than expected. Decide which optional costs you could pause and when you will review the plan.</li>
+      </ul>
+      <p class="mt-6">The useful question is what your remaining time and money can help you learn. Revisit the budget as you get customer feedback, start collecting payments, or change how much time you spend on the startup.</p>
+    </div>
+  </section>
+
+  <section id="runway-faq" class="guide-anchor">
+    <div class="guide-container">
+      <h2>Burn rate and runway FAQs</h2>
+      <div class="guide-questions mt-8">
+        <div id="pre-revenue-runway" class="guide-anchor">
+          <h3>How do you calculate runway before you have revenue?</h3>
+          <p class="mt-3">If there are no operating receipts, net burn equals gross burn. Divide available cash by monthly cash spending for a basic estimate. Include upcoming one-time payments in a separate monthly forecast. If you have no spending history, label your figures as budget assumptions.</p>
+        </div>
+        <div id="zero-net-burn" class="guide-anchor">
+          <h3>What if net burn is zero or negative?</h3>
+          <p class="mt-3">Zero net burn means operating receipts cover operating payments for that period. Negative net burn means receipts exceed them. The simple runway formula no longer gives a meaningful cash-out date. Continue forecasting, because future bills, equipment purchases or slower collections can still create a shortage.</p>
+        </div>
+        <div id="runway-update-frequency" class="guide-anchor">
+          <h3>How often should founders update runway?</h3>
+          <p class="mt-3">A practical starting point is every monthly close and whenever hiring, collections or funding materially change. When cash is tight, check payment timing more frequently. Compare what actually happened with your previous forecast so your next estimate uses better assumptions.</p>
+        </div>
+        <div id="how-much-runway" class="guide-anchor">
+          <h3>How much runway does an early-stage startup need?</h3>
+          <p class="mt-3">There is no single number that fits every startup. Work backward from the milestone you need to reach, the spending required, and the time needed to collect revenue or pursue funding. Include a buffer and a downside plan. Outside funding is not guaranteed.</p>
+        </div>
+      </div>
+      <div class="guide-next mt-14">
+        <h2>Prepare for your next founder conversation</h2>
+        <p class="mt-4">Bring your cash forecast and one decision you need to make. If you are considering an accelerator, explore ikigai Launchpad, our startup accelerator in Taipei. Review the program's support and commitment against what your company needs.</p>
+        <p class="mt-4">Raising through a SAFE? Read the <a href="/resources/safe-note-guide" class="guide-link">SAFE note guide</a> and <a href="/resources/cap-table-guide" class="guide-link">cap table guide</a> to understand how funding affects ownership as well as runway.</p>
+        <a href="/ikigai-launchpad" class="btn-pri mt-6">Explore ikigai Launchpad</a>
+        <p class="guide-small mt-8">Prepared by 886 Studios. Sources reviewed <time datetime="2026-10-16">October 16, 2026</time>. Examples are hypothetical. This guide is educational, not individualized financial, accounting or tax advice.</p>
+      </div>
+    </div>
+  </section>
+</ResourceGuide>
