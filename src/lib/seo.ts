@@ -195,10 +195,10 @@ export function getResourcePageTitle(article: ResourceArticle) {
   const descriptiveTitles: Record<string, string> = {
     "y-combinator-101": "YC Application Guide",
     "application-guide": "Accelerator Application Guide",
-    "cap-table-guide": "What is a cap table? Founder guide",
-    "safe-note-guide": "What is a SAFE note? Founder guide",
+    "cap-table-guide": "What is a cap table?",
+    "safe-note-guide": "What is a SAFE note?",
     "term-sheet-guide": "Startup Term Sheet Guide: Terms & Examples",
-    "burn-rate-runway-guide": "Startup Burn Rate & Runway: A Founder’s Guide",
+    "burn-rate-runway-guide": "Startup Burn Rate & Runway",
     "ecosystem-database": "Taiwan Startup Ecosystem Database",
     "founders-frequently-asked-questions": "Founder FAQs",
     "incorporation-101": "Startup Incorporation Guide",

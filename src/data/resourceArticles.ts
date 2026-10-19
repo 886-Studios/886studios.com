@@ -137,13 +137,13 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: "safe-note-guide",
-    title: "What is a SAFE note? A founder's guide",
+    title: "What is a SAFE note?",
     intro:
       "Learn how a SAFE note works, how post-money valuation caps set ownership, how SAFEs compare with convertible notes, and what to check before signing.",
   },
   {
     slug: "cap-table-guide",
-    title: "What is a cap table? A founder's guide",
+    title: "What is a cap table?",
     intro:
       "Learn what a cap table shows, how fully diluted ownership works, and how SAFEs, option pools, vesting and new rounds change founder ownership.",
   },
