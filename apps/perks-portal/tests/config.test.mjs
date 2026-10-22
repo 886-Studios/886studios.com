@@ -71,9 +71,12 @@ test('ports and base paths preserve supported defaults and reject ambiguous sett
 });
 
 test('release preflight checks runtime, explicit production settings and linked project', () => {
-  const check = (overrides = {}) => validateRelease({ env, project, nodeVersion: '22.12.0', ...overrides });
+  const check = (overrides = {}) => validateRelease({ env, project, nodeVersion: '22.23.4', ...overrides });
   assert.ok(check().includes('PERKS_ACCESS_CODE'));
-  for (const nodeVersion of ['20.20.0', '22.11.0', '23.0.0', '26.10.0']) assert.throws(() => check({ nodeVersion }), /Node.js/);
+  for (const nodeVersion of ['20.20.0', '22.12.0', '22.22.9', '22.23.3', '22.23.4-rc.1', '22.invalid.4', '23.0.0', '26.10.0']) {
+    assert.throws(() => check({ nodeVersion }), /Node.js/);
+  }
+  for (const nodeVersion of ['22.23.5', '22.24.0']) assert.doesNotThrow(() => check({ nodeVersion }));
   assert.throws(() => check({ env: { ...env, APP_ORIGIN: undefined } }), /APP_ORIGIN/);
   assert.throws(() => check({ env: { ...env, APP_BASE_PATH: '' } }), /APP_BASE_PATH/);
   assert.throws(() => check({ project: { ...project, projectName: 'public-site' } }), /project.json/);

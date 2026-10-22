@@ -4,8 +4,10 @@ import { join, resolve } from 'node:path';
 import { ConfigurationError, readRuntimeConfig } from '../src/config.mjs';
 
 export function validateRelease({ env, project, nodeVersion = process.versions.node }) {
-  const [major, minor] = nodeVersion.split('.').map(Number);
-  if (major !== 22 || minor < 12) throw new ConfigurationError('Node.js (requires >=22.12.0 <23)');
+  const version = /^22\.(\d+)\.(\d+)$/.exec(nodeVersion);
+  if (!version || Number(version[1]) < 23 || (Number(version[1]) === 23 && Number(version[2]) < 4)) {
+    throw new ConfigurationError('Node.js (requires >=22.23.4 <23)');
+  }
   const config = readRuntimeConfig(env, { strict: true });
   if (config.origin !== 'https://www.886studios.com') throw new ConfigurationError('APP_ORIGIN');
   if (config.basePath !== '/perks') throw new ConfigurationError('APP_BASE_PATH');

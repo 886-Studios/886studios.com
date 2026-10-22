@@ -8,7 +8,7 @@ A separate, server-rendered portal served at **https://www.886studios.com/perks*
 
 ## Prerequisites
 
-- Use Node 22 (`22.12.0` or newer within Node 22) to match the root project and deployed function.
+- Use Node 22 (`22.23.4` or newer within Node 22) to match the root project's security baseline. Vercel manages the function's Node 22 patch version; verify it meets this minimum before release.
 - No dependency installation is needed for this app; it currently uses Node's built-in modules.
 - Obtain the current private catalog from the 886 team through a secure channel and save it as
   `apps/perks-portal/private/catalog.json`. **A fresh clone does not include this file.** A working

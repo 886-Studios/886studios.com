@@ -17,13 +17,14 @@ workflow runs code checks for both apps.
 
 ## Prerequisites
 
-- Node 22 (`22.12.0` or newer within Node 22), matching `.nvmrc`
+- Node 22 (`22.23.4` or newer within Node 22); `.nvmrc` pins the security baseline
 - npm `9.6.5+`
 - Git, with a full clone for accurate generated content dates
 
 This repo uses `package-lock.json`, so prefer npm over pnpm or yarn unless the package manager strategy changes.
 `.npmrc` enforces the supported Node range during installation, including the upper limit
 of Node 22. GitHub Actions reads `.nvmrc`; use the same major version locally and on Vercel.
+Vercel manages its Node patch version; verify builds and the perks function use at least 22.23.4 before release.
 
 ## Quick Start
 
@@ -40,7 +41,7 @@ npm run dev
 ```
 
 Already have a checkout? Run from its existing directory, starting at `nvm install`.
-With another version manager, select Node 22.12+ within Node 22 before running `npm ci`.
+With another version manager, select Node 22.23.4+ within Node 22 before running `npm ci`.
 All commands below run from the repository root unless stated otherwise.
 
 Open `http://127.0.0.1:4173/` to see the homepage. Edits in `src/` reload in the browser;
