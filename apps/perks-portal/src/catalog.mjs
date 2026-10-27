@@ -2,9 +2,9 @@ import { readFileSync } from 'node:fs';
 
 export const CATEGORIES = ['Engineering', 'Productivity', 'Finance & legal', 'Marketing', 'Design'];
 export const SORT_OPTIONS = [{ value: 'category', label: 'Category' }, { value: 'alphabetical', label: 'Alphabetical (A–Z)' }];
-export const normalizeSort = value => value === 'alphabetical' ? value : 'category';
+export const normalizeSort = value => value === 'category' ? value : 'alphabetical';
 
-export function sortPerks(perks, order = 'category') {
+export function sortPerks(perks, order = 'alphabetical') {
   const byCategory = normalizeSort(order) === 'category';
   return [...perks].sort((a, b) => {
     const categoryOrder = byCategory ? CATEGORIES.indexOf(a.category) - CATEGORIES.indexOf(b.category) : 0;

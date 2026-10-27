@@ -39,12 +39,14 @@ test('category sorting groups types in filter order and alphabetizes their partn
     {id:'marketing',name:'Delta',category:'Marketing'}
   ];
   const original=perks.map(perk=>perk.id);
-  assert.deepEqual(sortPerks(perks).map(perk=>perk.id),['engineering-a','engineering-z','productivity','finance','marketing','design']);
+  assert.deepEqual(sortPerks(perks,'category').map(perk=>perk.id),['engineering-a','engineering-z','productivity','finance','marketing','design']);
+  assert.deepEqual(sortPerks(perks).map(perk=>perk.id),['design','engineering-a','finance','marketing','productivity','engineering-z']);
   assert.deepEqual(sortPerks(perks,'alphabetical').map(perk=>perk.id),['design','engineering-a','finance','marketing','productivity','engineering-z']);
   assert.deepEqual(perks.map(perk=>perk.id),original,'sorting must not change the source catalog');
 });
 
-test('unsupported sort parameters fall back to category order',()=>{
-  for(const value of [undefined,null,'','unknown','<script>'])assert.equal(normalizeSort(value),'category');
+test('unsupported sort parameters fall back to alphabetical order',()=>{
+  for(const value of [undefined,null,'','unknown','<script>'])assert.equal(normalizeSort(value),'alphabetical');
   assert.equal(normalizeSort('alphabetical'),'alphabetical');
+  assert.equal(normalizeSort('category'),'category');
 });

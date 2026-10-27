@@ -1384,11 +1384,6 @@ export const siteContent = {
           title: "Engineering",
           items: [
             {
-              label: "OpenAI",
-              href: "https://openai.com",
-              logoSrc: "/assets/logos/openai.svg",
-            },
-            {
               label: "AWS Activate",
               href: "https://aws.amazon.com",
               logoSrc: "/assets/logos/aws.webp",
@@ -1402,6 +1397,11 @@ export const siteContent = {
               label: "Google Cloud Startup Program",
               href: "https://cloud.google.com",
               logoSrc: "/assets/logos/google-cloud.webp",
+            },
+            {
+              label: "OpenAI",
+              href: "https://openai.com",
+              logoSrc: "/assets/logos/openai.svg",
             },
             {
               label: "Supabase",

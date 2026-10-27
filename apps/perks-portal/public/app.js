@@ -38,7 +38,7 @@ if (search) {
   const rows = [...document.querySelectorAll('[data-perk]')];
   const filters = [...document.querySelectorAll('[data-filter]')];
   const sortOptions = [...document.querySelectorAll('.sort-toggle input')];
-  let sort = sortOptions.find(option => option.checked)?.value || 'category';
+  let sort = sortOptions.find(option => option.checked)?.value || 'alphabetical';
   const list = document.querySelector('.perk-list');
   const reset = document.querySelector('[data-reset]');
   let category = filters.find(button => button.getAttribute('aria-pressed') === 'true')?.dataset.filter || '';
@@ -64,13 +64,13 @@ if (search) {
     rows.sort((a, b) => Number(a.getAttribute(attribute)) - Number(b.getAttribute(attribute)));
     list.append(...rows);
     const resetUrl = new URL(form.action);
-    if (sort !== 'category') resetUrl.searchParams.set('sort', sort);
+    if (sort !== 'alphabetical') resetUrl.searchParams.set('sort', sort);
     reset.href = resetUrl.pathname + resetUrl.search;
     if (updateUrl) {
       const url = new URL(location.href);
       search.value.trim() ? url.searchParams.set('q', search.value.trim()) : url.searchParams.delete('q');
       category ? url.searchParams.set('category', category) : url.searchParams.delete('category');
-      sort === 'category' ? url.searchParams.delete('sort') : url.searchParams.set('sort', sort);
+      sort === 'alphabetical' ? url.searchParams.delete('sort') : url.searchParams.set('sort', sort);
       history.replaceState(null, '', url.pathname + url.search + url.hash);
     }
   }
@@ -79,7 +79,7 @@ if (search) {
   form.addEventListener('submit', event => { event.preventDefault(); filter(); });
   filters.forEach(button => button.addEventListener('click', event => { event.preventDefault(); category = button.dataset.filter; filter(); }));
   reset.addEventListener('click', event => { event.preventDefault(); search.value = ''; category = ''; filter(); search.focus(); });
-  window.addEventListener('popstate', () => { const url = new URL(location.href); search.value = url.searchParams.get('q') || ''; category = url.searchParams.get('category') || ''; sort = sortOptions.some(option => option.value === url.searchParams.get('sort')) ? url.searchParams.get('sort') : 'category'; filter(false); });
+  window.addEventListener('popstate', () => { const url = new URL(location.href); search.value = url.searchParams.get('q') || ''; category = url.searchParams.get('category') || ''; sort = sortOptions.some(option => option.value === url.searchParams.get('sort')) ? url.searchParams.get('sort') : 'alphabetical'; filter(false); });
   if (location.hash) {
     const selected = rows.find(row => `#${row.id}` === location.hash);
     if (selected && !selected.hidden) selected.open = true;

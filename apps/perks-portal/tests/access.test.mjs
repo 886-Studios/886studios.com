@@ -182,15 +182,18 @@ test('sorting is rendered on the server and combines with search, filters, and s
   const rows=html=>[...html.matchAll(/<details class="perk-row" id="([^"]+)"([^>]*)>/g)];
   for(const query of ['', '?sort=unknown']) {
     const result=await request(handler,'/perks'+query,{headers});
-    assert.deepEqual(rows(result.body).map(row=>row[1]),['beta','zulu','alpha']);
-    assert.match(result.body,/<input type="radio" name="sort" value="category" aria-label="Category" checked>/);
+    assert.deepEqual(rows(result.body).map(row=>row[1]),['alpha','beta','zulu']);
+    assert.match(result.body,/<input type="radio" name="sort" value="alphabetical" aria-label="Alphabetical \(A–Z\)" checked>/);
   }
+  const grouped=await request(handler,'/perks?sort=category',{headers});
+  assert.deepEqual(rows(grouped.body).map(row=>row[1]),['beta','zulu','alpha']);
+  assert.match(grouped.body,/href="\/perks\?sort=category" data-reset/);
   const result=await request(handler,'/perks?sort=alphabetical&category=Engineering&q=beta',{headers});
   assert.deepEqual(rows(result.body).map(row=>row[1]),['alpha','beta','zulu']);
   assert.deepEqual(rows(result.body).filter(row=>!row[2].includes('hidden')).map(row=>row[1]),['beta']);
   assert.match(result.body,/<input type="radio" name="sort" value="alphabetical" aria-label="Alphabetical \(A–Z\)" checked>/);
   assert.equal((result.body.match(/name="sort"[^>]* checked/g)||[]).length,1);
-  assert.match(result.body,/href="\/perks\?sort=alphabetical" data-reset/);
+  assert.match(result.body,/href="\/perks" data-reset/);
   assert.match(result.body,/1 partner/);
   assert.match(result.headers['x-robots-tag'],/noindex/);
   assert.match(result.headers['cache-control'],/no-store/);

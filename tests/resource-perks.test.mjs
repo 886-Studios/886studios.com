@@ -78,13 +78,8 @@ test("resource perks keep their intentional category and item order", () => {
 
   for (const [, category, items] of categories) {
     const labels = [...items.matchAll(/label: "([^"]+)"/g)].map((match) => match[1]);
-    const sortableLabels = category === "Engineering" ? labels.slice(1) : labels;
-    const sortedLabels = [...sortableLabels].sort((a, b) => a.localeCompare(b));
-
-    if (category === "Engineering") {
-      assert.equal(labels[0], "OpenAI");
-    }
-    assert.deepEqual(sortableLabels, sortedLabels, `${category} perks are not alphabetized`);
+    const sortedLabels = [...labels].sort((a, b) => a.localeCompare(b));
+    assert.deepEqual(labels, sortedLabels, `${category} perks are not alphabetized`);
   }
 });
 

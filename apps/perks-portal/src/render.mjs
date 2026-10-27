@@ -72,11 +72,11 @@ function row(perk, query, category, basePath, ranks) {
   </details>`;
 }
 
-export function renderDirectory(catalog, { query = '', category = '', sort = 'category', basePath = '' } = {}) {
+export function renderDirectory(catalog, { query = '', category = '', sort = 'alphabetical', basePath = '' } = {}) {
   sort = normalizeSort(sort);
   const orders = Object.fromEntries(SORT_OPTIONS.map(option => [option.value, sortPerks(catalog.perks, option.value)]));
   const ranks = Object.fromEntries(SORT_OPTIONS.map(option => [option.value, new Map(orders[option.value].map((perk, index) => [perk.id, index]))]));
-  const resetHref = `${basePath || '/'}${sort === 'alphabetical' ? '?sort=alphabetical' : ''}`;
+  const resetHref = `${basePath || '/'}${sort === 'category' ? '?sort=category' : ''}`;
   const count = catalog.perks.filter(perk => matches(perk, query, category)).length;
   return page(`<main id="main-content" class="directory-main"><section class="hero" aria-labelledby="page-title"><div><h1 id="page-title">886 Studios Exclusive Perks</h1></div></section>
   <section class="directory" aria-label="Partner perks"><form class="filter-form" action="${basePath || '/'}" method="get" role="search">
