@@ -82,7 +82,6 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
       const url = new URL(req.url, publicOrigin);
       if (basePath && url.pathname !== basePath && !url.pathname.startsWith(`${basePath}/`)) return send(404, 'Not found.', 'text/plain');
       const path = url.pathname.slice(basePath.length) || '/';
-      if (path.startsWith('/supabase') || path.startsWith('/admin')) res.setHeader('Referrer-Policy', 'no-referrer');
       if (req.method === 'GET' || req.method === 'HEAD') {
         if (path === '/robots.txt') return send(200, 'User-agent: *\nAllow: /\n', 'text/plain; charset=utf-8');
         if (assets.has(path)) {

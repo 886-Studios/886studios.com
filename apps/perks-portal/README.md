@@ -294,7 +294,8 @@ Rotating `SUPABASE_CLAIM_SECRET` invalidates all outstanding invitations.
 The invitation authorizes only this Supabase claim, not access to the private catalog.
 GET and HEAD never issue a code, so email link scanners are safe. POST requires the
 configured origin and a bounded form body. Responses remain no-store/no-index, and the
-claim route sends no referrer. API keys, upstream bodies, and customer identifiers are
+claim route sends no referrer to other sites. The same-origin policy preserves the
+Origin header on browser form submissions, which the server requires for CSRF protection. API keys, upstream bodies, and customer identifiers are
 never rendered. API requests time out after ten seconds, reject redirects, and do not
 automatically retry. Errors ask the founder to retry later or contact the team.
 
@@ -343,6 +344,10 @@ credentials or redemption codes are printed to stdout.
 Staging uses `https://api.supabase.green`. The supplied key successfully generated a
 code for a synthetic test customer on October 27, 2026. A second test also verified
 the full staff invitation → portal POST → staging API → labeled result flow.
+The automated staff approval → local test email → staging issuance flow was also
+verified through HTTP and Safari, including rejection after revocation. All 46 portal
+tests and 49 root tests passed. Resend and Redis API contracts were tested with mocks;
+real email delivery and hosted storage still need credentials and a release smoke test.
 **Staging codes cannot be
 redeemed**: the portal displays a clearly labeled test result and never redirects them
 to production redemption. This confirms issuance, not end-to-end redemption.

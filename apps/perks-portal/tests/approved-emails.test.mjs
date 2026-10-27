@@ -117,7 +117,7 @@ test('approved email → private inbox → claim works; other visitors cannot di
   assert.deepEqual(calls, ['founder@company.com']);
   assert.match(result.body, /Staging codes cannot be redeemed/);
   assert.match(result.headers['cache-control'], /no-store/);
-  assert.equal(result.headers['referrer-policy'], 'no-referrer');
+  assert.equal(result.headers['referrer-policy'], 'same-origin');
 });
 
 test('revocation rejects already emailed links even after reapproval, and legacy links cannot bypass the list', async t => {

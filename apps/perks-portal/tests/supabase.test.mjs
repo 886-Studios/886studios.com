@@ -94,8 +94,8 @@ test('claim route is safe for link scanners, rejects forgery and CSRF, and needs
   assert.equal(result.status, 200);
   assert.match(result.body, /Staging codes cannot be redeemed/);
   assert.equal(result.headers.location, undefined);
-  assert.equal(result.headers['referrer-policy'], 'no-referrer');
-  assert.match(result.body, /<meta name="referrer" content="no-referrer">/);
+  assert.equal(result.headers['referrer-policy'], 'same-origin');
+  assert.match(result.body, /<meta name="referrer" content="same-origin">/);
   assert.match(result.headers['cache-control'], /no-store/);
   assert.match(result.headers['x-robots-tag'], /noindex/);
   assert.doesNotMatch(result.body, /approved-company-001|sb_partner_test_only/);
