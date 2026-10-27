@@ -266,7 +266,7 @@ browser code or build artifacts. Existing portal credentials are still required.
 | `PERKS_ADMIN_ACCESS_CODE` | Random staff-only code, 16–256 characters, different from the founder code. |
 | `PERKS_ADMIN_SESSION_SECRET` | Separate 32+ random bytes encoded as base64url (43+ characters). |
 | `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | HTTPS Upstash REST endpoint and read/write token for durable approvals and throttles. |
-| `RESEND_API_KEY` | Resend sending key. Credentials are not available yet. |
+| `RESEND_API_KEY` | Resend sending key, restricted to the verified `886studios.com` domain. |
 | `PERKS_EMAIL_FROM` | Bare email address on a verified Resend sending domain. |
 | `SUPABASE_PARTNER_ENVIRONMENT` | `staging` by default; set `production` explicitly for live credits. |
 | `SUPABASE_PARTNER_API_KEY` | Partner key for the chosen environment. |
@@ -278,6 +278,13 @@ preflight checks the portal configuration; also verify these integration setting
 perform a delivery test before release. Resend delivery is implemented against its
 [send-email API](https://resend.com/docs/api-reference/emails/send-email); durable storage
 uses the [Upstash REST API](https://upstash.com/docs/redis/features/restapi).
+
+Resend was configured locally on October 27, 2026 with the dedicated **886 Studios
+Perks** sending-only key and `PERKS_EMAIL_FROM=perks@886studios.com`. The key is saved
+only in ignored `.env.local` with owner-only permissions. The domain was verified in
+Resend, and an API request reached validation with an intentionally omitted recipient;
+no email was sent. A real delivery test is still outstanding. The dev server continues
+using its local test inbox. Hosted environment configuration and deployment remain pending.
 
 For exceptional staff-assisted delivery, approve the email in admin first, then run
 `npm run supabase:invite -- approved@company.com private/company-claim.json` with the
