@@ -1,7 +1,7 @@
 import { join } from 'node:path';
 import { createAuth } from './auth.mjs';
 import { validateCredentials } from './config.mjs';
-import { createLocalEmailStore, createRedisEmailStore, emailKey, normalizeEmail } from './approved-emails.mjs';
+import { createLocalEmailStore, createRedisEmailStore, emailKey, normalizeEmail, ApprovalConflict } from './approved-emails.mjs';
 import { createLocalMailer, createResendMailer } from './claim-email.mjs';
 import { createClaim } from './supabase-claims.mjs';
 import { creditsConfig } from './supabase-credits.mjs';
@@ -27,9 +27,9 @@ export function createAccessRouter({ store, mailer, adminAuth, env, origin, base
   const confirmation = 'If this email is approved, a claim link will arrive shortly. Check your inbox and spam folder.';
   return {
     async allows(claim) {
-      if (!store || !claim.approvalVersion) return false;
-      const approval = await store.get(claim.userIdentifier);
-      return Boolean(approval && approval.version === claim.approvalVersion);
+      if (!store || !claim.approvalVersion || !claim.email) return false;
+      const approval = await store.get(claim.email);
+      return Boolean(approval && approval.version === claim.approvalVersion && approval.userIdentifier === claim.userIdentifier);
     },
     async handle({ req, path, form, ip, portalAuthorized, send, redirect, res }) {
       if (path !== '/supabase/request' && path !== '/admin' && !path.startsWith('/admin/')) return false;
@@ -51,7 +51,7 @@ export function createAccessRouter({ store, mailer, adminAuth, env, origin, base
           const allowed = await store.consume(`email-request:${emailKey(email)}`, 3, 900);
           const approval = await store.get(email);
           if (allowed && approval) {
-            const token = createClaim({ userIdentifier: approval.email, approvalVersion: approval.version, secret: env.SUPABASE_CLAIM_SECRET, environment, now: now() });
+            const token = createClaim({ userIdentifier: approval.userIdentifier, email: approval.email, approvalVersion: approval.version, secret: env.SUPABASE_CLAIM_SECRET, environment, now: now() });
             try { await mailer.send({ email: approval.email, claimUrl: `${origin}${basePath}/supabase#${token}` }); }
             catch { console.error('Perks claim email delivery failed.'); }
           }
@@ -78,13 +78,16 @@ export function createAccessRouter({ store, mailer, adminAuth, env, origin, base
         if (!get) {
           if (!['/admin/approve', '/admin/revoke'].includes(path)) { send(405, 'Method not allowed.', 'text/plain'); return true; }
           let email;
-          try { email = normalizeEmail(form.get('email')); } catch { send(400, adminPage({ authenticated: true, approvals: await store.list(), error: 'Enter a valid email address.' })); return true; }
-          if (path === '/admin/approve') { await store.approve(email); notice = `${email} is approved. They can now request their link from the perks page.`; }
+          try { email = normalizeEmail(form.get('email')); } catch { send(400, adminPage({ authenticated: true, approvals: await store.list(), teams: await store.teams(), error: 'Enter a valid email address.' })); return true; }
+          if (path === '/admin/approve') { await store.approve(email, form.get('team'));  notice = `${email} is approved. They can now request their link from the perks page.`; }
           else { await store.revoke(email); notice = `${email} no longer has access. Outstanding email claim links are invalid.`; }
         }
-        send(200, adminPage({ authenticated: true, approvals: await store.list(), local: mailer?.local === true,
+        send(200, adminPage({ authenticated: true, approvals: await store.list(), teams: await store.teams(), local: mailer?.local === true,
           messages: mailer?.local ? mailer.list() : [], notice }));
-      } catch { send(503, adminPage({ authenticated: true, error: 'Approved emails are temporarily unavailable. Please try again.' })); }
+      } catch (error) {
+        if (error instanceof ApprovalConflict) send(409, adminPage({ authenticated: true, approvals: await store.list(), teams: await store.teams(), error: error.message }));
+        else send(503, adminPage({ authenticated: true, error: 'Approved emails are temporarily unavailable. Please try again.' }));
+      }
       return true;
     },
   };

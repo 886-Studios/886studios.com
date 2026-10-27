@@ -20,7 +20,7 @@ try {
     : createRedisEmailStore(process.env);
   const approval = await store.get(email);
   if (!approval) throw new Error('Approve this email in the staff admin first.');
-  const token = createClaim({ userIdentifier: approval.email, approvalVersion: approval.version, environment, secret: process.env.SUPABASE_CLAIM_SECRET });
+  const token = createClaim({ userIdentifier: approval.userIdentifier, email: approval.email, approvalVersion: approval.version, environment, secret: process.env.SUPABASE_CLAIM_SECRET });
   // Fragment avoids placing the invitation in incoming request/access logs.
   const claimUrl = `${origin}${basePath}/supabase#${token}`;
   writeFileSync(destination, JSON.stringify({ claimUrl, environment, expiresInDays: 7 }, null, 2) + '\n', { flag: 'wx', mode: 0o600 });

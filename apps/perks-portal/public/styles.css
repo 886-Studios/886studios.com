@@ -154,3 +154,5 @@ svg{flex-shrink:0}img{display:block;max-width:100%}[hidden]{display:none!importa
 .admin-list{list-style:none;padding:0}.admin-list li{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border)}
 .admin-list li>span{min-width:0;overflow-wrap:anywhere}.admin-list form{flex-shrink:0}
 @media(max-width:700px){.admin-heading{align-items:flex-start;flex-direction:column}.admin-add{grid-template-columns:minmax(0,1fr)}.admin-list li{align-items:flex-start;flex-direction:column}.admin-main{padding-top:24px}}
+
+.admin-add select{grid-column:1/-1;width:100%;padding:12px;border:1px solid var(--border);border-radius:4px;background:#0c0a0f;color:inherit}
