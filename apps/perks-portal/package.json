@@ -11,6 +11,7 @@
     "build": "node scripts/build.mjs",
     "supabase:issue": "node --env-file-if-exists=.env.local scripts/issue-supabase-credit.mjs",
     "supabase:invite": "node --env-file-if-exists=.env.local scripts/create-supabase-claim.mjs",
+    "founders:import": "node --env-file-if-exists=.env.local scripts/import-founders.mjs",
     "supabase:catalog": "node scripts/add-supabase-perk.mjs",
     "validate": "npm test && npm run build",
     "preflight": "node --env-file-if-exists=.env.local scripts/preflight.mjs",

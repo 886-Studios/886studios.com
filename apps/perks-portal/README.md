@@ -232,23 +232,24 @@ Public program previews show the partner name and logo; private terms stay in th
 
 1. Open `/perks/admin` and sign in using the separate **staff access code**.
 2. Verify the company is eligible, then approve **one designated founder email per
-   company**. Approval does not send an email. Keep the same address for replacement
-   links and retries: it is the permanent Supabase customer identifier. Do not approve
-   additional addresses or aliases to bypass a company's redemption limit.
+   company** by choosing its registered team and entering the email. A second email
+   for that team is rejected. Approval does not send an email. Renamed products
+   and aliases must share the original team record.
 3. The founder signs in to the existing perks directory, opens Supabase, selects
    **Claim credits**, and enters their approved email.
 4. The website sends a private link to that exact approved inbox through Resend. The
    request page shows the same confirmation for approved and unknown addresses and
    never reveals a claim link. Merely knowing another founder's email is insufficient.
 5. The founder opens the email and presses **Continue to Supabase**. The server checks
-   the invitation and current approval, calls the partner API using the bound email,
+   the invitation and current approval, calls the partner API using the permanent team identifier,
    then redirects to `https://supabase.com/redeem?code=…` in production. The founder
    signs in, chooses an organization, and confirms redemption at Supabase.
 
 Staff can **Revoke access** in the same admin page. It invalidates outstanding links;
 reapproving that address does not reactivate old links. Revocation cannot cancel a code
 already issued or credits already redeemed at Supabase. No terminal command is needed
-for routine approvals or founder claims.
+for routine approvals or founder claims. A replacement founder keeps the same
+Supabase customer identifier, so replacing an email cannot reset redemption eligibility.
 
 Staff login has a separate HTTP-only cookie scoped to `/perks/admin`, expiring after
 eight hours. A founder's shared access code cannot open the admin list. Approvals are
@@ -342,7 +343,8 @@ node --env-file=.env.supabase-staging scripts/issue-supabase-credit.mjs approved
 ```
 
 This diagnostic issuer bypasses the portal approval flow; restrict it to authorized
-staff and synthetic testing, and use the approved email for any real customer.
+staff and synthetic testing. Real companies must use the portal or invitation tool,
+which binds issuance to the stored team identifier.
 The issuer refuses to overwrite an existing output and saves codes in the ignored
 private directory. It reserves a pending file before contacting Supabase; if issuance
 fails, use a new output filename and the **same customer identifier** on retry. No
@@ -387,3 +389,42 @@ The updater validates the complete result and replaces the catalog atomically. K
 private files backed up through the team’s secure channel; neither belongs in Git. The
 build packages only `private/catalog.json`, excluding invitations, codes, source records,
 and local environment files.
+
+
+### Importing the reviewed founder roster
+
+The ignored `private/founder-roster.json` records one designated founder per team,
+canonical Notion team IDs, renamed products, and source links. It is private data;
+never commit it or package it in the website. The importer copies only team identity,
+display name, and approved email into storage. It never sends email or issues codes.
+
+```sh
+npm run founders:import -- private/founder-roster.json --local --check
+npm run founders:import -- private/founder-roster.json --local --apply
+```
+
+When a hosted release is authorized, set the correct environment and Upstash credentials,
+then use `--redis` instead of `--local` with the **same roster IDs**. Local approvals
+are not automatically deployed. Re-running an unchanged import preserves approval
+versions. Existing conflicting contacts require staff review; imports never replace
+or revoke them silently. Inactive teams, missing contacts, and unresolved records are
+listed separately in the private roster and are not imported.
+
+Only the importer can register teams; the staff website selects from that registry.
+Use the canonical Notion company page ID, not a founder or product alias ID. Team
+records and historical email bindings survive revocation. Production uses atomic Redis
+scripts to prevent two simultaneous approvals from assigning two founders to one team.
+Supabase receives `886-team:<canonical-id>` on every issuance and enforces its own
+one-redemption-per-identifier rule. Multiple unexpired/reissued links do not grant
+multiple entitlements. Previously issued codes cannot be revoked by removing an email.
+Legacy email-only approvals and invitations fail closed; before migrating an existing
+live installation, reconcile previously redeemed identifiers with Supabase. This
+integration has not issued real production credits yet.
+
+The October 27, 2026 local import contains **20 teams / 20 designated contacts**,
+reconciled against Notion's current founder directory, active portfolio records,
+accepted applications, and legacy portfolio profiles. Unresolved and inactive records
+remain in the private roster's `held` section. Actual contact data is excluded from Git.
+Validation: 49 portal tests (including a real Redis 16-way approval race), 49 website
+tests, portal build, and authenticated local admin checks passed. No founder email
+was sent, no production code was issued, and nothing was pushed or deployed.
