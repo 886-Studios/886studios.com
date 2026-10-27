@@ -97,7 +97,7 @@ test("resource perk links use public company homepages", () => {
     (match) => match[1],
   );
 
-  assert.equal(hrefs.length, 18);
+  assert.equal(hrefs.length, 19);
   for (const href of hrefs) {
     const url = new URL(href);
     assert.equal(url.pathname, "/", `${href} is not a company homepage`);

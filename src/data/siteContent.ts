@@ -1404,6 +1404,11 @@ export const siteContent = {
               logoSrc: "/assets/logos/google-cloud.webp",
             },
             {
+              label: "Supabase",
+              href: "https://supabase.com",
+              logoSrc: "/assets/logos/supabase.svg",
+            },
+            {
               label: "Zettabyte",
               href: "https://www.zettabyte.space/",
               logoSrc: "/assets/logos/zettabyte.svg",
