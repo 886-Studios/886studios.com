@@ -12,7 +12,8 @@ const env = { SUPABASE_PARTNER_API_KEY: 'sb_partner_test_only', SUPABASE_CLAIM_S
 const approvedId = 'approved-company-001';
 const config = { root: fileURLToPath(new URL('..', import.meta.url)), code: 'fixture-code',
   secret: 'fixture-session-secret-with-32-characters', origin: 'https://www.886studios.com', basePath: '/perks',
-  catalog: { perks: [] }, creditsEnv: env };
+  catalog: { perks: [] }, creditsEnv: env,
+  accessServices: { allows: async () => true, reserveClaim: async () => 'allowed', handle: async () => false } };
 const response = (status, body = {}) => ({ status, json: async () => body });
 
 test('partner client sends the exact documented request and never redeems staging codes', async () => {
@@ -132,4 +133,11 @@ test('concurrent claim attempts consume the throttle before the upstream request
   release();
   const results = await Promise.all(pending);
   assert.equal(results.filter(result => result.status === 429).length, 3);
+});
+
+
+test('claim issuance fails closed when access services are missing', async () => {
+  const token = createClaim({ userIdentifier: approvedId, environment: 'staging', secret });
+  const handler = createHandler({ ...config, accessServices: undefined, issueCredit: () => assert.fail('must not issue') });
+  assert.equal((await request(handler, { token })).status, 403);
 });

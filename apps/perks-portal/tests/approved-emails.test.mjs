@@ -34,7 +34,7 @@ async function request(handler, path, { method = 'GET', values = {}, cookie, ori
   return result;
 }
 
-async function fixture(t) {
+async function fixture(t, { failFirstIssue = false } = {}) {
   const dir = mkdtempSync(join(tmpdir(), 'perks-email-'));
   t.after(() => rmSync(dir, { recursive: true, force: true }));
   const store = createLocalEmailStore(join(dir, 'approvals.json'));
@@ -44,7 +44,7 @@ async function fixture(t) {
   const accessServices = createAccessRouter({ store, mailer, adminAuth, env, origin, basePath: '/perks' });
   const calls = [];
   const handler = createHandler({ root, ...founder, origin, basePath: '/perks', catalog, creditsEnv: env, accessServices,
-    issueCredit: async ({ userIdentifier }) => { calls.push(userIdentifier); return { environment: 'staging', code: 'TEST-CODE', redemptionUrl: null }; } });
+    issueCredit: async ({ userIdentifier }) => { calls.push(userIdentifier); if (failFirstIssue && calls.length === 1) throw new Error('Synthetic upstream timeout'); return { environment: 'staging', code: 'TEST-CODE', redemptionUrl: null }; } });
   const founderCookie = createAuth({ ...founder, basePath: '/perks' }).issue().split(';')[0];
   const staffCookie = adminAuth.issue().split(';')[0];
   return { dir, store, mailer, handler, founderCookie, staffCookie, calls };
@@ -201,37 +201,56 @@ test('Redis keeps identifiers in authenticated POST bodies, partitions environme
 });
 
 
-test('one designated founder per team survives concurrency, restarts, contact replacement, and product renames', async t => {
+test('multiple approved founders race for one team claim; the winner retains it across restarts and revocation', async t => {
   const { store, dir, handler, mailer, founderCookie, staffCookie, calls } = await fixture(t);
   const otherId = '22222222222222222222222222222222';
   await store.registerTeam({ id: otherId, name: 'Another Company' });
-  const concurrent = await Promise.allSettled([
-    store.approve('first@company.com', teamId), store.approve('second@company.com', teamId),
-  ]);
-  assert.deepEqual(concurrent.map(r => r.status), ['fulfilled', 'rejected']);
+  const emails = ['first@company.com', 'second@company.com', 'third@company.com'];
+  for (const email of emails) await store.approve(email, teamId);
   const second = createLocalEmailStore(join(dir, 'approvals.json'));
-  await assert.rejects(second.approve('second@company.com', teamId), /already has/);
-  await assert.rejects(second.approve('first@company.com', otherId), /another team/);
-  await assert.rejects(second.approve('unknown@company.com'), /registered team/);
-  const denied = await request(handler, '/perks/admin/approve', { method: 'POST', cookie: staffCookie, values: { email: 'second@company.com', team: teamId } });
+  await assert.rejects(second.approve(emails[0], otherId), /another team/);
+  const denied = await request(handler, '/perks/admin/approve', { method: 'POST', cookie: staffCookie, values: { email: emails[0], team: otherId } });
   assert.equal(denied.status, 409);
-  const sendLink = email => request(handler, '/perks/supabase/request', { method: 'POST', cookie: founderCookie, values: { email } });
+  await assert.rejects(second.approve('unknown@company.com'), /registered team/);
+  for (const email of emails) await request(handler, '/perks/supabase/request', { method: 'POST', cookie: founderCookie, values: { email } });
+  assert.equal(mailer.list().length, 3);
+  assert.ok(!(await second.teams()).find(t => t.id === teamId).claimant, 'email requests do not lock the team');
+  const tokens = emails.map(email => new URL(mailer.list().find(m => m.email === email).claimUrl).hash.slice(1));
+  for (const token of tokens) assert.equal((await request(handler, '/perks/supabase', { values: { claim: token } })).status, 200);
+  assert.ok(!(await second.teams()).find(t => t.id === teamId).claimant, 'GET/email scanners do not lock the team');
   const redeem = token => request(handler, '/perks/supabase', { method: 'POST', values: { claim: token } });
-  await sendLink('first@company.com');
-  const oldToken = new URL(mailer.list()[0].claimUrl).hash.slice(1);
-  assert.equal((await redeem(oldToken)).status, 200);
-  await second.revoke('first@company.com');
+  const results = await Promise.all(tokens.map(redeem));
+  assert.equal(results.filter(r => r.status === 200).length, 1);
+  assert.equal(results.filter(r => r.status === 403).length, 2);
+  assert.deepEqual(calls, [teamIdentifier]);
+  const winner = results.findIndex(r => r.status === 200);
+  assert.equal((await redeem(tokens[winner])).status, 200, 'winner can retry using the same entitlement');
+  const claimant = (await second.teams()).find(t => t.id === teamId).claimant;
+  assert.equal(claimant.email, emails[winner]);
   await second.registerTeam({ id: teamId, name: 'Renamed Product' });
-  await second.approve('second@company.com', teamId);
-  // Repeating a revoke on an old email cannot revoke the new contact.
-  await second.revoke('first@company.com');
-  assert.equal((await redeem(oldToken)).status, 403);
-  await sendLink('first@company.com');
-  assert.equal(mailer.list().length, 1);
-  await sendLink('second@company.com');
-  const newToken = new URL(mailer.list().find(m => m.email === 'second@company.com').claimUrl).hash.slice(1);
-  assert.equal((await redeem(newToken)).status, 200);
-  assert.deepEqual(calls, [teamIdentifier, teamIdentifier], 'Supabase enforces redemption against the SAME permanent team identifier');
-  assert.equal((await second.list()).length, 1);
-  assert.equal((await second.teams()).length, 2, 'team registry survives revocations');
+  assert.equal((await second.get(emails[winner])).teamName, 'Renamed Product');
+  for (const email of emails) await second.revoke(email);
+  assert.equal((await redeem(tokens[winner])).status, 403);
+  const replacement = await second.approve('replacement@company.com', teamId);
+  assert.equal(replacement.userIdentifier, teamIdentifier);
+  assert.equal(await second.reserveClaim({ ...replacement, approvalVersion: replacement.version }), 'claimed');
+  const renewed = await second.approve(emails[winner], teamId);
+  assert.equal(await second.reserveClaim({ ...renewed, approvalVersion: renewed.version }), 'allowed');
+  assert.equal((await redeem(tokens[winner])).status, 403, 'reapproval cannot revive old invitation versions');
+  assert.deepEqual((await second.teams()).find(t => t.id === teamId).claimant, claimant);
+});
+
+
+test('an upstream timeout retains the claim for its founder without unlocking another founder', async t => {
+  const { handler, store, mailer, founderCookie, calls } = await fixture(t, { failFirstIssue: true });
+  for (const email of ['first@company.com', 'second@company.com']) {
+    await store.approve(email, teamId);
+    await request(handler, '/perks/supabase/request', { method: 'POST', cookie: founderCookie, values: { email } });
+  }
+  const tokenFor = email => new URL(mailer.list().find(message => message.email === email).claimUrl).hash.slice(1);
+  const redeem = email => request(handler, '/perks/supabase', { method: 'POST', values: { claim: tokenFor(email) } });
+  assert.equal((await redeem('first@company.com')).status, 503);
+  assert.equal((await redeem('second@company.com')).status, 403);
+  assert.equal((await redeem('first@company.com')).status, 200);
+  assert.deepEqual(calls, [teamIdentifier, teamIdentifier]);
 });

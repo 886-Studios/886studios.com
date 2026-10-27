@@ -16,7 +16,7 @@ export function createClaim({ userIdentifier, secret, environment, now = Date.no
   const cipher = createCipheriv('aes-256-gcm', key(secret), iv);
   cipher.setAAD(Buffer.from('886-supabase-claim-v1'));
   if (approvalVersion !== undefined && !/^[a-f0-9-]{36}$/.test(approvalVersion)) throw new Error('Invalid approval version.');
-  const payload = JSON.stringify({ userIdentifier, environment, issuedAt: now, expiresAt: now + LIFETIME, approvalVersion, email, email });
+  const payload = JSON.stringify({ userIdentifier, environment, issuedAt: now, expiresAt: now + LIFETIME, approvalVersion, email });
   const encrypted = Buffer.concat([cipher.update(payload, 'utf8'), cipher.final()]);
   return Buffer.concat([iv, cipher.getAuthTag(), encrypted]).toString('base64url');
 }

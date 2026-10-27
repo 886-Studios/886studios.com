@@ -231,17 +231,17 @@ Public program previews show the partner name and logo; private terms stay in th
 ### Staff workflow
 
 1. Open `/perks/admin` and sign in using the separate **staff access code**.
-2. Verify the company is eligible, then approve **one designated founder email per
-   company** by choosing its registered team and entering the email. A second email
-   for that team is rejected. Approval does not send an email. Renamed products
-   and aliases must share the original team record.
+2. Verify the company is eligible, then approve its founder emails under the same
+   registered team. Multiple founders may be eligible, but the team gets one benefit.
+   Approval does not send email. Renamed products and aliases share the original team ID.
 3. The founder signs in to the existing perks directory, opens Supabase, selects
    **Claim credits**, and enters their approved email.
 4. The website sends a private link to that exact approved inbox through Resend. The
    request page shows the same confirmation for approved and unknown addresses and
    never reveals a claim link. Merely knowing another founder's email is insufficient.
 5. The founder opens the email and presses **Continue to Supabase**. The server checks
-   the invitation and current approval, calls the partner API using the permanent team identifier,
+   the invitation and current approval, atomically reserves the team claim for this
+   founder, and calls the partner API using the permanent team identifier,
    then redirects to `https://supabase.com/redeem?code=…` in production. The founder
    signs in, chooses an organization, and confirms redemption at Supabase.
 
@@ -250,6 +250,10 @@ reapproving that address does not reactivate old links. Revocation cannot cancel
 already issued or credits already redeemed at Supabase. No terminal command is needed
 for routine approvals or founder claims. A replacement founder keeps the same
 Supabase customer identifier, so replacing an email cannot reset redemption eligibility.
+The first founder to press Continue holds the claim, even if the API call fails or
+their email is later revoked. They can retry with a current invitation; other founders
+are blocked before issuance. Sending an email or opening a link does not reserve the
+claim. The admin page shows who started it. No automatic reassignment is provided.
 
 Staff login has a separate HTTP-only cookie scoped to `/perks/admin`, expiring after
 eight hours. A founder's shared access code cannot open the admin list. Approvals are
@@ -393,10 +397,10 @@ and local environment files.
 
 ### Importing the reviewed founder roster
 
-The ignored `private/founder-roster.json` records one designated founder per team,
+The ignored `private/founder-roster.json` records the eligible founder emails per team,
 canonical Notion team IDs, renamed products, and source links. It is private data;
 never commit it or package it in the website. The importer copies only team identity,
-display name, and approved email into storage. It never sends email or issues codes.
+display name, and approved emails into storage. It never sends email or issues codes.
 
 ```sh
 npm run founders:import -- private/founder-roster.json --local --check
@@ -406,14 +410,17 @@ npm run founders:import -- private/founder-roster.json --local --apply
 When a hosted release is authorized, set the correct environment and Upstash credentials,
 then use `--redis` instead of `--local` with the **same roster IDs**. Local approvals
 are not automatically deployed. Re-running an unchanged import preserves approval
-versions. Existing conflicting contacts require staff review; imports never replace
-or revoke them silently. Inactive teams, missing contacts, and unresolved records are
+versions. An email assigned to another team requires staff review; imports never
+move it or revoke existing approvals silently. Each team entry accepts an `emails`
+array (the former single `email` field remains supported). Inactive teams, missing contacts, and unresolved records are
 listed separately in the private roster and are not imported.
 
 Only the importer can register teams; the staff website selects from that registry.
 Use the canonical Notion company page ID, not a founder or product alias ID. Team
 records and historical email bindings survive revocation. Production uses atomic Redis
-scripts to prevent two simultaneous approvals from assigning two founders to one team.
+scripts to select exactly one claimant when approved founders submit simultaneously.
+The claim reservation persists across restarts, revoked approvals, reimports, and
+company display-name changes.
 Supabase receives `886-team:<canonical-id>` on every issuance and enforces its own
 one-redemption-per-identifier rule. Multiple unexpired/reissued links do not grant
 multiple entitlements. Previously issued codes cannot be revoked by removing an email.
@@ -421,12 +428,14 @@ Legacy email-only approvals and invitations fail closed; before migrating an exi
 live installation, reconcile previously redeemed identifiers with Supabase. This
 integration has not issued real production credits yet.
 
-The October 27, 2026 local import initially approved 20 designated contacts. At the
-owner's request, all 20 approvals were subsequently revoked pending a replacement
-list: **zero active approvals**. The 20 permanent team identities remain intact so
-replacement contacts cannot reset redemption eligibility. The previous import roster
-is withdrawn and its active `teams` list is empty; local claim emails were cleared.
-Actual contact data is excluded from Git.
-Validation: 49 portal tests (including a real Redis 16-way approval race), 49 website
-tests, portal build, and authenticated local admin checks passed. No founder email
-was sent, no production code was issued, and nothing was pushed or deployed.
+The original Notion import was revoked at the owner's request. Its permanent team
+identities remain, with no active contacts from that import except addresses expressly
+reapproved in the replacement list. The new user-supplied roster contains **six emails
+across two teams** (Dexter Forge Inc. and Amicare Inc.), three per team. Dexter Forge
+reuses the existing Dexter Copilot ID. Contact data stays in ignored private files.
+
+Validation covers multiple founder approvals, a real Redis 16-way claim race with
+exactly one winner, revocation and restart persistence, old approval migration,
+independent entitlements for different teams, and retries after an upstream timeout.
+No real founder emails or claim codes are sent by these tests. The roster remains local;
+production deployment and a Redis import are separate, explicitly authorized steps.

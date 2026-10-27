@@ -125,7 +125,7 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
           const { environment } = creditsConfig(creditsEnv);
           const claim = readClaim(form.get('claim'), { secret: creditsEnv.SUPABASE_CLAIM_SECRET, environment, now: now?.() });
           if (!claim) return send(403, claimPage({ error: 'This invitation is invalid or has expired. Ask the 886 team for a new link.' }));
-          if (accessServices && !await accessServices.allows(claim)) return send(403, claimPage({ error: 'This invitation is no longer active. Request a new link or contact the 886 team.' }));
+          if (!accessServices || !await accessServices.allows(claim)) return send(403, claimPage({ error: 'This invitation is no longer active. Request a new link or contact the 886 team.' }));
           invitation = form.get('claim');
           const customerKey = `customer:${claim.userIdentifier}`;
           if (claimLimiter.blocked(customerKey)) {
@@ -134,6 +134,10 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
           }
           // Account before awaiting upstream to bound concurrent and repeated attempts.
           claimLimiter.fail(customerKey);
+          const reservation = await accessServices.reserveClaim(claim);
+          if (reservation !== 'allowed') return send(403, claimPage({ error: reservation === 'claimed'
+            ? 'Another founder has already started this team’s claim. Each team can claim this offer once. Please contact the 886 team for help.'
+            : 'This invitation is no longer active. Request a new link or contact the 886 team.' }));
           const result = await issueCredit({ userIdentifier: claim.userIdentifier, env: creditsEnv });
           if (result.environment === 'staging') return send(200, claimPage({ stagingCode: result.code }));
           return redirect(result.redemptionUrl);

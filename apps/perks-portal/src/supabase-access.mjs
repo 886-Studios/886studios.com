@@ -31,6 +31,10 @@ export function createAccessRouter({ store, mailer, adminAuth, env, origin, base
       const approval = await store.get(claim.email);
       return Boolean(approval && approval.version === claim.approvalVersion && approval.userIdentifier === claim.userIdentifier);
     },
+    async reserveClaim(claim) {
+      if (!store || !claim.email || !claim.approvalVersion) return 'invalid';
+      return store.reserveClaim(claim);
+    },
     async handle({ req, path, form, ip, portalAuthorized, send, redirect, res }) {
       if (path !== '/supabase/request' && path !== '/admin' && !path.startsWith('/admin/')) return false;
       const get = req.method === 'GET' || req.method === 'HEAD';
@@ -79,7 +83,7 @@ export function createAccessRouter({ store, mailer, adminAuth, env, origin, base
           if (!['/admin/approve', '/admin/revoke'].includes(path)) { send(405, 'Method not allowed.', 'text/plain'); return true; }
           let email;
           try { email = normalizeEmail(form.get('email')); } catch { send(400, adminPage({ authenticated: true, approvals: await store.list(), teams: await store.teams(), error: 'Enter a valid email address.' })); return true; }
-          if (path === '/admin/approve') { await store.approve(email, form.get('team'));  notice = `${email} is approved. They can now request their link from the perks page.`; }
+          if (path === '/admin/approve') { await store.approve(email, form.get('team')); notice = `${email} is approved. They can now request their link from the perks page.`; }
           else { await store.revoke(email); notice = `${email} no longer has access. Outstanding email claim links are invalid.`; }
         }
         send(200, adminPage({ authenticated: true, approvals: await store.list(), teams: await store.teams(), local: mailer?.local === true,

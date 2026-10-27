@@ -12,7 +12,7 @@ try {
   if (!within || within.startsWith('..') || within.startsWith('/') || !within.endsWith('.json')) throw new Error('private file required');
   const store = target === '--local' ? createLocalEmailStore(resolve(root, 'approved-emails.json')) : createRedisEmailStore(process.env);
   const result = await importFounders(store, JSON.parse(readFileSync(resolve(file), 'utf8')), { apply: action === '--apply' });
-  console.log(`${result.applied ? 'Imported' : 'Validated'} ${result.teams} teams with one founder each in ${target === '--local' ? 'local preview' : (process.env.SUPABASE_PARTNER_ENVIRONMENT || 'staging')}. No emails sent.`);
+  console.log(`${result.applied ? 'Imported' : 'Validated'} ${result.emails} founder emails across ${result.teams} teams in ${target === '--local' ? 'local preview' : (process.env.SUPABASE_PARTNER_ENVIRONMENT || 'staging')}. No emails sent.`);
 } catch {
   console.error('Import stopped. Check the private roster and existing team assignments. Usage: npm run founders:import -- private/founder-roster.json <--local|--redis> <--check|--apply>. Re-running the same roster is safe; never assign a new ID to an existing team.');
   process.exitCode = 1;

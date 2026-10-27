@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { createLocalEmailStore } from '../src/approved-emails.mjs';
 import { validateRoster, importFounders } from '../src/founder-import.mjs';
 
-test('reviewed founder import is private, idempotent, and rejects duplicate teams and conflicting contacts', async t => {
+test('reviewed founder import is private, idempotent, and rejects duplicate teams and cross-team contacts', async t => {
   const directory = mkdtempSync(join(tmpdir(), 'perks-import-'));
   t.after(() => rmSync(directory, { recursive: true, force: true }));
   const store = createLocalEmailStore(join(directory, 'approvals.json'));
@@ -22,6 +22,10 @@ test('reviewed founder import is private, idempotent, and rejects duplicate team
   for (const duplicate of [{ ...row }, { ...row, id: '22222222222222222222222222222222' }, { ...row, email: 'another@example.com' }]) {
     assert.throws(() => validateRoster({ teams: [row, duplicate] }), /Duplicate/);
   }
-  await assert.rejects(importFounders(store, { teams: [{ ...row, email: 'replacement@example.com' }] }, { apply: true }), /conflicts/);
+  await importFounders(store, { teams: [{ ...row, name: 'Example Inc.', emails: [row.email, 'cofounder@example.com', 'third@example.com'] }] }, { apply: true });
+  assert.equal((await store.list()).length, 3);
+  assert.equal((await store.get(row.email)).teamName, 'Example Inc.');
+  await assert.rejects(importFounders(store, { teams: [{ ...row, id: '33333333333333333333333333333333', name: 'Other Team' }] }, { apply: true }), /conflicts/);
+  assert.throws(() => validateRoster({ teams: [{ ...row, emails: [row.email, row.email.toUpperCase()] }] }), /Duplicate/);
   assert.equal((await store.get(row.email)).version, original.version);
 });
