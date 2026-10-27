@@ -156,3 +156,7 @@ svg{flex-shrink:0}img{display:block;max-width:100%}[hidden]{display:none!importa
 @media(max-width:700px){.admin-heading{align-items:flex-start;flex-direction:column}.admin-add{grid-template-columns:minmax(0,1fr)}.admin-list li{align-items:flex-start;flex-direction:column}.admin-main{padding-top:24px}}
 
 .admin-add select{grid-column:1/-1;width:100%;padding:12px;border:1px solid var(--border);border-radius:4px;background:#0c0a0f;color:inherit}
+
+.admin-company{margin-top:28px}
+.admin-company h3{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 16px;font-size:18px;font-weight:600;line-height:1.5}
+.admin-company h3 span{font-size:14px;font-weight:400;color:var(--muted)}
