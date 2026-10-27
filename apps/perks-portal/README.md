@@ -131,7 +131,8 @@ existing runtime credentials and signed sessions. Coordinate credential rotation
 using that release gate; changing either credential invalidates sessions. Values are never
 silently trimmed, and length checks cannot establish randomness. The
 [configuration hardening checklist](../../docs/config-hardening-checklist.md) tracks the
-remaining deployment work. No new database or Redis service is required by this release.
+remaining deployment work. Automated Supabase claims additionally require the staff,
+Upstash, and Resend settings described below.
 
 ## Access
 
@@ -214,7 +215,7 @@ The portal tests cover access control, privacy, content, and subpath login, asse
 The original concept in `design/directory-concept.png` predates the requested title, divider removal, and mobile hierarchy changes. It is ignored because it contains private offer amounts.
 
 
-## Supabase credits and staff claim links
+## Supabase credits and approved-email claims
 
 The API contract is the partner-supplied `Supabase_Partner_Credits_API_Documentation.pdf`
 (reviewed October 27, 2026). It uses `POST /partners/credits/get-code`, an
@@ -229,28 +230,59 @@ Public program previews show the partner name and logo; private terms stay in th
 
 ### Staff workflow
 
-The directory uses a shared access code, which does not identify a company. Staff
-must verify portfolio eligibility and choose one permanent identifier for the approved
-recipient (an email or an internal ID) before creating a link. Reuse it for all retries
-and replacement links. The founder cannot enter or change this identifier.
+1. Open `/perks/admin` and sign in using the separate **staff access code**.
+2. Verify the company is eligible, then approve **one designated founder email per
+   company**. Approval does not send an email. Keep the same address for replacement
+   links and retries: it is the permanent Supabase customer identifier. Do not approve
+   additional addresses or aliases to bypass a company's redemption limit.
+3. The founder signs in to the existing perks directory, opens Supabase, selects
+   **Claim credits**, and enters their approved email.
+4. The website sends a private link to that exact approved inbox through Resend. The
+   request page shows the same confirmation for approved and unknown addresses and
+   never reveals a claim link. Merely knowing another founder's email is insufficient.
+5. The founder opens the email and presses **Continue to Supabase**. The server checks
+   the invitation and current approval, calls the partner API using the bound email,
+   then redirects to `https://supabase.com/redeem?code=…` in production. The founder
+   signs in, chooses an organization, and confirms redemption at Supabase.
 
-1. Supply `SUPABASE_PARTNER_ENVIRONMENT` (`staging` by default),
-   `SUPABASE_PARTNER_API_KEY`, and a separate `SUPABASE_CLAIM_SECRET` of at least
-   32 random bytes encoded as base64url. Store them as server-side secrets only.
-   The staff environment and portal must use the same claim secret and environment.
-2. Set `APP_ORIGIN` and `APP_BASE_PATH` for the target portal.
-3. From this app, run:
+Staff can **Revoke access** in the same admin page. It invalidates outstanding links;
+reapproving that address does not reactivate old links. Revocation cannot cancel a code
+already issued or credits already redeemed at Supabase. No terminal command is needed
+for routine approvals or founder claims.
 
-   ```sh
-   npm run supabase:invite -- approved-company-id private/company-claim.json
-   ```
+Staff login has a separate HTTP-only cookie scoped to `/perks/admin`, expiring after
+eight hours. A founder's shared access code cannot open the admin list. Approvals are
+stored in Upstash Redis, partitioned by staging/production. Email requests are limited
+to eight per IP and three per email in 15 minutes, and staff login to eight attempts
+per IP in 15 minutes; these limits are atomic and persist across function instances.
 
-4. Share the `claimUrl` from that owner-only, ignored file directly with the approved
-   recipient. The command does not send messages or call Supabase.
-5. The founder opens the invitation and presses **Continue to Supabase**. The server
-   decrypts and validates the invitation, calls the partner API with the staff-approved
-   identifier, then redirects to `https://supabase.com/redeem?code=…` in production.
-   The founder signs in, chooses an organization, and confirms redemption at Supabase.
+### Required server settings
+
+Keep these only in the perks project's server environment. None are bundled into
+browser code or build artifacts. Existing portal credentials are still required.
+
+| Variable | Purpose |
+| --- | --- |
+| `PERKS_ADMIN_ACCESS_CODE` | Random staff-only code, 16–256 characters, different from the founder code. |
+| `PERKS_ADMIN_SESSION_SECRET` | Separate 32+ random bytes encoded as base64url (43+ characters). |
+| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | HTTPS Upstash REST endpoint and read/write token for durable approvals and throttles. |
+| `RESEND_API_KEY` | Resend sending key. Credentials are not available yet. |
+| `PERKS_EMAIL_FROM` | Bare email address on a verified Resend sending domain. |
+| `SUPABASE_PARTNER_ENVIRONMENT` | `staging` by default; set `production` explicitly for live credits. |
+| `SUPABASE_PARTNER_API_KEY` | Partner key for the chosen environment. |
+| `SUPABASE_CLAIM_SECRET` | Separate 32+ random bytes encoded as base64url; use distinct staging and production values. |
+
+Production has no filesystem or test-inbox fallback. Missing storage or mail settings
+disable automated claims while the other perks remain available. The existing release
+preflight checks the portal configuration; also verify these integration settings and
+perform a delivery test before release. Resend delivery is implemented against its
+[send-email API](https://resend.com/docs/api-reference/emails/send-email); durable storage
+uses the [Upstash REST API](https://upstash.com/docs/redis/features/restapi).
+
+For exceptional staff-assisted delivery, approve the email in admin first, then run
+`npm run supabase:invite -- approved@company.com private/company-claim.json` with the
+same store, claim secret, origin, and environment as the portal. This writes a private
+link without sending mail. Legacy invitations without an approval version are rejected.
 
 Invitations expire after seven days. They are bearer links: anyone possessing one can
 claim that recipient’s benefit, so share privately. AES-256-GCM conceals the identifier,
@@ -279,8 +311,16 @@ The supplied staging key was saved locally in the ignored, owner-only
 
 ```sh
 node --env-file=.env.supabase-staging scripts/dev.mjs
-node --env-file=.env.supabase-staging scripts/create-supabase-claim.mjs approved-test-id private/test-claim.json
 ```
+
+Open `http://localhost:4186/perks/admin` using the **local staff code** printed in the
+terminal (also stored in ignored `private/dev-access.json`). Approve a synthetic email,
+sign in to `/perks` with the separate founder code, and request a claim link. Refresh
+admin to open the message from **Local test inbox**. Dev always uses this local inbox,
+even if Resend credentials are present; no external email is sent. Local approvals and
+messages live in ignored, owner-only `private/approved-emails.json` and
+`private/claim-outbox.json`. They are excluded from every build and are never exposed
+as public files. They do not carry over to production.
 
 This local file sets the loopback origin, `/perks` base path, and
 `SUPABASE_CLAIM_LOCAL_PREVIEW=1` for the invitation CLI. The server stays loopback-only.
@@ -293,6 +333,8 @@ For staff-only issuance or API diagnostics:
 node --env-file=.env.supabase-staging scripts/issue-supabase-credit.mjs approved-test-id private/test-code.json
 ```
 
+This diagnostic issuer bypasses the portal approval flow; restrict it to authorized
+staff and synthetic testing, and use the approved email for any real customer.
 The issuer refuses to overwrite an existing output and saves codes in the ignored
 private directory. It reserves a pending file before contacting Supabase; if issuance
 fails, use a new output filename and the **same customer identifier** on retry. No

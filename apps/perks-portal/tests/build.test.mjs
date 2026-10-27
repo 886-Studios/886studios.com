@@ -24,6 +24,8 @@ test('a credential-free fixture build packages the new runtime and preserves pro
     writeFileSync(join(root, 'private/supabase-offer.json'), JSON.stringify({ marker }));
     writeFileSync(join(root, 'private/company-claim.json'), JSON.stringify({ claimUrl: marker }));
     writeFileSync(join(root, 'private/test-code.json'), JSON.stringify({ code: marker }));
+    writeFileSync(join(root, 'private/approved-emails.json'), JSON.stringify({ email: marker }));
+    writeFileSync(join(root, 'private/claim-outbox.json'), JSON.stringify({ claimUrl: marker }));
     writeFileSync(join(root, '.env.local'), `PERKS_ACCESS_CODE=${marker}\n`);
     writeFileSync(join(root, '.env.supabase-staging'), `SUPABASE_PARTNER_API_KEY=${marker}\nSUPABASE_CLAIM_SECRET=${marker}\n`);
     const built = spawnSync(process.execPath, ['scripts/build.mjs'], { cwd: root, env: { PATH: process.env.PATH }, encoding: 'utf8' });

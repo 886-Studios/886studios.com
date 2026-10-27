@@ -55,7 +55,7 @@ export function createUnavailableHandler() {
 
 export function createHandler({ root, code, secret, origin, basePath = '', secure = true, now, catalog,
   limiter = createRateLimiter(), vercel = secure && process.env.VERCEL === '1',
-  creditsEnv = process.env, issueCredit = issueSupabaseCredit, claimLimiter = createRateLimiter() }) {
+  creditsEnv = process.env, issueCredit = issueSupabaseCredit, claimLimiter = createRateLimiter(), accessServices }) {
   validateBasePath(basePath);
   const publicOrigin = validateOrigin(origin, { secure });
   const home = basePath || '/';
@@ -82,7 +82,7 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
       const url = new URL(req.url, publicOrigin);
       if (basePath && url.pathname !== basePath && !url.pathname.startsWith(`${basePath}/`)) return send(404, 'Not found.', 'text/plain');
       const path = url.pathname.slice(basePath.length) || '/';
-      if (path === '/supabase') res.setHeader('Referrer-Policy', 'no-referrer');
+      if (path.startsWith('/supabase') || path.startsWith('/admin')) res.setHeader('Referrer-Policy', 'no-referrer');
       if (req.method === 'GET' || req.method === 'HEAD') {
         if (path === '/robots.txt') return send(200, 'User-agent: *\nAllow: /\n', 'text/plain; charset=utf-8');
         if (assets.has(path)) {
@@ -90,6 +90,7 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
           res.setHeader('Cache-Control', 'public, max-age=3600');
           return send(200, readFileSync(asset.path), asset.type);
         }
+        if (accessServices && await accessServices.handle({ req, path, portalAuthorized: Boolean(auth?.valid(req.headers.cookie)), send, redirect, res })) return;
         // The encrypted invitation authorizes this single benefit, never catalog access.
         // GET/HEAD are safe for email scanners and cannot issue a code.
         if (path === '/supabase') return send(200, renderSupabaseClaim({ basePath }));
@@ -103,7 +104,7 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
         return send(200, renderDirectory(perks, { query, category, sort, basePath }));
       }
       if (req.method !== 'POST') { res.setHeader('Allow', 'GET, HEAD, POST'); return send(405, 'Method not allowed.', 'text/plain'); }
-      if (!['/login', '/logout', '/supabase'].includes(path)) return send(404, 'Not found.', 'text/plain');
+      if (!['/login', '/logout', '/supabase', '/supabase/request', '/admin', '/admin/login', '/admin/logout', '/admin/approve', '/admin/revoke'].includes(path)) return send(404, 'Not found.', 'text/plain');
       if (req.headers.origin !== publicOrigin || req.headers['sec-fetch-site'] === 'cross-site') return send(403, 'Please submit this form from the perks website.', 'text/plain');
       if (!auth || !perks) return send(503, loginPage({ ready: false }));
       if (path === '/logout') { res.setHeader('Set-Cookie', auth.clear()); return redirect(home); }
@@ -111,6 +112,8 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
       const form = await readBody(req);
       // Vercel overwrites this header. Standalone servers use the socket address.
       const ip = vercel ? req.headers['x-vercel-forwarded-for'] || 'unknown' : req.socket?.remoteAddress || 'unknown';
+      if (accessServices && await accessServices.handle({ req, path, form, ip, portalAuthorized: auth.valid(req.headers.cookie), send, redirect, res })) return;
+      if (path === '/supabase/request' || path.startsWith('/admin')) return send(503, 'Email claims are not configured yet.', 'text/plain');
       if (path === '/supabase') {
         const claimPage = options => renderSupabaseClaim({ basePath, ...options });
         if (claimLimiter.blocked(`ip:${ip}`)) {
@@ -123,6 +126,7 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
           const { environment } = creditsConfig(creditsEnv);
           const claim = readClaim(form.get('claim'), { secret: creditsEnv.SUPABASE_CLAIM_SECRET, environment, now: now?.() });
           if (!claim) return send(403, claimPage({ error: 'This invitation is invalid or has expired. Ask the 886 team for a new link.' }));
+          if (accessServices && !await accessServices.allows(claim)) return send(403, claimPage({ error: 'This invitation is no longer active. Request a new link or contact the 886 team.' }));
           invitation = form.get('claim');
           const customerKey = `customer:${claim.userIdentifier}`;
           if (claimLimiter.blocked(customerKey)) {

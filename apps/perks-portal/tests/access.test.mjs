@@ -61,7 +61,7 @@ test('locked HTML and every public asset contain no private partner data',async(
 });
 test('private data and server files cannot be requested directly, even with a session',async()=>{
   const handler=make(); const signed=await login(handler);
-  for(const path of ['/private/catalog.json','/private/source-records.json','/private/dev-access.json','/src/server.mjs','/.env.local','/api/perks','/assets/../private/catalog.json','/%2e%2e/private/catalog.json','/assets/%2e%2e/%2e%2e/private/catalog.json','/index']) {
+  for(const path of ['/private/catalog.json','/private/source-records.json','/private/dev-access.json','/private/approved-emails.json','/private/claim-outbox.json','/src/server.mjs','/.env.local','/api/perks','/assets/../private/catalog.json','/%2e%2e/private/catalog.json','/assets/%2e%2e/%2e%2e/private/catalog.json','/index']) {
     for(const headers of [{},{cookie:signed.headers['set-cookie'].split(';')[0]}]) {
       const result=await request(handler,path,{headers});assert.equal(result.status,404,path);assert.doesNotMatch(result.body,/private-referral/);
     }

@@ -3,6 +3,7 @@ import { resolve, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createClaim } from '../src/supabase-claims.mjs';
 import { validateOrigin, validateBasePath } from '../src/config.mjs';
+import { createLocalEmailStore, createRedisEmailStore, normalizeEmail } from '../src/approved-emails.mjs';
 
 const [userIdentifier, outputPath, ...extra] = process.argv.slice(2);
 try {
@@ -13,12 +14,18 @@ try {
   const destination = resolve(outputPath);
   const within = relative(fileURLToPath(new URL('../private/', import.meta.url)), destination);
   if (!within || within.startsWith('..') || within.startsWith('/') || !within.endsWith('.json')) throw new Error('Invalid output path.');
-  const token = createClaim({ userIdentifier, environment, secret: process.env.SUPABASE_CLAIM_SECRET });
+  const email = normalizeEmail(userIdentifier);
+  const store = process.env.SUPABASE_CLAIM_LOCAL_PREVIEW === '1'
+    ? createLocalEmailStore(fileURLToPath(new URL('../private/approved-emails.json', import.meta.url)))
+    : createRedisEmailStore(process.env);
+  const approval = await store.get(email);
+  if (!approval) throw new Error('Approve this email in the staff admin first.');
+  const token = createClaim({ userIdentifier: approval.email, approvalVersion: approval.version, environment, secret: process.env.SUPABASE_CLAIM_SECRET });
   // Fragment avoids placing the invitation in incoming request/access logs.
   const claimUrl = `${origin}${basePath}/supabase#${token}`;
   writeFileSync(destination, JSON.stringify({ claimUrl, environment, expiresInDays: 7 }, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
   console.log('Created a private claim link valid for 7 days. Share only with the approved company. No code has been issued yet.');
 } catch {
-  console.error('Unable to create claim. Check APP_ORIGIN, APP_BASE_PATH, SUPABASE_CLAIM_SECRET and environment; use: npm run supabase:invite -- <approved-customer-id> <private/new-claim.json>.');
+  console.error('Unable to create claim. Approve the email in staff admin first and check storage, APP_ORIGIN, APP_BASE_PATH, SUPABASE_CLAIM_SECRET and environment; use: npm run supabase:invite -- <approved-email> <private/new-claim.json>.');
   process.exitCode = 1;
 }

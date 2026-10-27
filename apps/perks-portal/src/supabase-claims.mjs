@@ -9,13 +9,14 @@ function key(secret) {
 
 // Authenticated encryption keeps the customer identifier out of URLs and logs.
 // This is a bearer invitation: staff share it only with the approved recipient.
-export function createClaim({ userIdentifier, secret, environment, now = Date.now() }) {
+export function createClaim({ userIdentifier, secret, environment, now = Date.now(), approvalVersion }) {
   validateIdentifier(userIdentifier);
   if (!['staging', 'production'].includes(environment)) throw new Error('Invalid claim environment.');
   const iv = randomBytes(12);
   const cipher = createCipheriv('aes-256-gcm', key(secret), iv);
   cipher.setAAD(Buffer.from('886-supabase-claim-v1'));
-  const payload = JSON.stringify({ userIdentifier, environment, issuedAt: now, expiresAt: now + LIFETIME });
+  if (approvalVersion !== undefined && !/^[a-f0-9-]{36}$/.test(approvalVersion)) throw new Error('Invalid approval version.');
+  const payload = JSON.stringify({ userIdentifier, environment, issuedAt: now, expiresAt: now + LIFETIME, approvalVersion });
   const encrypted = Buffer.concat([cipher.update(payload, 'utf8'), cipher.final()]);
   return Buffer.concat([iv, cipher.getAuthTag(), encrypted]).toString('base64url');
 }
