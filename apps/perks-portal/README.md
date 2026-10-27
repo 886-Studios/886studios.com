@@ -299,7 +299,9 @@ fails, use a new output filename and the **same customer identifier** on retry. 
 credentials or redemption codes are printed to stdout.
 
 Staging uses `https://api.supabase.green`. The supplied key successfully generated a
-code for a synthetic test customer on October 27, 2026. **Staging codes cannot be
+code for a synthetic test customer on October 27, 2026. A second test also verified
+the full staff invitation → portal POST → staging API → labeled result flow.
+**Staging codes cannot be
 redeemed**: the portal displays a clearly labeled test result and never redirects them
 to production redemption. This confirms issuance, not end-to-end redemption.
 

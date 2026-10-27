@@ -8,6 +8,11 @@ if (claimForm) {
     // Remove the bearer invitation from browser history after reading it.
     history.replaceState(null, '', location.pathname);
   }
+  if (document.getElementById('claim-token').value) {
+    claimForm.querySelector('[data-claim-code]').hidden = true;
+    const message = document.getElementById('claim-message');
+    if (!message.hasAttribute('role')) message.textContent = 'Your invitation is ready. Continue to claim your company’s benefit.';
+  }
   claimForm.addEventListener('submit', () => {
     const button = claimForm.querySelector('button[type="submit"]');
     button.disabled = true;

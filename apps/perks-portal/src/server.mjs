@@ -118,14 +118,16 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
           return send(429, claimPage({ error: 'Too many attempts. Please try again in 15 minutes.' }));
         }
         claimLimiter.fail(`ip:${ip}`);
+        let invitation = '';
         try {
           const { environment } = creditsConfig(creditsEnv);
           const claim = readClaim(form.get('claim'), { secret: creditsEnv.SUPABASE_CLAIM_SECRET, environment, now: now?.() });
           if (!claim) return send(403, claimPage({ error: 'This invitation is invalid or has expired. Ask the 886 team for a new link.' }));
+          invitation = form.get('claim');
           const customerKey = `customer:${claim.userIdentifier}`;
           if (claimLimiter.blocked(customerKey)) {
             res.setHeader('Retry-After', '900');
-            return send(429, claimPage({ error: 'Too many attempts for this invitation. Please try again in 15 minutes.' }));
+            return send(429, claimPage({ invitation, error: 'Too many attempts for this invitation. Please try again in 15 minutes.' }));
           }
           // Account before awaiting upstream to bound concurrent and repeated attempts.
           claimLimiter.fail(customerKey);
@@ -135,7 +137,7 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
         } catch (error) {
           const status = error instanceof SupabaseCreditsError && error.kind === 'already-redeemed' ? 400 :
             error instanceof SupabaseCreditsError && error.kind === 'rate-limit' ? 429 : 503;
-          return send(status, claimPage({ error: error instanceof SupabaseCreditsError && error.kind !== 'configuration' ? error.message : 'Supabase credits are temporarily unavailable. Please contact the 886 team.' }));
+          return send(status, claimPage({ invitation, error: error instanceof SupabaseCreditsError && error.kind !== 'configuration' ? error.message : 'Supabase credits are temporarily unavailable. Please contact the 886 team.' }));
         }
       }
       // No await between this check, verification and accounting: concurrent

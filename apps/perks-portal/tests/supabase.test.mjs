@@ -95,6 +95,7 @@ test('claim route is safe for link scanners, rejects forgery and CSRF, and needs
   assert.match(result.body, /Staging codes cannot be redeemed/);
   assert.equal(result.headers.location, undefined);
   assert.equal(result.headers['referrer-policy'], 'no-referrer');
+  assert.match(result.body, /<meta name="referrer" content="no-referrer">/);
   assert.match(result.headers['cache-control'], /no-store/);
   assert.match(result.headers['x-robots-tag'], /noindex/);
   assert.doesNotMatch(result.body, /approved-company-001|sb_partner_test_only/);
@@ -115,6 +116,7 @@ test('production redirects only after POST and API errors have safe user-facing 
     const error = await request(failed, { token });
     assert.equal(error.status, expected);
     assert.doesNotMatch(error.body, /private failure|sb_partner_/);
+    assert.ok(error.body.includes(`value="${token}"`), 'preserve the validated invitation so transient failures can be retried');
   }
 });
 
