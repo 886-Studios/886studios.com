@@ -430,9 +430,11 @@ integration has not issued real production credits yet.
 
 The original Notion import was revoked at the owner's request. Its permanent team
 identities remain, with no active contacts from that import except addresses expressly
-reapproved in the replacement list. The new user-supplied roster contains **six emails
-across two teams** (Dexter Forge Inc. and Amicare Inc.), three per team. Dexter Forge
-reuses the existing Dexter Copilot ID. Contact data stays in ignored private files.
+reapproved in the replacement list. The user-supplied roster now contains **11 emails
+across five teams**: Dexter Forge Inc. (3), Amicare Inc. (3), InstaPodz (2), HeyEva (2),
+and Peeps (1). Dexter Forge reuses the existing Dexter Copilot ID; HeyEva and Peeps
+retain their existing IDs shared with diffusr. and Kardomo respectively. The empty
+second bullet for Peeps was ignored. Contact data stays in ignored private files.
 
 Validation covers multiple founder approvals, a real Redis 16-way claim race with
 exactly one winner, revocation and restart persistence, old approval migration,
