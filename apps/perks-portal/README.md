@@ -421,10 +421,12 @@ Legacy email-only approvals and invitations fail closed; before migrating an exi
 live installation, reconcile previously redeemed identifiers with Supabase. This
 integration has not issued real production credits yet.
 
-The October 27, 2026 local import contains **20 teams / 20 designated contacts**,
-reconciled against Notion's current founder directory, active portfolio records,
-accepted applications, and legacy portfolio profiles. Unresolved and inactive records
-remain in the private roster's `held` section. Actual contact data is excluded from Git.
+The October 27, 2026 local import initially approved 20 designated contacts. At the
+owner's request, all 20 approvals were subsequently revoked pending a replacement
+list: **zero active approvals**. The 20 permanent team identities remain intact so
+replacement contacts cannot reset redemption eligibility. The previous import roster
+is withdrawn and its active `teams` list is empty; local claim emails were cleared.
+Actual contact data is excluded from Git.
 Validation: 49 portal tests (including a real Redis 16-way approval race), 49 website
 tests, portal build, and authenticated local admin checks passed. No founder email
 was sent, no production code was issued, and nothing was pushed or deployed.
