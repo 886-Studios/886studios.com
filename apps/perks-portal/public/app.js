@@ -1,5 +1,20 @@
 document.documentElement.classList.add('js');
 
+const claimForm = document.querySelector('[data-supabase-claim]');
+if (claimForm) {
+  const invitation = location.hash.slice(1);
+  if (/^[A-Za-z0-9_-]{40,1200}$/.test(invitation)) {
+    document.getElementById('claim-token').value = invitation;
+    // Remove the bearer invitation from browser history after reading it.
+    history.replaceState(null, '', location.pathname);
+  }
+  claimForm.addEventListener('submit', () => {
+    const button = claimForm.querySelector('button[type="submit"]');
+    button.disabled = true;
+    button.textContent = 'Preparing your code…';
+  });
+}
+
 const toggle = document.querySelector('[data-password-toggle]');
 if (toggle) {
   toggle.hidden = false;

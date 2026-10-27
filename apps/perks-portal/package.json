@@ -9,6 +9,9 @@
     "start": "node --env-file-if-exists=.env.local scripts/start.mjs",
     "test": "node --test tests/*.test.mjs",
     "build": "node scripts/build.mjs",
+    "supabase:issue": "node --env-file-if-exists=.env.local scripts/issue-supabase-credit.mjs",
+    "supabase:invite": "node --env-file-if-exists=.env.local scripts/create-supabase-claim.mjs",
+    "supabase:catalog": "node scripts/add-supabase-perk.mjs",
     "validate": "npm test && npm run build",
     "preflight": "node --env-file-if-exists=.env.local scripts/preflight.mjs",
     "validate:release": "npm run preflight && npm run validate"

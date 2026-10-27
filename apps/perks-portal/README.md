@@ -189,7 +189,7 @@ the catalog enters the private function; local credentials and source snapshots 
 
 ## Content and sources
 
-`private/catalog.json` contains 21 partner entries: 20 sourced offers and Zettabyte, whose credit amount and redemption link are unconfirmed. Its entry explicitly asks founders to contact the team. Negotiations, rejected applications, and unavailable offers are excluded.
+`private/catalog.json` now contains 22 partner entries: 21 sourced offers (including Supabase) and Zettabyte, whose credit amount and redemption link are unconfirmed. Its entry explicitly asks founders to contact the team. Negotiations, rejected applications, and unavailable offers are excluded.
 
 The catalog was checked against the complete Notion founder-facing Perks database and Perks – Internal on September 22, 2026. Linear is included from its completed internal record. Zettabyte is included from the public 886 website and the August 31 partnership meeting note. Source URLs are retained per entry for maintenance but not rendered to portfolio visitors. Detailed source snapshots are kept locally in `private/source-records.json` and are never included in the build.
 
@@ -212,3 +212,122 @@ At phone widths, each entry reads as partner, offer, then a compact Type field a
 The portal tests cover access control, privacy, content, and subpath login, assets, filters, redirects, cookie scope, and private-path rejection. The main GitHub validation workflow also runs portal tests; the private-catalog check runs locally when the catalog is present. Browser checks covered actual CSS viewport widths of 320, 390, 430, 768, 843 (landscape), and 1280px. No horizontal overflow was found. Checked combined search/type filtering, retained filters after refresh, empty results and reset, expanded long terms, invalid and valid access codes, and authentication. Physical iPhone/Android devices have not been tested. Partner claims were not submitted.
 
 The original concept in `design/directory-concept.png` predates the requested title, divider removal, and mobile hierarchy changes. It is ignored because it contains private offer amounts.
+
+
+## Supabase credits and staff claim links
+
+The API contract is the partner-supplied `Supabase_Partner_Credits_API_Documentation.pdf`
+(reviewed October 27, 2026). It uses `POST /partners/credits/get-code`, an
+`x-partner-api-key` header, and `{ "user_identifier": "stable-approved-customer-id" }`.
+A successful issuance returns HTTP 201 and a code. HTTP 400 can indicate a prior
+redemption. A code can be reissued after expiry using the same identifier. Never
+change identifiers to get around redemption limits.
+
+The negotiated amount and validity are stored only in the ignored private catalog.
+The official, unmodified SVG icon comes from [Supabase’s logo kit](https://supabase.com/brand-assets).
+Public program previews show the partner name and logo; private terms stay in the portal.
+
+### Staff workflow
+
+The directory uses a shared access code, which does not identify a company. Staff
+must verify portfolio eligibility and choose one permanent identifier for the approved
+recipient (an email or an internal ID) before creating a link. Reuse it for all retries
+and replacement links. The founder cannot enter or change this identifier.
+
+1. Supply `SUPABASE_PARTNER_ENVIRONMENT` (`staging` by default),
+   `SUPABASE_PARTNER_API_KEY`, and a separate `SUPABASE_CLAIM_SECRET` of at least
+   32 random bytes encoded as base64url. Store them as server-side secrets only.
+   The staff environment and portal must use the same claim secret and environment.
+2. Set `APP_ORIGIN` and `APP_BASE_PATH` for the target portal.
+3. From this app, run:
+
+   ```sh
+   npm run supabase:invite -- approved-company-id private/company-claim.json
+   ```
+
+4. Share the `claimUrl` from that owner-only, ignored file directly with the approved
+   recipient. The command does not send messages or call Supabase.
+5. The founder opens the invitation and presses **Continue to Supabase**. The server
+   decrypts and validates the invitation, calls the partner API with the staff-approved
+   identifier, then redirects to `https://supabase.com/redeem?code=…` in production.
+   The founder signs in, chooses an organization, and confirms redemption at Supabase.
+
+Invitations expire after seven days. They are bearer links: anyone possessing one can
+claim that recipient’s benefit, so share privately. AES-256-GCM conceals the identifier,
+checks tampering, and binds the invitation to staging or production. The fragment keeps
+the invitation out of incoming access logs, and the page removes it from browser history
+once loaded. Without JavaScript, paste the fragment after `#` into **Invitation code**.
+Rotating `SUPABASE_CLAIM_SECRET` invalidates all outstanding invitations.
+
+The invitation authorizes only this Supabase claim, not access to the private catalog.
+GET and HEAD never issue a code, so email link scanners are safe. POST requires the
+configured origin and a bounded form body. Responses remain no-store/no-index, and the
+claim route sends no referrer. API keys, upstream bodies, and customer identifiers are
+never rendered. API requests time out after ten seconds, reject redirects, and do not
+automatically retry. Errors ask the founder to retry later or contact the team.
+
+There are eight attempts per IP and per approved customer per 15 minutes in each process,
+accounted before upstream calls. Configure a durable/platform rate limit for
+`POST /perks/supabase` through both the public proxy and direct portal hostname before
+release; as with login, separate instances have separate counters. Supabase enforces the
+one-redemption-per-identifier rule. The portal does not keep a durable redemption ledger.
+
+### Local staging test
+
+The supplied staging key was saved locally in the ignored, owner-only
+`.env.supabase-staging`, never in Git or browser assets. To use that file explicitly:
+
+```sh
+node --env-file=.env.supabase-staging scripts/dev.mjs
+node --env-file=.env.supabase-staging scripts/create-supabase-claim.mjs approved-test-id private/test-claim.json
+```
+
+This local file sets the loopback origin, `/perks` base path, and
+`SUPABASE_CLAIM_LOCAL_PREVIEW=1` for the invitation CLI. The server stays loopback-only.
+Use separate staging and production claim secrets. Do not copy local preview settings
+into production.
+
+For staff-only issuance or API diagnostics:
+
+```sh
+node --env-file=.env.supabase-staging scripts/issue-supabase-credit.mjs approved-test-id private/test-code.json
+```
+
+The issuer refuses to overwrite an existing output and saves codes in the ignored
+private directory. It reserves a pending file before contacting Supabase; if issuance
+fails, use a new output filename and the **same customer identifier** on retry. No
+credentials or redemption codes are printed to stdout.
+
+Staging uses `https://api.supabase.green`. The supplied key successfully generated a
+code for a synthetic test customer on October 27, 2026. **Staging codes cannot be
+redeemed**: the portal displays a clearly labeled test result and never redirects them
+to production redemption. This confirms issuance, not end-to-end redemption.
+
+Production requires the partner’s production key and explicit
+`SUPABASE_PARTNER_ENVIRONMENT=production`, plus a separate production claim secret.
+After deployment is authorized, verify a production test redemption with the partner
+before distributing real-company invitations. No production key, remote environment
+change, deployment, or partner message was made as part of this implementation.
+
+### Private catalog recovery
+
+The private catalog was absent from this checkout. All 21 existing rendered records
+were recovered from the already signed-in production page, preserving names, categories,
+headlines, descriptions, About text, offers, eligibility, instructions, links, and codes.
+Maintenance source metadata was restored from Notion and repository records. The original
+rendered records are backed up in ignored `private/production-catalog-baseline.json`;
+`private/catalog.json` contains those same records plus Supabase. Recovery provenance is
+recorded in the catalog, with a Notion source snapshot in
+`private/notion-recovery-source.json`. No existing production offer was edited.
+
+The new Supabase record is also saved in ignored `private/supabase-offer.json`. To add
+it to a restored authoritative catalog while preserving all other entries, run:
+
+```sh
+npm run supabase:catalog
+```
+
+The updater validates the complete result and replaces the catalog atomically. Keep both
+private files backed up through the team’s secure channel; neither belongs in Git. The
+build packages only `private/catalog.json`, excluding invitations, codes, source records,
+and local environment files.
