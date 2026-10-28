@@ -74,7 +74,7 @@ test('valid code creates an HTTP-only secure session and unlocks partner links',
   for(const flag of ['HttpOnly','Secure','SameSite=Strict','Path=/'])assert.ok(signed.headers['set-cookie'].includes(flag));
   const result=await request(handler,'/',{headers:{cookie:signed.headers['set-cookie'].split(';')[0]}});
   assert.equal(result.status,200);assert.match(result.body,/https:\/\/partner.example\/private-referral/);
-  assert.match(result.body,/<summary>About Private Test Partner<\/summary>/);
+  assert.match(result.body,/<summary>Details<\/summary>/);
   assert.match(result.body,/A platform for prototyping &amp; collaboration\./);
   const searched=await request(handler,'/?q=prototyping',{headers:{cookie:signed.headers['set-cookie'].split(';')[0]}});
   assert.match(searched.body,/1 partner/);
