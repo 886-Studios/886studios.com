@@ -16,7 +16,7 @@ svg{flex-shrink:0}img{display:block;max-width:100%}[hidden]{display:none!importa
 .brand{display:flex;align-items:center;justify-content:center;width:44px;height:44px}
 .brand img{width:34px;height:34px;object-fit:contain}
 .hero{padding:24px 0 32px}
-.hero h1{font-size:clamp(34px,3.6vw,48px);line-height:1.15;letter-spacing:-1.6px;font-weight:600}
+.hero h1{font-size:32px;line-height:1.2;letter-spacing:-.8px;font-weight:600}
 
 /* Quiet controls; retain the requested rounded category filters. */
 .filter-form{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px;row-gap:16px;padding-bottom:28px}
@@ -44,11 +44,11 @@ svg{flex-shrink:0}img{display:block;max-width:100%}[hidden]{display:none!importa
 .button-subtle{background:none;border:1px solid var(--border)}.button-subtle:hover{border-color:var(--bright)}
 
 /* Columns share a single grid and stay aligned across every partner. */
-.list-header,.perk-row summary{display:grid;grid-template-columns:25% 17% minmax(0,1fr) 108px;align-items:center}
+.list-header,.perk-row>summary{display:grid;grid-template-columns:25% 17% minmax(0,1fr) 108px;align-items:center}
 .list-header{min-height:32px;color:var(--muted);font-size:12px;font-weight:500}
 .perk-row{scroll-margin-top:24px}
-.perk-row summary{list-style:none;cursor:pointer;min-height:92px;padding:20px 0;gap:0}
-.perk-row summary::-webkit-details-marker{display:none}
+.perk-row>summary{list-style:none;cursor:pointer;min-height:92px;padding:20px 0;gap:0}
+.perk-row>summary::-webkit-details-marker{display:none}
 .partner{grid-column:1;grid-row:1;display:flex;align-items:center;gap:12px;min-width:0;padding-right:20px}
 .partner-logo{display:flex;align-items:center;justify-content:center;width:44px;min-width:44px;height:44px}
 .partner-logo img{width:40px;height:40px;object-fit:contain}
@@ -56,19 +56,20 @@ svg{flex-shrink:0}img{display:block;max-width:100%}[hidden]{display:none!importa
 .perk-type{grid-column:2;grid-row:1;padding-right:24px;color:var(--muted);font-size:13px;line-height:1.5}
 .mobile-field-label{display:none}
 .benefit{grid-column:3;grid-row:1;min-width:0;padding-right:24px}
-.benefit-title,.benefit-description{display:block}
+.benefit-title{display:block}
 .benefit-title{font-size:18px;font-weight:500;line-height:1.4;letter-spacing:-.2px}
-.benefit-description{font-size:14px;color:var(--secondary);line-height:1.5;margin-top:4px}
 .view-perk{grid-column:4;grid-row:1;display:flex;align-items:center;justify-content:flex-end;gap:8px;color:var(--bright);font-size:13px;white-space:nowrap;min-height:44px}
-.perk-row summary:hover .partner-name{color:var(--bright)}
+.perk-row>summary:hover .partner-name{color:var(--bright)}
 .chevron{transition:transform .18s}.perk-row[open] .chevron{transform:rotate(180deg)}
 .open-label,.perk-row[open] .closed-label{display:none}.perk-row[open] .open-label{display:block}
 .wordmark{font-weight:600;font-size:22px;letter-spacing:-.6px}.wordmark-goodwin{font-family:Georgia,serif;font-size:40px}.wordmark-beyond-border{color:#a8d8ce}.wordmark-uxy{color:var(--bright)}
 
-/* Solid purple details box; introduction above the three-column perk layout. */
+/* Offer and redemption first; partner background is available on demand. */
 .perk-detail{--text:#f5f0fc;--secondary:#d3c9dd;--muted:#ac9cbb;--bright:#cfb4ff;background:#20112f;color:var(--text);border:1px solid #352241;border-radius:2px;box-shadow:none;backdrop-filter:none;opacity:1;padding:28px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin:8px 0 28px}
 .perk-detail>div{display:block;min-width:0}
-.detail-about{grid-column:1/-1}.detail-about .detail-copy{max-width:80ch}
+.partner-about{grid-column:1/-1;border-top:1px solid #47344f;padding-top:12px}
+.partner-about>summary{min-height:44px;padding:10px 0;cursor:pointer;color:var(--bright);font-size:14px}
+.partner-about .detail-copy{max-width:70ch;padding:8px 0}
 .perk-detail h3{font-size:15px;font-weight:600;line-height:1.5;color:var(--text);margin-bottom:10px}
 .detail-copy{min-width:0}
 .perk-detail p{font-size:14px;line-height:1.7;color:var(--secondary);overflow-wrap:anywhere}
@@ -90,11 +91,11 @@ svg{flex-shrink:0}img{display:block;max-width:100%}[hidden]{display:none!importa
 .perk-request{max-width:440px;flex:1;font-size:12px;line-height:1.65;color:var(--secondary);text-align:right}
 
 /* The access form uses the same restrained typography and solid controls. */
-.login-main{max-width:1184px;margin:0 auto;padding:96px var(--gutter);display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:80px;align-items:start}
-.login-intro h1{font-size:48px;font-weight:600;line-height:1.15;letter-spacing:-1.6px}
-.login-panel{min-width:0}.lock-tile{display:none}
-.login-panel h2{font-size:24px;font-weight:500;line-height:1.3;letter-spacing:-.5px}
-.login-panel>p{font-size:15px;line-height:1.6;color:var(--secondary);margin:12px 0 28px}
+.login-main{max-width:calc(420px + var(--gutter)*2);margin:0 auto;padding:48px var(--gutter) 64px;display:grid;gap:24px;align-items:start}
+.login-intro h1{font-size:32px;font-weight:600;line-height:1.2;letter-spacing:-.8px}
+.login-panel{min-width:0}
+.claim-heading{display:flex;align-items:center;gap:12px}
+.login-panel>p{font-size:15px;line-height:1.6;color:var(--secondary);margin:0 0 24px}
 .login-panel label{display:block;color:var(--secondary);font-size:14px;margin-bottom:8px}
 .password-field{display:flex;align-items:center;height:50px;border:1px solid var(--border);border-radius:4px;background:#0c0a0f}
 .password-field:focus-within{border-color:var(--bright)}
@@ -106,15 +107,13 @@ svg{flex-shrink:0}img{display:block;max-width:100%}[hidden]{display:none!importa
 .access-help{display:flex;align-items:center;flex-wrap:wrap;gap:0 6px;font-size:13px;color:var(--muted);margin-top:16px}
 .access-help a{display:inline-flex;align-items:center;gap:4px;min-height:44px;color:var(--bright)}.access-help svg{width:12px;height:12px}
 @media(max-width:960px){
-  .list-header,.perk-row summary{grid-template-columns:28% 20% minmax(0,1fr) 24px}
+  .list-header,.perk-row>summary{grid-template-columns:28% 20% minmax(0,1fr) 24px}
   .view-perk>span{display:none}
   .benefit-title{font-size:17px}
   .partner{gap:10px;padding-right:16px}
   .perk-type{padding-right:16px}
   .perk-detail{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
   .detail-offer{grid-column:1/-1}
-  .login-main{grid-template-columns:1fr;max-width:600px;gap:40px;padding-top:48px}
-  .login-intro h1{font-size:40px}
 }
 @media(max-width:700px){
   :root{--gutter:clamp(20px,5.5vw,32px)}
@@ -124,10 +123,10 @@ svg{flex-shrink:0}img{display:block;max-width:100%}[hidden]{display:none!importa
   .search-row{grid-column:1;flex-wrap:wrap}.search-field{width:100%;height:50px}.filter-submit{width:100%}
   .filters{gap:8px}.result-count{font-size:13px}
   .list-header{display:none}
-  .perk-row summary{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"partner partner" "benefit benefit" "type action";gap:12px;padding:24px 0 16px;min-height:0}
+  .perk-row>summary{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"partner partner" "benefit benefit" "type action";gap:12px;padding:24px 0 16px;min-height:0}
   .perk-row+.perk-row{margin-top:16px}
   .partner{grid-area:partner;gap:12px;padding:0}.partner-name{font-size:17px}
-  .benefit{grid-area:benefit;padding:0}.benefit-title{font-size:21px;line-height:1.35}.benefit-description{font-size:16px;line-height:1.55;margin-top:6px}
+  .benefit{grid-area:benefit;padding:0}.benefit-title{font-size:21px;line-height:1.35}
   .perk-type{grid-area:type;display:flex;flex-wrap:wrap;gap:0 8px;padding:0;font-size:14px}
   .mobile-field-label{display:inline;font-size:13px;color:var(--muted)}
   .view-perk{grid-area:action;font-size:14px}.view-perk>.closed-label{display:block}.view-perk>.open-label{display:none}.perk-row[open] .view-perk>.closed-label{display:none}.perk-row[open] .view-perk>.open-label{display:block}
@@ -138,25 +137,38 @@ svg{flex-shrink:0}img{display:block;max-width:100%}[hidden]{display:none!importa
   .secondary-links{flex-direction:column;align-items:flex-start;gap:4px}.secondary-links a{font-size:14px}
   .redemption-code{gap:8px 12px}.redemption-code>span{font-size:13px}
   .directory-footer{flex-direction:column;align-items:stretch;gap:24px;padding:28px 0}.perk-request{max-width:none}
-  .login-main{padding:24px var(--gutter) 40px;gap:32px}.login-intro h1{font-size:32px;letter-spacing:-1px;text-wrap:balance}
-  .login-panel h2{font-size:23px}.login-panel>p{font-size:16px}.desktop-break{display:none}.login-submit{font-size:16px}.access-help{font-size:14px}
+  .login-main{padding:24px var(--gutter) 40px;gap:24px}.login-intro h1{font-size:32px;letter-spacing:-1px;text-wrap:balance}
+  .login-panel>p{font-size:16px}.login-submit{font-size:16px}.access-help{font-size:14px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
 
 .admin-main{padding-top:48px;padding-bottom:64px}
 .admin-heading{display:flex;justify-content:space-between;align-items:center;gap:24px}
-.admin-heading h1{font-size:clamp(28px,4vw,40px);letter-spacing:-1px}
+.admin-heading h1{font-size:32px;font-weight:600;line-height:1.2;letter-spacing:-.8px}
 .admin-intro,.admin-notice{max-width:760px;color:var(--secondary);line-height:1.7;margin-top:20px}
 .admin-notice{color:var(--bright)}
-.admin-add{display:grid;grid-template-columns:minmax(0,480px) auto;gap:12px;align-items:center;justify-content:start;margin:24px 0 48px}
+.admin-add{display:grid;grid-template-columns:minmax(0,480px) auto;gap:12px;align-items:center;justify-content:start;margin:20px 0 24px}
 .admin-add label{grid-column:1/-1;color:var(--secondary)}
 .admin-main section{margin:32px 0}.admin-main h2{font-size:22px;margin-bottom:16px}.admin-main section>p{color:var(--secondary);line-height:1.6}
 .admin-list{list-style:none;padding:0}.admin-list li{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border)}
 .admin-list li>span{min-width:0;overflow-wrap:anywhere}.admin-list form{flex-shrink:0}
-@media(max-width:700px){.admin-heading{align-items:flex-start;flex-direction:column}.admin-add{grid-template-columns:minmax(0,1fr)}.admin-list li{align-items:flex-start;flex-direction:column}.admin-main{padding-top:24px}}
+@media(max-width:700px){.admin-heading{align-items:flex-start;flex-direction:column;gap:8px}.admin-add{grid-template-columns:minmax(0,1fr)}.admin-list li{align-items:center;flex-direction:row}.admin-main{padding-top:24px}}
 
 .admin-add select{grid-column:1/-1;width:100%;padding:12px;border:1px solid var(--border);border-radius:4px;background:#0c0a0f;color:inherit}
 
 .admin-company{margin-top:28px}
 .admin-company h3{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 16px;font-size:18px;font-weight:600;line-height:1.5}
 .admin-company h3 span{font-size:14px;font-weight:400;color:var(--muted)}
+
+::selection{background:#c4a8fb;color:#20112f}
+input,select{caret-color:var(--bright)}
+.button-text{padding:10px 0;background:none;border:0;color:var(--secondary)}
+.button-text:hover{color:var(--bright)}
+.admin-add-disclosure,.admin-inbox{margin-top:24px}
+.admin-add-disclosure>summary,.admin-inbox>summary{width:fit-content;min-height:44px;padding:10px 0;cursor:pointer;color:var(--bright);font-size:14px}
+.admin-inbox{border-top:1px solid var(--border);padding-top:16px;margin-bottom:24px}
+.admin-inbox>summary span{margin-left:8px;color:var(--muted);font-variant-numeric:tabular-nums}
+.admin-inbox>p,.company-claim{font-size:14px;color:var(--secondary);line-height:1.6}
+.company-claim{margin:8px 0;overflow-wrap:anywhere}
+.admin-main>.form-message:empty{display:none}
+@media(max-width:700px){.admin-list .button-text{white-space:nowrap}.partner-about>summary{font-size:16px}}
