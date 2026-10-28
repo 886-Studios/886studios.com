@@ -33,6 +33,10 @@ async function checkDirectory(directory) {
     pages += 1;
     assert.equal(html.includes("data-google-analytics-id="), productionAnalytics,
       `${file}: Google analytics must match the deployment environment`);
+    assert.equal(html.includes('data-linkedin-partner-id="10287404"'), productionAnalytics,
+      `${file}: LinkedIn analytics must match the deployment environment`);
+    assert.equal(html.includes("https://px.ads.linkedin.com/collect/?pid=10287404&amp;fmt=gif"), productionAnalytics,
+      `${file}: LinkedIn fallback pixel must match the deployment environment`);
     assert.equal(html.includes("<vercel-analytics"), productionAnalytics && !file.includes(`${path.sep}apply${path.sep}`),
       `${file}: Vercel analytics must match the deployment environment`);
     for (const [, attributes, body] of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {

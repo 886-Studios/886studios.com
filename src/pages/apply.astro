@@ -1,5 +1,6 @@
 ---
 import GoogleAnalytics from "../components/GoogleAnalytics.astro";
+import LinkedInInsight from "../components/LinkedInInsight.astro";
 import { applicationUrl, getGoogleAnalyticsId, siteConfig } from "../config/site";
 
 const googleAnalyticsId = getGoogleAnalyticsId();
@@ -22,5 +23,6 @@ const googleAnalyticsId = getGoogleAnalyticsId();
     <main>
       <p>Redirecting to application form... <a href={applicationUrl}>Click here</a> if not redirected.</p>
     </main>
+    <LinkedInInsight />
   </body>
 </html>

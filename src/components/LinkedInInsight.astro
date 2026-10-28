@@ -1,0 +1,17 @@
+---
+import { productionAnalyticsEnabled } from "../config/site";
+import initializationScript from "../scripts/linkedin-insight.js?url";
+
+const partnerId = "10287404";
+---
+
+{
+  productionAnalyticsEnabled && (
+    <>
+      <script is:inline src={initializationScript} data-linkedin-partner-id={partnerId}></script>
+      <noscript>
+        <img height="1" width="1" style="display:none;" alt="" src={`https://px.ads.linkedin.com/collect/?pid=${partnerId}&fmt=gif`} />
+      </noscript>
+    </>
+  )
+}

@@ -187,12 +187,14 @@ not in the public-site project or browser code.
 The template also lists optional `INDEXNOW_*` overrides. These are read from exported shell
 variables, not loaded automatically from `.env`; see [Search indexing](#search-indexing).
 
-Google Analytics and Vercel Analytics require both an Astro production build and
+Google Analytics, Vercel Analytics, and LinkedIn Insight require both an Astro production build and
 `VERCEL=1`, `VERCEL_ENV=production`. Normal local builds and Vercel previews omit them.
 The [production-mode check](#production-mode-check) explicitly enables that markup for
-validation. The Google measurement ID is in `src/config/site.ts`.
+validation. The Google measurement ID is in `src/config/site.ts`. The LinkedIn partner ID
+(`10287404`) is in `src/components/LinkedInInsight.astro`, which includes the no-JavaScript
+fallback pixel. Its initialization script is external to comply with the site's CSP.
 
-Shared conversion events are sent to both providers by `src/scripts/analytics.ts`. Trackable links and forms opt in with `data-analytics-event`, plus optional `data-analytics-placement` and `data-analytics-label` attributes. Do not put email addresses, names, form values, or other personal data in these attributes. Current funnel events are `program_interest`, `application_started`, `newsletter_signup`, `event_registration_started`, `event_details_opened`, `event_calendar_opened`, `founder_ama_opened`, `blog_post_opened`, `substack_publication_opened`, and `substack_post_opened`.
+Shared conversion events are sent to Google and Vercel by `src/scripts/analytics.ts`. Trackable links and forms opt in with `data-analytics-event`, plus optional `data-analytics-placement` and `data-analytics-label` attributes. Do not put email addresses, names, form values, or other personal data in these attributes. Current funnel events are `program_interest`, `application_started`, `newsletter_signup`, `event_registration_started`, `event_details_opened`, `event_calendar_opened`, `founder_ama_opened`, `blog_post_opened`, `substack_publication_opened`, and `substack_post_opened`.
 
 ## Search indexing
 

@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import GoogleAnalytics from "../components/GoogleAnalytics.astro";
+import LinkedInInsight from "../components/LinkedInInsight.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteNav from "../components/SiteNav.astro";
 import VercelAnalytics from "../components/VercelAnalytics.astro";
@@ -219,5 +220,6 @@ const structuredDataJson = canonicalUrl
     <script>
       import "../scripts/site";
     </script>
+    <LinkedInInsight />
   </body>
 </html>

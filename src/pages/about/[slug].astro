@@ -1,5 +1,6 @@
 ---
 import GoogleAnalytics from "../../components/GoogleAnalytics.astro";
+import LinkedInInsight from "../../components/LinkedInInsight.astro";
 import VercelAnalytics from "../../components/VercelAnalytics.astro";
 import { getGoogleAnalyticsId, siteConfig } from "../../config/site";
 import { partnerProfiles } from "../../data/partnerProfiles";
@@ -32,5 +33,6 @@ const { destination } = Astro.props;
       if (destination) window.location.replace(`${destination}${window.location.search}${window.location.hash}`);
     </script>
     <VercelAnalytics />
+    <LinkedInInsight />
   </body>
 </html>

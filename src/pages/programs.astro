@@ -1,5 +1,6 @@
 ---
 import GoogleAnalytics from "../components/GoogleAnalytics.astro";
+import LinkedInInsight from "../components/LinkedInInsight.astro";
 import VercelAnalytics from "../components/VercelAnalytics.astro";
 import { getGoogleAnalyticsId, siteConfig } from "../config/site";
 ---
@@ -23,5 +24,6 @@ import { getGoogleAnalyticsId, siteConfig } from "../config/site";
       window.location.replace(`/ikigai-launchpad${window.location.search}${window.location.hash}`);
     </script>
     <VercelAnalytics />
+    <LinkedInInsight />
   </body>
 </html>
