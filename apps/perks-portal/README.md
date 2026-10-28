@@ -1,6 +1,6 @@
 # 886 Studios portfolio perks
 
-**Deployment status (October 28, 2026):** The updated directory is live. Production staff administration and automated claims still need configuration; see [the deployment handoff](../../docs/perks-deployment-handoff-2026-10-28.md) before resuming. Historical implementation notes below describe local validation, not completed production activation.
+**Deployment status (October 28, 2026):** The directory and staff administration are live under the 886 Studios Vercel team. Production Redis holds the final five-company, 11-email roster; Resend delivery is verified. Real credit claims remain disabled until Supabase supplies its production partner key. See [the deployment handoff](../../docs/perks-deployment-handoff-2026-10-28.md) for current settings and remaining work. Historical implementation notes below describe earlier local validation.
 
 A separate, server-rendered portal served at **https://www.886studios.com/perks**. The main Astro site proxies `/perks` and its subpaths to the existing `886-studios-perks` Vercel project. The apex domain redirects to `www` through the main site's existing canonical-domain rule. No separate DNS setup is needed.
 
