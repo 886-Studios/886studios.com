@@ -92,7 +92,11 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
         if (accessServices && await accessServices.handle({ req, path, portalAuthorized: Boolean(auth?.valid(req.headers.cookie)), send, redirect, res })) return;
         // The encrypted invitation authorizes this single benefit, never catalog access.
         // GET/HEAD are safe for email scanners and cannot issue a code.
-        if (path === '/supabase') return send(200, renderSupabaseClaim({ basePath }));
+        if (path === '/supabase') {
+          let ready = true;
+          try { creditsConfig(creditsEnv); } catch { ready = false; }
+          return send(200, renderSupabaseClaim({ basePath, ready }));
+        }
         if (path !== '/' && path !== '/login') return send(404, 'Not found.', 'text/plain; charset=utf-8');
         if (!auth || !perks) return send(503, loginPage({ ready: false }));
         if (!auth.valid(req.headers.cookie)) return send(200, loginPage());
@@ -115,6 +119,8 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
       if (path === '/supabase/request' || path.startsWith('/admin')) return send(503, 'Email claims are not configured yet.', 'text/plain');
       if (path === '/supabase') {
         const claimPage = options => renderSupabaseClaim({ basePath, ...options });
+        try { creditsConfig(creditsEnv); }
+        catch { return send(503, claimPage({ ready: false })); }
         if (claimLimiter.blocked(`ip:${ip}`)) {
           res.setHeader('Retry-After', '900');
           return send(429, claimPage({ error: 'Too many attempts. Please try again in 15 minutes.' }));

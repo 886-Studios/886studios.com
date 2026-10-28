@@ -284,7 +284,11 @@ browser code or build artifacts. Existing portal credentials are still required.
 | `SUPABASE_CLAIM_SECRET` | Separate 32+ random bytes encoded as base64url; use distinct staging and production values. |
 
 Production has no filesystem or test-inbox fallback. Missing storage or mail settings
-disable automated claims while the other perks remain available. The existing release
+disable automated claims while the other perks remain available. Missing partner credentials or
+claim secrets also show a clear inactive state before collecting an email, rather than a misleading
+temporary email error. Staff see the specific configuration blocker and a link to production settings;
+founders never see environment variable names. Direct redemption pages hide their form if the partner
+key is missing, and blocked requests do not send mail or reserve a company claim. The existing release
 preflight checks the portal configuration; also verify these integration settings and
 perform a delivery test before release. Resend delivery is implemented against its
 [send-email API](https://resend.com/docs/api-reference/emails/send-email); durable storage

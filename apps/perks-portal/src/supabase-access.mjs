@@ -22,7 +22,16 @@ export function createAccessServices({ root, env, secure, origin, basePath, now 
 }
 
 export function createAccessRouter({ store, mailer, adminAuth, env, origin, basePath = '', now = Date.now }) {
-  const adminPage = options => renderPerksAdmin({ basePath, ready: Boolean(adminAuth && store), ...options });
+  const setupIssue = () => {
+    let environment;
+    try { ({ environment } = creditsConfig(env)); }
+    catch { return `Configure a valid ${env.SUPABASE_PARTNER_ENVIRONMENT === 'production' ? 'production' : 'staging'} SUPABASE_PARTNER_API_KEY in Vercel, then redeploy. A staging key cannot redeem production credits.`; }
+    if (!store || !mailer) return 'Configure the production approval database and email sender, then redeploy.';
+    try { createClaim({ userIdentifier: 'configuration-check', secret: env.SUPABASE_CLAIM_SECRET, environment, now: now() }); }
+    catch { return 'Configure SUPABASE_CLAIM_SECRET in Vercel, then redeploy.'; }
+    return '';
+  };
+  const adminPage = options => renderPerksAdmin({ basePath, ready: Boolean(adminAuth && store), claimSetupIssue: options?.authenticated ? setupIssue() : '', ...options });
   const requestPage = options => renderClaimRequest({ basePath, ...options });
   const confirmation = 'If this email is approved, a claim link will arrive shortly. Check your inbox and spam folder.';
   return {
@@ -40,8 +49,10 @@ export function createAccessRouter({ store, mailer, adminAuth, env, origin, base
       const get = req.method === 'GET' || req.method === 'HEAD';
       if (path === '/supabase/request') {
         if (!portalAuthorized) { send(get ? 200 : 401, renderLogin({ basePath })); return true; }
+        // Check readiness before showing a form or looking up an address. A missing
+        // partner key is setup work, not a transient email-delivery failure.
+        if (setupIssue()) { send(get ? 200 : 503, requestPage({ ready: false })); return true; }
         if (get) { send(200, requestPage()); return true; }
-        if (!store || !mailer) { send(503, requestPage({ error: 'Email claims are being set up. Please contact the 886 team.' })); return true; }
         let email;
         try { email = normalizeEmail(form.get('email')); } catch { send(400, requestPage({ error: 'Enter a valid email address.' })); return true; }
         try {

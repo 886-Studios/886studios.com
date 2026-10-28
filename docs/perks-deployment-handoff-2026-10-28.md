@@ -11,6 +11,8 @@ The staff admin is live at `https://www.886studios.com/perks/admin`. Production 
 
 Real credit claims remain disabled: no production Supabase key has been supplied and no production credit has been issued or redeemed. The key repeated by the user on October 28 matches the original staging key and was deliberately not installed as a production key.
 
+The claim UI now reports that claims are not active before collecting an email when setup is incomplete. Staff administration identifies the missing production partner setting and links to Vercel. This fixes the misleading temporary email-error flow; it does not activate redemption without the partner's production key. Regression tests confirm approved and unknown addresses receive the same blocked response, no email is sent, and no company claim is reserved.
+
 ## Vercel destinations
 
 | Purpose | Team | Team ID | Project | Project ID |
@@ -18,7 +20,7 @@ Real credit claims remain disabled: no production Supabase key has been supplied
 | Main Astro website | `886-studios-projects` | `team_3JvR3YgseKdD13ZZXwwcaaXR` | `886studios-redesign` | `prj_NFcBa28PN4lrsDBaup8Ip55iDCY4` |
 | Perks portal | `886-studios-projects` | `team_3JvR3YgseKdD13ZZXwwcaaXR` | `886-studios-perks` | `prj_cvXVdgn63nQUPzoXvWBM70N1RtOf` |
 
-Current production deployment: `dpl_CxSkFiie8gf4tyjXarn2ZHYPk8xx`, staged with production settings, tested, then promoted. URL: `https://886-studios-perks-94doikoit-886-studios-projects.vercel.app`. This release adds staff team creation and the always-visible member form. The prior infrastructure release was `dpl_HXcdHKWKaZMvuUrz6ATt242EgyLZ`; its post-promotion error-log query returned zero records over 15 minutes.
+Current production deployment: `dpl_5s2673cGkRAbWih6mjBDTL7Zvkwt`, staged with production settings, tested, then promoted. URL: `https://886-studios-perks-b6vng2d33-886-studios-projects.vercel.app`. This release includes staff team creation, the always-visible member form, and the inactive-claims state for missing partner setup. The prior infrastructure release was `dpl_HXcdHKWKaZMvuUrz6ATt242EgyLZ`; its post-promotion error-log query returned zero records over 15 minutes.
 
 Settings: `https://vercel.com/886-studios-projects/886-studios-perks/settings/environment-variables`.
 
@@ -62,6 +64,6 @@ Staff can now expand **Create team** to add a new company and its first founder 
 
 ## Verification already completed
 
-Previous implementation checks passed 51 portal tests, including a real Redis concurrency test with one winner. The staff team-creation release passed all 52 portal tests, including the real Redis test using the existing temporary Redis executable. New coverage checks staff authentication/origin, validation without empty-team writes, duplicate submissions, revoked-email bindings, simultaneous creation with one winner, and shared company claims. The production Upstash API was exercised by roster validation, import, and authenticated staff reads. The build succeeded with 22 entries; staged and live staff authentication, all roster entries, alphabetical company order, and blocked private URLs passed. Real email delivery was verified in the recipient's Chrome inbox. Production credit issuance/redemption remains untested and disabled.
+Previous implementation checks passed 51 portal tests, including a real Redis concurrency test with one winner. The latest claim-readiness release passed all 54 portal tests, including the real Redis test using the existing temporary Redis executable. New coverage checks staff authentication/origin, validation without empty-team writes, duplicate submissions, revoked-email bindings, simultaneous creation with one winner, and shared company claims. The production Upstash API was exercised by roster validation, import, and authenticated staff reads. The build succeeded with 22 entries; staged and live staff authentication, all roster entries, alphabetical company order, and blocked private URLs passed. Real email delivery was verified in the recipient's Chrome inbox. Production credit issuance/redemption remains untested and disabled.
 
 The user has authorized production deployment, saving the existing restricted Resend key to this transferred perks project, importing the final approved roster, and the single delivery test to Patryk. Do not repeat completed design work or ask again for these same authorizations. Unavailable credentials or new chargeable provisioning may still require user involvement.

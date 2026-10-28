@@ -105,6 +105,18 @@ test('claim route is safe for link scanners, rejects forgery and CSRF, and needs
   assert.match((await request(handler, { method: 'GET', path: '/perks', token })).body, /Portfolio access code/);
 });
 
+test('missing partner key hides the redemption form and rejects POST before reserving a company', async () => {
+  const handler = createHandler({ ...config, creditsEnv: { SUPABASE_PARTNER_ENVIRONMENT: 'production', SUPABASE_CLAIM_SECRET: secret },
+    accessServices: { ...config.accessServices, reserveClaim: async () => assert.fail('must not reserve') },
+    issueCredit: async () => assert.fail('must not issue') });
+  for (const method of ['GET', 'POST']) {
+    const result = await request(handler, { method });
+    assert.equal(result.status, method === 'GET' ? 200 : 503);
+    assert.match(result.body, /Supabase claims aren’t active yet/);
+    assert.doesNotMatch(result.body, /<form|Continue to Supabase|temporarily unavailable|SUPABASE_PARTNER_API_KEY/);
+  }
+});
+
 test('production redirects only after POST and API errors have safe user-facing responses', async () => {
   const productionEnv = { ...env, SUPABASE_PARTNER_ENVIRONMENT: 'production' };
   const token = createClaim({ userIdentifier: approvedId, environment: 'production', secret });

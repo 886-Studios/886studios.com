@@ -34,16 +34,16 @@ async function request(handler, path, { method = 'GET', values = {}, cookie, ori
   return result;
 }
 
-async function fixture(t, { failFirstIssue = false } = {}) {
+async function fixture(t, { failFirstIssue = false, creditSettings = env } = {}) {
   const dir = mkdtempSync(join(tmpdir(), 'perks-email-'));
   t.after(() => rmSync(dir, { recursive: true, force: true }));
   const store = createLocalEmailStore(join(dir, 'approvals.json'));
   await store.registerTeam({ id: teamId, name: 'Fixture Company' });
   const mailer = createLocalMailer(join(dir, 'outbox.json'));
   const adminAuth = createAuth({ code: adminCode, secret, basePath: '/perks/admin', name: '886_perks_admin', sessionSeconds: 28800 });
-  const accessServices = createAccessRouter({ store, mailer, adminAuth, env, origin, basePath: '/perks' });
+  const accessServices = createAccessRouter({ store, mailer, adminAuth, env: creditSettings, origin, basePath: '/perks' });
   const calls = [];
-  const handler = createHandler({ root, ...founder, origin, basePath: '/perks', catalog, creditsEnv: env, accessServices,
+  const handler = createHandler({ root, ...founder, origin, basePath: '/perks', catalog, creditsEnv: creditSettings, accessServices,
     issueCredit: async ({ userIdentifier }) => { calls.push(userIdentifier); if (failFirstIssue && calls.length === 1) throw new Error('Synthetic upstream timeout'); return { environment: 'staging', code: 'TEST-CODE', redemptionUrl: null }; } });
   const founderCookie = createAuth({ ...founder, basePath: '/perks' }).issue().split(';')[0];
   const staffCookie = adminAuth.issue().split(';')[0];
@@ -54,6 +54,29 @@ test('email normalization preserves distinct addresses and rejects injected or m
   assert.equal(normalizeEmail(' Founder+Perks@Company.COM '), 'founder+perks@company.com');
   assert.equal(normalizeEmail('first.last@example.com'), 'first.last@example.com');
   for (const value of ['', 'a@', 'a@example.com,b@example.com', 'a@localhost', 'a\r\n@example.com', 'a..b@example.com', 'a.@example.com', '<a@example.com>']) assert.throws(() => normalizeEmail(value));
+});
+
+test('missing partner setup is shown before collecting email, remains private, and cannot send or reserve claims', async t => {
+  const { handler, store, mailer, founderCookie, staffCookie, calls } = await fixture(t, {
+    creditSettings: { SUPABASE_PARTNER_ENVIRONMENT: 'production', SUPABASE_CLAIM_SECRET: secret },
+  });
+  await store.approve('founder@company.com', teamId);
+  const page = await request(handler, '/perks/supabase/request', { cookie: founderCookie });
+  assert.equal(page.status, 200);
+  assert.match(page.body, /Supabase claims aren’t active yet/);
+  assert.doesNotMatch(page.body, /<form|Email claim link|SUPABASE_PARTNER_API_KEY|temporarily unavailable/);
+  const submit = email => request(handler, '/perks/supabase/request', { method: 'POST', cookie: founderCookie, values: { email } });
+  const approved = await submit('founder@company.com');
+  const unknown = await submit('unknown@company.com');
+  assert.equal(approved.status, 503);
+  assert.equal(approved.body, unknown.body);
+  const staff = await request(handler, '/perks/admin', { cookie: staffCookie });
+  assert.match(staff.body, /production SUPABASE_PARTNER_API_KEY/);
+  assert.match(staff.body, /Add member email/);
+  assert.doesNotMatch((await request(handler, '/perks/admin', { cookie: founderCookie })).body, /SUPABASE_PARTNER_API_KEY/);
+  assert.equal(mailer.list().length, 0);
+  assert.deepEqual(calls, []);
+  assert.ok(!(await store.teams())[0].claimant);
 });
 
 test('approvals and throttles persist, duplicate approvals keep the version, and reapproval revokes old invitations', async t => {
