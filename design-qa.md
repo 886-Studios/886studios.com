@@ -1,3 +1,65 @@
+# Team page QA — 2026-10-01
+
+final result: blocked
+
+## Layout refinement — 2026-10-01
+
+Impeccable layout pass, preserving the compact ticket design, content and original portraits.
+
+- Reading path: Operating Team → Batch Partners → Supporting Partners remains the DOM and keyboard order. At widths of 1100px and above, Operating Team occupies columns 1–3 and Batch Partners occupies columns 5–6 of one six-track grid; Supporting Partners spans the next row. The empty fourth track deliberately separates the two leading groups.
+- Grouping and rhythm: 12px horizontal card/heading gaps, 24px card-row gaps, 48px between desktop sections and before Careers, and 32px between narrow-screen groups. Existing spacing tokens replace arbitrary group intervals.
+- Density: leading groups now share a row without stretching their cards. The six supporting columns retain the requested compact scale.
+- Adaptation: below 1100px, groups stack in DOM order and the grid chooses as many 140px-minimum cards as fit. Two cards fit typical phone widths; very narrow containers use one to preserve readable content.
+- Extremes: names and social links now share normal-flow grid tracks, preventing stacked social icons from overlapping the description. Names can wrap in unusually narrow containers; no company text is truncated. Touch profile links are 44px tall; touch social links are 32px square.
+- Mechanical evidence: independent initial layout scan and final full detector both returned no findings. Astro check reports zero errors, warnings and hints. `git diff --check` passed. The local server HTML includes the new section classes and layout rules.
+- Browser verification resolved: Chrome had current markup but a stale Vite-injected component stylesheet (the roster computed to one 1060px track at a 1139px viewport). Restarting the existing Astro dev server on port 4321 cleared its stale stylesheet cache. Chrome then computed six 166.664px tracks; Operating Team and Batch Partners both started at y=96px, and Supporting Partners started at y=468px. Native screenshots confirmed the intended desktop grouping and the 390 × 844 mobile two-column cards with legible names and no visible overlap. The corrected desktop preview was left open. No additional source-code changes were necessary.
+- Existing full-width Careers copy is retained per the project's explicit copy-layout guidance.
+
+## Size revision — 2026-10-01
+
+The user requested cards 50% smaller. Card width, portraits, name text, padding, and ticket details are reduced to approximately half their previous desktop dimensions. The grid now has six desktop columns, four tablet columns, and two mobile columns. Supporting copy retains a 12px minimum for readability. Native Chrome desktop capture in the conversation confirms all 15 cards render with readable names and intact content; Astro check reports no diagnostics. This supersedes the earlier three-column layout notes below. No photos or partner information changed in this revision.
+
+## Current status
+
+Implementation is available at http://localhost:4321/team. The user confirmed Kevin Lin. Kai Huang and Kevin Lin now appear under Batch Partners, both labeled Managing Partner; the other ten partners appear under Supporting Partners. Native Chrome accessibility output verified the three operating team members, both batch partners, and all ten supporting partners in order. Astro check passes with no diagnostics. The remaining formal visual-comparison limitation is documented below.
+
+## Evidence and verification
+
+- Source visual: the user's 1254 × 1254 reference attachment in this conversation, superseded by the request to remove card logos/captions and arrows.
+- Implementation screenshots: native Chrome screenshots returned in the conversation by `mcp__cua_repl` (desktop and 390 × 844 responsive emulation); no filesystem screenshot paths were returned.
+- Desktop capture: full native Chrome window, 3388 × 2626 pixels including browser chrome, approximately 2× density. Not an exact viewport match to the source.
+- Mobile state: 390 × 844 CSS pixels, DevTools fit-to-window preview. No supplied mobile reference.
+- Full-view review: three equal desktop columns, cream cards, dotted separators, ticket notches, large black names, purple headings and plain profile links.
+- Focused review: name wrapping, social link placement, Max's role line, original faces, and mobile card spacing are visible in the native captures.
+- Source and implementation have not been assembled in a single normalized comparison artifact; formal same-viewport fidelity QA remains incomplete.
+- Clicked Kai Huang's profile link and verified the existing profile loaded; followed Back to Team successfully.
+- Browser console showed zero visible messages with default log levels (two hidden messages and one improvement issue).
+- Astro check: zero errors, warnings, or hints. All 37 tests pass. Production build passes (87 pages).
+
+## Fidelity surfaces
+
+- Typography: existing Geist font, bold two-line names, legible company text and monospaced section labels. Mobile screenshot shows no clipped text in the first card.
+- Spacing/layout: three columns on desktop, two at intermediate widths, one on mobile; 18px desktop column gaps. Removed the large page hero while retaining a screen-reader H1.
+- Colors: cream #f5f2e9, black text, purple links and section labels on the existing dark page.
+- Images: all original portrait files reused without generation, filters, retouching, or file modifications. Original photo backgrounds and colors intentionally differ from the mockup to preserve faces.
+- Copy: all 15 members, companies, biographies, and social/profile URLs preserved. Kai Huang and Kevin Lin have the user-requested Managing Partner titles; partner group headings reflect the subsequent user request.
+
+## Findings / remaining work
+
+- Content clarification resolved: Kevin Lin joins Kai Huang in Batch Partners; the remaining ten partners are Supporting Partners.
+- Formal normalized, same-input source/implementation comparison remains incomplete; do not claim pixel-perfect fidelity.
+- No actionable layout defect was observed in the desktop and mobile screenshots reviewed.
+
+## Iteration history
+
+1. Replaced avatar tiles with the reference's ticket card layout using original photos.
+2. Applied user steering: removed card branding/captions; plain profile links without arrows.
+3. Added Kai's Managing Partner label while preserving Guitar Hero / Blue Goji.
+4. Verified desktop/mobile rendering and existing profile navigation. No visual fix was required from those checks.
+5. Split partners into Batch Partners (Kai Huang, Kevin Lin) and Supporting Partners (the remaining ten). Added Kevin Lin’s confirmed Managing Partner label and verified rendered headings/member order in Chrome.
+
+---
+
 # ikigai Launchpad Design QA
 
 ## Source and implementation evidence

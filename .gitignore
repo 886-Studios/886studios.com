@@ -8,3 +8,5 @@ dist
 .env*
 !.env.example
 .artifacts/
+.impeccable/review/
+outputs/**/*.inspect.ndjson
