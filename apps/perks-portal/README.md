@@ -1,5 +1,7 @@
 # 886 Studios portfolio perks
 
+**Deployment status (October 28, 2026):** The updated directory is live. Production staff administration and automated claims still need configuration; see [the deployment handoff](../../docs/perks-deployment-handoff-2026-10-28.md) before resuming. Historical implementation notes below describe local validation, not completed production activation.
+
 A separate, server-rendered portal served at **https://www.886studios.com/perks**. The main Astro site proxies `/perks` and its subpaths to the existing `886-studios-perks` Vercel project. The apex domain redirects to `www` through the main site's existing canonical-domain rule. No separate DNS setup is needed.
 
 [Local preview](#local-preview) · [Troubleshooting](#common-pitfalls) ·
