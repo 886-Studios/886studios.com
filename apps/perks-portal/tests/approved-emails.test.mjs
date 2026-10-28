@@ -94,6 +94,34 @@ test('staff login is isolated from the founder session and approval actions requ
   assert.match(logout.headers['set-cookie'], /Max-Age=0/);
 });
 
+test('staff can create a team with its first member; duplicate submissions and historical bindings cannot create another entitlement', async t => {
+  const { handler, founderCookie, staffCookie, store, mailer, calls } = await fixture(t);
+  const values = { name: 'New Company', email: 'First@new.example.com', id: teamId };
+  const create = options => request(handler, '/perks/admin/teams', { method: 'POST', cookie: staffCookie, values, ...options });
+  for (const cookie of [undefined, founderCookie]) assert.equal((await create({ cookie })).status, 401);
+  assert.equal((await create({ origin: 'https://evil.example' })).status, 403);
+  assert.equal((await request(handler, '/perks/admin/teams', { cookie: staffCookie })).status, 405);
+  for (const invalid of [{ name: '', email: values.email }, { name: 'Empty Team', email: 'invalid' }]) assert.ok((await create({ values: invalid })).status >= 400);
+  assert.equal((await store.teams()).length, 1, 'invalid requests create no empty teams');
+  const created = await create();
+  assert.equal(created.status, 200);
+  const team = (await store.teams()).find(team => team.name === values.name);
+  assert.match(team.id, /^[a-f0-9]{32}$/);
+  assert.notEqual(team.id, teamId, 'the server ignores user-supplied identifiers');
+  assert.equal((await store.get(values.email)).teamId, team.id);
+  assert.equal((await create()).status, 409, 'refresh/retry cannot create another entitlement');
+  assert.equal((await create({ values: { name: '  NEW   company ', email: 'second@new.example.com' } })).status, 409);
+  await store.revoke(values.email);
+  assert.equal((await create({ values: { name: 'Different Company', email: values.email } })).status, 409);
+  assert.equal((await store.teams()).length, 2, 'conflicts leave no partially created teams');
+  const page = await request(handler, '/perks/admin', { cookie: staffCookie });
+  assert.match(page.body, /<section aria-labelledby="add-member-heading"><h2 id="add-member-heading">Add member email/);
+  assert.doesNotMatch(page.body, /<summary>Add member email/);
+  assert.match(page.body, /New Company — no approved emails/, 'empty existing teams remain selectable without polluting the member list');
+  assert.equal(mailer.list().length, 0);
+  assert.deepEqual(calls, []);
+});
+
 test('approved email → private inbox → claim works; other visitors cannot discover membership or obtain the link', async t => {
   const { handler, store, mailer, founderCookie, staffCookie, calls } = await fixture(t);
   await store.approve('founder@company.com', teamId);

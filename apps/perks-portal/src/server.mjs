@@ -103,7 +103,7 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
         return send(200, renderDirectory(perks, { query, category, sort, basePath }));
       }
       if (req.method !== 'POST') { res.setHeader('Allow', 'GET, HEAD, POST'); return send(405, 'Method not allowed.', 'text/plain'); }
-      if (!['/login', '/logout', '/supabase', '/supabase/request', '/admin', '/admin/login', '/admin/logout', '/admin/approve', '/admin/revoke'].includes(path)) return send(404, 'Not found.', 'text/plain');
+      if (!['/login', '/logout', '/supabase', '/supabase/request', '/admin', '/admin/login', '/admin/logout', '/admin/approve', '/admin/revoke', '/admin/teams'].includes(path)) return send(404, 'Not found.', 'text/plain');
       if (req.headers.origin !== publicOrigin || req.headers['sec-fetch-site'] === 'cross-site') return send(403, 'Please submit this form from the perks website.', 'text/plain');
       if (!auth || !perks) return send(503, loginPage({ ready: false }));
       if (path === '/logout') { res.setHeader('Set-Cookie', auth.clear()); return redirect(home); }

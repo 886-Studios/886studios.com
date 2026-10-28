@@ -165,8 +165,8 @@ svg{flex-shrink:0}img{display:block;max-width:100%}[hidden]{display:none!importa
 input,select{caret-color:var(--bright)}
 .button-text{padding:10px 0;background:none;border:0;color:var(--secondary)}
 .button-text:hover{color:var(--bright)}
-.admin-add-disclosure,.admin-inbox{margin-top:24px}
-.admin-add-disclosure>summary,.admin-inbox>summary{width:fit-content;min-height:44px;padding:10px 0;cursor:pointer;color:var(--bright);font-size:14px}
+.admin-create-team,.admin-inbox{margin-top:24px}
+.admin-create-team>summary,.admin-inbox>summary{width:fit-content;min-height:44px;padding:10px 0;cursor:pointer;color:var(--bright);font-size:14px}
 .admin-inbox{max-width:760px;border-top:1px solid var(--border);padding-top:16px;margin-bottom:24px}
 .admin-inbox>summary span{margin-left:8px;color:var(--muted);font-variant-numeric:tabular-nums}
 .admin-inbox>p,.company-claim{font-size:14px;color:var(--secondary);line-height:1.6}
@@ -175,6 +175,10 @@ input,select{caret-color:var(--bright)}
 @media(max-width:700px){.admin-list .button-text{white-space:nowrap}.partner-about>summary{font-size:16px}}
 
 /* Shared interaction feedback across native disclosures and forms. */
-.partner-about>summary:hover,.admin-add-disclosure>summary:hover,.admin-inbox>summary:hover{color:var(--text)}
+.partner-about>summary:hover,.admin-create-team>summary:hover,.admin-inbox>summary:hover{color:var(--text)}
 .button-primary:active:not(:disabled),.filter.is-active:active{background:#6424da;border-color:#6424da}
 .admin-inbox .admin-list li{flex-wrap:wrap}
+
+.admin-create-team{max-width:760px}
+.admin-create-team>p{max-width:600px;color:var(--secondary);font-size:14px;line-height:1.6}
+.team-name-field{grid-column:1/-1}

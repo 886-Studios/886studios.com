@@ -12,6 +12,8 @@ export function normalizeEmail(value) {
 
 export const emailKey = email => createHash('sha256').update(normalizeEmail(email)).digest('hex');
 export class ApprovalConflict extends Error {}
+const teamNameKey = name => name.normalize('NFKC').trim().replace(/\s+/gu, ' ').toLowerCase();
+const duplicateTeam = 'A team with this name already exists. Add the founder to that team instead.';
 export function normalizeTeamId(value) {
   const id = String(value ?? '').toLowerCase().replaceAll('-', '');
   if (!/^[a-f0-9]{32}$/.test(id)) throw new ApprovalConflict('Select a registered team.');
@@ -20,7 +22,7 @@ export function normalizeTeamId(value) {
 export function teamRecord({ id, name }) {
   id = normalizeTeamId(id);
   if (typeof name !== 'string' || !name.trim() || name.length > 160 || /[\x00-\x1f]/.test(name)) throw new ApprovalConflict('Enter a valid team name.');
-  return { id, name: name.trim(), userIdentifier: `886-team:${id}` };
+  return { id, name: name.trim(), nameKey: teamNameKey(name), userIdentifier: `886-team:${id}` };
 }
 const newApproval = (email, team) => ({ email: normalizeEmail(email), teamId: team.id, teamName: team.name,
   userIdentifier: team.userIdentifier, version: randomUUID(), approvedAt: new Date().toISOString() });
@@ -49,11 +51,21 @@ export function createLocalEmailStore(path, { now = Date.now } = {}) {
   };
   return {
     async teams() { return sortTeams(Object.values(read().teams)); },
+    async createTeam({ name, email }) {
+      const team = teamRecord({ id: randomUUID(), name }), approval = newApproval(email, team), data = read();
+      if (Object.values(data.teams).some(existing => teamNameKey(existing.name) === team.nameKey)) throw new ApprovalConflict(duplicateTeam);
+      const key = emailKey(email);
+      if (data.emailTeams[key]) throw new ApprovalConflict(conflict);
+      data.teams[team.id] = { ...team, approvals: { [approval.email]: approval } };
+      data.emailTeams[key] = team.id;
+      write(data); return data.teams[team.id];
+    },
     async registerTeam(value) {
       const team = teamRecord(value), data = read();
       data.teams[team.id] ??= { ...team, approvals: {} };
       const existing = data.teams[team.id];
       existing.name = team.name;
+      existing.nameKey = team.nameKey;
       for (const approval of Object.values(existing.approvals)) approval.teamName = team.name;
       write(data); return existing;
     },
@@ -115,6 +127,18 @@ export function createRedisEmailStore(env, { fetchImpl = fetch } = {}) {
   }
   return {
     async teams() { return sortTeams((await command(['HVALS', teams])).map(value => migrateTeam(JSON.parse(value)))); },
+    async createTeam({ name, email }) {
+      const team = teamRecord({ id: randomUUID(), name }), approval = newApproval(email, team);
+      // Legacy records have no normalized name key. Check them before the atomic
+      // insert; all newly created/registered records carry a key for race checks.
+      if ((await this.teams()).some(existing => teamNameKey(existing.name) === team.nameKey)) throw new ApprovalConflict(duplicateTeam);
+      const value = { ...team, approvals: { [approval.email]: approval } };
+      const result = await command(['EVAL', CREATE_TEAM, 2, teams, emails, team.id, emailKey(email), JSON.stringify(value)]);
+      if (result === 'duplicate') throw new ApprovalConflict(duplicateTeam);
+      if (result === 'conflict') throw new ApprovalConflict(conflict);
+      if (result === 'collision') throw new ApprovalConflict('Could not create the team. Please try again.');
+      return JSON.parse(result);
+    },
     async registerTeam(value) {
       const team = teamRecord(value);
       return migrateTeam(JSON.parse(await command(['EVAL', REGISTER_TEAM, 1, teams, team.id, JSON.stringify(team)])));
@@ -164,9 +188,21 @@ local incoming = cjson.decode(ARGV[2])
 local team = raw and cjson.decode(raw) or incoming
 ${MIGRATE_APPROVAL}
 team.name = incoming.name
+team.nameKey = incoming.nameKey
 for email, approval in pairs(team.approvals) do approval.teamName = team.name end
 redis.call('HSET', KEYS[1], ARGV[1], cjson.encode(team))
 return cjson.encode(team)`;
+const CREATE_TEAM = `
+local incoming = cjson.decode(ARGV[3])
+for _, raw in ipairs(redis.call('HVALS', KEYS[1])) do
+  local existing = cjson.decode(raw)
+  if existing.nameKey == incoming.nameKey or existing.name == incoming.name then return 'duplicate' end
+end
+if redis.call('HGET', KEYS[2], ARGV[2]) then return 'conflict' end
+if redis.call('HEXISTS', KEYS[1], ARGV[1]) == 1 then return 'collision' end
+redis.call('HSET', KEYS[1], ARGV[1], ARGV[3])
+redis.call('HSET', KEYS[2], ARGV[2], ARGV[1])
+return ARGV[3]`;
 const APPROVE_TEAM = `
 local raw = redis.call('HGET', KEYS[1], ARGV[1])
 if not raw then return 'missing' end

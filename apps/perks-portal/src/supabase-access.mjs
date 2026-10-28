@@ -64,7 +64,7 @@ export function createAccessRouter({ store, mailer, adminAuth, env, origin, base
         } catch { send(503, requestPage({ error: 'Email claims are temporarily unavailable. Please try again later.' })); }
         return true;
       }
-      if (!['/admin', '/admin/login', '/admin/logout', '/admin/approve', '/admin/revoke'].includes(path)) { send(404, 'Not found.', 'text/plain'); return true; }
+      if (!['/admin', '/admin/login', '/admin/logout', '/admin/approve', '/admin/revoke', '/admin/teams'].includes(path)) { send(404, 'Not found.', 'text/plain'); return true; }
       if (get && !['/admin', '/admin/login'].includes(path)) { send(405, 'Submit this action from the admin page.', 'text/plain'); return true; }
       if (!adminAuth || !store) { send(503, adminPage()); return true; }
       if (!get && path === '/admin/login') {
@@ -77,19 +77,21 @@ export function createAccessRouter({ store, mailer, adminAuth, env, origin, base
       }
       if (!adminAuth.valid(req.headers.cookie)) { send(get ? 200 : 401, adminPage()); return true; }
       if (!get && path === '/admin/logout') { res.setHeader('Set-Cookie', adminAuth.clear()); redirect(`${basePath}/admin`); return true; }
+      const formValues = !get ? { creating: path === '/admin/teams', name: form.get('name'), email: form.get('email'), team: form.get('team') } : {};
       try {
         let notice = '';
         if (!get) {
-          if (!['/admin/approve', '/admin/revoke'].includes(path)) { send(405, 'Method not allowed.', 'text/plain'); return true; }
+          if (!['/admin/approve', '/admin/revoke', '/admin/teams'].includes(path)) { send(405, 'Method not allowed.', 'text/plain'); return true; }
           let email;
-          try { email = normalizeEmail(form.get('email')); } catch { send(400, adminPage({ authenticated: true, approvals: await store.list(), teams: await store.teams(), error: 'Enter a valid email address.' })); return true; }
-          if (path === '/admin/approve') { await store.approve(email, form.get('team')); notice = `${email} is approved. They can now request their link from the perks page.`; }
+          try { email = normalizeEmail(form.get('email')); } catch { send(400, adminPage({ authenticated: true, approvals: await store.list(), teams: await store.teams(), formValues, error: 'Enter a valid email address.' })); return true; }
+          if (path === '/admin/teams') { const team = await store.createTeam({ name: form.get('name'), email }); notice = `${team.name} created. ${email} is approved.`; }
+          else if (path === '/admin/approve') { await store.approve(email, form.get('team')); notice = `${email} is approved. They can now request their link from the perks page.`; }
           else { await store.revoke(email); notice = `${email} no longer has access. Outstanding email claim links are invalid.`; }
         }
         send(200, adminPage({ authenticated: true, approvals: await store.list(), teams: await store.teams(), local: mailer?.local === true,
           messages: mailer?.local ? mailer.list() : [], notice }));
       } catch (error) {
-        if (error instanceof ApprovalConflict) send(409, adminPage({ authenticated: true, approvals: await store.list(), teams: await store.teams(), error: error.message }));
+        if (error instanceof ApprovalConflict) send(409, adminPage({ authenticated: true, approvals: await store.list(), teams: await store.teams(), formValues, error: error.message }));
         else send(503, adminPage({ authenticated: true, error: 'Approved emails are temporarily unavailable. Please try again.' }));
       }
       return true;

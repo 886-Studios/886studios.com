@@ -86,4 +86,18 @@ test('Redis atomically reserves one team claimant among approved founders and pr
   const production = createRedisEmailStore({ ...env, SUPABASE_PARTNER_ENVIRONMENT: 'production' }, options);
   assert.equal(await production.get(replacement.email), null);
   assert.deepEqual(await production.teams(), []);
+
+  // Two instances creating the same company must not mint two entitlements.
+  const creations = await Promise.allSettled(Array.from({ length: 12 }, (_, i) =>
+    (i % 2 ? a : b).createTeam({ name: i % 2 ? ' New   Team ' : 'new team', email: `new${i}@example.com` })));
+  assert.equal(creations.filter(r => r.status === 'fulfilled').length, 1);
+  const created = creations.find(r => r.status === 'fulfilled').value;
+  assert.equal(Object.keys(created.approvals).length, 1);
+  const member = Object.values(created.approvals)[0];
+  assert.equal(await a.reserveClaim(claim(member)), 'allowed');
+  const cofounder = await b.approve('cofounder@example.com', created.id);
+  assert.equal(await b.reserveClaim(claim(cofounder)), 'claimed');
+  await a.revoke(member.email);
+  await assert.rejects(b.createTeam({ name: 'Another New Team', email: member.email }), /another team/);
+  assert.equal((await a.teams()).filter(t => t.name.toLowerCase().includes('new')).length, 1);
 });

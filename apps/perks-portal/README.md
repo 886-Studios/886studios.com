@@ -212,7 +212,7 @@ Search, a compact Category / A–Z sort toggle, and rounded type-filter buttons 
 
 Perk rows show the partner, benefit, category, and a Details action. Expanded offers put Perk, Eligibility, and How to redeem first, with partner background under a native Details disclosure. All offer terms, eligibility, instructions, links, and codes remain available. The flat, opaque dark-purple panel uses three columns on desktop and a single column on phones. Inputs are 16px, and main actions have at least 44px targets. Access and claim forms use one heading and a single column.
 
-Staff see approved emails grouped alphabetically by company, with claim reservations shown beside the relevant company. Add member email and the local test inbox expand on demand; form errors reopen the add-email form. Revocation and the one-claim-per-company rule are unchanged. Staff email rows and the test inbox are limited to 760px for easier scanning. Form errors are associated with their inputs, empty messages do not reserve extra space, and selected categories use the shared primary-action color for text contrast. The polish pass checked Safari at 320, 390, 768, and 1280px, including required-email validation and empty-search recovery.
+Staff see approved emails grouped alphabetically by company, with claim reservations shown beside the relevant company. Add member email is always visible. Create team expands to ask for the company name and first founder email; errors keep it open and preserve the entered values. The local test inbox expands on demand. Revocation and the one-claim-per-company rule are unchanged. Staff email rows and forms are limited to 760px for easier scanning. Form errors are associated with their forms, empty messages do not reserve extra space, and selected categories use the shared primary-action color for text contrast. The polish pass checked Safari at 320, 390, 768, and 1280px, including required-email validation and empty-search recovery.
 
 The portal tests cover access control, privacy, content, and subpath login, assets, filters, redirects, cookie scope, and private-path rejection. The main GitHub validation workflow also runs portal tests; the private-catalog check runs locally when the catalog is present. Earlier browser checks covered actual CSS viewport widths of 320, 390, 430, 768, 843 (landscape), and 1280px. No horizontal overflow was found. Checked combined search/type filtering, retained filters after refresh, empty results and reset, expanded long terms, invalid and valid access codes, and authentication. Physical iPhone/Android devices have not been tested. Partner claims were not submitted.
 
@@ -235,9 +235,11 @@ Public program previews show the partner name and logo; private terms stay in th
 ### Staff workflow
 
 1. Open `/perks/admin` and sign in using the separate **staff access code**.
-2. Open **Add member email**, verify the company is eligible, then add its founder emails under the same
-   registered team. Multiple founders may be eligible, but the team gets one benefit.
-   Approval does not send email. Renamed products and aliases share the original team ID.
+2. For an existing company, use the always-visible **Add member email** form. For a new eligible company,
+   open **Create team**, enter its company name and first founder email, and submit. The server assigns
+   a permanent team ID and adds its first member atomically. Add cofounders under that same team.
+   Duplicate company names (ignoring case and spacing) and emails historically assigned to another team
+   are rejected. Neither action sends email. Renamed products and aliases must reuse the original team.
 3. The founder signs in to the existing perks directory, opens Supabase, selects
    **Claim credits**, and enters their approved email.
 4. The website sends a private link to that exact approved inbox through Resend. The
@@ -419,8 +421,11 @@ move it or revoke existing approvals silently. Each team entry accepts an `email
 array (the former single `email` field remains supported). Inactive teams, missing contacts, and unresolved records are
 listed separately in the private roster and are not imported.
 
-Only the importer can register teams; the staff website selects from that registry.
-Use the canonical Notion company page ID, not a founder or product alias ID. Team
+The importer can register reviewed teams using their canonical Notion company page IDs;
+the staff website can create a new team with a server-generated permanent ID and its first member.
+For future imports of a staff-created team, reuse its existing ID rather than replacing it with a Notion ID.
+Never use a founder or product alias ID. Empty teams stay out of the approved member list, but remain
+available in the Add member email selector so revocation cannot force a new entitlement. Team
 records and historical email bindings survive revocation. Production uses atomic Redis
 scripts to select exactly one claimant when approved founders submit simultaneously.
 The claim reservation persists across restarts, revoked approvals, reimports, and
