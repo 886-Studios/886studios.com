@@ -418,7 +418,8 @@ src/
     site.ts                     global browser behavior
     home.ts                     homepage-only browser behavior
   styles/
-    global.css                  visual system and page styles
+    global.css                  ordered stylesheet entry point
+    global/                     foundations, navigation, page sections, and late overrides
 public/                         static assets
 scripts/
   check-seo.mjs                 generated-site SEO regression checks
@@ -450,6 +451,31 @@ Use this path for most changes:
 8. For visual or interaction changes, start `npm run dev` and live-test the affected route.
 
 Commit small, reviewed slices.
+
+### Styling workflow
+
+`BaseLayout.astro` imports `src/styles/global.css`, which lists the shared stylesheets
+in cascade order. The build bundles these imports together; splitting source files
+does not add browser stylesheet requests.
+
+| File under `src/styles/global/` | Responsibility |
+| --- | --- |
+| `foundation.css` | Reset, design tokens, typography, focus, reveal states, and document structure. |
+| `navigation.css` | Desktop navigation, dropdowns, and the mobile drawer. |
+| `page-sections.css` | Page bodies and shared section patterns in their original order. |
+| `footer-newsletter.css` | Footer and newsletter strip. |
+| `responsive.css` | Later home-density rules, cross-page responsive rules, and reduced-motion behavior. |
+| `utilities.css` | Structural helpers and final page-specific adjustments. |
+
+Keep the manifest order and the rule order within each file. Repeated selectors may
+be intentional breakpoint or state overrides; moving them together can change the
+cascade. Keep late overrides after the base rules until a separate, verified cleanup.
+Existing guide, newsroom, ecosystem, and component-scoped styles keep their own imports.
+
+For a stylesheet extraction, run `npm run validate`, compare the emitted CSS with a
+before-build, and check the affected routes at desktop and phone widths. Include the
+880/881px navigation boundary and any breakpoint used by the component. Check menu
+focus, hover states, and reduced motion as well as screenshots.
 
 ## Notion Task Tracker
 
