@@ -1,0 +1,105 @@
+/* ===========================
+       HOME PHOTO SLIDESHOW
+    =========================== */
+.photo-showcase {
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  margin-top: clamp(-96px, -7vw, -64px);
+  padding: clamp(22px, 3vw, 36px) 0 clamp(44px, 5vw, 64px);
+  background: linear-gradient(
+    180deg,
+    rgba(5, 5, 7, 0) 0%,
+    rgba(5, 5, 7, 0.82) 58%,
+    #050507 100%
+  );
+}
+
+.photo-showcase::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+  width: clamp(20px, 7vw, 80px);
+  background: linear-gradient(to right, var(--bg), transparent);
+}
+
+.photo-showcase::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+  width: clamp(20px, 7vw, 80px);
+  background: linear-gradient(to left, var(--bg), transparent);
+}
+
+.photo-rail {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  overflow: hidden;
+  padding: 2px 0;
+}
+
+.photo-track {
+  --photo-gap: clamp(16px, 2vw, 24px);
+  --photo-slide-width: clamp(248px, 30vw, 380px);
+  --photo-slide-height: clamp(186px, 22.5vw, 285px);
+  --photo-loop-distance: -50%;
+  --photo-marquee-duration: 66s;
+  display: flex;
+  width: max-content;
+  min-width: max-content;
+  transform: translate3d(0, 0, 0);
+  animation: photoMarquee var(--photo-marquee-duration) linear infinite;
+  animation-play-state: paused;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.photo-track.is-ready {
+  animation-play-state: running;
+}
+
+.photo-track-set {
+  flex: 0 0 auto;
+  display: flex;
+  gap: var(--photo-gap);
+  padding-right: var(--photo-gap);
+}
+
+.photo-slide {
+  flex: 0 0 var(--photo-slide-width);
+  width: var(--photo-slide-width);
+  height: var(--photo-slide-height);
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: var(--r-sm);
+  background: var(--bg-card);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+}
+
+.photo-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+@keyframes photoMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(var(--photo-loop-distance), 0, 0);
+  }
+}

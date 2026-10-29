@@ -458,17 +458,25 @@ Commit small, reviewed slices.
 in cascade order. The build bundles these imports together; splitting source files
 does not add browser stylesheet requests.
 
-| File under `src/styles/global/` | Responsibility |
+| Files under `src/styles/global/` | Responsibility |
 | --- | --- |
 | `foundation.css` | Reset, design tokens, typography, focus, reveal states, and document structure. |
 | `navigation.css` | Desktop navigation, dropdowns, and the mobile drawer. |
-| `page-sections.css` | Page bodies and shared section patterns in their original order. |
+| `page-shell.css`, `sections.css`, `buttons.css`, `page-hero.css` | Shared page structure, sections, actions, and inner-page heroes. |
+| `home-hero.css`, `photo-marquee.css`, `program-cards.css` | Homepage hero, photo strip, and program cards. |
+| `partner-portfolio.css` | Company logos, portfolio directory, and startup detail patterns. |
+| `launchpad.css`, `launch-station.css` | The two program pages. |
+| `resources.css`, `blog.css` | Resource library and blog index/article styles. |
+| `about.css`, `partner-profiles.css` | About/Team layouts and partner profiles. |
+| `events.css`, `contact.css`, `privacy.css` | Event cards, contact paths, and privacy notice. |
 | `footer-newsletter.css` | Footer and newsletter strip. |
 | `responsive.css` | Later home-density rules, cross-page responsive rules, and reduced-motion behavior. |
 | `utilities.css` | Structural helpers and final page-specific adjustments. |
 
-Keep the manifest order and the rule order within each file. Repeated selectors may
-be intentional breakpoint or state overrides; moving them together can change the
+Choose the file that owns the page or pattern, using the table above; the manifest
+is the authoritative load order, not an alphabetical index. Keep that order and
+the rule order within each file. Repeated selectors may be intentional breakpoint
+or state overrides; moving them together can change the
 cascade. Keep late overrides after the base rules until a separate, verified cleanup.
 Existing guide, newsroom, ecosystem, and component-scoped styles keep their own imports.
 

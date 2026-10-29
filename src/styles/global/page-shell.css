@@ -1,0 +1,9 @@
+/* ===========================
+       PAGES
+    =========================== */
+.page {
+  display: block;
+  flex: 1 0 auto;
+  min-height: 0;
+  padding-top: var(--nav-height);
+}

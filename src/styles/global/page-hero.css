@@ -1,0 +1,34 @@
+/* ===========================
+       PAGE HERO (inner pages)
+    =========================== */
+
+    .pg-hero {
+      padding: 72px 32px 52px;
+      max-width: var(--max);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .pg-hero-glow {
+      position: absolute; top: 0; right: 0;
+      width: 480px; height: 240px;
+      background: radial-gradient(ellipse, rgba(109,40,217,0.16), transparent);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
+    .pg-divider { border: none; border-top: 1px solid var(--border); max-width: var(--max); margin: 0 auto; }
+
+    @media (max-width: 980px) {
+      .home-program-feature-grid { grid-template-columns: 1fr; gap: 14px; }
+
+      .home-program-feature-copy { white-space: normal; }
+
+      .home-program-feature-link { align-self: flex-start; margin-bottom: 0; }
+
+      .home-program-mini { grid-template-columns: 1fr; gap: 10px; }
+
+      .home-program-mini-copy { white-space: normal; }
+
+      .logo-wall { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }

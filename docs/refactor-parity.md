@@ -15,7 +15,7 @@ The sandbox initially blocked live-feed DNS access. The successful baseline buil
 
 Browser plugin not available. Browser validation uses the existing cached Playwright installation, with temporary scripts and screenshots outside the repository. The target flow is: open a legacy route with query/fragment → reach the same destination; open the mobile navigation → close with Escape and return focus. Resource pages must retain their rendered content at phone and desktop widths.
 
-The baseline production build is retained temporarily for complete output and JSON-LD comparison. Resource fixtures retain exact headings, metadata, schema identities, and dates. Built redirect tests execute the emitted JavaScript with four query/fragment combinations per route and check the rendered no-JavaScript fallback. Browser checks cover actual navigation and archived 404 responses.
+The baseline production build is retained temporarily for complete output and JSON-LD comparison. The original resource fixtures retained exact headings, metadata, schema identities, and dates. The follow-up below replaces fixed fixture dates with the generated source dates. Built redirect tests execute the emitted JavaScript with four query/fragment combinations per route and check the rendered no-JavaScript fallback. Browser checks cover actual navigation and archived 404 responses.
 
 | Implemented pass | Structural change | Parity result |
 | --- | --- | --- |
@@ -47,4 +47,25 @@ Browser environment: local Astro preview at `http://127.0.0.1:4187`, cached Play
 
 Temporary evidence lives under `/private/tmp/886-refactor-tools/`: `baseline-production/`, `baseline-browser/`, `after-browser/`, the browser check script, and command logs. Screenshots, downloaded tools, production output, and private data are not committed. The contracts and parity record are the durable review artifacts.
 
-Hosted Vercel redirects were not redeployed or retested; their configuration is unchanged. Browser coverage is Chromium at the listed widths, not a claim of exhaustive cross-browser coverage. Passes 4 onward, dependency upgrades, and architectural migrations remain outside this implementation.
+Hosted Vercel redirects were not redeployed or retested; their configuration is unchanged. Browser coverage is Chromium at the listed widths, not a claim of exhaustive cross-browser coverage. The following work extends this record; dependency upgrades and architectural migrations remain outside the implementation.
+
+**Follow-up: fixture maintenance and stylesheet organization**
+
+Baseline: `b5773ea`. The user requested priorities 1 and 3 from the follow-up recommendations, with each significant step committed and README updates included. These are date-check maintenance and the ordered CSS extraction portion of the original pass 5; browser-module extraction is not included.
+
+| Step | Change | Validation |
+| --- | --- | --- |
+| Date checks (`7c336c4`) | Remove hard-coded dates from fixtures and derive the expected WebPage/Article dates from `contentDates.generated.ts`. | Astro checks, 49 source tests, and 21 built-output tests pass. An isolated copy accepts a date-only content update without fixture edits and rejects stale/missing dates on each schema type or a missing generated source date. |
+| Stylesheet manifest (`739f848`) | Extract foundations, navigation, page sections, footer/newsletter, responsive rules, and utilities into ordered imports. | Full validation passes; both emitted stylesheets are byte-identical. All 30 computed-style snapshots match. One intermediate PNG had 108 differing rounded-logo edge pixels; the final run below matches all PNGs exactly. |
+| Named page styles | Split page sections into 17 named files, leaving a 23-line global entry point importing 22 modules. Document ownership and cascade order in README. | Full validation passes again. Every nonblank original stylesheet line remains unchanged and in the same order. All emitted CSS and HTML, sitemap, and RSS match the baseline byte-for-byte. |
+
+Final browser checks use the existing Playwright/Chromium setup against the local analytics-disabled preview at `http://127.0.0.1:4187`. No new browser dependency was installed.
+
+- Home, Launchpad, Launch Station, About, Team, Max's profile, Events, Portfolio, Resources, the application guide, Blog, Contact, and Privacy were checked at 390×900 and 1440×900.
+- Team was also checked at widths 880, 881, 1099, and 1100. All 30 page/computed-style snapshots match, and all 32 final PNGs (including two open-menu states) are byte-for-byte identical to the baseline.
+- Mobile menu keyboard open, focus trapping, Escape, inert state, and focus return pass at 390 and 880px. Desktop dropdown open/Escape passes at 881px. The guide's checklist link retains its anchor navigation.
+- Page identity, meaningful content, and absence of framework overlays were checked. No console warnings or runtime errors were observed.
+- Final `npm run validate`: zero Astro errors/warnings (one existing unused-import hint), 49 source tests, 21 built-output tests, 104 HTML pages, 83 sitemap entries, and passing SEO/CSP checks. There are still two emitted CSS files; neither file's bytes changed.
+- Only stylesheet source boundaries and test expectations changed. No selectors, declarations, media-query order, content dates, dependencies, portal code, or deployment configuration changed.
+
+Temporary baseline builds, browser scripts, date-mutation cases, screenshots, and logs are under `/private/tmp/886-css-refactor/`. The new commits are local-only; pushing was not requested for this follow-up. Cross-browser validation and selector deduplication remain future work.

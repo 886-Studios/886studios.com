@@ -1,0 +1,129 @@
+/* ===========================
+       CONTACT
+    =========================== */
+#page-contact .contact-section {
+  padding-top: clamp(56px, 6vw, 72px);
+}
+
+.contact-paths {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(40px, 5vw, 64px);
+}
+
+.contact-path {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contact-path-label {
+  margin-bottom: 18px;
+}
+
+.contact-path-title {
+  max-width: none;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 2.8vw, 32px);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  text-wrap: balance;
+  white-space: nowrap;
+}
+
+.contact-path-copy {
+  max-width: none;
+  margin: 18px 0 22px;
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.6;
+  text-wrap: pretty;
+  white-space: nowrap;
+}
+
+.contact-schedule-note {
+  max-width: 52ch;
+  margin: -10px 0 22px;
+  color: var(--text-secondary);
+  font-size: var(--text-meta);
+  line-height: 1.6;
+}
+
+.contact-path .contact-action-link {
+  margin-top: auto;
+}
+
+.contact-community {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: none;
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border);
+}
+
+.contact-community-copy-wrap {
+  max-width: 680px;
+}
+
+.contact-community .contact-path-title,
+.contact-community .contact-path-copy {
+  white-space: normal;
+}
+
+.contact-community-brand {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: -0.06em;
+  white-space: nowrap;
+}
+
+.contact-community-title-icon {
+  width: 0.82em;
+  height: 0.82em;
+  margin-inline-end: 0.18em;
+  fill: var(--purple-bright);
+}
+
+@media (max-width: 1080px) {
+  .contact-paths {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .contact-path {
+    min-height: 0;
+  }
+
+  .contact-primary .contact-path + .contact-path::before {
+    position: absolute;
+    top: -24px;
+    right: 0;
+    left: 0;
+    border-top: 1px solid var(--border);
+    content: "";
+  }
+
+  .contact-path-copy {
+    margin-bottom: 26px;
+  }
+
+  .contact-path .contact-action-link {
+    margin-top: 0;
+  }
+
+}
+
+@media (max-width: 520px) {
+  .contact-path-title,
+  .contact-path-copy {
+    white-space: normal;
+  }
+}

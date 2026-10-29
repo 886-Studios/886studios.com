@@ -1,6 +1,6 @@
 Behavior-preserving refactor plan — 2026-10-29
 
-This proposal was based on the working tree at `403b0ad`. Passes 0–3 have now been implemented locally; see `refactor-contracts.md` and `refactor-parity.md` for their scope and validation. The remaining passes are proposals. Keep the Astro public site and the separately deployed Node perks portal as they are, preserve public URLs and contracts, and make each change independently reviewable and revertible.
+This proposal was based on the working tree at `403b0ad`. Passes 0–3 were implemented and pushed as `b5773ea`. Follow-up work now derives fixture dates from generated content dates and completes the ordered stylesheet extraction portion of pass 5. See `refactor-contracts.md` and `refactor-parity.md` for scope and validation, and the README for the current stylesheet map. Selector consolidation and the remaining passes are proposals. Keep the Astro public site and the separately deployed Node perks portal as they are, preserve public URLs and contracts, and make each change independently reviewable and revertible.
 
 The existing conventions are suitable: Astro page components, TypeScript data/helpers, small ESM scripts, and Node's built-in test runner. Modernization should reduce coupling within those conventions. It does not require a new framework or dependency upgrade.
 
@@ -76,4 +76,4 @@ Do not expand this into blanket test or tooling replacement. GitHub Actions curr
 - Introducing a CMS/content collection conversion, persisted feed cache, or different fail-open policy: separate content/availability decision. Changing what `dateModified` means is likewise separate from moving files.
 - Introducing a new browser-test runner, CSS framework/layers, or shared cross-app design system: separate tooling/design decision. Existing browser tooling and focused checks can establish parity first.
 
-Recommended first implementation tranche: baseline/contracts, confirmed dead-code removal, shared redirect rendering, and resource dispatch. Review the reduction in coupling before proceeding to stylesheet, content-history, feed, or portal work.
+The first implementation tranche and ordered stylesheet extraction are complete. Browser-module extraction, selector consolidation, content-history changes, feed decomposition, and portal work remain separate future passes.
