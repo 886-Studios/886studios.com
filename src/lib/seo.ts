@@ -160,6 +160,30 @@ export function getPortfolioDescription(company: PortfolioCompany) {
   return portfolioDescriptions[company.slug] ?? getMetaDescription(company.description);
 }
 
+export function getPortfolioPageTitle(company: PortfolioCompany) {
+  const descriptiveTitles: Record<string, string> = {
+    "o3o-labs": "PicPet: Virtual Pet Game for Friends",
+    preciser: "Preciser: AI Sports Analytics",
+  };
+
+  return `${descriptiveTitles[company.slug] ?? company.name} | 886 Studios`;
+}
+
+export function getProfilePageTitle(profile: PartnerProfile) {
+  // Distinguish the people behind the names using their published experience.
+  const descriptiveTitles: Record<string, string> = {
+    "kevin-lin": "Kevin Lin: Twitch Co-Founder",
+    "kevin-chou": "Kevin Chou: Kabam Co-Founder",
+    kai: "Kai Huang: RedOctane Co-Founder",
+    charles: "Charles Huang: RedOctane Co-Founder",
+    chris: "Chris Wang: Playdom Co-Founder",
+    steven: "Steven Chiang: Tiburon Co-Founder",
+    timothy: "Timothy Chen: CATCHPLAY Founder",
+  };
+
+  return `${descriptiveTitles[profile.slug] ?? profile.name} | 886 Studios`;
+}
+
 export function getProfileDescription(profile: PartnerProfile) {
   if (profileDescriptions[profile.slug]) return profileDescriptions[profile.slug];
   const profileText = cleanText(profile.profile.map(profileParagraphToText).join(" "));
@@ -198,7 +222,7 @@ export function getResourcePageTitle(article: ResourceArticle) {
     "cap-table-guide": "What is a cap table?",
     "safe-note-guide": "What is a SAFE note?",
     "term-sheet-guide": "Startup Term Sheet Guide: Terms & Examples",
-    "burn-rate-runway-guide": "Startup Burn Rate & Runway",
+    "burn-rate-runway-guide": "Startup Burn Rate & Runway: Formulas",
     "ecosystem-database": "Taiwan Startup Ecosystem Database",
     "founders-frequently-asked-questions": "Founder FAQs",
     "incorporation-101": "Startup Incorporation Guide",

@@ -7,6 +7,7 @@ import {
   getImageMimeType,
   getPortfolioCompanySchema,
   getPortfolioDescription,
+  getPortfolioPageTitle,
 } from "../../lib/seo";
 
 export function getStaticPaths() {
@@ -17,7 +18,7 @@ export function getStaticPaths() {
 }
 
 const { company } = Astro.props as { company: PortfolioCompany };
-const pageTitle = `${company.name} | 886 Studios`;
+const pageTitle = getPortfolioPageTitle(company);
 const pageDescription = getPortfolioDescription(company);
 const socialImage = company.logo.src.endsWith(".svg") ? undefined : company.logo;
 const websiteLink = typeof company.websiteUrl === "string" && company.websiteUrl.length > 0 ? company.websiteUrl : undefined;

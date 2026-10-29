@@ -3,7 +3,7 @@ import PartnerProfilePage from "../../components/pages/PartnerProfilePage.astro"
 import { partnerProfiles } from "../../data/partnerProfiles";
 import type { PartnerProfile } from "../../data/partnerProfiles";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getAbsoluteUrl, getPersonSchema, getProfileDescription } from "../../lib/seo";
+import { getAbsoluteUrl, getPersonSchema, getProfileDescription, getProfilePageTitle } from "../../lib/seo";
 
 export function getStaticPaths() {
   return partnerProfiles.map((profile) => ({
@@ -20,7 +20,7 @@ const profileImageHeight = profile.legacySlug === "james-hong" ? 1404 : profileI
 ---
 
 <BaseLayout
-  title={`${profile.name} | 886 Studios`}
+  title={getProfilePageTitle(profile)}
   description={profileDescription}
   ogImage={getAbsoluteUrl(profile.photo)}
   ogImageAlt={[profile.name, profile.role, profile.company].filter(Boolean).join(", ")}

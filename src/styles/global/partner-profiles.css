@@ -7,13 +7,17 @@
     var(--bg);
 }
 
+.partner-profile-hero,
+.partner-profile-shell {
+  max-width: min(880px, calc(72ch + 64px));
+  margin: 0 auto;
+}
+
 .partner-profile-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
   gap: clamp(40px, 7vw, 92px);
   align-items: end;
-  max-width: var(--max);
-  margin: 0 auto;
   padding: clamp(58px, 8vw, 96px) 32px 54px;
 }
 
@@ -49,8 +53,6 @@
 }
 
 .partner-profile-shell {
-  max-width: min(880px, calc(72ch + 64px));
-  margin: 0 auto;
   padding: 0 32px clamp(86px, 10vw, 124px);
 }
 
