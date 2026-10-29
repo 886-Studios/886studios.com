@@ -1,0 +1,1280 @@
+{
+  "redirects": [
+    {
+      "route": "/about/carter-wang",
+      "destination": "/team/carter",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/about/charles-huang",
+      "destination": "/team/charles",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/about/chris-wang",
+      "destination": "/team/chris",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/about/jacob-hsu",
+      "destination": "/team/jacob",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/about/james-hong",
+      "destination": "/team/james",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/about/jameson-hsu",
+      "destination": "/team/jameson",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/about/joseph-hei",
+      "destination": "/team/joseph",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/about/kai-huang",
+      "destination": "/team/kai",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/about/kevin-chou",
+      "destination": "/team/kevin-chou",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/about/kevin-lin",
+      "destination": "/team/kevin-lin",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/about/max-hsieh",
+      "destination": "/team/max",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/about/newsroom",
+      "destination": "/newsroom",
+      "title": "In the News has moved | 886 Studios",
+      "label": "Continue to In the News"
+    },
+    {
+      "route": "/about/patryk-chojecki",
+      "destination": "/team/patryk",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/about/phil-chen",
+      "destination": "/team/phil",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/about/steven-chiang",
+      "destination": "/team/steven",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/about/team",
+      "destination": "/team",
+      "title": "Team has moved | 886 Studios",
+      "label": "Continue to Team"
+    },
+    {
+      "route": "/about/timothy-chen",
+      "destination": "/team/timothy",
+      "title": "Profile has moved | 886 Studios",
+      "label": "Continue to profile"
+    },
+    {
+      "route": "/programs",
+      "destination": "/ikigai-launchpad",
+      "title": "ikigai Launchpad has moved | 886 Studios",
+      "label": "Continue to ikigai Launchpad"
+    },
+    {
+      "route": "/programs/launch-station",
+      "destination": "/launch-station",
+      "title": "Launch Station has moved | 886 Studios",
+      "label": "Continue to Launch Station"
+    }
+  ],
+  "resources": [
+    {
+      "route": "/resources/application-guide",
+      "title": "Accelerator Application Guide | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/application-guide",
+      "description": "Prepare your accelerator application with a founder checklist, written answers, a one-minute video, and ikigai Launchpad eligibility details from 886 Studios.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "Accelerator application guide"
+        ],
+        [
+          "h2",
+          "Before you apply"
+        ],
+        [
+          "h2",
+          "Choose a program that fits"
+        ],
+        [
+          "h2",
+          "Write clear application answers"
+        ],
+        [
+          "h2",
+          "Prepare your introduction video"
+        ],
+        [
+          "h2",
+          "Application FAQs"
+        ],
+        [
+          "h2",
+          "Check your next step"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/application-guide#webpage",
+          "dateModified": "2026-10-14"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/application-guide#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/application-guide#article",
+          "dateModified": "2026-10-14"
+        }
+      ]
+    },
+    {
+      "route": "/resources/burn-rate-runway-guide",
+      "title": "Startup Burn Rate &amp; Runway | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/burn-rate-runway-guide",
+      "description": "Learn how to calculate startup burn rate and runway, with clear formulas, a Taiwan startup example, and a cash-planning checklist for bootstrapped founders.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "What are burn rate and runway?"
+        ],
+        [
+          "h2",
+          "What is the difference between gross burn and net burn?"
+        ],
+        [
+          "h2",
+          "How do you calculate startup runway?"
+        ],
+        [
+          "h2",
+          "Worked example: runway for a startup in Taiwan"
+        ],
+        [
+          "h2",
+          "What can make your runway estimate misleading?"
+        ],
+        [
+          "h2",
+          "How should bootstrapped founders plan their runway?"
+        ],
+        [
+          "h2",
+          "Burn rate and runway FAQs"
+        ],
+        [
+          "h2",
+          "Prepare for your next founder conversation"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/burn-rate-runway-guide#webpage",
+          "dateModified": "2026-10-16"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/burn-rate-runway-guide#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/burn-rate-runway-guide#article",
+          "dateModified": "2026-10-16"
+        }
+      ]
+    },
+    {
+      "route": "/resources/cap-table-guide",
+      "title": "What is a cap table? | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/cap-table-guide",
+      "description": "Learn how cap tables track ownership and how SAFEs, option pools, vesting, and funding rounds affect founders, with a worked example from 886 Studios.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "What is a cap table?"
+        ],
+        [
+          "h2",
+          "What does a cap table show?"
+        ],
+        [
+          "h2",
+          "Cap table example: from founding to a priced round"
+        ],
+        [
+          "h2",
+          "How does an option pool affect founder ownership?"
+        ],
+        [
+          "h2",
+          "How does founder vesting show up on a cap table?"
+        ],
+        [
+          "h2",
+          "What should founders check on their cap table?"
+        ],
+        [
+          "h2",
+          "Cap table FAQs"
+        ],
+        [
+          "h2",
+          "Preparing to raise your first round?"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/cap-table-guide#webpage",
+          "dateModified": "2026-10-19"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/cap-table-guide#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/cap-table-guide#article",
+          "dateModified": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "route": "/resources/choosing-the-right-co-founder",
+      "title": "Choosing the Right Co-Founder | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/choosing-the-right-co-founder",
+      "description": "Explore advice from 886 Studios partners on selecting a co-founder, including the traits, skills, and working relationships that matter when building a startup.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "Choosing the Right Co-Founder"
+        ],
+        [
+          "h2",
+          "What criteria should founders consider when selecting their co-founder? Are there particular traits or skills that are more critical?"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/choosing-the-right-co-founder#webpage",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/choosing-the-right-co-founder#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/choosing-the-right-co-founder#article",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "FAQPage",
+          "id": "https://www.886studios.com/resources/choosing-the-right-co-founder#faq"
+        }
+      ]
+    },
+    {
+      "route": "/resources/dos-and-donts",
+      "title": "Dos and Don&#39;ts | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/dos-and-donts",
+      "description": "Dos and Don'ts: What are some key dos and don'ts when reaching out to someone new in your network? Read perspectives from 886 Studios partners.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "Dos and Don&#39;ts"
+        ],
+        [
+          "h2",
+          "What are some key dos and don&#39;ts when reaching out to someone new in your network?"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/dos-and-donts#webpage",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/dos-and-donts#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/dos-and-donts#article",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "FAQPage",
+          "id": "https://www.886studios.com/resources/dos-and-donts#faq"
+        }
+      ]
+    },
+    {
+      "route": "/resources/ecosystem-database",
+      "title": "Taiwan Startup Ecosystem Database | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/ecosystem-database",
+      "description": "Explore Taiwan's startup ecosystem with an 886 Studios directory of accelerators, venture capital firms, and other organizations supporting founders.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "Ecosystem Database"
+        ],
+        [
+          "h2",
+          "Accelerators"
+        ],
+        [
+          "h2",
+          "VC Firms"
+        ],
+        [
+          "h2",
+          "Accelerator / Incubator"
+        ],
+        [
+          "h2",
+          "Co-working Space"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "Government"
+        ],
+        [
+          "h2",
+          "Media"
+        ],
+        [
+          "h2",
+          "Talent Platform"
+        ],
+        [
+          "h2",
+          "Venture Capital"
+        ],
+        [
+          "h2",
+          "Venture Studios"
+        ],
+        [
+          "h2",
+          "No matching entries"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/ecosystem-database#webpage",
+          "dateModified": "2026-10-16"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/ecosystem-database#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/ecosystem-database#article",
+          "dateModified": "2026-10-16"
+        }
+      ]
+    },
+    {
+      "route": "/resources/encouraging-leadership",
+      "title": "Encouraging Leadership | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/encouraging-leadership",
+      "description": "Encouraging Leadership: How can founders effectively encourage an investor to take the lead? Read perspectives from 886 Studios partners.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "Encouraging Leadership"
+        ],
+        [
+          "h2",
+          "How can founders effectively encourage an investor to take the lead?"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/encouraging-leadership#webpage",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/encouraging-leadership#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/encouraging-leadership#article",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "FAQPage",
+          "id": "https://www.886studios.com/resources/encouraging-leadership#faq"
+        }
+      ]
+    },
+    {
+      "route": "/resources/engagement-during-fundraising",
+      "title": "Engagement During Fundraising | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/engagement-during-fundraising",
+      "description": "Read 886 Studios partners' advice on keeping interested investors engaged throughout fundraising and maintaining momentum in your investor conversations.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "Engagement During Fundraising"
+        ],
+        [
+          "h2",
+          "What are key factors in keeping interested investors engaged throughout the fundraising process?"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/engagement-during-fundraising#webpage",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/engagement-during-fundraising#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/engagement-during-fundraising#article",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "FAQPage",
+          "id": "https://www.886studios.com/resources/engagement-during-fundraising#faq"
+        }
+      ]
+    },
+    {
+      "route": "/resources/finding-a-co-founder",
+      "title": "Finding a Co-Founder | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/finding-a-co-founder",
+      "description": "Explore co-founder relationships through firsthand stories from 886 Studios partners, including lessons on trust, disagreements, and working together.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "Finding a Co-Founder"
+        ],
+        [
+          "h2",
+          "Could you share any personal lessons or stories from working with your co-founders? What worked, what didn&#39;t, and how did you navigate challenges?"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/finding-a-co-founder#webpage",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/finding-a-co-founder#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/finding-a-co-founder#article",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "FAQPage",
+          "id": "https://www.886studios.com/resources/finding-a-co-founder#faq"
+        }
+      ]
+    },
+    {
+      "route": "/resources/founders-frequently-asked-questions",
+      "title": "Founder FAQs | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/founders-frequently-asked-questions",
+      "description": "Read advice from 886 Studios partners on choosing co-founders, working with investors, raising funding, and building a useful professional network.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "Founders FAQs"
+        ],
+        [
+          "h2",
+          "Co-Founders"
+        ],
+        [
+          "h2",
+          "Investor Relations"
+        ],
+        [
+          "h2",
+          "Networking"
+        ],
+        [
+          "h2",
+          "Seeking More Advice"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/founders-frequently-asked-questions#webpage",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/founders-frequently-asked-questions#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/founders-frequently-asked-questions#article",
+          "dateModified": "2026-10-13"
+        }
+      ]
+    },
+    {
+      "route": "/resources/leadership-in-funding-rounds",
+      "title": "Leadership in Funding Rounds | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/leadership-in-funding-rounds",
+      "description": "Read advice from 886 Studios partners on finding a lead investor when investors show interest in your startup but no one wants to lead the funding round.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "Leadership in Funding Rounds"
+        ],
+        [
+          "h2",
+          "What steps would you take if investors show interest in your project but none want to lead the round?"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/leadership-in-funding-rounds#webpage",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/leadership-in-funding-rounds#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/leadership-in-funding-rounds#article",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "FAQPage",
+          "id": "https://www.886studios.com/resources/leadership-in-funding-rounds#faq"
+        }
+      ]
+    },
+    {
+      "route": "/resources/lessons-learned",
+      "title": "Lessons Learned | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/lessons-learned",
+      "description": "Read co-founder lessons from 886 Studios partners on working together, handling disagreements, and understanding how founder relationships affect the team.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "Lessons Learned"
+        ],
+        [
+          "h2",
+          "Could you share any personal lessons or stories from working with your co-founders? What worked, what didn&#39;t, and how did you navigate challenges?"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/lessons-learned#webpage",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/lessons-learned#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/lessons-learned#article",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "FAQPage",
+          "id": "https://www.886studios.com/resources/lessons-learned#faq"
+        }
+      ]
+    },
+    {
+      "route": "/resources/negotiating-with-lead-investors",
+      "title": "Negotiating with Lead Investors | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/negotiating-with-lead-investors",
+      "description": "Explore firsthand advice from 886 Studios partners on negotiating with potential lead investors and navigating the relationships behind a funding round.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "Negotiating with Lead Investors"
+        ],
+        [
+          "h2",
+          "Can you provide any insights or personal experiences in negotiating with potential lead investors?"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/negotiating-with-lead-investors#webpage",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/negotiating-with-lead-investors#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/negotiating-with-lead-investors#article",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "FAQPage",
+          "id": "https://www.886studios.com/resources/negotiating-with-lead-investors#faq"
+        }
+      ]
+    },
+    {
+      "route": "/resources/safe-note-guide",
+      "title": "What is a SAFE note? | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/safe-note-guide",
+      "description": "Learn how SAFE notes work, how valuation caps affect ownership, how SAFEs compare with convertible notes, and what founders should check before signing.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "What is a SAFE note?"
+        ],
+        [
+          "h2",
+          "How does a SAFE work?"
+        ],
+        [
+          "h2",
+          "SAFE vs convertible note vs priced round"
+        ],
+        [
+          "h2",
+          "Worked example: $100,000 for 8%"
+        ],
+        [
+          "h2",
+          "What should founders check before signing a SAFE?"
+        ],
+        [
+          "h2",
+          "SAFE note FAQs"
+        ],
+        [
+          "h2",
+          "Preparing to raise your first round?"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/safe-note-guide#webpage",
+          "dateModified": "2026-10-19"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/safe-note-guide#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/safe-note-guide#article",
+          "dateModified": "2026-10-19"
+        }
+      ]
+    },
+    {
+      "route": "/resources/term-sheet-guide",
+      "title": "Startup Term Sheet Guide: Terms &amp; Examples | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/term-sheet-guide",
+      "description": "Reading your first startup term sheet? Learn valuation, dilution, investor rights and red flags through clear examples and questions to ask before signing.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "What is a term sheet?"
+        ],
+        [
+          "h2",
+          "How to read your first term sheet"
+        ],
+        [
+          "h2",
+          "Is a term sheet legally binding?"
+        ],
+        [
+          "h2",
+          "Key economic terms in a startup term sheet"
+        ],
+        [
+          "h2",
+          "Liquidation preference example: who gets paid in a sale?"
+        ],
+        [
+          "h2",
+          "Board seats, protective provisions and founder control"
+        ],
+        [
+          "h2",
+          "Term sheet vs SAFE: what is the difference?"
+        ],
+        [
+          "h2",
+          "What should founders check before signing a term sheet?"
+        ],
+        [
+          "h2",
+          "Term sheet FAQs"
+        ],
+        [
+          "h2",
+          "Preparing to negotiate with investors?"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/term-sheet-guide#webpage",
+          "dateModified": "2026-10-16"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/term-sheet-guide#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/term-sheet-guide#article",
+          "dateModified": "2026-10-16"
+        }
+      ]
+    },
+    {
+      "route": "/resources/the-role-of-expertise",
+      "title": "The Role of Expertise | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/the-role-of-expertise",
+      "description": "Read 886 Studios partners' perspectives on technical and business expertise in a founding team and how co-founders can bring complementary skills.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "The Role of Expertise"
+        ],
+        [
+          "h2",
+          "In your experience, is having a co-founder with technical or business expertise essential? Why or why not?"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/the-role-of-expertise#webpage",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/the-role-of-expertise#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/the-role-of-expertise#article",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "FAQPage",
+          "id": "https://www.886studios.com/resources/the-role-of-expertise#faq"
+        }
+      ]
+    },
+    {
+      "route": "/resources/warm-introductions",
+      "title": "Warm Introductions | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/warm-introductions",
+      "description": "Warm Introductions: What strategies have you found most effective for asking for warm introductions? Read perspectives from 886 Studios partners.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "Warm Introductions"
+        ],
+        [
+          "h2",
+          "What strategies have you found most effective for asking for warm introductions?"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/warm-introductions#webpage",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/warm-introductions#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/warm-introductions#article",
+          "dateModified": "2026-10-13"
+        },
+        {
+          "type": "FAQPage",
+          "id": "https://www.886studios.com/resources/warm-introductions#faq"
+        }
+      ]
+    },
+    {
+      "route": "/resources/y-combinator-101",
+      "title": "YC Application Guide | 886 Studios",
+      "canonical": "https://www.886studios.com/resources/y-combinator-101",
+      "description": "Prepare your YC application with advice from experienced founders, former YC Partners, and 886 Partners, plus links to application and interview resources.",
+      "headings": [
+        [
+          "h2",
+          "Programs"
+        ],
+        [
+          "h2",
+          "Community"
+        ],
+        [
+          "h2",
+          "About us"
+        ],
+        [
+          "h1",
+          "Y Combinator 101"
+        ],
+        [
+          "h2",
+          "Overview"
+        ],
+        [
+          "h2",
+          "Partner Notes"
+        ],
+        [
+          "h2",
+          "Tips"
+        ],
+        [
+          "h2",
+          "Read More"
+        ]
+      ],
+      "structuredData": [
+        {
+          "type": "Organization",
+          "id": "https://www.886studios.com/#organization"
+        },
+        {
+          "type": "WebSite",
+          "id": "https://www.886studios.com/#website"
+        },
+        {
+          "type": "WebPage",
+          "id": "https://www.886studios.com/resources/y-combinator-101#webpage",
+          "dateModified": "2026-10-16"
+        },
+        {
+          "type": "BreadcrumbList",
+          "id": "https://www.886studios.com/resources/y-combinator-101#breadcrumb"
+        },
+        {
+          "type": "Article",
+          "id": "https://www.886studios.com/resources/y-combinator-101#article",
+          "dateModified": "2026-10-16"
+        }
+      ]
+    }
+  ]
+}

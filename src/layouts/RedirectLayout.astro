@@ -1,0 +1,37 @@
+---
+import GoogleAnalytics from "../components/GoogleAnalytics.astro";
+import LinkedInInsight from "../components/LinkedInInsight.astro";
+import VercelAnalytics from "../components/VercelAnalytics.astro";
+import { getGoogleAnalyticsId, siteConfig } from "../config/site";
+import redirectScript from "../scripts/redirect.js?url";
+
+interface Props {
+  destination: string;
+  title: string;
+  label: string;
+  linkId?: string;
+}
+
+const { destination, title, label, linkId } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, follow" />
+    <meta http-equiv="refresh" content={`0;url=${destination}`} />
+    <link rel="canonical" href={`${siteConfig.url}${destination}`} />
+    <title>{title} | {siteConfig.name}</title>
+    <GoogleAnalytics measurementId={getGoogleAnalyticsId()} />
+  </head>
+  <body>
+    <main>
+      <p><a id={linkId} data-redirect-destination href={destination}>{label}</a></p>
+    </main>
+    <script is:inline type="module" src={redirectScript}></script>
+    <VercelAnalytics />
+    <LinkedInInsight />
+  </body>
+</html>

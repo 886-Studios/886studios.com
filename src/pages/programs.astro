@@ -1,29 +1,9 @@
 ---
-import GoogleAnalytics from "../components/GoogleAnalytics.astro";
-import LinkedInInsight from "../components/LinkedInInsight.astro";
-import VercelAnalytics from "../components/VercelAnalytics.astro";
-import { getGoogleAnalyticsId, siteConfig } from "../config/site";
+import RedirectLayout from "../layouts/RedirectLayout.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex, follow" />
-    <meta http-equiv="refresh" content="0;url=/ikigai-launchpad" />
-    <link rel="canonical" href={`${siteConfig.url}/ikigai-launchpad`} />
-    <title>ikigai Launchpad has moved | 886 Studios</title>
-    <GoogleAnalytics measurementId={getGoogleAnalyticsId()} />
-  </head>
-  <body>
-    <main>
-      <p><a href="/ikigai-launchpad">Continue to ikigai Launchpad</a></p>
-    </main>
-    <script>
-      window.location.replace(`/ikigai-launchpad${window.location.search}${window.location.hash}`);
-    </script>
-    <VercelAnalytics />
-    <LinkedInInsight />
-  </body>
-</html>
+<RedirectLayout
+  destination="/ikigai-launchpad"
+  title="ikigai Launchpad has moved"
+  label="Continue to ikigai Launchpad"
+/>

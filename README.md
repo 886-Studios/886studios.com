@@ -98,7 +98,7 @@ Before opening a PR, run the public site's complete validation:
 npm run validate
 ```
 
-This runs diagnostics, tests, a static build, and generated-site SEO and security checks.
+This runs diagnostics, tests, a static build, built-route contract tests, and generated-site SEO and security checks.
 It requires the live Substack feed. A normal local run ends with
 `Security validation passed: … analytics disabled.` The perks portal has a separate
 [test and build workflow](apps/perks-portal/README.md#tests-and-build).
@@ -136,11 +136,12 @@ Vercel redirects, proxy rules, and response headers must be checked on a deploym
 | `npm run dev` | Start the local Astro dev server. |
 | `npm run check` | Run Astro diagnostics and TypeScript checks. |
 | `npm test` | Run the website's Node regression tests in `tests/`. |
+| `npm run test:built` | Check redirect behavior, resource output, and archived-route exclusions in a fresh `dist/` build. |
 | `npm run build` | Build all static routes into `dist/`. |
 | `npm run check:seo` | Validate metadata, schema, links, images, robots, and sitemap parity in an existing `dist/` build. |
 | `npm run check:security` | Check built scripts against CSP and verify analytics are gated by deployment environment. |
 | `npm run validate:code` | Run type checks and regression tests without external feed access. |
-| `npm run validate` | Run diagnostics, tests, build, and the SEO and security regression suites. |
+| `npm run validate` | Run diagnostics, tests, build, built-route contracts, and the SEO and security regression suites. |
 | `npm run preview` | Serve the latest `dist/` build locally. |
 | `npm run events:sync:dry-run` | Fetch Luma events and report changes without writing the archive. |
 | `npm run events:sync` | Fetch Luma events and update `src/data/luma-events.json`. |
@@ -493,7 +494,7 @@ The Manifesto draft is archived in `src/archived/manifesto.astro`. Neither
 Rising Star is archived in `src/archived/rising-star.astro`. Its `/rising-star` and
 `/community/rising-star` routes are unpublished and return 404. To restore the
 draft, move its source back to `src/pages/rising-star.astro` and restore its menu
-entry. Manifesto remains available by direct URL, but is hidden from navigation.
+entry. Manifesto also remains archived; restoring it requires adding its route explicitly.
 Both pages are excluded from the sitemap.
 
 Draft pages use `src/layouts/BlankPageLayout.astro` and remain `noindex` and excluded
