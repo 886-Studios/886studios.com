@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 import vm from "node:vm";
+import { contentDates } from "../../src/data/contentDates.generated.ts";
 import { attributes, canonical, metadata, readBuiltFile, readBuiltPage, resourceContract, resourceRoutes, tags, textContent } from "../helpers/built-pages.mjs";
 
 // Recorded from the unmodified site. Review deliberate content changes rather
@@ -43,7 +44,12 @@ for (const fixture of fixtures.redirects) {
 test("every resource route keeps its rendered guide, metadata, and structured data", async () => {
   assert.deepEqual(await resourceRoutes(), fixtures.resources.map((fixture) => fixture.route).sort());
   for (const { route, ...expected } of fixtures.resources) {
-    assert.deepEqual(resourceContract(await readBuiltPage(route)), expected, route);
+    const dateModified = contentDates[route];
+    assert.match(dateModified, /^\d{4}-\d{2}-\d{2}$/, `${route}: missing generated content date`);
+    const structuredData = expected.structuredData.map((entry) =>
+      entry.type === "WebPage" || entry.type === "Article" ? { ...entry, dateModified } : entry,
+    );
+    assert.deepEqual(resourceContract(await readBuiltPage(route)), { ...expected, structuredData }, route);
   }
 });
 

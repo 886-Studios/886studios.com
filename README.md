@@ -154,6 +154,13 @@ The `dev`, `check`, and `build` commands generate content dates automatically; `
 runs image optimization. These hooks can update generated source dates and image files.
 Review any resulting diff before committing. Do not hand-edit `src/data/contentDates.generated.ts`.
 
+Built-route expectations live in `tests/fixtures/route-contracts.json`. Review and update
+the relevant fixture when intentionally changing a route, title, description, heading,
+or schema identity. Resource `dateModified` values are checked against the current
+`contentDates.generated.ts` map, so a date-only change needs no fixture edit. Both the
+WebPage and Article dates must match; missing or stale dates still fail. Build fresh
+output before running `npm run test:built` on its own.
+
 Use `npm install <package>` only when intentionally changing dependencies. For normal setup and CI-style installs, use `npm ci` so `package-lock.json` is respected exactly.
 
 ## Environment
