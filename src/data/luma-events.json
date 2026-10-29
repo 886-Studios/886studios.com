@@ -1,6 +1,8 @@
 {
   "calendarId": "cal-YDazDmfi5UlPvrC",
-  "upcomingEventIds": [],
+  "upcomingEventIds": [
+    "evt-XqsLgMbdyFyluKH"
+  ],
   "events": [
     {
       "id": "evt-rBcbL2sy2os0YPm",
@@ -147,7 +149,7 @@
     },
     {
       "id": "evt-Ofuroi7yukV79yx",
-      "title": "Lunch with ikigai: Ask Us Anything!",
+      "title": "Lunch w/ ikigai: Ask Us Anything!",
       "startAt": "2026-08-13T04:30:00.000Z",
       "endAt": "2026-08-13T05:30:00.000Z",
       "timezone": "Asia/Taipei",
@@ -158,7 +160,7 @@
     },
     {
       "id": "evt-gUg5eDr1ZdDDH5q",
-      "title": "Brunch w/ ikigai: Ask us anything!",
+      "title": "Brunch w/ ikigai: Ask Us Anything!",
       "startAt": "2026-09-01T03:30:00.000Z",
       "endAt": "2026-09-01T04:30:00.000Z",
       "timezone": "Asia/Taipei",
@@ -166,6 +168,16 @@
       "url": "https://luma.com/rg1tu08w",
       "locationName": "Online",
       "isOnline": true
+    },
+    {
+      "id": "evt-XqsLgMbdyFyluKH",
+      "title": "After School by 886 Studios",
+      "startAt": "2026-11-12T10:30:00.000Z",
+      "endAt": "2026-11-12T13:00:00.000Z",
+      "timezone": "Asia/Taipei",
+      "url": "https://luma.com/5p8v2ikh",
+      "locationName": "Location TBD",
+      "isOnline": false
     }
   ]
 }
