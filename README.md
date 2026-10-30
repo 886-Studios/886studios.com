@@ -383,6 +383,23 @@ it does not confirm live environment settings, firewall rules, or branch protect
 The Contact page links directly to `it@886studios.com` with a `mailto:` URL, so
 it does not require an email provider or server-side configuration.
 
+### Security reporting
+
+`public/.well-known/security.txt` publishes `it@886studios.com` as the vulnerability
+reporting contact at `https://www.886studios.com/.well-known/security.txt`.
+Vercel serves it as UTF-8 plain text with a one-hour cache lifetime and permanently
+redirects the legacy `/security.txt` path to it. The file follows
+[RFC 9116](https://www.rfc-editor.org/rfc/rfc9116.html) and
+[Cloudflare's security.txt guidance](https://developers.cloudflare.com/security-center/infrastructure/security-file/).
+
+Review the contact and renew `Expires` before **October 1, 2027, 00:00 UTC**;
+keep each renewal less than one year ahead. Confirm the inbox is monitored when
+reviewing it. Optional policy, encryption, and acknowledgment links are omitted
+until those resources exist; OpenPGP signing requires an organization-managed key.
+If Cloudflare's managed security.txt feature is enabled, keep its contents aligned
+with this file because the edge response can supersede the origin. After deployment,
+verify the public HTTPS response, content type, file contents, and legacy redirect.
+
 ## Architecture Map
 
 ```text

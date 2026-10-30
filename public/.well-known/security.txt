@@ -1,0 +1,4 @@
+Contact: mailto:it@886studios.com
+Expires: 2027-10-01T00:00:00Z
+Canonical: https://www.886studios.com/.well-known/security.txt
+Preferred-Languages: en
