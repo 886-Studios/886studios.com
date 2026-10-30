@@ -1,6 +1,6 @@
 # 886 Studios portfolio perks
 
-**Deployment status (October 28, 2026):** The directory and staff administration are live under the 886 Studios Vercel team. Production Redis holds the final five-company, 11-email roster; Resend delivery is verified. Real credit claims remain disabled until Supabase supplies its production partner key. See [the deployment handoff](../../docs/perks-deployment-handoff-2026-10-28.md) for current settings and remaining work. Historical implementation notes below describe earlier local validation.
+**Deployment status (October 30, 2026):** Supabase claims are active in production. The supplied partner key is stored as a production-only Vercel Secret, and the redemption redirect now uses Supabase's working `/dashboard/redeem` route. See [the production activation record](../../docs/perks-supabase-production-2026-10-30.md) for verification and its limits, and [the earlier deployment handoff](../../docs/perks-deployment-handoff-2026-10-28.md) for infrastructure details. Historical implementation notes below describe earlier local validation.
 
 A separate, server-rendered portal served at **https://www.886studios.com/perks**. The main Astro site proxies `/perks` and its subpaths to the existing `886-studios-perks` Vercel project. The apex domain redirects to `www` through the main site's existing canonical-domain rule. No separate DNS setup is needed.
 
@@ -248,7 +248,7 @@ Public program previews show the partner name and logo; private terms stay in th
 5. The founder opens the email and presses **Continue to Supabase**. The server checks
    the invitation and current approval, atomically reserves the team claim for this
    founder, and calls the partner API using the permanent team identifier,
-   then redirects to `https://supabase.com/redeem?code=…` in production. The founder
+   then redirects to `https://supabase.com/dashboard/redeem?code=…` in production. The founder
    signs in, chooses an organization, and confirms redemption at Supabase.
 
 Staff can **Revoke access** in the same admin page. It invalidates outstanding links;

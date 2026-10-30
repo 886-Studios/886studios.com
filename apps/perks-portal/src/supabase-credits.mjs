@@ -55,6 +55,8 @@ export async function issueSupabaseCredit({ userIdentifier, env = process.env, f
     code: body.code,
     environment: config.environment,
     // The staging key can issue codes, but those codes cannot be redeemed.
-    redemptionUrl: config.environment === 'production' ? `https://supabase.com/redeem?${new URLSearchParams({ code: body.code })}` : null,
+    // Build the canonical dashboard URL ourselves; never trust an upstream link
+    // as a redirect destination. The old /redeem route returns 404.
+    redemptionUrl: config.environment === 'production' ? `https://supabase.com/dashboard/redeem?${new URLSearchParams({ code: body.code })}` : null,
   };
 }

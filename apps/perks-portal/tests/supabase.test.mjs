@@ -35,8 +35,8 @@ test('partner client sends the exact documented request and never redeems stagin
 
 test('production must be explicit and redemption URLs have a fixed Supabase origin', async () => {
   const result = await issueSupabaseCredit({ env: { ...env, SUPABASE_PARTNER_ENVIRONMENT: 'production' }, userIdentifier: approvedId,
-    fetchImpl: async url => { assert.equal(url, 'https://api.supabase.com/partners/credits/get-code'); return response(201, { code: 'ABCD-EFGH-1234-5678' }); } });
-  assert.equal(result.redemptionUrl, 'https://supabase.com/redeem?code=ABCD-EFGH-1234-5678');
+    fetchImpl: async url => { assert.equal(url, 'https://api.supabase.com/partners/credits/get-code'); return response(201, { code: 'ABCD-EFGH-1234-5678', link: 'https://evil.example/redeem' }); } });
+  assert.equal(result.redemptionUrl, 'https://supabase.com/dashboard/redeem?code=ABCD-EFGH-1234-5678');
   for (const environment of ['__proto__', 'https://evil.example', 'prod']) assert.throws(() => creditsConfig({ ...env, SUPABASE_PARTNER_ENVIRONMENT: environment }));
   assert.throws(() => creditsConfig({}));
 });
@@ -123,7 +123,7 @@ test('production redirects only after POST and API errors have safe user-facing 
   const handler = createHandler({ ...config, creditsEnv: productionEnv, issueCredit: args => issueSupabaseCredit({ ...args, fetchImpl: async () => response(201, { code: 'PRODUCTION-TEST' }) }) });
   const result = await request(handler, { token });
   assert.equal(result.status, 303);
-  assert.equal(result.headers.location, 'https://supabase.com/redeem?code=PRODUCTION-TEST');
+  assert.equal(result.headers.location, 'https://supabase.com/dashboard/redeem?code=PRODUCTION-TEST');
   for (const [upstream, expected] of [[400, 400], [401, 503], [429, 429], [500, 503]]) {
     const failed = createHandler({ ...config, creditsEnv: productionEnv, issueCredit: args => issueSupabaseCredit({ ...args, fetchImpl: async () => response(upstream, { secret: 'private failure' }) }) });
     const error = await request(failed, { token });

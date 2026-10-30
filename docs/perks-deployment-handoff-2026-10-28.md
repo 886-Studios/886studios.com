@@ -1,5 +1,7 @@
 # Perks deployment handoff — October 28, 2026
 
+> Superseded for Supabase activation by the [October 30 production record](perks-supabase-production-2026-10-30.md). The production key is now installed and claims are active. The roster has changed since this historical snapshot; production Redis remains authoritative.
+
 ## Current state
 
 Repository: `https://github.com/886-Studios/886studios.com`, branch `main`.
