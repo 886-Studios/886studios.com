@@ -367,17 +367,17 @@
     },
     {
       "source": "/apply",
-      "destination": "https://tally.so/r/w5p4jQ",
+      "destination": "https://apply.886studios.com/",
       "permanent": false
     },
     {
       "source": "/apply/",
-      "destination": "https://tally.so/r/w5p4jQ",
+      "destination": "https://apply.886studios.com/",
       "permanent": false
     },
     {
       "source": "/apply-now/:path*",
-      "destination": "https://tally.so/r/w5p4jQ",
+      "destination": "https://apply.886studios.com/",
       "permanent": false
     },
     {

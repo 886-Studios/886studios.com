@@ -85,6 +85,8 @@ test("the merged blog also recovers after an upstream failure", async () => {
 test("imported articles and RSS retain working destinations for moved references", () => {
   const { parseBlogFeed } = loadAdapter();
   const links = [
+    ["https://tally.so/r/w5p4jQ", "https://apply.886studios.com/"],
+    ["https://tally.so/r/wQAv1G", "https://apply.886studios.com/"],
     ...["kai-huang", "kevin-lin", "chris-wang", "jacob-hsu"].map((slug) => [
       `https://withikigai.com/partners/886-partners-1/${slug}`,
       `https://www.886studios.com/team/${slug === "kevin-lin" ? slug : slug.split("-")[0]}`,

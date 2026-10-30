@@ -7,7 +7,7 @@ export const productionAnalyticsEnabled = isProductionDeployment({
   VERCEL_ENV: import.meta.env.VERCEL_ENV,
 });
 
-export const applicationUrl = "https://tally.so/r/w5p4jQ";
+export const applicationUrl = "https://apply.886studios.com/";
 
 export const siteConfig = {
   name: "886 Studios",

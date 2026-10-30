@@ -55,6 +55,8 @@ function normalizeBatchNames(value: string) {
 
 // Verified replacements for moved pages linked from the imported archive.
 const archivedLinkReplacements: Record<string, string> = {
+  "https://tally.so/r/w5p4jQ": "https://apply.886studios.com/",
+  "https://tally.so/r/wQAv1G": "https://apply.886studios.com/",
   "https://withikigai.com/partners/886-partners-1/kai-huang": "https://www.886studios.com/team/kai",
   "https://withikigai.com/partners/886-partners-1/kevin-lin": "https://www.886studios.com/team/kevin-lin",
   "https://withikigai.com/partners/886-partners-1/chris-wang": "https://www.886studios.com/team/chris",

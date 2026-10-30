@@ -587,7 +587,7 @@ if (!redirects.some((redirect) =>
 }
 if (!redirects.some((redirect) =>
   redirect.source === "/apply" &&
-  redirect.destination === "https://tally.so/r/w5p4jQ" &&
+  redirect.destination === "https://apply.886studios.com/" &&
   redirect.permanent === false
 )) {
   fail("vercel.json: missing the direct application redirect");
