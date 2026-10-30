@@ -1,4 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { fetchLumaCover } from "./lib/luma-cover.mjs";
 
 const archiveUrl = new URL("../src/data/luma-events.json", import.meta.url);
 const publicItemsEndpoint = "https://api.luma.com/calendar/get-items";
@@ -24,7 +25,16 @@ for (const event of existingEvents) {
 
 for (const event of fetchedEvents) {
   const previous = existingById.get(event.id);
-  mergedById.set(event.id, mergeEvent(previous, event));
+  const merged = mergeEvent(previous, event);
+  if (!merged.coverUrl && merged.url) {
+    try {
+      const coverUrl = await fetchLumaCover(merged);
+      if (coverUrl) merged.coverUrl = coverUrl;
+    } catch (error) {
+      console.warn(`[events] Could not load artwork for ${merged.id}: ${error.message}`);
+    }
+  }
+  mergedById.set(event.id, merged);
 }
 
 const events = [...mergedById.values()].sort((a, b) => a.startAt.localeCompare(b.startAt));
