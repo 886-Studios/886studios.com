@@ -1,6 +1,6 @@
 # 886 Studios portfolio perks
 
-**Deployment status (October 30, 2026):** Supabase claims are active in production. The supplied partner key is stored as a production-only Vercel Secret, and the redemption redirect now uses Supabase's working `/dashboard/redeem` route. See [the production activation record](../../docs/perks-supabase-production-2026-10-30.md) for verification and its limits, and [the earlier deployment handoff](../../docs/perks-deployment-handoff-2026-10-28.md) for infrastructure details. Historical implementation notes below describe earlier local validation.
+**Deployment status (October 30, 2026):** Supabase claims are active in production. The supplied partner key is stored as a production-only Vercel Secret. The claim response displays the credit code and a separate redemption link to Supabase's `/dashboard/redeem` route; cross-origin redirects after form submissions are blocked by the portal's CSP in Chromium. See [the production activation record](../../docs/perks-supabase-production-2026-10-30.md) for verification and its limits, and [the earlier deployment handoff](../../docs/perks-deployment-handoff-2026-10-28.md) for infrastructure details. Historical implementation notes below describe earlier local validation.
 
 A separate, server-rendered portal served at **https://www.886studios.com/perks**. The main Astro site proxies `/perks` and its subpaths to the existing `886-studios-perks` Vercel project. The apex domain redirects to `www` through the main site's existing canonical-domain rule. No separate DNS setup is needed.
 
@@ -248,8 +248,12 @@ Public program previews show the partner name and logo; private terms stay in th
 5. The founder opens the email and presses **Continue to Supabase**. The server checks
    the invitation and current approval, atomically reserves the team claim for this
    founder, and calls the partner API using the permanent team identifier,
-   then redirects to `https://supabase.com/dashboard/redeem?code=…` in production. The founder
-   signs in, chooses an organization, and confirms redemption at Supabase.
+   then displays the code with a **Copy** button and a **Redeem in Supabase** link to
+   `https://supabase.com/dashboard/redeem?code=…` in production. The founder follows the link,
+   signs in, chooses an organization, and confirms redemption at Supabase. The code is
+   also available to paste if Supabase asks for it after sign-in. Success pages stay
+   private and uncached. Reopen the original email link to retry a stalled claim as
+   the same approved founder; do not reset the team reservation or create a new team.
 
 Staff can **Revoke access** in the same admin page. It invalidates outstanding links;
 reapproving that address does not reactivate old links. Revocation cannot cancel a code

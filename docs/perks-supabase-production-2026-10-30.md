@@ -2,6 +2,35 @@
 
 Supabase claims are enabled at `https://www.886studios.com/perks`.
 
+## Follow-up: claim page stalled after code issuance
+
+The initial release below is superseded by deployment `dpl_AZJZhBhSSVk9tnqGAvXnoR6axSkv`,
+`https://886-studios-perks-b2qtkkgas-886-studios-projects.vercel.app`.
+Source: `907d21f` plus the claim-result rendering and regression-test changes in this checkout;
+the deployment preceded Git delivery.
+
+A founder reported getting stuck on “Preparing your code…”. Production request logs showed
+successful HTTP 303 responses at the time the company claim was reserved. A local Chromium
+reproduction with synthetic credits confirmed that `form-action 'self'` blocked the cross-origin
+redirect after the form POST, leaving the original page and disabled button visible. Server-only
+redirect assertions had missed this browser behavior.
+
+Production POST success now returns HTTP 200 with the credit code, a Copy button, and an ordinary
+**Redeem in Supabase** link to the fixed dashboard URL. CSP remains restrictive; the result stays
+uncached and excluded from indexing. Opening an email link still cannot issue credits until the
+founder submits the form. Existing recipients can reopen their original email link and continue;
+claim reservations and permanent company identifiers must not be reset.
+
+Verification: 53 portal tests passed, one optional Redis integration test skipped; 11 public-site
+perks/privacy tests passed. Node 22.23.4 build included 22 partners. Chromium desktop (1280×850)
+and mobile (390×844) checks displayed the synthetic code, and the redemption link navigated
+without CSP errors. Both staged and live smoke checks passed staff login, claim readiness,
+unapproved-claim rejection, and private-file blocking. All six teams, 12 approved emails, and the
+one existing claim reservation were preserved. The new deployment's 15-minute error/fatal log
+query returned zero records. No real credits were issued or redeemed, and no emails were sent
+during the automated verification. After deployment, the user confirmed that they checked the
+repaired founder flow and it worked (October 30, 2026).
+
 ## Configuration and release
 
 - Team: `886-studios-projects` (`team_3JvR3YgseKdD13ZZXwwcaaXR`).

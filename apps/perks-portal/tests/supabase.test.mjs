@@ -117,13 +117,26 @@ test('missing partner key hides the redemption form and rejects POST before rese
   }
 });
 
-test('production redirects only after POST and API errors have safe user-facing responses', async () => {
+test('production displays a private code and redemption link after POST without a blocked form redirect', async () => {
   const productionEnv = { ...env, SUPABASE_PARTNER_ENVIRONMENT: 'production' };
   const token = createClaim({ userIdentifier: approvedId, environment: 'production', secret });
   const handler = createHandler({ ...config, creditsEnv: productionEnv, issueCredit: args => issueSupabaseCredit({ ...args, fetchImpl: async () => response(201, { code: 'PRODUCTION-TEST' }) }) });
   const result = await request(handler, { token });
-  assert.equal(result.status, 303);
-  assert.equal(result.headers.location, 'https://supabase.com/dashboard/redeem?code=PRODUCTION-TEST');
+  assert.equal(result.status, 200);
+  assert.equal(result.headers.location, undefined);
+  assert.match(result.body, /id="supabase-credit-code">PRODUCTION-TEST<\/code>/);
+  assert.match(result.body, /href="https:\/\/supabase.com\/dashboard\/redeem\?code=PRODUCTION-TEST" rel="noreferrer"/);
+  assert.match(result.body, /data-copy="supabase-credit-code"/);
+  assert.doesNotMatch(result.body, /data-supabase-claim|sb_partner_|Staging codes/);
+  assert.ok(!result.body.includes(token), 'success does not echo the bearer invitation');
+  assert.match(result.headers['cache-control'], /no-store/);
+  assert.match(result.headers['x-robots-tag'], /noindex/);
+  assert.match(result.headers['content-security-policy'], /form-action 'self';/);
+  for (const method of ['GET', 'HEAD']) {
+    const landing = await request(handler, { method, token });
+    assert.equal(landing.status, 200);
+    assert.doesNotMatch(landing.body, /PRODUCTION-TEST|Redeem in Supabase/);
+  }
   for (const [upstream, expected] of [[400, 400], [401, 503], [429, 429], [500, 503]]) {
     const failed = createHandler({ ...config, creditsEnv: productionEnv, issueCredit: args => issueSupabaseCredit({ ...args, fetchImpl: async () => response(upstream, { secret: 'private failure' }) }) });
     const error = await request(failed, { token });

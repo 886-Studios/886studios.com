@@ -146,7 +146,9 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
             : 'This invitation is no longer active. Request a new link or contact the 886 team.' }));
           const result = await issueCredit({ userIdentifier: claim.userIdentifier, env: creditsEnv });
           if (result.environment === 'staging') return send(200, claimPage({ stagingCode: result.code }));
-          return redirect(result.redemptionUrl);
+          // A cross-origin redirect after a form POST is blocked by form-action
+          // 'self' in Chromium. Show the code and use an ordinary redemption link.
+          return send(200, claimPage({ creditCode: result.code }));
         } catch (error) {
           const status = error instanceof SupabaseCreditsError && error.kind === 'already-redeemed' ? 400 :
             error instanceof SupabaseCreditsError && error.kind === 'rate-limit' ? 429 : 503;
