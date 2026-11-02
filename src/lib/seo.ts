@@ -62,9 +62,9 @@ export const pageMeta = {
     ogImageType: "image/webp",
   },
   launchStation: {
-    title: "Launch Station: Taipei Founder Residency | 886 Studios",
+    title: "886 Residency: Founder Community in Taipei | 886 Studios",
     description:
-      "Launch Station is 886 Studios' invitation-only, 90-day builder residency in Taipei. Rolling entry, free office space, startup perks, and community. No cost or equity.",
+      "886 Residency is an invite-only, 90-day community program for full-time founders and builders in Taipei, with free dedicated desks at Taiwan Tech Arena.",
     ogImage: `${siteConfig.url}/assets/launch-station/prezzy-day.jpg`,
     ogImageAlt: "The community gathered at Launch Station Prezzy Day",
     ogImageWidth: 1920,
@@ -109,7 +109,7 @@ export const pageMeta = {
   contact: {
     title: "Contact | 886 Studios",
     description:
-      "Contact 886 Studios about founder programs, ikigai Launchpad, Launch Station, partnerships, events, or startup community support in Taipei.",
+      "Contact 886 Studios about founder programs, ikigai Launchpad, 886 Residency, partnerships, events, or startup community support in Taipei.",
   },
   privacy: {
     title: "Privacy Notice | 886 Studios",
@@ -421,7 +421,7 @@ export function getLaunchStationSchema(): JsonLdObject {
     },
     audience: {
       "@type": "Audience",
-      audienceType: "Full-time technical builders and founders in Taipei",
+      audienceType: "Full-time founders, creators, researchers, engineers, designers, and operators in Taipei",
     },
     description: pageMeta.launchStation.description,
     additionalProperty: launchStation.essentials.map((item) => ({

@@ -2,25 +2,16 @@
 import { siteContent } from "../../data/siteContent";
 import ProgramPerks from "../ProgramPerks.astro";
 
-const { launchStation, launchpad } = siteContent.programs;
+const { launchStation } = siteContent.programs;
 ---
 
 <div class="page program-page" id="page-launch-station">
   <div class="launch-station-content">
     <section class="launch-station-intro" aria-labelledby="ls-heading">
       <div class="launch-station-intro-copy">
-        <h1 class="prog-wordmark" id="ls-heading">
-          <span class="sr-only">{launchStation.title}</span>
-          <img
-            src="/assets/logos/launch-station-wordmark-white.svg"
-            alt=""
-            width="302"
-            height="149"
-            decoding="async"
-            aria-hidden="true"
-          />
-        </h1>
+        <h1 id="ls-heading">{launchStation.title}</h1>
         <p class="launch-station-lead">{launchStation.lead}</p>
+        <p class="launch-station-introduction">{launchStation.introduction}</p>
         <div class="launch-station-actions">
           <a
             class="btn-pri launch-station-contact"
@@ -31,15 +22,14 @@ const { launchStation, launchpad } = siteContent.programs;
           >
             {launchStation.joining.cta.label}
           </a>
-          <a class="launch-station-explore" href="#ls-fit-heading">Explore the residency</a>
         </div>
         <p class="launch-station-status">{launchStation.status}</p>
       </div>
-      <dl class="launch-station-facts" aria-label="Launch Station facts">
+      <dl class="launch-station-facts" aria-label="886 Residency facts">
         {launchStation.essentials.map((item) => (
           <div class="prog-brief-fact">
             <dt>{item.label}</dt>
-            <dd><strong>{item.value}</strong>{item.note && <span>{item.note}</span>}</dd>
+            <dd><strong>{item.value}</strong></dd>
           </div>
         ))}
       </dl>
@@ -70,6 +60,13 @@ const { launchStation, launchpad } = siteContent.programs;
       </dl>
     </section>
 
+    <section aria-labelledby="ls-how-heading">
+      <h2 id="ls-how-heading">{launchStation.howItWorks.title}</h2>
+      <ul class="launch-station-activities">
+        {launchStation.howItWorks.items.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+
     <section aria-labelledby="ls-benefits-heading">
       <h2 id="ls-benefits-heading">{launchStation.benefitsTitle}</h2>
       <dl class="launch-station-benefits">
@@ -97,18 +94,42 @@ const { launchStation, launchpad } = siteContent.programs;
     </section>
 
     <section class="launch-station-contribution" aria-labelledby="ls-contribution-heading">
-      <h2 id="ls-contribution-heading">Being part of the community</h2>
-      <p>{launchStation.contribution}</p>
-      <ul class="launch-station-activities" aria-label="Community activities">
-        {launchStation.activities.map((activity) => <li>{activity}</li>)}
-      </ul>
+      <h2 id="ls-contribution-heading">{launchStation.expectations.title}</h2>
+      <dl class="launch-station-criteria">
+        {launchStation.expectations.items.map((item) => (
+          <div>
+            <dt>{item.label}</dt>
+            <dd>{item.body}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <section aria-labelledby="ls-support-heading">
+      <h2 id="ls-support-heading">{launchStation.support.title}</h2>
+      <dl class="launch-station-criteria">
+        {launchStation.support.items.map((item) => (
+          <div>
+            <dt>{item.label}</dt>
+            <dd>{item.body}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
 
     <ProgramPerks id="ls-perks" program={launchStation.title} />
 
+    <section class="launch-station-alternative" aria-labelledby="ls-launchpad-heading">
+      <h2 id="ls-launchpad-heading">{launchStation.accelerator.title}</h2>
+      <p>{launchStation.accelerator.body}</p>
+      <a class="launch-station-explore" href={launchStation.accelerator.cta.href}>
+        {launchStation.accelerator.cta.label}
+      </a>
+    </section>
+
     <section class="launch-station-joining" aria-labelledby="ls-joining-heading">
       <h2 id="ls-joining-heading">{launchStation.joining.title}</h2>
-      <p>{launchStation.joining.body}</p>
+      <p>{launchStation.joining.body} Email <a href="mailto:carter@886studios.com">carter@886studios.com</a>.</p>
       <a
         class="btn-pri launch-station-contact"
         href={launchStation.joining.cta.href}
@@ -118,28 +139,8 @@ const { launchStation, launchpad } = siteContent.programs;
       >
         {launchStation.joining.cta.label}
       </a>
-      <p class="launch-station-email">Email <a href={launchStation.joining.cta.href}>carter@886studios.com</a> about Launch Station.</p>
     </section>
 
-    <a class="prog-launch launch-station-alternative" href="/ikigai-launchpad" aria-labelledby="ls-launchpad-heading">
-      <figure class="prog-launch-media">
-        <img
-          src="/assets/landing/launchpad-01-480.webp"
-          alt="Founders and the ikigai Launchpad community"
-          width="480"
-          height="270"
-          loading="lazy"
-          decoding="async"
-        />
-      </figure>
-      <div class="prog-launch-content">
-        <span class="prog-band-label">Also available</span>
-        <div class="prog-launch-copy">
-          <h2 class="prog-launch-name" id="ls-launchpad-heading">{launchpad.name}</h2>
-          <p class="prog-launch-body">Looking for funding and structured mentor support? Explore ikigai Launchpad, our 10-week accelerator in Taipei, with $100K USD and weekly mentor office hours.</p>
-        </div>
-      </div>
-      <span class="prog-launch-status">Explore ikigai Launchpad →</span>
-    </a>
+
   </div>
 </div>

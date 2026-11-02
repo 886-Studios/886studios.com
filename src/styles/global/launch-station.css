@@ -1,4 +1,4 @@
-/* Launch Station shares Launchpad's program type, buttons, and fact labels. */
+/* 886 Residency shares Launchpad's program type, buttons, and fact labels. */
 .launch-station-content {
   display: grid;
   gap: var(--prog-section-gap);
@@ -53,6 +53,10 @@
   line-height: 1.72;
 }
 
+.launch-station-content .launch-station-introduction {
+  margin-top: var(--space-md);
+}
+
 .launch-station-actions {
   display: flex;
   flex-wrap: wrap;
@@ -105,7 +109,7 @@
 .launch-station-facts {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-md);
   padding-block: var(--space-md);
   border-block: 1px solid var(--border);
@@ -137,7 +141,7 @@
 
 .launch-station-benefits {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-lg);
 }
 
@@ -157,6 +161,7 @@
   margin-top: var(--space-lg);
 }
 
+.launch-station-alternative > p,
 .launch-station-joining > p,
 .launch-station-activities {
   max-width: 68ch;
@@ -229,9 +234,6 @@
     grid-row: auto;
   }
 
-  .launch-station-facts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 700px) {
