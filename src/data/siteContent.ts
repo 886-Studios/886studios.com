@@ -1137,6 +1137,8 @@ export const siteContent = {
       },
       communityPhotos: [
         {
+          caption: "After Prezzy Day",
+          fullSizeSrc: "/assets/launch-station/community-dinner-1440.webp",
           src: "/assets/launch-station/community-dinner-960.webp",
           srcset: "/assets/launch-station/community-dinner-480.webp 480w, /assets/launch-station/community-dinner-960.webp 960w, /assets/launch-station/community-dinner-1440.webp 1440w",
           alt: "Friends smiling for a selfie around a shared dinner table after 886 Residency Prezzy Day",
@@ -1144,6 +1146,8 @@ export const siteContent = {
           height: 720,
         },
         {
+          caption: "Community lunch",
+          fullSizeSrc: "/assets/launch-station/community-lunch-1440.webp",
           src: "/assets/launch-station/community-lunch-960.webp",
           srcset: "/assets/launch-station/community-lunch-480.webp 480w, /assets/launch-station/community-lunch-960.webp 960w, /assets/launch-station/community-lunch-1440.webp 1440w",
           alt: "Six people smiling around a restaurant table during an 886 Residency community lunch",

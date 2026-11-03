@@ -80,8 +80,7 @@
   margin: 0;
 }
 
-.launch-station-photo img,
-.launch-station-community-photos img {
+.launch-station-photo img {
   display: block;
   width: 100%;
   height: auto;
@@ -148,8 +147,84 @@
 .launch-station-community-photos {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-md);
-  margin-top: var(--space-lg);
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+  padding-block: var(--space-xs);
+}
+
+/* Real community snapshots, with the quiet physical response of a photo print. */
+.residency-snapshot {
+  display: block;
+  min-width: 0;
+  padding: var(--space-xs);
+  background: color-mix(in srgb, var(--text-primary) 96%, var(--gold));
+  color: var(--bg);
+  border-radius: 4px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  text-decoration: none;
+}
+
+.residency-snapshot figure {
+  margin: 0;
+}
+
+.residency-snapshot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--bg-elevated);
+}
+
+.residency-snapshot figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px var(--space-xs);
+  padding: var(--space-sm) 4px 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.residency-snapshot-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--purple-deep);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.residency-snapshot:is(:hover, :focus-visible) .residency-snapshot-action {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.residency-snapshot:focus-visible {
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.28);
+}
+
+@media (min-width: 641px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .residency-snapshot {
+    transform: rotate(-1deg);
+    transform-origin: center;
+    transition:
+      transform 240ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .residency-snapshot:nth-child(even) {
+    transform: rotate(1deg);
+  }
+
+  .residency-snapshot:is(:hover, :focus-visible) {
+    transform: translateY(-4px) rotate(0deg);
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.28);
+  }
 }
 
 .launch-station-alternative > p,
