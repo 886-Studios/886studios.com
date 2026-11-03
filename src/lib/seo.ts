@@ -326,6 +326,7 @@ export function getProgramSchema(): JsonLdObject {
     "@type": "Service",
     "@id": `${siteConfig.url}/accelerator#launchpad`,
     name: launchpad.name,
+    alternateName: "ikigai Launchpad",
     serviceType: "Startup accelerator",
     category: "Early-stage startup accelerator program",
     url: programUrl,

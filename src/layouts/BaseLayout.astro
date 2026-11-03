@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import ApplicationBanner from "../components/ApplicationBanner.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import GoogleAnalytics from "../components/GoogleAnalytics.astro";
 import LinkedInInsight from "../components/LinkedInInsight.astro";
@@ -210,6 +211,7 @@ const structuredDataJson = canonicalUrl
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header>
       <SiteNav currentPath={currentPath} />
+      <ApplicationBanner />
     </header>
     <main id="main-content" class="site-main" tabindex="-1">
       <slot />

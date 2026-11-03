@@ -1,7 +1,7 @@
 import { applicationUrl } from "../config/site";
 
 const launchpadNextBatch = "Spring 2027";
-const launchpadScheduleNote = `The next 886 Launchpad batch will take place in ${launchpadNextBatch}. Application dates and the deadline will be announced later.`;
+const launchpadScheduleNote = `Applications are open on a rolling basis. The next 886 Launchpad batch will take place in ${launchpadNextBatch}.`;
 
 export const brand = {
   name: "886 Studios",
@@ -635,6 +635,10 @@ export const portfolioCompanies = [
 ] satisfies readonly PortfolioCompany[];
 
 export const siteContent = {
+  announcement: {
+    message: "ikigai Launchpad has been rebranded to 886 Launchpad. Applications are open on a rolling basis.",
+    ctaLabel: "Apply here",
+  },
   nav: {
     cta: {
       label: "Apply Now",
@@ -764,13 +768,13 @@ export const siteContent = {
     launchpad: {
       name: "886 Launchpad",
       lead: {
-        intro: "886 Launchpad is the flagship accelerator run by",
+        intro: "886 Launchpad, previously known as ikigai Launchpad, is the flagship accelerator run by",
         operator: { label: "886 Studios", href: "/about" },
         body: "$100K USD, mentor office hours, investor intros, and support beyond the batch. From refining their vision to building lasting connections, we help founders move their companies forward. Join us in Taipei.",
       },
       status: {
         announcement: launchpadScheduleNote,
-        summary: `Next batch: ${launchpadNextBatch}.`,
+        summary: `Rolling applications · Next batch: ${launchpadNextBatch}.`,
       },
       cta: {
         label: "Apply to 886 Launchpad",
@@ -1000,12 +1004,12 @@ export const siteContent = {
         intro: launchpadScheduleNote,
         milestones: [
           {
-            date: "To be announced",
-            label: "Application dates",
+            date: "Open now",
+            label: "Applications",
           },
           {
-            date: "No current deadline",
-            label: "Application deadline",
+            date: "Rolling",
+            label: "Application review",
           },
           {
             date: launchpadNextBatch,
@@ -1030,7 +1034,7 @@ export const siteContent = {
       faqs: [
         {
           question: "When is the next batch?",
-          answer: `The next batch is ${launchpadNextBatch}. Application dates and the deadline have not been announced yet.`,
+          answer: `The next batch is ${launchpadNextBatch}. Applications are open and reviewed on a rolling basis.`,
         },
         {
           question: "What are the investment terms?",
@@ -1534,7 +1538,7 @@ export const siteContent = {
         eyebrow: "Who We Are",
         title: "",
         paragraphs: [
-          "886 Studios is a Taipei-based venture firm that runs 886 Launchpad, a startup accelerator supporting early-stage founders building for global markets. Our partners include the founders of Twitch, Kabam, RedOctane (creators of Guitar Hero), Playdom, OrbitBaby, HTC Vive, and other successful companies.",
+          "886 Studios is a Taipei-based venture firm that runs 886 Launchpad, previously known as ikigai Launchpad, a startup accelerator supporting early-stage founders building for global markets. Our partners include the founders of Twitch, Kabam, RedOctane (creators of Guitar Hero), Playdom, OrbitBaby, HTC Vive, and other successful companies.",
           "Our portfolio spans industries and geographies, including Discord, OURA, Crunchyroll, Gogoro, P. LEAGUE+, KKBOX, and more. We back ambitious early-stage founders with a commitment to empowering Taiwan's startup ecosystem.",
           "What makes 886 Studios unique is our ability to combine Silicon Valley experience with deep knowledge of Taiwan's talent and market strengths. Based in Taipei, we serve as a bridge between Taiwan and Silicon Valley.",
         ],
