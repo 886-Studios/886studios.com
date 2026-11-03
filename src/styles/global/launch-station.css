@@ -11,18 +11,11 @@
   line-height: 1.7;
 }
 
-.launch-station-content h1,
 .launch-station-content h2:not(.prog-launch-name) {
   color: var(--text-primary);
   font-weight: 700;
   letter-spacing: 0;
   text-wrap: balance;
-}
-
-.launch-station-content h1 {
-  margin-bottom: var(--space-md);
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  line-height: 1.08;
 }
 
 .launch-station-content h2:not(.prog-launch-name) {
@@ -39,7 +32,7 @@
 .launch-station-intro {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  align-items: center;
+  align-items: start;
   column-gap: clamp(32px, 5vw, 64px);
   row-gap: var(--space-lg);
 }
@@ -48,21 +41,8 @@
   min-width: 0;
 }
 
-.launch-station-lead {
-  font-size: clamp(1rem, 1.25vw, 1.12rem);
-  line-height: 1.72;
-}
-
 .launch-station-content .launch-station-introduction {
   margin-top: var(--space-md);
-}
-
-.launch-station-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 20px;
-  margin-top: var(--space-lg);
 }
 
 .launch-station-contact {
@@ -82,12 +62,6 @@
 
 .launch-station-explore:hover {
   color: var(--purple-bright);
-}
-
-.launch-station-content .launch-station-status {
-  margin-top: var(--space-sm);
-  font-size: 0.92rem;
-  color: var(--text-secondary);
 }
 
 .launch-station-photo {
@@ -254,17 +228,6 @@
 
   .launch-station-content h2:not(.prog-launch-name) {
     font-size: 2rem;
-  }
-
-  .launch-station-lead {
-    line-height: 1.62;
-  }
-
-  .launch-station-actions {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: var(--space-md);
   }
 
   .launch-station-contact {

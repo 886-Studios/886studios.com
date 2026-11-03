@@ -9,12 +9,12 @@ const { launchStation } = siteContent.programs;
   <div class="launch-station-content">
     <section class="launch-station-intro" aria-labelledby="ls-heading">
       <div class="launch-station-intro-copy">
-        <h1 id="ls-heading">{launchStation.title}</h1>
-        <p class="launch-station-lead">{launchStation.lead}</p>
+        <h1 class="program-heading" id="ls-heading">{launchStation.title}</h1>
+        <p class="program-lead">{launchStation.lead}</p>
         <p class="launch-station-introduction">{launchStation.introduction}</p>
-        <div class="launch-station-actions">
+        <div class="program-hero-actions">
           <a
-            class="btn-pri launch-station-contact"
+            class="btn-pri program-hero-cta"
             href={launchStation.joining.cta.href}
             data-analytics-event="program_interest"
             data-analytics-placement="launch_station_hero"
@@ -22,8 +22,8 @@ const { launchStation } = siteContent.programs;
           >
             {launchStation.joining.cta.label}
           </a>
+          <p class="program-hero-status">{launchStation.status}</p>
         </div>
-        <p class="launch-station-status">{launchStation.status}</p>
       </div>
       <dl class="launch-station-facts" aria-label="886 Residency facts">
         {launchStation.essentials.map((item) => (

@@ -26,15 +26,15 @@ const getPillarPhoto = (photo: (typeof launchpad.benefits)[number]["photo"]) => 
 <div class="page program-page" id="page-programs">
   <section class="prog-hero" aria-labelledby="prog-launchpad-heading">
     <div class="prog-hero-copy">
-      <h1 class="prog-wordmark" id="prog-launchpad-heading">
+      <h1 class="program-heading" id="prog-launchpad-heading">
         {launchpad.name}
       </h1>
-      <p class="prog-lead">
+      <p class="program-lead">
         {launchpad.lead.intro}{" "}<a href={launchpad.lead.operator.href}>{launchpad.lead.operator.label}</a>.{" "}{launchpad.lead.body}
       </p>
-      <div class="prog-hero-actions">
+      <div class="program-hero-actions">
         <a
-          class="btn-pri prog-cta"
+          class="btn-pri program-hero-cta"
           href={launchpad.cta.href}
           target="_blank"
           rel="noopener noreferrer"
@@ -43,7 +43,7 @@ const getPillarPhoto = (photo: (typeof launchpad.benefits)[number]["photo"]) => 
         >
           {launchpad.cta.label}
         </a>
-        <p class="prog-next-batch">{launchpad.status.summary}</p>
+        <p class="program-hero-status">{launchpad.status.summary}</p>
       </div>
     </div>
 
