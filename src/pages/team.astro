@@ -50,7 +50,11 @@ const ventureScouts = [
         <h2 class="section-tag about-column-tag" id="team-careers-title">{careers.title}</h2>
         <section class="team-careers" aria-labelledby="team-careers-title">
           <div class="team-careers-copy">
-            {careers.paragraphs.map((paragraph) => <p class="prose">{paragraph}</p>)}
+            <p class="prose">{careers.description}</p>
+            <p class="prose">
+              {careers.scoutInvitation}{" "}
+              <a href={`mailto:${careers.contactEmail}`}>{careers.contactEmail}</a>.
+            </p>
           </div>
         </section>
       </div>
@@ -63,6 +67,8 @@ const ventureScouts = [
     padding-block: var(--space-xl) var(--space-lg);
   }
   .team-content { padding-block: var(--space-lg) var(--space-xl); }
+  .team-careers-copy a { color: var(--purple-bright); text-underline-offset: 4px; }
+  .team-careers-copy a:is(:hover, :focus-visible) { color: var(--text-primary); }
   .venture-scouts { margin-top: var(--space-xl); }
   .scouts-list {
     display: flex;

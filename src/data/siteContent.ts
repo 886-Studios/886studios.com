@@ -1822,10 +1822,9 @@ export const siteContent = {
     },
     careers: {
       title: "Careers",
-      paragraphs: [
-        "We are not hiring for open roles right now. When an opportunity opens at 886 Studios, we will post it here.",
-        "We usually bring on summer interns, too. When the next intern call opens, the details will be announced on this page.",
-      ],
+      description: "We are not currently hiring for any full-time roles at the moment.",
+      scoutInvitation: "If you interested in becoming a Venture Scout please contact",
+      contactEmail: "carter@886studios.com",
     },
   },
   events: {
