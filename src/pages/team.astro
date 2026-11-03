@@ -1,11 +1,16 @@
 ---
 import AboutTeam from "../components/AboutTeam.astro";
 import PageHero from "../components/PageHero.astro";
+import TeamSocials from "../components/TeamSocials.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteContent } from "../data/siteContent";
 import { getPeopleItemListSchema, pageMeta } from "../lib/seo";
 
 const { careers } = siteContent.about;
+const ventureScouts = [
+  { name: "Joseph Chu", linkedinUrl: "https://www.linkedin.com/in/yu-shan-chu-8b0335351/" },
+  { name: "Lex Galo Dy", linkedinUrl: "https://www.linkedin.com/in/lex-galo-dy-6b92063bb/" },
+];
 ---
 
 <BaseLayout
@@ -22,6 +27,22 @@ const { careers } = siteContent.about;
     <PageHero title="Our People" accentHeader />
     <div class="section team-content">
       <AboutTeam />
+
+      <section class="venture-scouts" aria-labelledby="venture-scouts-title" id="venture-scouts">
+        <h2 class="section-tag about-column-tag" id="venture-scouts-title">Venture Scouts</h2>
+        <ul class="scouts-list" role="list">
+          {ventureScouts.map((scout) => (
+            <li class="scout">
+              <h3 class="scout-name">{scout.name}</h3>
+              <TeamSocials align="start" socials={[{
+                platform: "linkedin",
+                href: scout.linkedinUrl,
+                ariaLabel: `${scout.name} on LinkedIn`,
+              }]} />
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <hr class="divider divider--spaced">
 
@@ -42,9 +63,22 @@ const { careers } = siteContent.about;
     padding-block: var(--space-xl) var(--space-lg);
   }
   .team-content { padding-block: var(--space-lg) var(--space-xl); }
+  .venture-scouts { margin-top: var(--space-xl); }
+  .scouts-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm) var(--space-xl);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .scout { display: flex; align-items: center; gap: var(--space-xs); }
+  .scout-name { font-family: var(--font-display); font-size: 17px; font-weight: 500; line-height: 1.4; }
+  .scout :global(.person-socials) { margin-top: 0; }
   #page-team .divider--spaced { margin-block: var(--space-xl); }
   @media (max-width: 760px) {
     .team-content { padding-top: var(--space-md); }
+    .venture-scouts { margin-top: var(--space-lg); }
     #page-team .divider--spaced { margin-block: var(--space-lg); }
     #page-team :global(.pg-hero.accent-hero) {
       padding-block: var(--space-lg) var(--space-md);
