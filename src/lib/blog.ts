@@ -19,7 +19,7 @@ export function getBlogMetaDescription(post: BlogPost) {
   const lead = description ? `${description.replace(/[.!?]+$/, "")}. ` : "";
   const source =
     post.source === "substack"
-      ? "ikigai Insights, the 886 Studios blog"
+      ? "886 Insights, the 886 Studios blog"
       : "the 886 Studios blog";
 
   return `${lead}Read ${post.title} from ${source}.`;

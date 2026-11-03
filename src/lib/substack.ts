@@ -4,11 +4,8 @@ import type { BlogPost } from "../types/blog";
 
 export const blogConfig = {
   label: "Blog",
-  publicationName: "ikigai Insights",
+  publicationName: "886 Insights",
   publicationUrl: "https://886studios.substack.com",
-  publicationImage: "/assets/ikigai-insights-substack-wide-1280.webp",
-  publicationImageSrcset:
-    "/assets/ikigai-insights-substack-wide-640.webp 640w, /assets/ikigai-insights-substack-wide-1280.webp 1280w",
   feedUrl: "https://886studios.substack.com/feed",
   subscribeUrl: "https://886studios.substack.com/subscribe",
   description:
@@ -232,7 +229,7 @@ async function fetchBlogPosts() {
     const reason = error instanceof Error ? error.message : String(error);
     // A successful empty build would delete all imported article routes, RSS
     // entries, and sitemap URLs from the next production deployment.
-    throw new Error(`[blog] Could not load ikigai Insights: ${reason}. Refusing to publish without the blog archive.`, {
+    throw new Error(`[blog] Could not load 886 Insights: ${reason}. Refusing to publish without the blog archive.`, {
       cause: error,
     });
   }

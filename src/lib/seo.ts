@@ -104,7 +104,7 @@ export const pageMeta = {
   blog: {
     title: "Blog | 886 Studios",
     description:
-      "Read ikigai Insights from 886 Studios: founder perspectives, startup lessons, technology stories, and updates from the Taiwan startup ecosystem.",
+      "Read 886 Insights from 886 Studios: founder perspectives, startup lessons, technology stories, and updates from the Taiwan startup ecosystem.",
   },
   contact: {
     title: "Contact | 886 Studios",

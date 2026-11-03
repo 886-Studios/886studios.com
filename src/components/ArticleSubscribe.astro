@@ -4,14 +4,12 @@ import { blogConfig } from "../lib/substack";
 interface Props {
   placement: string;
   analyticsPlacement?: string;
-  showPublicationBrand?: boolean;
   contained?: boolean;
 }
 
 const {
   placement,
   analyticsPlacement = "blog_post",
-  showPublicationBrand = false,
   contained = false,
 } = Astro.props;
 const safePlacement = placement.replace(/[^a-zA-Z0-9_-]/g, "");
@@ -22,24 +20,10 @@ const inputId = `article-subscribe-email-${safePlacement}`;
 <section
   class:list={[
     "blog-post-subscribe",
-    showPublicationBrand && "blog-post-subscribe--branded",
     contained && "blog-post-subscribe--contained",
   ]}
   aria-labelledby={headingId}
 >
-  {showPublicationBrand && (
-    <img
-      class="blog-post-subscribe-artwork"
-      src={blogConfig.publicationImage}
-      srcset={blogConfig.publicationImageSrcset}
-      sizes="(max-width: 520px) calc(100vw - 52px), (max-width: 820px) 38vw, 520px"
-      alt="ikigai Insights"
-      width="1280"
-      height="640"
-      loading="lazy"
-      decoding="async"
-    />
-  )}
 
   <div class="blog-post-subscribe-copy">
     <h2 id={headingId}>

@@ -42,7 +42,7 @@ export const socialLinks = [
   {
     platform: "substack",
     href: "https://886studios.substack.com/",
-    ariaLabel: "ikigai Insights on Substack",
+    ariaLabel: "886 Insights on Substack",
   },
   {
     platform: "rss",
@@ -752,7 +752,7 @@ export const siteContent = {
     portfolio: portfolioCompanies,
     newsletter: {
       title: "Subscribe to our newsletter,",
-      publicationName: "ikigai Insights",
+      publicationName: "886 Insights",
       publicationUrl: "https://886studios.substack.com/",
       body: "Only cool things, we promise.",
       placeholder: "you@company.com",
@@ -1260,7 +1260,7 @@ export const siteContent = {
   },
   resources: {
     title: "Resources Library",
-    // External coverage only; ikigai Insights articles belong in the blog.
+    // External coverage only; 886 Insights articles belong in the blog.
     newsItems: [
       {
         title: "ikigai Launchpad Debuts in Taipei, Showcasing Taiwan’s Next Generation Startups",

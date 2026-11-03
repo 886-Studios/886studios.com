@@ -1,5 +1,5 @@
 /* ===========================
-       BLOG / IKIGAI INSIGHTS
+       BLOG / 886 INSIGHTS
     =========================== */
 .blog-page,
 .blog-post-page {
@@ -594,13 +594,6 @@
   border-bottom: 1px solid var(--border-bright);
 }
 
-.blog-post-subscribe--branded {
-  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
-  gap: 28px clamp(32px, 5vw, 44px);
-  align-items: center;
-  border-top: 1px solid var(--border-bright);
-}
-
 .blog-post-subscribe--contained {
   grid-template-columns: minmax(250px, 0.76fr) minmax(0, 1.24fr);
   gap: 30px clamp(38px, 5vw, 64px);
@@ -608,27 +601,6 @@
   border: 1px solid color-mix(in srgb, var(--purple-bright) 32%, var(--border));
   border-radius: 28px;
   background: var(--bg-surface);
-}
-
-.blog-post-subscribe-artwork {
-  grid-column: 1;
-  grid-row: 1 / span 2;
-  align-self: center;
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 2 / 1;
-  object-fit: cover;
-}
-
-.blog-post-subscribe--branded .blog-post-subscribe-copy,
-.blog-post-subscribe--branded .blog-post-subscribe-form {
-  grid-column: 2;
-}
-
-.blog-post-subscribe--branded .blog-post-subscribe-copy h2 {
-  font-size: clamp(26px, 3vw, 30px);
-  white-space: nowrap;
 }
 
 .blog-post-subscribe--contained .blog-post-subscribe-copy h2 {
@@ -907,29 +879,9 @@
     padding: 36px 0;
   }
 
-  .blog-post-subscribe--branded {
-    grid-template-columns: minmax(190px, 0.75fr) minmax(0, 1.25fr);
-    gap: 28px 24px;
-  }
-
   .blog-post-subscribe--contained {
     padding: 32px;
     border-radius: 24px;
-  }
-
-  .blog-post-subscribe--branded .blog-post-subscribe-artwork {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .blog-post-subscribe--branded .blog-post-subscribe-copy {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .blog-post-subscribe--branded .blog-post-subscribe-form {
-    grid-column: 1 / -1;
-    grid-row: 2;
   }
 
   .blog-post-subscribe-copy p {
@@ -966,24 +918,9 @@
     min-height: 0;
   }
 
-  .blog-post-subscribe--branded {
-    grid-template-columns: 1fr;
-  }
-
   .blog-post-subscribe--contained {
     padding: 26px;
     border-radius: 20px;
-  }
-
-  .blog-post-subscribe--branded .blog-post-subscribe-artwork,
-  .blog-post-subscribe--branded .blog-post-subscribe-copy,
-  .blog-post-subscribe--branded .blog-post-subscribe-form {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .blog-post-subscribe--branded .blog-post-subscribe-copy h2 {
-    font-size: clamp(22px, 5.8vw, 28px);
   }
 
   .blog-archive-title {
