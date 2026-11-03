@@ -558,7 +558,7 @@ for (const source of ["/programs", "/programs/", "/ikigai-launchpad", "/ikigai-l
   )) fail(`${source}: missing permanent redirect to /accelerator`);
 }
 if (!pages.some((page) => page.route === "/accelerator" && page.isIndexable)) {
-  fail("/ikigai-launchpad: missing indexable Launchpad page");
+  fail("/accelerator: missing indexable Launchpad page");
 }
 if (!pages.some((page) => page.route === "/programs" && !page.isIndexable)) {
   fail("/programs: missing noindex redirect fallback");

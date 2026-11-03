@@ -63,6 +63,36 @@ test("886 Residency uses its new canonical route, schema, sitemap, and navigatio
   }
 });
 
+test("886 Launchpad uses the accelerator canonical URL, schema, and navigation", async () => {
+  const html = await readBuiltPage("/accelerator");
+  const url = "https://www.886studios.com/accelerator";
+  assert.equal(canonical(html), url);
+  assert.ok(!metadata(html, "robots")?.includes("noindex"));
+  assert.equal(textContent(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] ?? ""), "886 Launchpad");
+  const graph = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)]
+    .flatMap(([, json]) => JSON.parse(json)["@graph"] ?? []);
+  const service = graph.find((entry) => entry["@type"] === "Service");
+  assert.equal(service?.name, "886 Launchpad");
+  assert.equal(service?.url, url);
+  assert.equal(service?.["@id"], `${url}#launchpad`);
+  const sitemap = await readBuiltFile("sitemap.xml");
+  assert.ok(sitemap.includes(`<loc>${url}</loc>`));
+  assert.ok(!sitemap.includes("/ikigai-launchpad</loc>"));
+  for (const route of ["/", "/accelerator", "/residency", "/resources/application-guide"]) {
+    const page = await readBuiltPage(route);
+    assert.ok(tags(page, "a").some((link) => link.href === "/accelerator"), route);
+    assert.ok(!tags(page, "a").some((link) => /^\/ikigai-launchpad(?:[?#/]|$)/.test(link.href ?? "")), route);
+    assert.ok(!/ikigai-(?:logo|mark|wordmark)/i.test(page), route);
+  }
+});
+
+test("newsletter branding uses 886 Insights and retains the subscription destination", async () => {
+  const html = await readBuiltPage("/blog");
+  assert.match(textContent(html), /886 Insights/);
+  assert.ok(!html.includes("ikigai-insights-substack-wide"));
+  assert.ok(tags(html, "form").some((form) => form.action === "https://886studios.substack.com/subscribe"));
+});
+
 test("every resource route keeps its rendered guide, metadata, and structured data", async () => {
   assert.deepEqual(await resourceRoutes(), fixtures.resources.map((fixture) => fixture.route).sort());
   for (const { route, ...expected } of fixtures.resources) {
