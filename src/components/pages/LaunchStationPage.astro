@@ -37,7 +37,7 @@ const { launchStation } = siteContent.programs;
         <img
           src={launchStation.heroPhoto.src}
           srcset={launchStation.heroPhoto.srcset}
-          sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 704px) calc(100vw - 64px), (max-width: 860px) 640px, (max-width: 1160px) 40vw, 470px"
+          sizes="(max-width: 528px) calc(100vw - 48px), (max-width: 860px) 480px, (max-width: 1160px) 40vw, 470px"
           alt={launchStation.heroPhoto.alt}
           width={launchStation.heroPhoto.width}
           height={launchStation.heroPhoto.height}
@@ -128,8 +128,10 @@ const { launchStation } = siteContent.programs;
     </section>
 
     <section class="launch-station-joining" aria-labelledby="ls-joining-heading">
-      <h2 id="ls-joining-heading">{launchStation.joining.title}</h2>
-      <p>{launchStation.joining.body} Email <a href="mailto:carter@886studios.com">carter@886studios.com</a>.</p>
+      <div class="launch-station-joining-copy">
+        <h2 id="ls-joining-heading">{launchStation.joining.title}</h2>
+        <p>{launchStation.joining.body} Email <a href="mailto:carter@886studios.com">carter@886studios.com</a>.</p>
+      </div>
       <a
         class="btn-pri launch-station-contact"
         href={launchStation.joining.cta.href}
@@ -140,7 +142,5 @@ const { launchStation } = siteContent.programs;
         {launchStation.joining.cta.label}
       </a>
     </section>
-
-
   </div>
 </div>
