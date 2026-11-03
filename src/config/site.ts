@@ -12,9 +12,9 @@ export const applicationUrl = "https://apply.886studios.com/";
 export const siteConfig = {
   name: "886 Studios",
   url: "https://www.886studios.com",
-  defaultTitle: "886 Studios | Taipei Venture Firm Behind ikigai Launchpad",
+  defaultTitle: "886 Studios | Taipei Venture Firm Behind 886 Launchpad",
   defaultDescription:
-    "886 Studios is a Taipei-based venture firm that runs ikigai Launchpad, a startup accelerator helping early-stage founders build global technology companies.",
+    "886 Studios is a Taipei-based venture firm that runs 886 Launchpad, a startup accelerator helping early-stage founders build global technology companies.",
   defaultOgImage: "https://www.886studios.com/assets/886-studios-preview.png",
   defaultOgImageWidth: 1200,
   defaultOgImageHeight: 630,
@@ -53,7 +53,7 @@ const routeImagePreloads: Record<string, RouteImagePreload[]> = {
       type: "image/webp",
     },
   ],
-  "/ikigai-launchpad": [
+  "/accelerator": [
     {
       href: "/assets/programs/ikigai-audience-theater-1280.webp",
       type: "image/webp",

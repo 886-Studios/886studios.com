@@ -526,7 +526,7 @@ drawer uses the same hierarchy. Edit it in `siteContent.nav.items`.
 | Group | Page | Route | Content |
 | --- | --- | --- | --- |
 | | Home | `/` | Homepage |
-| Programs | ikigai Launchpad | `/ikigai-launchpad` | Program overview |
+| Programs | 886 Launchpad | `/accelerator` | Program overview |
 | Programs | 886 Residency | `/residency` | 886 Residency overview |
 | Community | Events | `/events` | Luma event archive |
 | Community | Resources | `/resources` | Resource library |
@@ -543,7 +543,7 @@ with the `/about` page. Profiles live at `/team/<slug>`; former `/about/<legacy-
 profile URLs redirect to them.
 
 The former `/about/team` and `/about/newsroom` paths redirect
-to their root-level routes. `/programs` redirects to `/ikigai-launchpad`, and
+to their root-level routes. `/programs` redirects to `/accelerator`, and
 `/launch-station` and `/programs/launch-station` redirect to `/residency`.
 
 The Manifesto draft is archived in `src/archived/manifesto.astro`. Neither
@@ -603,7 +603,7 @@ Then run Lighthouse against the affected route and save the report outside track
 
 ```bash
 mkdir -p .artifacts/performance
-npx --yes lighthouse http://127.0.0.1:4173/ikigai-launchpad \
+npx --yes lighthouse http://127.0.0.1:4173/accelerator \
   --only-categories=performance \
   --preset=desktop \
   --chrome-flags="--headless=new" \
@@ -616,7 +616,7 @@ For production Core Web Vitals, run WebPageTest against the deployed URL with at
 For frontend QA, verify at least:
 
 - `/`
-- `/ikigai-launchpad`
+- `/accelerator`
 - `/residency`
 - `/about`
 - `/team` and `/newsroom`

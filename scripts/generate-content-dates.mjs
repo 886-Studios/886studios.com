@@ -178,7 +178,7 @@ async function generateContentDates() {
       await getSiteContentDate("home"),
       getFileDate("src/components/pages/HomePage.astro"),
     ),
-    "/ikigai-launchpad": maxDate(
+    "/accelerator": maxDate(
       await getSiteContentDate("programs", "launchpad"),
       getFileDate("src/components/pages/ProgramsPage.astro"),
     ),

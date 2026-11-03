@@ -1,21 +1,9 @@
 ---
-import ProgramsPage from "../components/pages/ProgramsPage.astro";
-import { contentDates } from "../data/contentDates.generated";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { getProgramFaqSchema, getProgramSchema, pageMeta } from "../lib/seo";
+import RedirectLayout from "../layouts/RedirectLayout.astro";
 ---
 
-<BaseLayout
-  title={pageMeta.programs.title}
-  description={pageMeta.programs.description}
-  dateModified={contentDates["/ikigai-launchpad"]}
-  ogImage={pageMeta.programs.ogImage}
-  ogImageAlt={pageMeta.programs.ogImageAlt}
-  ogImageWidth={pageMeta.programs.ogImageWidth}
-  ogImageHeight={pageMeta.programs.ogImageHeight}
-  ogImageType={pageMeta.programs.ogImageType}
-  breadcrumbs={[{ name: "ikigai Launchpad", path: "/ikigai-launchpad" }]}
-  structuredData={[getProgramSchema(), getProgramFaqSchema()]}
->
-  <ProgramsPage />
-</BaseLayout>
+<RedirectLayout
+  destination="/accelerator"
+  title="886 Launchpad has moved"
+  label="Continue to 886 Launchpad"
+/>

@@ -52,11 +52,11 @@ export const pageMeta = {
     dateModified: contentDates["/"],
   },
   programs: {
-    title: "ikigai Launchpad | Startup Accelerator in Taipei",
+    title: "886 Launchpad | Startup Accelerator in Taipei",
     description:
-      "ikigai Launchpad is 886 Studios' 10-week, in-person Taipei accelerator with a standard $100K-for-8% SAFE, weekly mentor office hours, and investor access.",
+      "886 Launchpad is 886 Studios' 10-week, in-person Taipei accelerator with a standard $100K-for-8% SAFE, weekly mentor office hours, and investor access.",
     ogImage: `${siteConfig.url}/assets/programs/ikigai-audience-theater-1920.webp`,
-    ogImageAlt: "Founders, mentors, and guests gathered for ikigai Launchpad in Taipei",
+    ogImageAlt: "Founders, mentors, and guests gathered for 886 Launchpad in Taipei",
     ogImageWidth: 1920,
     ogImageHeight: 1280,
     ogImageType: "image/webp",
@@ -109,7 +109,7 @@ export const pageMeta = {
   contact: {
     title: "Contact | 886 Studios",
     description:
-      "Contact 886 Studios about founder programs, ikigai Launchpad, 886 Residency, partnerships, events, or startup community support in Taipei.",
+      "Contact 886 Studios about founder programs, 886 Launchpad, 886 Residency, partnerships, events, or startup community support in Taipei.",
   },
   privacy: {
     title: "Privacy Notice | 886 Studios",
@@ -298,9 +298,9 @@ export function getOrganizationSchema(): JsonLdObject {
     },
     brand: {
       "@type": "Brand",
-      "@id": `${siteConfig.url}/ikigai-launchpad#ikigai-brand`,
-      name: "ikigai Launchpad",
-      url: `${siteConfig.url}/ikigai-launchpad`,
+      "@id": `${siteConfig.url}/accelerator#launchpad-brand`,
+      name: "886 Launchpad",
+      url: `${siteConfig.url}/accelerator`,
     },
   };
 }
@@ -320,16 +320,16 @@ export function getWebsiteSchema(): JsonLdObject {
 
 export function getProgramSchema(): JsonLdObject {
   const { launchpad } = siteContent.programs;
-  const programUrl = `${siteConfig.url}/ikigai-launchpad`;
+  const programUrl = `${siteConfig.url}/accelerator`;
 
   return {
     "@type": "Service",
-    "@id": `${siteConfig.url}/ikigai-launchpad#ikigai-launchpad`,
+    "@id": `${siteConfig.url}/accelerator#launchpad`,
     name: launchpad.name,
     serviceType: "Startup accelerator",
     category: "Early-stage startup accelerator program",
     url: programUrl,
-    mainEntityOfPage: { "@id": getPageFragmentId("/ikigai-launchpad", "webpage") },
+    mainEntityOfPage: { "@id": getPageFragmentId("/accelerator", "webpage") },
     provider: { "@id": organizationId },
     areaServed: {
       "@type": "Place",
@@ -346,7 +346,7 @@ export function getProgramSchema(): JsonLdObject {
       height: pageMeta.programs.ogImageHeight,
       caption: pageMeta.programs.ogImageAlt,
     },
-    brand: { "@id": `${siteConfig.url}/ikigai-launchpad#ikigai-brand` },
+    brand: { "@id": `${siteConfig.url}/accelerator#launchpad-brand` },
     sameAs: socialLinks
       .filter((link) => ["instagram", "threads"].includes(link.platform))
       .map((link) => link.href),
@@ -363,7 +363,7 @@ export function getProgramSchema(): JsonLdObject {
     potentialAction: {
       "@type": "ApplyAction",
       name: launchpad.cta.label,
-      object: { "@id": `${siteConfig.url}/ikigai-launchpad#ikigai-launchpad` },
+      object: { "@id": `${siteConfig.url}/accelerator#launchpad` },
       target: {
         "@type": "EntryPoint",
         urlTemplate: launchpad.cta.href,
@@ -391,8 +391,8 @@ export function getProgramSchema(): JsonLdObject {
 export function getProgramFaqSchema(): JsonLdObject {
   return {
     "@type": "FAQPage",
-    "@id": `${siteConfig.url}/ikigai-launchpad#faq`,
-    url: `${siteConfig.url}/ikigai-launchpad#faq`,
+    "@id": `${siteConfig.url}/accelerator#faq`,
+    url: `${siteConfig.url}/accelerator#faq`,
     mainEntity: siteContent.programs.launchpad.faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
@@ -635,7 +635,7 @@ export function getResourceFaqSchema(article: ResourceArticle, path: string): Js
 function getWebPageSchema(options: StructuredDataOptions): JsonLdObject {
   const canonicalUrl = getCanonicalUrl(options.path);
   const isHomepage = canonicalUrl === `${siteConfig.url}/`;
-  const launchpadId = `${siteConfig.url}/ikigai-launchpad#ikigai-launchpad`;
+  const launchpadId = `${siteConfig.url}/accelerator#launchpad`;
   const primaryImage = options.image
     ? {
         "@type": "ImageObject",
@@ -662,7 +662,7 @@ function getWebPageSchema(options: StructuredDataOptions): JsonLdObject {
     about: { "@id": organizationId },
     mainEntity: isHomepage ? { "@id": organizationId } : undefined,
     mentions: isHomepage ? { "@id": launchpadId } : undefined,
-    significantLink: isHomepage ? `${siteConfig.url}/ikigai-launchpad` : undefined,
+    significantLink: isHomepage ? `${siteConfig.url}/accelerator` : undefined,
     isAccessibleForFree: true,
     image: primaryImage,
     primaryImageOfPage: primaryImage,

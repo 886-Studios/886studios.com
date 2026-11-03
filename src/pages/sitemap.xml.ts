@@ -15,10 +15,10 @@ const staticRoutes = [
     lastmod: pageMeta.home.dateModified,
   },
   {
-    path: "/ikigai-launchpad",
+    path: "/accelerator",
     priority: "0.9",
     changefreq: "weekly",
-    lastmod: contentDates["/ikigai-launchpad"],
+    lastmod: contentDates["/accelerator"],
   },
   {
     path: "/residency",

@@ -70,14 +70,11 @@
     }
 
     .prog-wordmark {
-      width: min(60%, 300px);
       margin: 0 0 24px;
-    }
-
-    .prog-wordmark img {
-      display: block;
-      width: 100%;
-      height: auto;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      text-wrap: balance;
     }
 
     .prog-lead {
@@ -1258,7 +1255,6 @@
         padding-top: var(--space-lg);
       }
       .prog-wordmark {
-        width: min(60%, 220px);
         margin-bottom: 22px;
       }
 

@@ -1,7 +1,7 @@
 import { applicationUrl } from "../config/site";
 
 const launchpadNextBatch = "Spring 2027";
-const launchpadScheduleNote = `The next ikigai Launchpad batch will take place in ${launchpadNextBatch}. Application dates and the deadline will be announced later.`;
+const launchpadScheduleNote = `The next 886 Launchpad batch will take place in ${launchpadNextBatch}. Application dates and the deadline will be announced later.`;
 
 export const brand = {
   name: "886 Studios",
@@ -32,7 +32,7 @@ export const socialLinks = [
   {
     platform: "threads",
     href: "https://www.threads.net/@ikigai_launchpad",
-    ariaLabel: "ikigai Launchpad on Threads",
+    ariaLabel: "886 Launchpad on Threads",
   },
   {
     platform: "discord",
@@ -99,7 +99,7 @@ export const portfolioCompanies = [
     websiteUrl: "https://www.dexterai.org/",
     relationship: "886-backed",
     category: "Media & Entertainment",
-    program: "ikigai #04",
+    program: "886 Launchpad #04",
     founders: [
       {
         name: "Astemir Azhakhov",
@@ -126,7 +126,7 @@ export const portfolioCompanies = [
     websiteUrl: "https://www.amicare.io/",
     relationship: "886-backed",
     category: "Healthcare",
-    program: "ikigai #04",
+    program: "886 Launchpad #04",
     founders: [
       {
         name: "Martin Droruga",
@@ -151,7 +151,7 @@ export const portfolioCompanies = [
     slug: "footnotes",
     relationship: "886-backed",
     category: "Consumer Apps",
-    program: "ikigai #03",
+    program: "886 Launchpad #03",
     status: "Active",
     websiteUrl: "https://footnotes.rest/",
     appStoreUrl: "https://apps.apple.com/app/footnotes-notes-for-noticing/id6803869918",
@@ -185,7 +185,7 @@ export const portfolioCompanies = [
     slug: "diffusr",
     relationship: "886-backed",
     category: "Marketing Tech",
-    program: "ikigai #03",
+    program: "886 Launchpad #03",
     status: "Active",
     websiteUrl: "https://www.diffusr.ai",
     founders: [
@@ -217,7 +217,7 @@ export const portfolioCompanies = [
     slug: "peeps",
     relationship: "886-backed",
     category: "Consumer Social",
-    program: "ikigai #03",
+    program: "886 Launchpad #03",
     status: "Active",
     websiteUrl: "https://playpeeps.app",
     appStoreUrl: "https://apps.apple.com/tw/app/peeps-%E8%88%87%E6%9C%8B%E5%8F%8B%E5%90%8C%E5%B1%85/id6753601581",
@@ -246,7 +246,7 @@ export const portfolioCompanies = [
     slug: "lfg",
     relationship: "886-backed",
     category: "Consumer Social",
-    program: "ikigai #03",
+    program: "886 Launchpad #03",
     status: "Active",
     websiteUrl: "https://lfg.place/",
     appStoreUrl: "https://apps.apple.com/us/app/lfg-on-demand-hangouts/id6762966872",
@@ -278,7 +278,7 @@ export const portfolioCompanies = [
     slug: "persona2-ai",
     relationship: "886-backed",
     category: "Media & Entertainment",
-    program: "ikigai #03",
+    program: "886 Launchpad #03",
     status: "Active",
     websiteUrl: "https://persona2.ai/",
     playStoreUrl: "https://play.google.com/store/apps/details?id=ai.persona2.app",
@@ -297,7 +297,7 @@ export const portfolioCompanies = [
     slug: "hushli",
     relationship: "886-backed",
     category: "Health & Wellness",
-    program: "ikigai #02",
+    program: "886 Launchpad #02",
     status: "Active",
     websiteUrl: "https://hushli.ai/",
     appStoreUrl: "https://apps.apple.com/tw/app/hushli-ai-confidant-journal/id6748250163?l=en-GB",
@@ -325,7 +325,7 @@ export const portfolioCompanies = [
     slug: "instapodz",
     relationship: "886-backed",
     category: "Media & Entertainment",
-    program: "ikigai #02",
+    program: "886 Launchpad #02",
     status: "Active",
     websiteUrl: "https://instapodz.com/",
     appStoreUrl: "https://apps.apple.com/us/app/instapodz-ai-podcast-creator/id6744011584",
@@ -343,7 +343,7 @@ export const portfolioCompanies = [
     slug: "picturecook",
     relationship: "886-backed",
     category: "Consumer Apps",
-    program: "ikigai #02",
+    program: "886 Launchpad #02",
     status: "Active",
     websiteUrl: "https://picture-cook.com/",
     appStoreUrl: "https://apps.apple.com/sg/app/picturecook-kid-english-buddy/id6746742382",
@@ -362,7 +362,7 @@ export const portfolioCompanies = [
     slug: "sugar-ai",
     relationship: "886-backed",
     category: "Media & Entertainment",
-    program: "ikigai #02",
+    program: "886 Launchpad #02",
     status: "Active",
     websiteUrl: "https://sugarai.tw/",
     appStoreUrl: "https://apps.apple.com/tw/app/sugar-%E4%BD%A0%E7%9A%84%E6%AD%A3%E7%89%88%E6%BC%AB%E7%95%ABai%E8%A7%92%E8%89%B2/id6744877922",
@@ -381,7 +381,7 @@ export const portfolioCompanies = [
     slug: "tellit-now",
     relationship: "886-backed",
     category: "Marketing Tech",
-    program: "ikigai #02",
+    program: "886 Launchpad #02",
     status: "Active",
     websiteUrl: "https://www.tellitapp.ai/",
     appStoreUrl: "https://apps.apple.com/us/app/tell-it-now-%E6%8E%A2%E5%BA%97%E5%A4%A7%E8%81%B2%E5%85%AC/id6448947278",
@@ -400,7 +400,7 @@ export const portfolioCompanies = [
     slug: "gitroll",
     relationship: "886-backed",
     category: "B2B SaaS",
-    program: "ikigai #01",
+    program: "886 Launchpad #01",
     status: "Acquired",
     websiteUrl: "https://gitroll.io/",
     logo: {
@@ -418,7 +418,7 @@ export const portfolioCompanies = [
     slug: "kardomo",
     relationship: "886-backed",
     category: "Consumer Social",
-    program: "ikigai #03",
+    program: "886 Launchpad #03",
     status: "Active",
     websiteUrl: "https://kardomo.com/",
     appStoreUrl: "https://apps.apple.com/tw/app/kardomo-%E5%8F%B0%E7%81%A3%E5%B0%88%E5%B1%AC%E7%9A%84-kpop-%E4%BA%A4%E5%8F%8B%E5%9C%88/id6748519302",
@@ -448,7 +448,7 @@ export const portfolioCompanies = [
     slug: "o3o-labs",
     relationship: "886-backed",
     category: "Consumer Social",
-    program: "ikigai #01",
+    program: "886 Launchpad #01",
     status: "Active",
     appStoreUrl: "https://apps.apple.com/us/app/picpet/id6742077014",
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.o3o.android.picpet",
@@ -646,7 +646,7 @@ export const siteContent = {
         id: "programs",
         label: "Programs",
         children: [
-          { id: "ikigai", label: "ikigai Launchpad", href: "/ikigai-launchpad" },
+          { id: "accelerator", label: "886 Launchpad", href: "/accelerator" },
           { id: "launch-station", label: "886 Residency", href: "/residency" },
         ],
       },
@@ -676,10 +676,10 @@ export const siteContent = {
     hero: {
       titleLead: "Build what",
       titleAccent: "matters.",
-      body: "886 Studios is where the next generation of global tech companies are built.\nWe run ikigai Launchpad, the premier Silicon Valley-style accelerator in Taipei\nbrought to you by the founders of Twitch, Guitar Hero, Playdom, Kabam, & more.",
+      body: "886 Studios is where the next generation of global tech companies are built.\nWe run 886 Launchpad, the premier Silicon Valley-style accelerator in Taipei\nbrought to you by the founders of Twitch, Guitar Hero, Playdom, Kabam, & more.",
       cta: {
-        label: "Learn more about ikigai Launchpad",
-        href: "/ikigai-launchpad",
+        label: "Learn more about 886 Launchpad",
+        href: "/accelerator",
       },
     },
     photos: {
@@ -733,11 +733,11 @@ export const siteContent = {
       title: "How we support founders",
       featured: {
         label: "Accelerator",
-        title: "ikigai Launchpad",
+        title: "886 Launchpad",
         body: "$100K USD in funding, hands-on mentorship from successful Silicon Valley founders, and a tight-knit 10-week accelerator program designed for startups that want to move fast.",
         meta: ["$100K USD funding", "Partner office hours", "Batch community"],
         ctaLabel: "Learn more →",
-        ctaHref: "/ikigai-launchpad",
+        ctaHref: "/accelerator",
       },
       secondary: [
         {
@@ -762,9 +762,9 @@ export const siteContent = {
   },
   programs: {
     launchpad: {
-      name: "ikigai Launchpad",
+      name: "886 Launchpad",
       lead: {
-        intro: "ikigai Launchpad is the flagship accelerator run by",
+        intro: "886 Launchpad is the flagship accelerator run by",
         operator: { label: "886 Studios", href: "/about" },
         body: "$100K USD, mentor office hours, investor intros, and support beyond the batch. From refining their vision to building lasting connections, we help founders move their companies forward. Join us in Taipei.",
       },
@@ -773,7 +773,7 @@ export const siteContent = {
         summary: `Next batch: ${launchpadNextBatch}.`,
       },
       cta: {
-        label: "Apply to ikigai Launchpad",
+        label: "Apply to 886 Launchpad",
         href: applicationUrl,
       },
       heroPhoto: {
@@ -781,7 +781,7 @@ export const siteContent = {
         srcset:
           "/assets/programs/ikigai-audience-theater-1280.webp 1280w, /assets/programs/ikigai-audience-theater-1920.webp 1920w",
         sizes: "(max-width: 640px) calc(100vw - 36px), min(calc(100vw - 48px), 1160px)",
-        alt: "Founders, mentors, and guests gathered for ikigai Launchpad in Taipei",
+        alt: "Founders, mentors, and guests gathered for 886 Launchpad in Taipei",
         width: 1920,
         height: 1280,
       },
@@ -823,7 +823,7 @@ export const siteContent = {
           ],
           photo: {
             name: "ikigai-founder-table",
-            alt: "Founders working together during ikigai Launchpad",
+            alt: "Founders working together during 886 Launchpad",
             width: 1280,
             height: 960,
           },
@@ -839,7 +839,7 @@ export const siteContent = {
           ],
           photo: {
             name: "ikigai-mentor-session",
-            alt: "An ikigai Launchpad mentor session with founders",
+            alt: "An 886 Launchpad mentor session with founders",
             width: 1280,
             height: 960,
           },
@@ -855,7 +855,7 @@ export const siteContent = {
           ],
           photo: {
             name: "ikigai-group-tshirts",
-            alt: "ikigai Launchpad founders together in Taipei",
+            alt: "886 Launchpad founders together in Taipei",
             width: 1280,
             height: 1707,
           },
@@ -864,7 +864,7 @@ export const siteContent = {
       testimonials: [
         {
           quote:
-            "ikigai gave me unwavering support and helped me develop a much more global perspective. I'm really grateful for the team (Kevin, Kai, Carter, Freya, and Ginny) and everything they’ve done for me, from helping me think through product to introducing me to helpful connections to being there for moral support through hard times.",
+            "[886 Launchpad] gave me unwavering support and helped me develop a much more global perspective. I'm really grateful for the team (Kevin, Kai, Carter, Freya, and Ginny) and everything they’ve done for me, from helping me think through product to introducing me to helpful connections to being there for moral support through hard times.",
           name: "Jimmy Huang",
           company: "PicPet",
           profileUrl: "/portfolio/o3o-labs",
@@ -885,7 +885,7 @@ export const siteContent = {
         },
         {
           quote:
-            "Personally, ikigai showed me different ways to approach uncertainty. With Kevin Lin, it was always about possibility: “Hmm, that could work,” and a why-not-try attitude. With Max Hsieh, it was systematic, actionable, and logical: experiment X, measure Y, define success or failure, learn, and iterate. With Kai Huang, it was about weighing options and trusting your best judgment; even the wrong decision beats no decision because indecision teaches you nothing.",
+            "Personally, [886 Launchpad] showed me different ways to approach uncertainty. With Kevin Lin, it was always about possibility: “Hmm, that could work,” and a why-not-try attitude. With Max Hsieh, it was systematic, actionable, and logical: experiment X, measure Y, define success or failure, learn, and iterate. With Kai Huang, it was about weighing options and trusting your best judgment; even the wrong decision beats no decision because indecision teaches you nothing.",
           name: "Julia Cheung",
           company: "footnotes",
           profileUrl: "/portfolio/footnotes",
@@ -996,7 +996,7 @@ export const siteContent = {
       },
       application: {
         eyebrow: "Applications",
-        title: "Build with ikigai Launchpad.",
+        title: "Build with 886 Launchpad.",
         intro: launchpadScheduleNote,
         milestones: [
           {
@@ -1083,9 +1083,9 @@ export const siteContent = {
           answer: "Yes. Founders who have already raised capital can apply.",
         },
         {
-          question: "How are 886 Studios and ikigai Launchpad related?",
+          question: "How are 886 Studios and 886 Launchpad related?",
           answer:
-            "886 Studios is the venture firm that runs ikigai Launchpad, our accelerator program.",
+            "886 Studios is the venture firm that runs 886 Launchpad, our accelerator program.",
         },
         {
           question: "What happens after the program ends?",
@@ -1237,8 +1237,8 @@ export const siteContent = {
       },
       accelerator: {
         title: "What about the accelerator?",
-        body: "Residents can apply to ikigai Launchpad at any time through the same application process as everyone else. A desk isn't an acceptance, but working alongside us is a great way to get to know each other.",
-        cta: { label: "Explore ikigai Launchpad →", href: "https://withikigai.com/" },
+        body: "Residents can apply to 886 Launchpad at any time through the same application process as everyone else. A desk isn't an acceptance, but working alongside us is a great way to get to know each other.",
+        cta: { label: "Explore 886 Launchpad →", href: "/accelerator" },
       },
       joining: {
         title: "Invite-only for now",
@@ -1269,7 +1269,7 @@ export const siteContent = {
         publishedAt: "2025-09-25",
         image: {
           src: "/assets/resources/news/launchpad-debut-960.webp",
-          alt: "ikigai Launchpad founders presenting at Demo Day in Taipei",
+          alt: "886 Launchpad founders presenting at Demo Day in Taipei",
           width: 1920,
           height: 1440,
         },
@@ -1378,7 +1378,7 @@ export const siteContent = {
         href: "/interview-guidebook",
         ctaLabel: "Read guide",
         description:
-          "Know what to expect in your ikigai Launchpad interview.",
+          "Know what to expect in your 886 Launchpad interview.",
       },
       {
         group: "ecosystem",
@@ -1534,7 +1534,7 @@ export const siteContent = {
         eyebrow: "Who We Are",
         title: "",
         paragraphs: [
-          "886 Studios is a Taipei-based venture firm that runs ikigai Launchpad, a startup accelerator supporting early-stage founders building for global markets. Our partners include the founders of Twitch, Kabam, RedOctane (creators of Guitar Hero), Playdom, OrbitBaby, HTC Vive, and other successful companies.",
+          "886 Studios is a Taipei-based venture firm that runs 886 Launchpad, a startup accelerator supporting early-stage founders building for global markets. Our partners include the founders of Twitch, Kabam, RedOctane (creators of Guitar Hero), Playdom, OrbitBaby, HTC Vive, and other successful companies.",
           "Our portfolio spans industries and geographies, including Discord, OURA, Crunchyroll, Gogoro, P. LEAGUE+, KKBOX, and more. We back ambitious early-stage founders with a commitment to empowering Taiwan's startup ecosystem.",
           "What makes 886 Studios unique is our ability to combine Silicon Valley experience with deep knowledge of Taiwan's talent and market strengths. Based in Taipei, we serve as a bridge between Taiwan and Silicon Valley.",
         ],
@@ -1544,7 +1544,7 @@ export const siteContent = {
         title: "",
         paragraphs: [
           "Named after Taiwan's international country code, 886 Studios was born with a singular mission: to foster and grow Taiwan's startup ecosystem.",
-          "In our early days, 886 Studios operated as a venture studio. This insight drove us to create ikigai Launchpad, our startup accelerator designed to propel founders toward global growth.",
+          "In our early days, 886 Studios operated as a venture studio. This insight drove us to create 886 Launchpad, our startup accelerator designed to propel founders toward global growth.",
           "Our vision is to create an environment where founders can thrive with the right mix of funding, mentorship, resources, and networks. We are not just building companies. We are shaping the future of innovation in Taiwan and beyond.",
         ],
       },
@@ -1804,8 +1804,8 @@ export const siteContent = {
       description:
         "886 Studios and Lifelike Capital work together to support founders building ambitious companies with global potential.",
       program: {
-        label: "ikigai Launchpad",
-        href: "/ikigai-launchpad",
+        label: "886 Launchpad",
+        href: "/accelerator",
       },
       programDescription:
         "is the result of our collaboration, a shared program created to help the next generation of startups grow globally.",
@@ -1848,9 +1848,9 @@ export const siteContent = {
       label: "Founders",
       title: "Building an ambitious startup",
       description:
-        "Tell us what you’re working on and apply to ikigai Launchpad.",
+        "Tell us what you’re working on and apply to 886 Launchpad.",
       scheduleNote: launchpadScheduleNote,
-      cta: "Apply to ikigai Launchpad",
+      cta: "Apply to 886 Launchpad",
       href: applicationUrl,
     },
     general: {

@@ -1,12 +1,12 @@
 # 886 Studios
 
-> 886 Studios is a Taipei-based venture firm that runs ikigai Launchpad, a startup accelerator helping early-stage founders build global technology companies.
+> 886 Studios is a Taipei-based venture firm that runs 886 Launchpad, a startup accelerator helping early-stage founders build global technology companies.
 
 Canonical website: https://www.886studios.com/
 
 ## Programs
 
-- [ikigai Launchpad](https://www.886studios.com/ikigai-launchpad): A 10-week, in-person startup accelerator in Taipei with $100K USD in funding, weekly mentor office hours, workshops, investor introductions, and founder community support.
+- [886 Launchpad](https://www.886studios.com/accelerator): A 10-week, in-person startup accelerator in Taipei with $100K USD in funding, weekly mentor office hours, workshops, investor introductions, and founder community support.
 - [886 Residency](https://www.886studios.com/residency): An invite-only, 90-day community program for full-time founders and builders in Taipei, with free dedicated desks at Taiwan Tech Arena and active community participation.
 
 ## Organization

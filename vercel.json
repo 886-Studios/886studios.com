@@ -23,6 +23,16 @@
   ],
   "redirects": [
     {
+      "source": "/ikigai-launchpad",
+      "destination": "/accelerator",
+      "permanent": true
+    },
+    {
+      "source": "/ikigai-launchpad/",
+      "destination": "/accelerator",
+      "permanent": true
+    },
+    {
       "source": "/security.txt",
       "destination": "/.well-known/security.txt",
       "permanent": true
@@ -179,12 +189,12 @@
     },
     {
       "source": "/programs",
-      "destination": "/ikigai-launchpad",
+      "destination": "/accelerator",
       "permanent": true
     },
     {
       "source": "/programs/",
-      "destination": "/ikigai-launchpad",
+      "destination": "/accelerator",
       "permanent": true
     },
     {
@@ -206,7 +216,7 @@
           "value": "withikigai.com"
         }
       ],
-      "destination": "https://www.886studios.com/ikigai-launchpad",
+      "destination": "https://www.886studios.com/accelerator",
       "statusCode": 301
     },
     {
@@ -217,7 +227,7 @@
           "value": "www.withikigai.com"
         }
       ],
-      "destination": "https://www.886studios.com/ikigai-launchpad",
+      "destination": "https://www.886studios.com/accelerator",
       "statusCode": 301
     },
     {
@@ -312,7 +322,7 @@
     },
     {
       "source": "/:legacy(program|velocity-program|mentorship|tech-pilot-program)/:path*",
-      "destination": "/ikigai-launchpad",
+      "destination": "/accelerator",
       "permanent": true
     },
     {

@@ -56,7 +56,7 @@ test("886 Residency uses its new canonical route, schema, sitemap, and navigatio
   const sitemap = await readBuiltFile("sitemap.xml");
   assert.ok(sitemap.includes(`<loc>${url}</loc>`));
   assert.ok(!sitemap.includes("/launch-station</loc>"));
-  for (const route of ["/", "/residency", "/ikigai-launchpad", "/resources/application-guide"]) {
+  for (const route of ["/", "/residency", "/accelerator", "/resources/application-guide"]) {
     const links = tags(await readBuiltPage(route), "a");
     assert.ok(links.some((link) => link.href === "/residency"), `${route}: missing residency link`);
     assert.ok(!links.some((link) => /^\/(?:programs\/)?launch-station(?:[?#/]|$)/.test(link.href ?? "")), `${route}: stale residency link`);

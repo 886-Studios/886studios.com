@@ -1,0 +1,21 @@
+---
+import ProgramsPage from "../components/pages/ProgramsPage.astro";
+import { contentDates } from "../data/contentDates.generated";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getProgramFaqSchema, getProgramSchema, pageMeta } from "../lib/seo";
+---
+
+<BaseLayout
+  title={pageMeta.programs.title}
+  description={pageMeta.programs.description}
+  dateModified={contentDates["/accelerator"]}
+  ogImage={pageMeta.programs.ogImage}
+  ogImageAlt={pageMeta.programs.ogImageAlt}
+  ogImageWidth={pageMeta.programs.ogImageWidth}
+  ogImageHeight={pageMeta.programs.ogImageHeight}
+  ogImageType={pageMeta.programs.ogImageType}
+  breadcrumbs={[{ name: "886 Launchpad", path: "/accelerator" }]}
+  structuredData={[getProgramSchema(), getProgramFaqSchema()]}
+>
+  <ProgramsPage />
+</BaseLayout>

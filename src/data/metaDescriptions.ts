@@ -2,8 +2,8 @@
 // Keep these aligned with the corresponding profile, company, or resource content.
 export const profileDescriptions: Record<string, string> = {
   max: "Meet Max Hsieh, Venture Partner and General Manager at 886 Studios, technology entrepreneur, and former co-founder and CTO of Forma.",
-  patryk: "Meet Patryk Chojecki, an investor at 886 Studios who also runs operations for ikigai Launchpad, working with early-stage founders across Taiwan and beyond.",
-  carter: "Meet Carter Wang, Venture Associate at 886 Studios, working on startup sourcing, the ikigai Launchpad founder pipeline, and community events in Taipei.",
+  patryk: "Meet Patryk Chojecki, an investor at 886 Studios who also runs operations for 886 Launchpad, working with early-stage founders across Taiwan and beyond.",
+  carter: "Meet Carter Wang, Venture Associate at 886 Studios, working on startup sourcing, the 886 Launchpad founder pipeline, and community events in Taipei.",
   kai: "Meet Kai Huang, Managing Partner at 886 Studios and co-founder of RedOctane, the company behind Guitar Hero. Read his story and advice for founders.",
   joseph: "Meet Joseph Hei, co-founder of Orbit Baby and partner at 886 Studios. Read his perspectives on product-user fit and thoughtful startup decision-making.",
   charles: "Meet Charles Huang, co-founder of RedOctane, the company behind Guitar Hero, and partner at 886 Studios. Explore his experience and founder perspectives.",
@@ -48,7 +48,7 @@ export const resourceDescriptions: Record<string, string> = {
   "burn-rate-runway-guide": "Learn how to calculate startup burn rate and runway, with clear formulas, a Taiwan startup example, and a cash-planning checklist for bootstrapped founders.",
   "term-sheet-guide": "Reading your first startup term sheet? Learn valuation, dilution, investor rights and red flags through clear examples and questions to ask before signing.",
   "y-combinator-101": "Prepare your YC application with advice from experienced founders, former YC Partners, and 886 Partners, plus links to application and interview resources.",
-  "application-guide": "Prepare your accelerator application with a founder checklist, written answers, a one-minute video, and ikigai Launchpad eligibility details from 886 Studios.",
+  "application-guide": "Prepare your accelerator application with a founder checklist, written answers, a one-minute video, and 886 Launchpad eligibility details from 886 Studios.",
   "safe-note-guide": "Learn how SAFE notes work, how valuation caps affect ownership, how SAFEs compare with convertible notes, and what founders should check before signing.",
   "cap-table-guide": "Learn how cap tables track ownership and how SAFEs, option pools, vesting, and funding rounds affect founders, with a worked example from 886 Studios.",
   "founders-frequently-asked-questions": "Read advice from 886 Studios partners on choosing co-founders, working with investors, raising funding, and building a useful professional network.",
@@ -61,5 +61,5 @@ export const resourceDescriptions: Record<string, string> = {
   "engagement-during-fundraising": "Read 886 Studios partners' advice on keeping interested investors engaged throughout fundraising and maintaining momentum in your investor conversations.",
   "negotiating-with-lead-investors": "Explore firsthand advice from 886 Studios partners on negotiating with potential lead investors and navigating the relationships behind a funding round.",
   "incorporation-101": "Compare startup incorporation options, business structures, and setup considerations with the 886 Studios guide for founders planning their company.",
-  "interview-guidebook": "Prepare for your first ikigai Launchpad interview: a 20-minute conversation with the 886 Studios team about your startup. You don’t need a pitch deck.",
+  "interview-guidebook": "Prepare for your first 886 Launchpad interview: a 20-minute conversation with the 886 Studios team about your startup. You don’t need a pitch deck.",
 };
