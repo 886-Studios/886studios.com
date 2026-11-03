@@ -647,7 +647,7 @@ export const siteContent = {
         label: "Programs",
         children: [
           { id: "ikigai", label: "ikigai Launchpad", href: "/ikigai-launchpad" },
-          { id: "launch-station", label: "Launch Station", href: "/launch-station" },
+          { id: "launch-station", label: "886 Residency", href: "/residency" },
         ],
       },
       {
@@ -742,10 +742,10 @@ export const siteContent = {
       secondary: [
         {
           label: "Residency",
-          title: "Launch Station",
-          body: "Our founder community-building program. Members receive free desk space at our office, access to exclusive corporate perks, and a community of ambitious founders.",
+          title: "886 Residency",
+          body: "An invite-only, 90-day community program for full-time founders and builders in Taipei. Free dedicated desks at Taiwan Tech Arena, startup perks, and people to build alongside.",
           ctaLabel: "Learn more →",
-          ctaHref: "/launch-station",
+          ctaHref: "/residency",
         },
       ],
     },
@@ -1116,18 +1116,18 @@ export const siteContent = {
       ],
     },
     launchStation: {
-      title: "Launch Station",
+      title: "886 Residency",
       eyebrow: "Builder residency",
       poster: {
         src: "/assets/programs/launch-station-community-collage-800.webp",
-        alt: "Launch Station community collage",
+        alt: "886 Studios community collage",
         width: 800,
         height: 800,
       },
       heroPhoto: {
         src: "/assets/programs/launch-station-community-collage-800.webp",
         srcset: "/assets/programs/launch-station-community-collage-480.webp 480w, /assets/programs/launch-station-community-collage-800.webp 800w",
-        alt: "Launch Station workspace collage with purple 886 lettering at Taiwan Tech Arena",
+        alt: "886 Studios workspace collage with purple 886 lettering at Taiwan Tech Arena",
         width: 800,
         height: 800,
       },
@@ -1135,97 +1135,124 @@ export const siteContent = {
         {
           src: "/assets/launch-station/community-dinner-960.webp",
           srcset: "/assets/launch-station/community-dinner-480.webp 480w, /assets/launch-station/community-dinner-960.webp 960w, /assets/launch-station/community-dinner-1440.webp 1440w",
-          alt: "Friends smiling for a selfie around a shared dinner table after Launch Station Prezzy Day",
+          alt: "Friends smiling for a selfie around a shared dinner table after 886 Residency Prezzy Day",
           width: 960,
           height: 720,
         },
         {
           src: "/assets/launch-station/community-lunch-960.webp",
           srcset: "/assets/launch-station/community-lunch-480.webp 480w, /assets/launch-station/community-lunch-960.webp 960w, /assets/launch-station/community-lunch-1440.webp 1440w",
-          alt: "Six people smiling around a restaurant table during a Launch Station community lunch",
+          alt: "Six people smiling around a restaurant table during an 886 Residency community lunch",
           width: 960,
           height: 720,
         },
       ],
       lead:
-        "A 90-day builder residency from 886 Studios in Taipei. Free office space, startup perks, and a community to build alongside.",
-      status: "Invitation only. Rolling entry.",
+        "A community-building program for early-stage founders. Build your startup from a free dedicated desk at Taiwan Tech Arena, alongside a vetted community of founders and the 886 Studios team.",
+      introduction:
+        "In return, we ask you to be an active part of the community. Bring your ideas, brainstorm, collaborate, and help each other move forward.",
+      status: "Invite-only for now.",
       essentials: [
-        {
-          label: "Location",
-          value: "Taipei",
-          note: "Taiwan Tech Arena",
-        },
-        {
-          label: "Length",
-          value: "90 days",
-          note: "In-person residency",
-        },
-        {
-          label: "Entry",
-          value: "Invitation only",
-          note: "Rolling entry",
-        },
-        {
-          label: "Cost & equity",
-          value: "No cost. No equity.",
-          note: "",
-        },
-      ],
-      benefitsTitle: "What founders get",
-      benefits: [
-        {
-          title: "Free office space",
-          body: "Free desk space in our shared startup office.",
-        },
-        {
-          title: "Startup perks",
-          body: "Offers from AWS, Notion, Ramp, Webflow, and more to help you get started.",
-        },
-        {
-          title: "Community",
-          body: "Other founders to talk things through with, get feedback from, and learn alongside.",
-        },
+        { label: "Location", value: "Taipei" },
+        { label: "Length", value: "90 days" },
+        { label: "Entry", value: "Invite-only" },
       ],
       fit: {
-        eyebrow: "Who it's for",
         title: "Who it's for",
         criteria: [
           {
-            label: "Technical depth",
-            body: "You've built real products and have the technical skills to turn an idea into a business.",
+            label: "Early-stage founders",
+            body: "You have global ambitions, are building full-time in Taipei, and want to be around other serious builders.",
           },
           {
-            label: "Full-time commitment",
-            body: "You're working on your project full-time and can join us in the office regularly. You don't need to be here every day.",
-          },
-          {
-            label: "Curiosity & character",
-            body: "You're curious about technology and AI, take your work seriously, and enjoy helping others.",
+            label: "Creators & builders",
+            body: "You're a creator, researcher, engineer, designer, or operator working full-time on something novel, unique, and exciting.",
           },
         ],
       },
-      contribution:
-        "We ask every member to take part. Bring your questions, share what you're learning, and make time to help others.",
-      activities: [
-        "Workshops on product, engineering, and go-to-market",
-        "Member-led demos and feedback sessions",
-        "Community lunches and gatherings",
+      howItWorks: {
+        title: "How it works",
+        items: [
+          "Join by invitation for a 90-day residency.",
+          "Work from the office most of the week and take an active part in the community.",
+          "Take the initiative to connect, collaborate, and keep each other accountable. Iron sharpens iron.",
+        ],
+      },
+      benefitsTitle: "What members get",
+      benefits: [
+        {
+          title: "People worth knowing",
+          body: "Build relationships with talented, vetted founders, investors, and people in the wider 886 Studios community.",
+        },
+        {
+          title: "Your own desk",
+          body: "A free dedicated desk in our open, high-energy startup office at Taiwan Tech Arena for 90 days.",
+        },
+        {
+          title: "Exclusive startup perks",
+          body: "Access offers from AWS, Notion, Ramp, OpenAI, and more.",
+        },
+        {
+          title: "Events & shared learning",
+          body: "Invites to 886 Studios events, workshops, and talks.",
+        },
       ],
+      expectations: {
+        title: "What we expect from members",
+        items: [
+          {
+            label: "Show up",
+            body: "Be in the office most of the week. The purpose is to be part of the community.",
+          },
+          {
+            label: "Take ownership",
+            body: "Have high agency. You get out what you put in, so take the initiative to build a community that supports and elevates one another.",
+          },
+          {
+            label: "Keep each other accountable",
+            body: "Run a short weekly session together: goals for the week, what shipped, and where you're stuck. We'll help set it up at the beginning; members run it themselves.",
+          },
+          {
+            label: "Teach something",
+            body: "Volunteer to host a workshop or share what you've learned so everyone learns from each other.",
+          },
+          {
+            label: "Make time for each other",
+            body: "Organize lunches, runs, coffee, or whatever brings you together. We'll help facilitate some socials, and we expect members to take the initiative too.",
+          },
+        ],
+      },
+      support: {
+        title: "What to expect from us",
+        items: [
+          {
+            label: "A vetted community",
+            body: "We select and invite each member, bringing together a group of highly talented and ambitious builders who want to contribute. You'll also be invited to 886-hosted events, workshops, and talks.",
+          },
+          {
+            label: "Office space for 90 days",
+            body: "A dedicated desk and office space to work from throughout your residency.",
+          },
+        ],
+      },
+      accelerator: {
+        title: "What about the accelerator?",
+        body: "Residents can apply to ikigai Launchpad at any time through the same application process as everyone else. A desk isn't an acceptance, but working alongside us is a great way to get to know each other.",
+        cta: { label: "Explore ikigai Launchpad →", href: "https://withikigai.com/" },
+      },
       joining: {
-        eyebrow: "Joining Launch Station",
-        title: "Interested in joining?",
-        body: "Tell us what you're working on and what you'd bring to Launch Station.",
+        title: "Invite-only for now",
+        body: "Have a question or comment about 886 Residency?",
         cta: {
           label: "Ask about the residency",
-          href: "mailto:carter@886studios.com?subject=Launch%20Station%20residency%20inquiry",
+          href: "mailto:carter@886studios.com?subject=886%20Residency%20inquiry",
         },
       },
       card: {
-        body: "886 Studios’ invitation-only, 90-day builder residency in Taipei. Rolling entry, free office space, startup perks, and community. No cost or equity.",
+        body: "An invite-only, 90-day community program for full-time founders and builders in Taipei. Free dedicated desks at Taiwan Tech Arena, startup perks, and a community to build alongside.",
         cta: {
-          label: "Explore Launch Station →",
-          href: "/launch-station",
+          label: "Explore 886 Residency →",
+          href: "/residency",
         },
       },
     },

@@ -7,7 +7,7 @@ Canonical website: https://www.886studios.com/
 ## Programs
 
 - [ikigai Launchpad](https://www.886studios.com/ikigai-launchpad): A 10-week, in-person startup accelerator in Taipei with $100K USD in funding, weekly mentor office hours, workshops, investor introductions, and founder community support.
-- [Launch Station](https://www.886studios.com/launch-station): An invitation-only residency for full-time builders at Taiwan Tech Arena, with shared hot desks, rolling entry, a defined residency term, frequent in-person participation, and active community contribution.
+- [886 Residency](https://www.886studios.com/residency): An invite-only, 90-day community program for full-time founders and builders in Taipei, with free dedicated desks at Taiwan Tech Arena and active community participation.
 
 ## Organization
 

@@ -182,7 +182,7 @@ async function generateContentDates() {
       await getSiteContentDate("programs", "launchpad"),
       getFileDate("src/components/pages/ProgramsPage.astro"),
     ),
-    "/launch-station": maxDate(
+    "/residency": maxDate(
       await getSiteContentDate("programs", "launchStation"),
       getFileDate("src/components/pages/LaunchStationPage.astro"),
     ),

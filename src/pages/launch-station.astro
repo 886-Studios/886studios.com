@@ -1,24 +1,9 @@
 ---
-import LaunchStationPage from "../components/pages/LaunchStationPage.astro";
-import { contentDates } from "../data/contentDates.generated";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { getLaunchStationSchema, pageMeta } from "../lib/seo";
+import RedirectLayout from "../layouts/RedirectLayout.astro";
 ---
 
-<BaseLayout
-  title={pageMeta.launchStation.title}
-  description={pageMeta.launchStation.description}
-  dateModified={contentDates["/launch-station"]}
-  ogImage={pageMeta.launchStation.ogImage}
-  ogImageAlt={pageMeta.launchStation.ogImageAlt}
-  ogImageWidth={pageMeta.launchStation.ogImageWidth}
-  ogImageHeight={pageMeta.launchStation.ogImageHeight}
-  ogImageType={pageMeta.launchStation.ogImageType}
-  breadcrumbs={[
-    { name: "Launch Station", path: "/launch-station" },
-  ]}
-  structuredData={getLaunchStationSchema()}
-  hideFooterSocials
->
-  <LaunchStationPage />
-</BaseLayout>
+<RedirectLayout
+  destination="/residency"
+  title="886 Residency has moved"
+  label="Continue to 886 Residency"
+/>

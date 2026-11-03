@@ -527,7 +527,7 @@ drawer uses the same hierarchy. Edit it in `siteContent.nav.items`.
 | --- | --- | --- | --- |
 | | Home | `/` | Homepage |
 | Programs | ikigai Launchpad | `/ikigai-launchpad` | Program overview |
-| Programs | Launch Station | `/launch-station` | Launch Station overview |
+| Programs | 886 Residency | `/residency` | 886 Residency overview |
 | Community | Events | `/events` | Luma event archive |
 | Community | Resources | `/resources` | Resource library |
 | About us | Overview | `/about` | Studio introduction |
@@ -544,7 +544,7 @@ profile URLs redirect to them.
 
 The former `/about/team` and `/about/newsroom` paths redirect
 to their root-level routes. `/programs` redirects to `/ikigai-launchpad`, and
-`/programs/launch-station` redirects to `/launch-station`.
+`/launch-station` and `/programs/launch-station` redirect to `/residency`.
 
 The Manifesto draft is archived in `src/archived/manifesto.astro`. Neither
 `/manifesto` nor `/about/manifesto` is published; both return 404.
@@ -617,7 +617,7 @@ For frontend QA, verify at least:
 
 - `/`
 - `/ikigai-launchpad`
-- `/launch-station`
+- `/residency`
 - `/about`
 - `/team` and `/newsroom`
 - `/events`
