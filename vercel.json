@@ -296,13 +296,18 @@
       "permanent": true
     },
     {
+      "source": "/launch-station/:path*",
+      "destination": "/residency",
+      "permanent": true
+    },
+    {
       "source": "/program/launch-station/:path*",
-      "destination": "/launch-station",
+      "destination": "/residency",
       "permanent": true
     },
     {
       "source": "/programs/launch-station/:path*",
-      "destination": "/launch-station",
+      "destination": "/residency",
       "permanent": true
     },
     {
@@ -342,7 +347,7 @@
     },
     {
       "source": "/resources/launch-station-program-perks/:path*",
-      "destination": "/launch-station#ls-perks-heading",
+      "destination": "/residency#ls-perks-heading",
       "permanent": true
     },
     {

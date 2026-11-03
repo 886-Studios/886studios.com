@@ -21,10 +21,10 @@ const staticRoutes = [
     lastmod: contentDates["/ikigai-launchpad"],
   },
   {
-    path: "/launch-station",
+    path: "/residency",
     priority: "0.7",
     changefreq: "monthly",
-    lastmod: contentDates["/launch-station"],
+    lastmod: contentDates["/residency"],
   },
   { path: "/about", priority: "0.9", changefreq: "monthly" },
   { path: "/team", priority: "0.7", changefreq: "monthly" },

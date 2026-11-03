@@ -647,7 +647,7 @@ export const siteContent = {
         label: "Programs",
         children: [
           { id: "ikigai", label: "ikigai Launchpad", href: "/ikigai-launchpad" },
-          { id: "launch-station", label: "886 Residency", href: "/launch-station" },
+          { id: "launch-station", label: "886 Residency", href: "/residency" },
         ],
       },
       {
@@ -745,7 +745,7 @@ export const siteContent = {
           title: "886 Residency",
           body: "An invite-only, 90-day community program for full-time founders and builders in Taipei. Free dedicated desks at Taiwan Tech Arena, startup perks, and people to build alongside.",
           ctaLabel: "Learn more →",
-          ctaHref: "/launch-station",
+          ctaHref: "/residency",
         },
       ],
     },
@@ -1135,14 +1135,14 @@ export const siteContent = {
         {
           src: "/assets/launch-station/community-dinner-960.webp",
           srcset: "/assets/launch-station/community-dinner-480.webp 480w, /assets/launch-station/community-dinner-960.webp 960w, /assets/launch-station/community-dinner-1440.webp 1440w",
-          alt: "Friends smiling for a selfie around a shared dinner table after Launch Station Prezzy Day",
+          alt: "Friends smiling for a selfie around a shared dinner table after 886 Residency Prezzy Day",
           width: 960,
           height: 720,
         },
         {
           src: "/assets/launch-station/community-lunch-960.webp",
           srcset: "/assets/launch-station/community-lunch-480.webp 480w, /assets/launch-station/community-lunch-960.webp 960w, /assets/launch-station/community-lunch-1440.webp 1440w",
-          alt: "Six people smiling around a restaurant table during a Launch Station community lunch",
+          alt: "Six people smiling around a restaurant table during an 886 Residency community lunch",
           width: 960,
           height: 720,
         },
@@ -1252,7 +1252,7 @@ export const siteContent = {
         body: "An invite-only, 90-day community program for full-time founders and builders in Taipei. Free dedicated desks at Taiwan Tech Arena, startup perks, and a community to build alongside.",
         cta: {
           label: "Explore 886 Residency →",
-          href: "/launch-station",
+          href: "/residency",
         },
       },
     },

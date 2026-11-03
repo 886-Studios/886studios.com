@@ -109,8 +109,14 @@
       "label": "Continue to ikigai Launchpad"
     },
     {
+      "route": "/launch-station",
+      "destination": "/residency",
+      "title": "886 Residency has moved | 886 Studios",
+      "label": "Continue to 886 Residency"
+    },
+    {
       "route": "/programs/launch-station",
-      "destination": "/launch-station",
+      "destination": "/residency",
       "title": "886 Residency has moved | 886 Studios",
       "label": "Continue to 886 Residency"
     }

@@ -66,7 +66,7 @@ export const pageMeta = {
     description:
       "886 Residency is an invite-only, 90-day community program for full-time founders and builders in Taipei, with free dedicated desks at Taiwan Tech Arena.",
     ogImage: `${siteConfig.url}/assets/launch-station/prezzy-day.jpg`,
-    ogImageAlt: "The community gathered at Launch Station Prezzy Day",
+    ogImageAlt: "The community gathered at 886 Residency Prezzy Day",
     ogImageWidth: 1920,
     ogImageHeight: 1440,
     ogImageType: "image/jpeg",
@@ -409,11 +409,11 @@ export function getLaunchStationSchema(): JsonLdObject {
 
   return {
     "@type": "Service",
-    "@id": `${siteConfig.url}/launch-station#launch-station`,
+    "@id": `${siteConfig.url}/residency#residency`,
     name: launchStation.title,
     serviceType: "Invitation-only builder residency",
-    url: `${siteConfig.url}/launch-station`,
-    mainEntityOfPage: { "@id": getPageFragmentId("/launch-station", "webpage") },
+    url: `${siteConfig.url}/residency`,
+    mainEntityOfPage: { "@id": getPageFragmentId("/residency", "webpage") },
     provider: { "@id": organizationId },
     areaServed: {
       "@type": "Place",

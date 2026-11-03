@@ -252,7 +252,7 @@ for (const filePath of htmlFiles) {
             "/incorporation-101",
             "/interview-guidebook",
             "/ikigai-launchpad",
-            "/launch-station",
+            "/residency",
             "/resources",
           ].includes(route) ||
           route.startsWith("/blog/") ||
@@ -563,19 +563,23 @@ if (!pages.some((page) => page.route === "/ikigai-launchpad" && page.isIndexable
 if (!pages.some((page) => page.route === "/programs" && !page.isIndexable)) {
   fail("/programs: missing noindex redirect fallback");
 }
-if (!redirects.some((redirect) =>
-  redirect.source === "/programs/launch-station/:path*" &&
-  redirect.destination === "/launch-station" &&
-  redirect.permanent === true
-)) fail("/programs/launch-station: missing permanent redirect to /launch-station");
-if (!pages.some((page) => page.route === "/launch-station" && page.isIndexable)) {
-  fail("/launch-station: missing indexable Launch Station page");
+for (const source of ["/launch-station/:path*", "/program/launch-station/:path*", "/programs/launch-station/:path*"]) {
+  if (!redirects.some((redirect) =>
+    redirect.source === source &&
+    redirect.destination === "/residency" &&
+    redirect.permanent === true
+  )) fail(`${source}: missing permanent redirect to /residency`);
 }
-if (!pages.some((page) => page.route === "/programs/launch-station" && !page.isIndexable)) {
-  fail("/programs/launch-station: missing noindex redirect fallback");
+if (!pages.some((page) => page.route === "/residency" && page.isIndexable)) {
+  fail("/residency: missing indexable 886 Residency page");
 }
-if (redirects.some((redirect) => redirect.source === "/launch-station/:path*")) {
-  fail("/launch-station: legacy redirect must not intercept the current route");
+for (const route of ["/launch-station", "/programs/launch-station"]) {
+  if (!pages.some((page) => page.route === route && !page.isIndexable)) {
+    fail(`${route}: missing noindex redirect fallback`);
+  }
+}
+if (redirects.some((redirect) => ["/residency", "/residency/:path*"].includes(redirect.source))) {
+  fail("/residency: legacy redirect must not intercept the current route");
 }
 if (deploymentConfig.trailingSlash !== false) fail("vercel.json: trailing slash normalization is not enabled");
 if (!redirects.some((redirect) =>

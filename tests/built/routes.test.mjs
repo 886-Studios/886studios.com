@@ -41,6 +41,28 @@ for (const fixture of fixtures.redirects) {
   });
 }
 
+test("886 Residency uses its new canonical route, schema, sitemap, and navigation", async () => {
+  const html = await readBuiltPage("/residency");
+  const url = "https://www.886studios.com/residency";
+  assert.equal(canonical(html), url);
+  assert.ok(!metadata(html, "robots")?.includes("noindex"));
+  assert.match(textContent(html), /886 Residency/);
+  const graph = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)]
+    .flatMap(([, json]) => JSON.parse(json)["@graph"] ?? []);
+  const service = graph.find((entry) => entry["@type"] === "Service");
+  assert.equal(service?.url, url);
+  assert.equal(service?.["@id"], `${url}#residency`);
+  assert.equal(service?.mainEntityOfPage?.["@id"], `${url}#webpage`);
+  const sitemap = await readBuiltFile("sitemap.xml");
+  assert.ok(sitemap.includes(`<loc>${url}</loc>`));
+  assert.ok(!sitemap.includes("/launch-station</loc>"));
+  for (const route of ["/", "/residency", "/ikigai-launchpad", "/resources/application-guide"]) {
+    const links = tags(await readBuiltPage(route), "a");
+    assert.ok(links.some((link) => link.href === "/residency"), `${route}: missing residency link`);
+    assert.ok(!links.some((link) => /^\/(?:programs\/)?launch-station(?:[?#/]|$)/.test(link.href ?? "")), `${route}: stale residency link`);
+  }
+});
+
 test("every resource route keeps its rendered guide, metadata, and structured data", async () => {
   assert.deepEqual(await resourceRoutes(), fixtures.resources.map((fixture) => fixture.route).sort());
   for (const { route, ...expected } of fixtures.resources) {

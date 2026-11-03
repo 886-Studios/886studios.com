@@ -1,0 +1,24 @@
+---
+import LaunchStationPage from "../components/pages/LaunchStationPage.astro";
+import { contentDates } from "../data/contentDates.generated";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getLaunchStationSchema, pageMeta } from "../lib/seo";
+---
+
+<BaseLayout
+  title={pageMeta.launchStation.title}
+  description={pageMeta.launchStation.description}
+  dateModified={contentDates["/residency"]}
+  ogImage={pageMeta.launchStation.ogImage}
+  ogImageAlt={pageMeta.launchStation.ogImageAlt}
+  ogImageWidth={pageMeta.launchStation.ogImageWidth}
+  ogImageHeight={pageMeta.launchStation.ogImageHeight}
+  ogImageType={pageMeta.launchStation.ogImageType}
+  breadcrumbs={[
+    { name: "886 Residency", path: "/residency" },
+  ]}
+  structuredData={getLaunchStationSchema()}
+  hideFooterSocials
+>
+  <LaunchStationPage />
+</BaseLayout>
