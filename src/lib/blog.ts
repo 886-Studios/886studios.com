@@ -34,7 +34,11 @@ export function getLatestBlogModifiedDate(posts: BlogPost[]) {
 }
 
 export function getBlogAuthorHref(author: string) {
-  return author === "Carter Wang" ? "/team/carter" : undefined;
+  const authorProfiles: Record<string, string> = {
+    "Carter Wang": "/team/carter",
+    "Max Hsieh": "/team/max",
+  };
+  return authorProfiles[author];
 }
 
 async function loadBlogPosts() {
