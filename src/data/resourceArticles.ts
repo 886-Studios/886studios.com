@@ -238,8 +238,8 @@ export const resourceArticles: ResourceArticle[] = [
             name: "886 Launchpad",
             focus:
               "AI, IoT, Gaming, Consumer, Digital Transformation, Sportstech, Web 3, etc",
-            url: "886studios.com/accelerator",
-            href: "/accelerator",
+            url: "886studios.com/launchpad",
+            href: "/launchpad",
             year: "2024",
             contact: "carter@886studios.com",
           },

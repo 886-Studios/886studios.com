@@ -2,7 +2,7 @@ export function hasValidBrandTitle(route, title) {
   if (typeof title !== "string" || !title.trim()) return false;
 
   // The program landing page intentionally leads with its own brand.
-  if (route === "/accelerator" && title === "886 Launchpad | Startup Accelerator in Taipei") {
+  if (route === "/launchpad" && title === "886 Launchpad | Startup Accelerator in Taipei") {
     return true;
   }
 

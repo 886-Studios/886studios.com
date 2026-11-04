@@ -251,7 +251,7 @@ for (const filePath of htmlFiles) {
             "/blog",
             "/incorporation-101",
             "/interview-guidebook",
-            "/accelerator",
+            "/launchpad",
             "/residency",
             "/resources",
           ].includes(route) ||
@@ -293,11 +293,11 @@ for (const filePath of htmlFiles) {
           }
           if (
             homepageSchema?.mentions?.["@id"] !==
-            `${productionOrigin}/accelerator#launchpad`
+            `${productionOrigin}/launchpad#launchpad`
           ) {
             fail("/: homepage WebPage does not identify 886 Launchpad as its primary mention");
           }
-          if (homepageSchema?.significantLink !== `${productionOrigin}/accelerator`) {
+          if (homepageSchema?.significantLink !== `${productionOrigin}/launchpad`) {
             fail("/: homepage WebPage does not identify the 886 Launchpad page as significant");
           }
         }
@@ -550,18 +550,21 @@ if (!llms.includes("https://www.886studios.com/resources/y-combinator-101")) {
 
 const deploymentConfig = JSON.parse(await readFile(path.join(projectRoot, "vercel.json"), "utf8"));
 const redirects = Array.isArray(deploymentConfig.redirects) ? deploymentConfig.redirects : [];
-for (const source of ["/programs", "/programs/", "/ikigai-launchpad", "/ikigai-launchpad/"]) {
+for (const source of ["/accelerator", "/accelerator/", "/programs", "/programs/", "/ikigai-launchpad", "/ikigai-launchpad/"]) {
   if (!redirects.some((redirect) =>
     redirect.source === source &&
-    redirect.destination === "/accelerator" &&
+    redirect.destination === "/launchpad" &&
     redirect.permanent === true
-  )) fail(`${source}: missing permanent redirect to /accelerator`);
+  )) fail(`${source}: missing permanent redirect to /launchpad`);
 }
-if (!pages.some((page) => page.route === "/accelerator" && page.isIndexable)) {
-  fail("/accelerator: missing indexable Launchpad page");
+if (!pages.some((page) => page.route === "/launchpad" && page.isIndexable)) {
+  fail("/launchpad: missing indexable Launchpad page");
 }
 if (!pages.some((page) => page.route === "/programs" && !page.isIndexable)) {
   fail("/programs: missing noindex redirect fallback");
+}
+if (!pages.some((page) => page.route === "/accelerator" && !page.isIndexable)) {
+  fail("/accelerator: missing noindex redirect fallback");
 }
 for (const source of ["/launch-station/:path*", "/program/launch-station/:path*", "/programs/launch-station/:path*"]) {
   if (!redirects.some((redirect) =>

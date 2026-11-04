@@ -650,7 +650,7 @@ export const siteContent = {
         id: "programs",
         label: "Programs",
         children: [
-          { id: "accelerator", label: "886 Launchpad", href: "/accelerator" },
+          { id: "launchpad", label: "886 Launchpad", href: "/launchpad" },
           { id: "launch-station", label: "886 Residency", href: "/residency" },
         ],
       },
@@ -683,7 +683,7 @@ export const siteContent = {
       body: "886 Studios is where the next generation of global tech companies are built.\nWe run 886 Launchpad, the premier Silicon Valley-style accelerator in Taipei\nbrought to you by the founders of Twitch, Guitar Hero, Playdom, Kabam, & more.",
       cta: {
         label: "Learn more about 886 Launchpad",
-        href: "/accelerator",
+        href: "/launchpad",
       },
     },
     photos: {
@@ -741,7 +741,7 @@ export const siteContent = {
         body: "$100K USD in funding, hands-on mentorship from successful Silicon Valley founders, and a tight-knit 10-week accelerator program designed for startups that want to move fast.",
         meta: ["$100K USD funding", "Partner office hours", "Batch community"],
         ctaLabel: "Learn more →",
-        ctaHref: "/accelerator",
+        ctaHref: "/launchpad",
       },
       secondary: [
         {
@@ -1249,7 +1249,7 @@ export const siteContent = {
       accelerator: {
         title: "What about the accelerator?",
         body: "Residents can apply to 886 Launchpad at any time through the same application process as everyone else. A desk isn't an acceptance, but working alongside us is a great way to get to know each other.",
-        cta: { label: "Explore 886 Launchpad →", href: "/accelerator" },
+        cta: { label: "Explore 886 Launchpad →", href: "/launchpad" },
       },
       joining: {
         title: "Invite-only for now",
@@ -1816,7 +1816,7 @@ export const siteContent = {
         "886 Studios and Lifelike Capital work together to support founders building ambitious companies with global potential.",
       program: {
         label: "886 Launchpad",
-        href: "/accelerator",
+        href: "/launchpad",
       },
       programDescription:
         "is the result of our collaboration, a shared program created to help the next generation of startups grow globally.",

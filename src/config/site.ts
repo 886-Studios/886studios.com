@@ -53,7 +53,7 @@ const routeImagePreloads: Record<string, RouteImagePreload[]> = {
       type: "image/webp",
     },
   ],
-  "/accelerator": [
+  "/launchpad": [
     {
       href: "/assets/programs/ikigai-audience-theater-1280.webp",
       type: "image/webp",

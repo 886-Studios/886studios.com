@@ -5,7 +5,7 @@ Branch: `rebrand/886-launchpad`. This work is committed locally and is not merge
 ## Completed in the website
 
 - Current program copy, navigation, team biographies, founder guides, cohort labels, accessibility labels, analytics labels, and structured data use **886 Launchpad**.
-- `/accelerator` is the canonical program route. `/ikigai-launchpad`, `/programs`, and their trailing-slash variants redirect there; the legacy `withikigai.com` redirect also targets it. Sitemap, content dates, preload configuration, and `llms.txt` use the new route.
+- `/launchpad` is the canonical program route. `/accelerator`, `/ikigai-launchpad`, `/programs`, and their trailing-slash variants redirect there; the legacy `withikigai.com` redirect also targets it. Sitemap, content dates, preload configuration, and `llms.txt` use the new route.
 - Removed standalone ikigai program logos, the unused application announcement graphic, and old newsletter artwork. The program heading uses live text.
 - Website newsletter copy, subscription cards, metadata, and attribution use **886 Insights**. Subscription and RSS endpoints remain at `886studios.substack.com`.
 - Past event records and names are unchanged. Original third-party article titles and historical imported articles are preserved. Existing photos and their filenames are retained; this change does not retouch historical signage or clothing in photography.

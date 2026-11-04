@@ -9,10 +9,10 @@ const { currentPath } = Astro.props;
 const isResidencyPage = currentPath === "/residency";
 const isPreparationGuide = currentPath.startsWith("/resources/") || ["/incorporation-101", "/interview-guidebook"].includes(currentPath);
 const isProgramReview = isResidencyPage || isPreparationGuide;
-const navCta = isPreparationGuide ? { label: "Review program", href: "/accelerator" } : isResidencyPage ? siteContent.programs.launchStation.joining.cta : siteContent.nav.cta;
+const navCta = isPreparationGuide ? { label: "Review program", href: "/launchpad" } : isResidencyPage ? siteContent.programs.launchStation.joining.cta : siteContent.nav.cta;
 
 const isActiveNavItem = (href: string) => {
-  if (href === "/accelerator" || href === "/about") {
+  if (href === "/launchpad" || href === "/about") {
     return currentPath === href;
   }
   if (href === "/resources" && ["/incorporation-101", "/interview-guidebook"].includes(currentPath)) {

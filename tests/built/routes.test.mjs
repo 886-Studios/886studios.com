@@ -56,16 +56,16 @@ test("886 Residency uses its new canonical route, schema, sitemap, and navigatio
   const sitemap = await readBuiltFile("sitemap.xml");
   assert.ok(sitemap.includes(`<loc>${url}</loc>`));
   assert.ok(!sitemap.includes("/launch-station</loc>"));
-  for (const route of ["/", "/residency", "/accelerator", "/resources/application-guide"]) {
+  for (const route of ["/", "/residency", "/launchpad", "/resources/application-guide"]) {
     const links = tags(await readBuiltPage(route), "a");
     assert.ok(links.some((link) => link.href === "/residency"), `${route}: missing residency link`);
     assert.ok(!links.some((link) => /^\/(?:programs\/)?launch-station(?:[?#/]|$)/.test(link.href ?? "")), `${route}: stale residency link`);
   }
 });
 
-test("886 Launchpad uses the accelerator canonical URL, schema, and navigation", async () => {
-  const html = await readBuiltPage("/accelerator");
-  const url = "https://www.886studios.com/accelerator";
+test("886 Launchpad uses the launchpad canonical URL, schema, and navigation", async () => {
+  const html = await readBuiltPage("/launchpad");
+  const url = "https://www.886studios.com/launchpad";
   assert.equal(canonical(html), url);
   assert.ok(!metadata(html, "robots")?.includes("noindex"));
   assert.equal(textContent(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] ?? ""), "886 Launchpad");
@@ -78,10 +78,11 @@ test("886 Launchpad uses the accelerator canonical URL, schema, and navigation",
   const sitemap = await readBuiltFile("sitemap.xml");
   assert.ok(sitemap.includes(`<loc>${url}</loc>`));
   assert.ok(!sitemap.includes("/ikigai-launchpad</loc>"));
-  for (const route of ["/", "/accelerator", "/residency", "/resources/application-guide"]) {
+  assert.ok(!sitemap.includes("/accelerator</loc>"));
+  for (const route of ["/", "/launchpad", "/residency", "/resources/application-guide"]) {
     const page = await readBuiltPage(route);
-    assert.ok(tags(page, "a").some((link) => link.href === "/accelerator"), route);
-    assert.ok(!tags(page, "a").some((link) => /^\/ikigai-launchpad(?:[?#/]|$)/.test(link.href ?? "")), route);
+    assert.ok(tags(page, "a").some((link) => link.href === "/launchpad"), route);
+    assert.ok(!tags(page, "a").some((link) => /^\/(?:ikigai-launchpad|accelerator)(?:[?#/]|$)/.test(link.href ?? "")), route);
     assert.ok(!/ikigai-(?:logo|mark|wordmark)/i.test(page), route);
   }
 });

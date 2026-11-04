@@ -1,6 +1,12 @@
 {
   "redirects": [
     {
+      "route": "/accelerator",
+      "destination": "/launchpad",
+      "title": "886 Launchpad has moved | 886 Studios",
+      "label": "Continue to 886 Launchpad"
+    },
+    {
       "route": "/about/carter-wang",
       "destination": "/team/carter",
       "title": "Profile has moved | 886 Studios",
@@ -104,7 +110,7 @@
     },
     {
       "route": "/programs",
-      "destination": "/accelerator",
+      "destination": "/launchpad",
       "title": "886 Launchpad has moved | 886 Studios",
       "label": "Continue to 886 Launchpad"
     },
@@ -122,7 +128,7 @@
     },
     {
       "route": "/ikigai-launchpad",
-      "destination": "/accelerator",
+      "destination": "/launchpad",
       "title": "886 Launchpad has moved | 886 Studios",
       "label": "Continue to 886 Launchpad"
     }
