@@ -91,20 +91,12 @@
 
 .launch-station-facts {
   grid-column: 1 / -1;
-  display: grid;
+  width: 100%;
+  max-width: none;
+}
+
+.launch-station-facts .prog-brief-facts {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-md);
-  margin: 0;
-  padding-block: var(--space-md);
-  border-block: 1px solid var(--border);
-}
-
-.launch-station-facts > :nth-child(2) {
-  text-align: center;
-}
-
-.launch-station-facts > :last-child {
-  text-align: right;
 }
 
 .launch-station-criteria > div {
@@ -323,17 +315,8 @@
     font-size: 1.75rem;
   }
 
-  .launch-station-facts {
-    gap: var(--space-xs);
-  }
-
-  .launch-station-facts strong {
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-
-  .launch-station-facts .prog-brief-fact:last-child {
-    min-width: max-content;
+  .launch-station-facts .prog-brief-facts {
+    grid-template-columns: 1fr;
   }
 
   .launch-station-contact {
