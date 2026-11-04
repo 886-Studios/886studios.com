@@ -436,8 +436,8 @@ export const portfolioCompanies = [
     logo: {
       src: "/assets/portfolio/kardomo.webp",
       alt: "Kardomo logo",
-      width: 879,
-      height: 1149,
+      width: 512,
+      height: 669,
       imageClass: "is-tall",
     },
     description:
