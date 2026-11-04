@@ -331,7 +331,7 @@
       "permanent": true
     },
     {
-      "source": "/:legacy(program|velocity-program|mentorship|tech-pilot-program)/:path*",
+      "source": "/:legacy(program|velocity-program|mentorship)/:path*",
       "destination": "/launchpad",
       "permanent": true
     },
