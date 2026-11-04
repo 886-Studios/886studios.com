@@ -1489,7 +1489,7 @@ export const siteContent = {
           ],
         },
         {
-          title: "Finances",
+          title: "Finance",
           items: [
             {
               label: "Carta",
@@ -1522,7 +1522,7 @@ export const siteContent = {
           title: "Marketing",
           items: [
             {
-              label: "Hubspot",
+              label: "HubSpot",
               href: "https://www.hubspot.com",
               logoSrc: "/assets/logos/hubspot.webp",
             },
