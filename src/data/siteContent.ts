@@ -1035,7 +1035,7 @@ export const siteContent = {
       faqs: [
         {
           question: "What happened to ikigai Launchpad?",
-          answer: "The ikigai Launchpad name has been retired. The accelerator is now called 886 Launchpad, aligning its branding with 886 Studios and 886 Residency.",
+          answer: "The ikigai Launchpad name has been retired. The accelerator is now called 886 Launchpad.",
         },
         {
           question: "When is the next batch?",
