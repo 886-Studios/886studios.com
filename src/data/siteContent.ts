@@ -1145,7 +1145,7 @@ export const siteContent = {
           height: 720,
         },
         {
-          caption: "Community lunch",
+          caption: "Community Lunch",
           src: "/assets/launch-station/community-lunch-960.webp",
           srcset: "/assets/launch-station/community-lunch-480.webp 480w, /assets/launch-station/community-lunch-960.webp 960w, /assets/launch-station/community-lunch-1440.webp 1440w",
           alt: "Six people smiling around a restaurant table during an 886 Residency community lunch",
