@@ -199,10 +199,13 @@
   }
 }
 
-.launch-station-alternative > p,
 .launch-station-joining-copy > p,
 .launch-station-activities {
   max-width: 68ch;
+  text-wrap: pretty;
+}
+
+.launch-station-alternative > p {
   text-wrap: pretty;
 }
 
