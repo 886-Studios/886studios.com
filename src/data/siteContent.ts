@@ -1246,6 +1246,12 @@ export const siteContent = {
         body: "Residents can apply to 886 Launchpad at any time through the same application process as everyone else. A desk isn't an acceptance, but working alongside us is a great way to get to know each other.",
         cta: { label: "Explore 886 Launchpad →", href: "/accelerator" },
       },
+      faqs: [
+        {
+          question: "What happened to ikigai Launchpad?",
+          answer: "The ikigai Launchpad name has been retired. The accelerator is now called 886 Launchpad, aligning its branding with 886 Studios and 886 Residency.",
+        },
+      ],
       joining: {
         title: "Invite-only for now",
         body: "Have a question or comment about 886 Residency?",
