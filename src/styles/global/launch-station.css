@@ -99,6 +99,14 @@
   border-block: 1px solid var(--border);
 }
 
+.launch-station-facts > :nth-child(2) {
+  text-align: center;
+}
+
+.launch-station-facts > :last-child {
+  text-align: right;
+}
+
 .launch-station-criteria > div {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
