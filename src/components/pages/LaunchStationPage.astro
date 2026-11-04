@@ -25,16 +25,14 @@ const { launchStation } = siteContent.programs;
           <p class="program-hero-status">{launchStation.status}</p>
         </div>
       </div>
-      <aside class="launch-station-facts" aria-label="886 Residency facts">
-        <dl class="prog-brief-facts">
-          {launchStation.essentials.map((item) => (
-            <div class="prog-brief-fact">
-              <dt>{item.label}</dt>
-              <dd><strong>{item.value}</strong></dd>
-            </div>
-          ))}
-        </dl>
-      </aside>
+      <dl class="launch-station-facts" aria-label="886 Residency facts">
+        {launchStation.essentials.map((item) => (
+          <div class="prog-brief-fact">
+            <dt>{item.label}</dt>
+            <dd><strong>{item.value}</strong></dd>
+          </div>
+        ))}
+      </dl>
       <figure class="launch-station-photo">
         <img
           src={launchStation.heroPhoto.src}
