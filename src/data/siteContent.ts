@@ -773,6 +773,7 @@ export const siteContent = {
         body: "$100K USD, mentor office hours, investor intros, and support beyond the batch. From refining their vision to building lasting connections, we help founders move their companies forward. Join us in Taipei.",
       },
       status: {
+        nextBatch: launchpadNextBatch,
         announcement: launchpadScheduleNote,
         summary: `Rolling applications · Next batch: ${launchpadNextBatch}.`,
       },

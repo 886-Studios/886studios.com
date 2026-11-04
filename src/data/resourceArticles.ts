@@ -1249,7 +1249,7 @@ export const standaloneResourceArticles: ResourceArticle[] = [
       {
         title: "After the Interview",
         paragraphs: [
-          "If we have additional follow-up questions, our operations team will contact you via email. If our partners wish to have further discussions, we may request a second round of interviews. Final decisions are generally communicated after interviews are completed and all applicants have been reviewed.",
+          "If we have additional follow-up questions, our operations team will contact you via email. If our partners wish to have further discussions, we may request a second round of interviews. Applications are reviewed on a rolling basis, and we will contact you by email with next steps.",
           "Good luck to all applicants!",
         ],
       },

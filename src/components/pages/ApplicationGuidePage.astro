@@ -1,6 +1,9 @@
 ---
 import ResourceGuide from "../ResourceGuide.astro";
 import ResourceGuideHero from "../ResourceGuideHero.astro";
+import { siteContent } from "../../data/siteContent";
+
+const { status } = siteContent.programs.launchpad;
 ---
 
 <ResourceGuide>
@@ -57,7 +60,7 @@ import ResourceGuideHero from "../ResourceGuideHero.astro";
         <h3>What is 886 Launchpad?</h3>
         <p class="mt-3">886 Launchpad is 886 Studios&#x27; 10-week, in-person accelerator in Taipei for early-stage founders building for a global market. Founders can apply from anywhere and should be working full-time, or ready to do so. All co-founders are expected to join on site for the core program.</p>
         <p class="mt-4">At 886 Launchpad, we invest US$100,000 for 8% through a SAFE, with no additional program fee. <a href="/accelerator" class="guide-link">See our program details</a>.</p>
-        <p class="mt-4">Our next batch is Spring 2027. Applications are open and reviewed on a rolling basis. Check our <a href="/accelerator" class="guide-link">program page</a> for updates.</p>
+        <p class="mt-4">Our next batch is {status.nextBatch}. Applications are open and reviewed on a rolling basis. Check our <a href="/accelerator" class="guide-link">program page</a> for updates.</p>
         <p class="mt-4">Looking for workspace and a founder community rather than an accelerator investment? <a href="/residency" class="guide-link">886 Residency</a> is a separate, invite-only, 90-day community program in Taipei with free dedicated desks at Taiwan Tech Arena.</p>
       </div>
     </div>
@@ -125,7 +128,7 @@ import ResourceGuideHero from "../ResourceGuideHero.astro";
         </div>
         <div id="application-timing" class="guide-anchor">
           <h3>When can I apply to the next 886 Launchpad batch?</h3>
-          <p class="mt-3">Our next 886 Launchpad batch is Spring 2027. Applications are open and reviewed on a rolling basis. Check our program page for updates.</p>
+          <p class="mt-3">Our next 886 Launchpad batch is {status.nextBatch}. Applications are open and reviewed on a rolling basis. Check our program page for updates.</p>
           <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/accelerator">Application details</a></span>.</p>
         </div>
         <div id="business-metrics" class="guide-anchor">
@@ -139,7 +142,7 @@ import ResourceGuideHero from "../ResourceGuideHero.astro";
           <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/accelerator">Interview details</a></span><span> and <a class="guide-link" href="/interview-guidebook">the Interview Guidebook</a></span>.</p>
         </div>
       </div>
-      <p class="guide-faq__sources mt-7">Prepared by 886 Studios. Program details reviewed on <time datetime="2026-10-12">October 12, 2026</time>. First interview guidance updated on <time datetime="2026-10-14">October 14, 2026</time>. Refer to your interview invitation for the details of your interview.</p>
+      <p class="guide-faq__sources mt-7">Prepared by 886 Studios. Program details reviewed on <time datetime="2026-11-04">November 4, 2026</time>. First interview guidance updated on <time datetime="2026-10-14">October 14, 2026</time>. Refer to your interview invitation for the details of your interview.</p>
       <div class="guide-next mt-10">
         <h2>Check your next step</h2>
         <p class="mt-4">Review the current program details and application timing before you apply. Use the preparation checklist now so your answers are ready when the next application window is announced.</p>
