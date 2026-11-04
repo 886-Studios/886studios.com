@@ -130,18 +130,6 @@ const { launchStation } = siteContent.programs;
       </a>
     </section>
 
-    <section aria-labelledby="ls-faq-heading">
-      <h2 id="ls-faq-heading">Questions &amp; answers</h2>
-      <dl class="launch-station-criteria">
-        {launchStation.faqs.map((faq) => (
-          <div>
-            <dt>{faq.question}</dt>
-            <dd>{faq.answer}</dd>
-          </div>
-        ))}
-      </dl>
-    </section>
-
     <section class="launch-station-joining" aria-labelledby="ls-joining-heading">
       <div class="launch-station-joining-copy">
         <h2 id="ls-joining-heading">{launchStation.joining.title}</h2>
