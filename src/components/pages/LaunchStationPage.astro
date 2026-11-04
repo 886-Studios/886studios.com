@@ -79,35 +79,19 @@ const { launchStation } = siteContent.programs;
       </dl>
       <div class="launch-station-community-photos">
         {launchStation.communityPhotos.map((photo) => (
-          <a
-            class="residency-snapshot"
-            href={photo.fullSizeSrc}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View photo: ${photo.caption} (opens in a new tab)`}
-          >
-            <figure>
-              <img
-                src={photo.src}
-                srcset={photo.srcset}
-                sizes="(max-width: 640px) calc(100vw - 72px), (max-width: 1160px) calc(50vw - 68px), 508px"
-                alt={photo.alt}
-                width={photo.width}
-                height={photo.height}
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>
-                <span>{photo.caption}</span>
-                <span class="residency-snapshot-action">
-                  View photo
-                  <svg viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
-                    <path d="M5 15 15 5M5 5h10v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </span>
-              </figcaption>
-            </figure>
-          </a>
+          <figure class="residency-snapshot">
+            <img
+              src={photo.src}
+              srcset={photo.srcset}
+              sizes="(max-width: 640px) calc(100vw - 72px), (max-width: 1160px) calc(50vw - 68px), 508px"
+              alt={photo.alt}
+              width={photo.width}
+              height={photo.height}
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>{photo.caption}</figcaption>
+          </figure>
         ))}
       </div>
     </section>
