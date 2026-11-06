@@ -247,32 +247,15 @@
   transition: color 0.2s ease;
 }
 
-.ev-tag-icon {
-  width: 16px;
-  height: 16px;
-  flex: 0 0 16px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  color: var(--purple-bright);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 .ev-card--link:hover .ev-tag {
   color: var(--purple-bright);
-}
-
-.ev-card--link:hover .ev-tag-icon {
-  transform: translate(2px, -2px);
 }
 
 .ev-card--featured .ev-tag {
   min-height: 46px;
   justify-content: center;
   gap: 9px;
-  padding: 0 18px 0 22px;
+  padding: 0 22px;
   border: 1px solid rgba(167, 139, 250, 0.52);
   border-radius: 999px;
   background: linear-gradient(135deg, var(--purple-action), var(--purple-action-hover));
@@ -373,7 +356,7 @@
   justify-content: center;
   justify-self: end;
   gap: 10px;
-  padding: 0 18px 0 22px;
+  padding: 0 22px;
   border: 1px solid rgba(167, 139, 250, 0.52);
   border-radius: 999px;
   background: linear-gradient(135deg, var(--purple-action), var(--purple-action-hover));
@@ -403,23 +386,4 @@
 .events-calendar-cta:focus-visible {
   outline: 2px solid var(--purple-bright);
   outline-offset: 3px;
-}
-
-.events-calendar-cta-mark {
-  display: grid;
-  width: 22px;
-  height: 22px;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.16);
-}
-
-.events-calendar-cta-mark svg {
-  width: 14px;
-  height: 14px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
 }
