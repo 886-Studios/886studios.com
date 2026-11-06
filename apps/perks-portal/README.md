@@ -192,7 +192,7 @@ the catalog enters the private function; local credentials and source snapshots 
 
 ## Content and sources
 
-`private/catalog.json` now contains 22 partner entries: 21 sourced offers (including Supabase) and Zettabyte, whose credit amount and redemption link are unconfirmed. Its entry explicitly asks founders to contact the team. Negotiations, rejected applications, and unavailable offers are excluded.
+The complete private catalog is expected to contain 23 partner entries: 22 sourced offers (including Supabase and Granola) and Zettabyte, whose credit amount and redemption link are unconfirmed. Its entry explicitly asks founders to contact the team. Negotiations, rejected applications, and unavailable offers are excluded. The catalog test checks this inventory; an older local copy must be reconciled before release.
 
 The catalog was checked against the complete Notion founder-facing Perks database and Perks – Internal on September 22, 2026. Linear is included from its completed internal record. Zettabyte is included from the public 886 website and the August 31 partnership meeting note. Source URLs are retained per entry for maintenance but not rendered to portfolio visitors. Detailed source snapshots are kept locally in `private/source-records.json` and are never included in the build.
 
@@ -208,9 +208,9 @@ Uses the 886 Studios logo, Geist typography, dark background, and restrained pur
 
 Link previews use the main site's existing 1200 × 630 logo image at `/assets/886-studios-preview.png`, through Open Graph and Twitter metadata on both the access screen and directory. Only public branding appears in preview metadata; private offer details stay behind the access code, and all portal responses retain their no-index protection.
 
-Search, a compact Category / A–Z sort toggle, and rounded type-filter buttons share one form. The toggle uses native radio inputs with a 32px visual track, 44px tap targets, keyboard arrow navigation, and an accessible “Sort by” legend. A–Z is the default and orders all partners by name. Optional Category sorting follows the filter order and alphabetizes partners within each type. The sort choice combines with search and filters, survives refresh through the URL, and is retained when clearing filters. All controls work without JavaScript; when JavaScript is available, results update immediately. On small screens, search takes a full row, the compact toggle aligns right below it, and the filter buttons wrap. Desktop entries use separate Partner, Type, and Perk columns.
+Search, a compact Category / A–Z sort toggle, and rounded type-filter buttons share one form. The toggle uses native radio inputs with a 32px visual track, 44px tap targets, keyboard arrow navigation, and an accessible “Sort by” legend. A–Z is the default and orders all partners by name. Optional Category sorting follows the filter order and alphabetizes partners within each type. The sort choice combines with search and filters, survives refresh through the URL, and is retained when clearing filters. All controls work without JavaScript; when JavaScript is available, results update immediately. On tablet and mobile screens, search takes a full row, filters wrap below it, and the result count shares a row with the sort toggle. Desktop entries use separate Partner, Type, and Perk columns.
 
-Perk rows show the partner, benefit, category, and a Details action. Expanded offers put Perk, Eligibility, and How to redeem first, with partner background under a native Details disclosure. All offer terms, eligibility, instructions, links, and codes remain available. The flat, opaque dark-purple panel uses three columns on desktop and a single column on phones. Inputs are 16px, and main actions have at least 44px targets. Access and claim forms use one heading and a single column.
+Perk rows show the partner, benefit, category, and a Details action. Expanded offers put Perk, Eligibility, and How to redeem first, with partner background under a native “About [partner]” disclosure. All offer terms, eligibility, instructions, links, and codes remain available. The flat, opaque dark-purple panel gives redemption instructions a wider desktop column; tablet layouts put offer and eligibility side by side with redemption below, and phones use one column. Spacing follows a shared 8px scale, with 14px minimum supporting text in the directory and clear keyboard focus on inputs. Inputs are 16px, and main actions have at least 44px targets. Access and claim forms use one heading and a single column.
 
 Staff see approved emails grouped alphabetically by company, with claim reservations shown beside the relevant company. Add member email is always visible. Create team expands to ask for the company name and first founder email; errors keep it open and preserve the entered values. The local test inbox expands on demand. Revocation and the one-claim-per-company rule are unchanged. Staff email rows and forms are limited to 760px for easier scanning. Form errors are associated with their forms, empty messages do not reserve extra space, and selected categories use the shared primary-action color for text contrast. The polish pass checked Safari at 320, 390, 768, and 1280px, including required-email validation and empty-search recovery.
 
@@ -408,6 +408,22 @@ private files backed up through the team’s secure channel; neither belongs in 
 build packages only `private/catalog.json`, excluding invitations, codes, source records,
 and local environment files.
 
+
+### Granola catalog addition
+
+Granola's approved partner offer is saved in ignored `private/granola-offer.json`,
+with provenance from the partner email supplied on November 6, 2026. Apply it to
+the current authoritative catalog with `npm run granola:catalog`. The updater
+validates the result, preserves every other entry, and replaces the file atomically.
+The official icon comes from `https://www.granola.ai/favicon/favicon-96x96.png`.
+
+Before release, the authoritative 22-entry catalog was recovered directly from the
+active production deployment `dpl_AZJZhBhSSVk9tnqGAvXnoR6axSkv`, including Supabase.
+Granola was added as entry 23. All existing production records and catalog metadata
+were verified unchanged. The production baseline is backed up in ignored
+`private/production-catalog-2026-11-06.json`; the earlier local catalog is preserved in
+`private/catalog-before-granola-2026-11-06.json`. Keep the catalog and offer files out
+of Git and back them up through the team's secure channel.
 
 ### Importing the reviewed founder roster
 
