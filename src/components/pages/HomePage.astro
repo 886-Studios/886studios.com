@@ -55,7 +55,7 @@ const getPhotoSrcset = (src: string) =>
                     src={photo.src}
                     srcset={getPhotoSrcset(photo.src)}
                     sizes="(max-width: 520px) 72vw, (max-width: 1267px) 30vw, 380px"
-                    alt={isHidden ? "" : photo.alt}
+                    alt={photo.alt}
                     width={photo.width}
                     height={photo.height}
                     loading={isHidden ? "lazy" : "eager"}
