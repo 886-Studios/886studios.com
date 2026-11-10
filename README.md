@@ -518,7 +518,7 @@ When working from this tracker, fetch the database first to confirm the current 
 
 ### Public routes
 
-The current information architecture is deployed from `main`.
+The public site's information architecture is defined by these routes.
 
 The top bar contains Home, three menus, Contact us, and the application CTA. The mobile
 drawer uses the same hierarchy. Edit it in `siteContent.nav.items`.
@@ -563,7 +563,7 @@ placeholder content, give it metadata with `BaseLayout`, and add it to `src/page
 
 - Navigation and main CTA: `siteContent.nav`
 - Homepage copy and logo wall: `siteContent.home`
-- Programs and Launch Station copy: `siteContent.programs`
+- 886 Launchpad and 886 Residency copy: `siteContent.programs`
 - Resources landing page: `siteContent.resources`
 - About page team and partner lists: `siteContent.about`
 - Events labels/supporting copy: `siteContent.events`
