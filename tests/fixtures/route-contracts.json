@@ -1,6 +1,12 @@
 {
   "redirects": [
     {
+      "route": "/accelerator",
+      "destination": "/launchpad",
+      "title": "886 Launchpad has moved | 886 Studios",
+      "label": "Continue to 886 Launchpad"
+    },
+    {
       "route": "/about/carter-wang",
       "destination": "/team/carter",
       "title": "Profile has moved | 886 Studios",
@@ -104,9 +110,9 @@
     },
     {
       "route": "/programs",
-      "destination": "/ikigai-launchpad",
-      "title": "ikigai Launchpad has moved | 886 Studios",
-      "label": "Continue to ikigai Launchpad"
+      "destination": "/launchpad",
+      "title": "886 Launchpad has moved | 886 Studios",
+      "label": "Continue to 886 Launchpad"
     },
     {
       "route": "/launch-station",
@@ -119,6 +125,12 @@
       "destination": "/residency",
       "title": "886 Residency has moved | 886 Studios",
       "label": "Continue to 886 Residency"
+    },
+    {
+      "route": "/ikigai-launchpad",
+      "destination": "/launchpad",
+      "title": "886 Launchpad has moved | 886 Studios",
+      "label": "Continue to 886 Launchpad"
     }
   ],
   "resources": [
@@ -126,7 +138,7 @@
       "route": "/resources/application-guide",
       "title": "Accelerator Application Guide | 886 Studios",
       "canonical": "https://www.886studios.com/resources/application-guide",
-      "description": "Prepare your accelerator application with a founder checklist, written answers, a one-minute video, and ikigai Launchpad eligibility details from 886 Studios.",
+      "description": "Prepare your accelerator application with a founder checklist, written answers, a one-minute video, and 886 Launchpad eligibility details from 886 Studios.",
       "headings": [
         [
           "h2",

@@ -133,7 +133,7 @@ export const resourceArticles: ResourceArticle[] = [
     slug: "application-guide",
     title: "Accelerator application guide",
     intro:
-      "Prepare accelerator applications with a founder checklist, clear written answers, a one-minute video, and ikigai Launchpad eligibility and first interview guidance.",
+      "Prepare accelerator applications with a founder checklist, clear written answers, a one-minute video, and 886 Launchpad eligibility and first interview guidance.",
   },
   {
     slug: "safe-note-guide",
@@ -235,11 +235,11 @@ export const resourceArticles: ResourceArticle[] = [
         title: "Accelerators",
         entries: [
           {
-            name: "ikigai Launchpad",
+            name: "886 Launchpad",
             focus:
               "AI, IoT, Gaming, Consumer, Digital Transformation, Sportstech, Web 3, etc",
-            url: "886studios.com/ikigai-launchpad",
-            href: "/ikigai-launchpad",
+            url: "886studios.com/launchpad",
+            href: "/launchpad",
             year: "2024",
             contact: "carter@886studios.com",
           },
@@ -1211,7 +1211,7 @@ export const standaloneResourceArticles: ResourceArticle[] = [
       {
         title: "The First Interview",
         paragraphs: [
-          "Your first ikigai Launchpad interview is a 20-minute conversation with us. You don’t need a pitch deck. Come ready to discuss your team, the problem you’re solving, what you’re building, and what you’ve learned so far.",
+          "Your first 886 Launchpad interview is a 20-minute conversation with us. You don’t need a pitch deck. Come ready to discuss your team, the problem you’re solving, what you’re building, and what you’ve learned so far.",
           "The first interview takes place via Zoom. We expect all co-founders to be on the call. In return, expect 1-2 of our partners to be present, in addition to our operating team and program directors.",
         ],
       },
@@ -1220,7 +1220,7 @@ export const standaloneResourceArticles: ResourceArticle[] = [
         list: [
           "Online Etiquette - Preemptively address potential technical issues. Have resources prepared and accessible, and make sure Zoom works without interruptions or updates.",
           "The Conversation - Don’t try to memorize a script. Prepare concise talking points and conduct market research beforehand, but aim to be familiar enough that you do not rely heavily on notes.",
-          "Your Questions - Think about what you would like to ask us about ikigai Launchpad and how it could support your startup.",
+          "Your Questions - Think about what you would like to ask us about 886 Launchpad and how it could support your startup.",
         ],
       },
       {
@@ -1243,13 +1243,13 @@ export const standaloneResourceArticles: ResourceArticle[] = [
           "When have you pivoted and why?",
           "What stage of the process are you in? What does your timeline look like?",
           "How do you plan to scale your product? Who is your target audience?",
-          "What do you hope to gain out of our program? What makes ikigai Launchpad a good fit for you?",
+          "What do you hope to gain out of our program? What makes 886 Launchpad a good fit for you?",
         ],
       },
       {
         title: "After the Interview",
         paragraphs: [
-          "If we have additional follow-up questions, our operations team will contact you via email. If our partners wish to have further discussions, we may request a second round of interviews. Final decisions are generally communicated after interviews are completed and all applicants have been reviewed.",
+          "If we have additional follow-up questions, our operations team will contact you via email. If our partners wish to have further discussions, we may request a second round of interviews. Applications are reviewed on a rolling basis, and we will contact you by email with next steps.",
           "Good luck to all applicants!",
         ],
       },

@@ -63,7 +63,7 @@ A working portal preview also needs its ignored private catalog; see the
 | --- | --- |
 | `npm ci` reports an unsupported engine | Run `nvm install && nvm use`, then retry. Node versions above 22 are also outside the supported range. |
 | `npm ci` reports a lockfile mismatch | If dependency edits were intentional, run `npm install` and commit `package-lock.json` with `package.json`. Otherwise restore the matching committed files and rerun `npm ci`. |
-| Build fails with `Could not load ikigai Insights` | Check access to the feed configured in `src/lib/substack.ts` and retry when it recovers. Use `npm run validate:code` for checks that do not fetch the feed. |
+| Build fails with `Could not load 886 Insights` | Check access to the feed configured in `src/lib/substack.ts` and retry when it recovers. Use `npm run validate:code` for checks that do not fetch the feed. |
 | Port `4173` is occupied | Use Astro's printed URL or choose a port with `npm run dev -- --port 4174`. |
 | Preview is stale, or a check reports missing `dist/` | Run `npm run build` first. SEO and security checks inspect the existing build. |
 | A production build reports `analytics must match the deployment environment` | Run the [production-mode check](#production-mode-check) to reproduce it. Redirect pages need the same analytics components as other pages. Build and security-check flags must match. |
@@ -256,7 +256,7 @@ Search Console.
 The Blog supports two sources, merged by publication date during the static build and
 published in both `/blog` and the site's `/rss.xml` feed:
 
-- ikigai Insights posts imported from the Substack RSS feed;
+- 886 Insights posts imported from the Substack RSS feed;
 - website-only Markdown articles stored in `src/content/blog/`.
 
 To add a website-only article, copy `src/content/blog/local-article-template.md`, rename it to
@@ -283,7 +283,7 @@ The filename becomes the URL by default, such as
 override the filename. Store article images in `public/assets/blog/`.
 
 Local articles use the same Blog index and article design as Substack posts. They do not show
-the “Originally published in ikigai Insights” footer unless an optional `substackUrl` is added.
+the “Originally published in 886 Insights” footer unless an optional `substackUrl` is added.
 If a local article and a Substack post share a slug, the local article takes precedence.
 Drafts are excluded from builds, the sitemap, the Blog index, and the RSS feed.
 
@@ -518,7 +518,7 @@ When working from this tracker, fetch the database first to confirm the current 
 
 ### Public routes
 
-The current information architecture is deployed from `main`.
+The public site's information architecture is defined by these routes.
 
 The top bar contains Home, three menus, Contact us, and the application CTA. The mobile
 drawer uses the same hierarchy. Edit it in `siteContent.nav.items`.
@@ -526,14 +526,14 @@ drawer uses the same hierarchy. Edit it in `siteContent.nav.items`.
 | Group | Page | Route | Content |
 | --- | --- | --- | --- |
 | | Home | `/` | Homepage |
-| Programs | ikigai Launchpad | `/ikigai-launchpad` | Program overview |
+| Programs | 886 Launchpad | `/launchpad` | Program overview |
 | Programs | 886 Residency | `/residency` | 886 Residency overview |
 | Community | Events | `/events` | Luma event archive |
 | Community | Resources | `/resources` | Resource library |
 | About us | Overview | `/about` | Studio introduction |
 | About us | Team | `/team` | Operating team and advisors |
 | About us | Portfolio | `/portfolio` | Backed companies |
-| About us | Blog | `/blog` | Local articles and ikigai Insights |
+| About us | Blog | `/blog` | Local articles and 886 Insights |
 | About us | In the News | `/newsroom` | Media coverage |
 | | Contact us | `/contact` | Application, email, and community links |
 
@@ -543,7 +543,7 @@ with the `/about` page. Profiles live at `/team/<slug>`; former `/about/<legacy-
 profile URLs redirect to them.
 
 The former `/about/team` and `/about/newsroom` paths redirect
-to their root-level routes. `/programs` redirects to `/ikigai-launchpad`, and
+to their root-level routes. `/programs` redirects to `/launchpad`, and
 `/launch-station` and `/programs/launch-station` redirect to `/residency`.
 
 The Manifesto draft is archived in `src/archived/manifesto.astro`. Neither
@@ -563,7 +563,7 @@ placeholder content, give it metadata with `BaseLayout`, and add it to `src/page
 
 - Navigation and main CTA: `siteContent.nav`
 - Homepage copy and logo wall: `siteContent.home`
-- Programs and Launch Station copy: `siteContent.programs`
+- 886 Launchpad and 886 Residency copy: `siteContent.programs`
 - Resources landing page: `siteContent.resources`
 - About page team and partner lists: `siteContent.about`
 - Events labels/supporting copy: `siteContent.events`
@@ -603,7 +603,7 @@ Then run Lighthouse against the affected route and save the report outside track
 
 ```bash
 mkdir -p .artifacts/performance
-npx --yes lighthouse http://127.0.0.1:4173/ikigai-launchpad \
+npx --yes lighthouse http://127.0.0.1:4173/launchpad \
   --only-categories=performance \
   --preset=desktop \
   --chrome-flags="--headless=new" \
@@ -616,7 +616,7 @@ For production Core Web Vitals, run WebPageTest against the deployed URL with at
 For frontend QA, verify at least:
 
 - `/`
-- `/ikigai-launchpad`
+- `/launchpad`
 - `/residency`
 - `/about`
 - `/team` and `/newsroom`

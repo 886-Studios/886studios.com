@@ -173,12 +173,22 @@ async function getSiteContentDate(...propertyPath) {
 async function generateContentDates() {
   const resourceRecordDates = await getResourceRecordDates();
   const resourceTemplateDate = getFileDate("src/components/pages/ResourceArticlePage.astro");
+  // These guides keep their body copy in dedicated components, rather than
+  // resourceArticles.ts. Include those edits in sitemap and article dates.
+  const dedicatedResourceTemplates = {
+    "application-guide": "src/components/pages/ApplicationGuidePage.astro",
+    "safe-note-guide": "src/components/pages/SafeNoteGuidePage.astro",
+    "cap-table-guide": "src/components/pages/CapTableGuidePage.astro",
+    "term-sheet-guide": "src/components/pages/TermSheetGuidePage.astro",
+    "burn-rate-runway-guide": "src/components/pages/BurnRateRunwayGuidePage.astro",
+    "incorporation-101": "src/components/pages/IncorporationGuidePage.astro",
+  };
   const contentDates = {
     "/": maxDate(
       await getSiteContentDate("home"),
       getFileDate("src/components/pages/HomePage.astro"),
     ),
-    "/ikigai-launchpad": maxDate(
+    "/launchpad": maxDate(
       await getSiteContentDate("programs", "launchpad"),
       getFileDate("src/components/pages/ProgramsPage.astro"),
     ),
@@ -196,7 +206,11 @@ async function generateContentDates() {
     const pathPrefix = ["incorporation-101", "interview-guidebook"].includes(slug)
       ? ""
       : "/resources";
-    contentDates[`${pathPrefix}/${slug}`] = maxDate(date, resourceTemplateDate);
+    const templatePath = dedicatedResourceTemplates[slug];
+    contentDates[`${pathPrefix}/${slug}`] = maxDate(
+      date,
+      templatePath ? getFileDate(templatePath) : resourceTemplateDate,
+    );
   }
 
   return Object.fromEntries(

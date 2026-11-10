@@ -56,7 +56,7 @@ const profileContent: Omit<PartnerProfile, "legacySlug" | "role" | "company" | "
     sourceUrl: "https://www.886studios.com/about/patryk-chojecki",
     profileTitle: "About Patryk",
     profile: [
-      `Patryk Chojecki is the Program Manager in charge of ikigai Launchpad at 886 Studios. Originally from Poland, he has spent the past several years in Taipei working at the intersection of business, science, and venture capital.`,
+      `Patryk Chojecki is the Program Manager in charge of 886 Launchpad at 886 Studios. Originally from Poland, he has spent the past several years in Taipei working at the intersection of business, science, and venture capital.`,
       `He holds a degree from Jagiellonian University in Cracow and a master's from National Chengchi University, where he was a recipient of the Taiwan ICDF Scholarship.`,
       `Earlier in his career, he conducted research at Academia Sinica and worked at a cell and gene therapy startup accelerator, advising biotech startups on fundraising, market strategy, and international partnerships.`,
       `He brings this experience to building a cross-border ecosystem connecting founders, investors, and partners across Taiwan, APAC, and beyond.`,
@@ -76,7 +76,7 @@ const profileContent: Omit<PartnerProfile, "legacySlug" | "role" | "company" | "
     sourceUrl: "https://www.886studios.com/about/carter-wang",
     profileTitle: "About Carter",
     profile: [
-      `Carter Wang is a Venture Associate at 886 Studios, where he leads deal sourcing, researches and evaluates startups, and manages the founder pipeline for ikigai Launchpad accelerator. He also oversees 886's content and social media presence, website, drives community building initiatives, and event programming in Taipei.`,
+      `Carter Wang is a Venture Associate at 886 Studios, where he leads deal sourcing, researches and evaluates startups, and manages the founder pipeline for 886 Launchpad accelerator. He also oversees 886's content and social media presence, website, drives community building initiatives, and event programming in Taipei.`,
       `Before joining 886 Studios, Carter served as a Research Fellow at Contrary Research, writing investment memos on emerging startups, and was the Vice President and Head of the Venture Analyst team at Slug Fund at UC Santa Cruz, where he studied Business and Managerial Economics.`,
       [
         `Outside of work, Carter writes about technology, culture, and human nature in his Substack, `,

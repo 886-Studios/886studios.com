@@ -2,7 +2,7 @@
 import { getEntry, render } from "astro:content";
 import BlogPostPage from "../../components/pages/BlogPostPage.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getBlogMetaDescription, getBlogModifiedDate, getBlogPosts } from "../../lib/blog";
+import { getBlogAuthorHref, getBlogMetaDescription, getBlogModifiedDate, getBlogPosts } from "../../lib/blog";
 import { getAbsoluteUrl, getImageMimeType, getMetaDescription } from "../../lib/seo";
 import type { BlogPost } from "../../types/blog";
 
@@ -20,6 +20,7 @@ const pagePath = `/blog/${post.slug}`;
 const pageUrl = getAbsoluteUrl(pagePath);
 const description = getMetaDescription(getBlogMetaDescription(post));
 const dateModified = getBlogModifiedDate(post);
+const authorHref = getBlogAuthorHref(post.author);
 const localEntry = post.localEntryId
   ? await getEntry("blog", post.localEntryId)
   : undefined;
@@ -60,8 +61,8 @@ const LocalContent = localEntry ? (await render(localEntry)).Content : undefined
         : {
             "@type": "Person",
             name: post.author,
-            ...(post.author === "Carter Wang"
-              ? { url: getAbsoluteUrl("/team/carter") }
+            ...(authorHref
+              ? { url: getAbsoluteUrl(authorHref) }
               : {}),
           },
     publisher: { "@id": "https://www.886studios.com/#organization" },

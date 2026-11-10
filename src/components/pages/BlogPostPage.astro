@@ -60,7 +60,7 @@ const authorHref = getBlogAuthorHref(post.author);
       {hasLocalContent ? <slot /> : <Fragment set:html={post.contentHtml ?? ""} />}
     </div>
 
-    <ArticleSubscribe placement={post.slug} showPublicationBrand />
+    <ArticleSubscribe placement={post.slug} />
   </div>
 
   {post.substackUrl && (

@@ -9,12 +9,12 @@ const { launchStation } = siteContent.programs;
   <div class="launch-station-content">
     <section class="launch-station-intro" aria-labelledby="ls-heading">
       <div class="launch-station-intro-copy">
-        <h1 id="ls-heading">{launchStation.title}</h1>
-        <p class="launch-station-lead">{launchStation.lead}</p>
+        <h1 class="program-heading" id="ls-heading">{launchStation.title}</h1>
+        <p class="program-lead">{launchStation.lead}</p>
         <p class="launch-station-introduction">{launchStation.introduction}</p>
-        <div class="launch-station-actions">
+        <div class="program-hero-actions">
           <a
-            class="btn-pri launch-station-contact"
+            class="btn-pri program-hero-cta"
             href={launchStation.joining.cta.href}
             data-analytics-event="program_interest"
             data-analytics-placement="launch_station_hero"
@@ -22,8 +22,8 @@ const { launchStation } = siteContent.programs;
           >
             {launchStation.joining.cta.label}
           </a>
+          <p class="program-hero-status">{launchStation.status}</p>
         </div>
-        <p class="launch-station-status">{launchStation.status}</p>
       </div>
       <dl class="launch-station-facts" aria-label="886 Residency facts">
         {launchStation.essentials.map((item) => (
@@ -37,7 +37,7 @@ const { launchStation } = siteContent.programs;
         <img
           src={launchStation.heroPhoto.src}
           srcset={launchStation.heroPhoto.srcset}
-          sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 704px) calc(100vw - 64px), (max-width: 860px) 640px, (max-width: 1160px) 40vw, 470px"
+          sizes="(max-width: 528px) calc(100vw - 48px), (max-width: 860px) 480px, (max-width: 1160px) 40vw, 470px"
           alt={launchStation.heroPhoto.alt}
           width={launchStation.heroPhoto.width}
           height={launchStation.heroPhoto.height}
@@ -79,16 +79,19 @@ const { launchStation } = siteContent.programs;
       </dl>
       <div class="launch-station-community-photos">
         {launchStation.communityPhotos.map((photo) => (
-          <img
-            src={photo.src}
-            srcset={photo.srcset}
-            sizes="(max-width: 560px) calc(100vw - 48px), (max-width: 640px) calc(100vw - 64px), (max-width: 1160px) calc(50vw - 44px), 536px"
-            alt={photo.alt}
-            width={photo.width}
-            height={photo.height}
-            loading="lazy"
-            decoding="async"
-          />
+          <figure class="residency-snapshot">
+            <img
+              src={photo.src}
+              srcset={photo.srcset}
+              sizes="(max-width: 640px) calc(100vw - 72px), (max-width: 1160px) calc(50vw - 68px), 508px"
+              alt={photo.alt}
+              width={photo.width}
+              height={photo.height}
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>{photo.caption}</figcaption>
+          </figure>
         ))}
       </div>
     </section>
@@ -128,8 +131,10 @@ const { launchStation } = siteContent.programs;
     </section>
 
     <section class="launch-station-joining" aria-labelledby="ls-joining-heading">
-      <h2 id="ls-joining-heading">{launchStation.joining.title}</h2>
-      <p>{launchStation.joining.body} Email <a href="mailto:carter@886studios.com">carter@886studios.com</a>.</p>
+      <div class="launch-station-joining-copy">
+        <h2 id="ls-joining-heading">{launchStation.joining.title}</h2>
+        <p>{launchStation.joining.body} Email <a href="mailto:carter@886studios.com">carter@886studios.com</a>.</p>
+      </div>
       <a
         class="btn-pri launch-station-contact"
         href={launchStation.joining.cta.href}
@@ -140,7 +145,5 @@ const { launchStation } = siteContent.programs;
         {launchStation.joining.cta.label}
       </a>
     </section>
-
-
   </div>
 </div>

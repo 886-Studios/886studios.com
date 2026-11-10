@@ -33,18 +33,6 @@ const singleImages = [
     quality: 78,
   },
   {
-    source: "ikigai-insights-substack-wide.jpg",
-    output: "ikigai-insights-substack-wide-640.webp",
-    width: 640,
-    quality: 82,
-  },
-  {
-    source: "ikigai-insights-substack-wide.jpg",
-    output: "ikigai-insights-substack-wide-1280.webp",
-    width: 1280,
-    quality: 82,
-  },
-  {
     source: "programs/launch-station-community-collage-2026.jpg",
     output: "programs/launch-station-community-collage-480.webp",
     width: 480,

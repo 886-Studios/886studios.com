@@ -1,12 +1,15 @@
 ---
 import ResourceGuide from "../ResourceGuide.astro";
 import ResourceGuideHero from "../ResourceGuideHero.astro";
+import { siteContent } from "../../data/siteContent";
+
+const { status } = siteContent.programs.launchpad;
 ---
 
 <ResourceGuide>
   <ResourceGuideHero title="Accelerator application guide">
       <p class="guide-lead mt-6">To prepare an accelerator application, check the program&#x27;s eligibility, explain what your company does, support your claims with measured results, and introduce your founding team. Follow the current application form&#x27;s instructions for written answers and video.</p>
-      <p class="mt-4">This guide combines 886 Studios&#x27; application advice with current ikigai Launchpad program details. It is a preparation checklist, not an application form or a statement that applications are open.</p>
+      <p class="mt-4">This guide combines 886 Studios&#x27; application advice with current 886 Launchpad program details. It is a preparation checklist. Applications are open on a rolling basis through our application portal.</p>
       <a class="guide-hero__cta mt-7 btn-pri" href="#checklist">Use the checklist</a>
       <nav aria-label="In this guide" class="guide-contents mt-9">
         <a href="#program-fit" class="guide-link">Program fit</a>
@@ -45,7 +48,7 @@ import ResourceGuideHero from "../ResourceGuideHero.astro";
           <p class="mt-3">Different programs fit different industries and stages. Consider whether you want mentors, demo day practice, community, rigorous coursework, or other outcomes.</p>
         </div>
       </div>
-      <p class="guide-checklist__qualification mt-7">For ikigai Launchpad, a co-founder is not required. Solo founders can apply, but the founding team needs credible technical or domain capability. <a class="guide-link" href="/ikigai-launchpad">Read the program requirements</a> before deciding whether it fits your team.</p>
+      <p class="guide-checklist__qualification mt-7">For 886 Launchpad, a co-founder is not required. Solo founders can apply, but the founding team needs credible technical or domain capability. <a class="guide-link" href="/launchpad">Read the program requirements</a> before deciding whether it fits your team.</p>
     </div>
   </section>
   <section class="guide-fit" id="program-fit">
@@ -54,10 +57,10 @@ import ResourceGuideHero from "../ResourceGuideHero.astro";
       <p class="mt-4">After going through the checklist, you may decide to apply to an accelerator. Depending on your company stage, industry, and timeline, the program you choose should fit your startup needs.</p>
       <p class="mt-5">Compare each program&#x27;s stage, location, time commitment, investment terms, and support. For an overview of local options, use the <a href="/resources/ecosystem-database" class="guide-link">Taiwan startup ecosystem database</a>.</p>
       <div class="guide-fit__program mt-7">
-        <h3>What is ikigai Launchpad?</h3>
-        <p class="mt-3">ikigai Launchpad is 886 Studios&#x27; 10-week, in-person accelerator in Taipei for early-stage founders building for a global market. Founders can apply from anywhere and should be working full-time, or ready to do so. All co-founders are expected to join on site for the core program.</p>
-        <p class="mt-4">At ikigai Launchpad, we invest US$100,000 for 8% through a SAFE, with no additional program fee. <a href="/ikigai-launchpad" class="guide-link">See our program details</a>.</p>
-        <p class="mt-4">Our next batch is Spring 2027. We haven’t announced application dates or the deadline yet. Check our <a href="/ikigai-launchpad" class="guide-link">program page</a> for updates.</p>
+        <h3>What is 886 Launchpad?</h3>
+        <p class="mt-3">886 Launchpad is 886 Studios&#x27; 10-week, in-person accelerator in Taipei for early-stage founders building for a global market. Founders can apply from anywhere and should be working full-time, or ready to do so. All co-founders are expected to join on site for the core program.</p>
+        <p class="mt-4">At 886 Launchpad, we invest US$100,000 for 8% through a SAFE, with no additional program fee. <a href="/launchpad" class="guide-link">See our program details</a>.</p>
+        <p class="mt-4">Our next batch is {status.nextBatch}. Applications are open and reviewed on a rolling basis. Check our <a href="/launchpad" class="guide-link">program page</a> for updates.</p>
         <p class="mt-4">Looking for workspace and a founder community rather than an accelerator investment? <a href="/residency" class="guide-link">886 Residency</a> is a separate, invite-only, 90-day community program in Taipei with free dedicated desks at Taiwan Tech Arena.</p>
       </div>
     </div>
@@ -114,19 +117,19 @@ import ResourceGuideHero from "../ResourceGuideHero.astro";
           <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="#application-answers">our advice on writing your answers</a></span>.</p>
         </div>
         <div id="founder-eligibility" class="guide-anchor">
-          <h3>Can I apply to ikigai Launchpad without a co-founder or company entity?</h3>
-          <p class="mt-3">Yes. We welcome solo founders, and you don’t need an incorporated company to apply to ikigai Launchpad. Your founding team still needs credible technical or domain capability. If accepted, you’ll typically need to establish a US entity to receive funding.</p>
-          <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/ikigai-launchpad">Who can apply</a></span>.</p>
+          <h3>Can I apply to 886 Launchpad without a co-founder or company entity?</h3>
+          <p class="mt-3">Yes. We welcome solo founders, and you don’t need an incorporated company to apply to 886 Launchpad. Your founding team still needs credible technical or domain capability. If accepted, you’ll typically need to establish a US entity to receive funding.</p>
+          <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/launchpad">Who can apply</a></span>.</p>
         </div>
         <div id="international-founders" class="guide-anchor">
-          <h3>Can international founders apply to ikigai Launchpad?</h3>
+          <h3>Can international founders apply to 886 Launchpad?</h3>
           <p class="mt-3">Yes. We welcome founders from anywhere. The 10-week core program takes place in person in Taipei, and all co-founders are expected to join on site. Founders should be working full-time, or ready to work full-time, and able to attend the batch in Taipei.</p>
-          <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/ikigai-launchpad">Attendance requirements and eligibility</a></span>.</p>
+          <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/launchpad">Attendance requirements and eligibility</a></span>.</p>
         </div>
         <div id="application-timing" class="guide-anchor">
-          <h3>When can I apply to the next ikigai Launchpad batch?</h3>
-          <p class="mt-3">Our next ikigai Launchpad batch is Spring 2027. We haven’t announced application dates or the deadline yet. Check our program page for updates.</p>
-          <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/ikigai-launchpad">Application dates</a></span>.</p>
+          <h3>When can I apply to the next 886 Launchpad batch?</h3>
+          <p class="mt-3">Our next 886 Launchpad batch is {status.nextBatch}. Applications are open and reviewed on a rolling basis. Check our program page for updates.</p>
+          <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/launchpad">Application details</a></span>.</p>
         </div>
         <div id="business-metrics" class="guide-anchor">
           <h3>What business numbers should I prepare for an accelerator interview?</h3>
@@ -134,16 +137,16 @@ import ResourceGuideHero from "../ResourceGuideHero.astro";
           <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/interview-guidebook">our interview guide</a></span><span> and <a class="guide-link" href="#application-answers">the written-answer guidance</a></span>.</p>
         </div>
         <div id="interview-format" class="guide-anchor">
-          <h3>Do I need a pitch deck for the first ikigai Launchpad interview?</h3>
-          <p class="mt-3">No. Your first ikigai Launchpad interview is a 20-minute conversation with us. You don’t need a pitch deck. Come ready to discuss your team, the problem you’re solving, what you’re building, your progress, and what you’ve learned from users. Bring your questions for us, too.</p>
-          <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/ikigai-launchpad">Interview details</a></span><span> and <a class="guide-link" href="/interview-guidebook">the Interview Guidebook</a></span>.</p>
+          <h3>Do I need a pitch deck for the first 886 Launchpad interview?</h3>
+          <p class="mt-3">No. Your first 886 Launchpad interview is a 20-minute conversation with us. You don’t need a pitch deck. Come ready to discuss your team, the problem you’re solving, what you’re building, your progress, and what you’ve learned from users. Bring your questions for us, too.</p>
+          <p class="guide-faq__answer-source mt-3">Read <span><a class="guide-link" href="/launchpad">Interview details</a></span><span> and <a class="guide-link" href="/interview-guidebook">the Interview Guidebook</a></span>.</p>
         </div>
       </div>
-      <p class="guide-faq__sources mt-7">Prepared by 886 Studios. Program details reviewed on <time datetime="2026-10-12">October 12, 2026</time>. First interview guidance updated on <time datetime="2026-10-14">October 14, 2026</time>. Refer to your interview invitation for the details of your interview.</p>
+      <p class="guide-faq__sources mt-7">Prepared by 886 Studios. Program details reviewed on <time datetime="2026-11-04">November 4, 2026</time>. First interview guidance updated on <time datetime="2026-10-14">October 14, 2026</time>. Refer to your interview invitation for the details of your interview.</p>
       <div class="guide-next mt-10">
         <h2>Check your next step</h2>
         <p class="mt-4">Review the current program details and application timing before you apply. Use the preparation checklist now so your answers are ready when the next application window is announced.</p>
-        <a class="mt-6 btn-pri" href="/ikigai-launchpad">Review the program</a>
+        <a class="mt-6 btn-pri" href="/launchpad">Review the program</a>
       </div>
     </div>
   </section>

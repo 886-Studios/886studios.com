@@ -19,7 +19,7 @@ export function getBlogMetaDescription(post: BlogPost) {
   const lead = description ? `${description.replace(/[.!?]+$/, "")}. ` : "";
   const source =
     post.source === "substack"
-      ? "ikigai Insights, the 886 Studios blog"
+      ? "886 Insights, the 886 Studios blog"
       : "the 886 Studios blog";
 
   return `${lead}Read ${post.title} from ${source}.`;
@@ -34,7 +34,11 @@ export function getLatestBlogModifiedDate(posts: BlogPost[]) {
 }
 
 export function getBlogAuthorHref(author: string) {
-  return author === "Carter Wang" ? "/team/carter" : undefined;
+  const authorProfiles: Record<string, string> = {
+    "Carter Wang": "/team/carter",
+    "Max Hsieh": "/team/max",
+  };
+  return authorProfiles[author];
 }
 
 async function loadBlogPosts() {

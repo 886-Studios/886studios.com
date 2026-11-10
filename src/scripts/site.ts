@@ -31,6 +31,7 @@ function initNavChrome() {
   const closeButton = drawer?.querySelector<HTMLButtonElement>(".mobile-drawer-close");
   const main = select<HTMLElement>("#main-content");
   const footer = select<HTMLElement>(".site-footer");
+  const applicationBanner = select<HTMLElement>("[data-application-banner]");
   const desktopViewport = window.matchMedia("(min-width: 881px)");
   const hoverPointer = window.matchMedia("(hover: hover) and (pointer: fine)");
   const sectionDrawers = selectAll<HTMLDetailsElement>("[data-nav-group]");
@@ -130,6 +131,7 @@ function initNavChrome() {
     drawer.classList.add("is-open");
     main?.setAttribute("inert", "");
     footer?.setAttribute("inert", "");
+    applicationBanner?.setAttribute("inert", "");
     nav.setAttribute("inert", "");
     previousBodyOverflow = document.body.style.overflow;
     previousHtmlOverflow = document.documentElement.style.overflow;
@@ -157,6 +159,7 @@ function initNavChrome() {
     drawer.classList.remove("is-open");
     main?.removeAttribute("inert");
     footer?.removeAttribute("inert");
+    applicationBanner?.removeAttribute("inert");
     nav.removeAttribute("inert");
     document.documentElement.classList.remove("mobile-menu-open");
     document.body.classList.remove("mobile-menu-open");

@@ -5,7 +5,7 @@ Baseline: `403b0ad`, captured on 2026-10-29 using Node 22.23.4. This tranche cha
 | Surface | Contract |
 | --- | --- |
 | Public routes | Keep the generated route set, canonical URLs, trailing-slash policy, sitemap, RSS, and Vercel redirects/rewrites unchanged. `/apply` retains its separate external application redirect. |
-| Static compatibility pages | `/programs` → `/ikigai-launchpad`; `/programs/launch-station` → `/launch-station`; `/about/team` → `/team`; `/about/newsroom` → `/newsroom`. |
+| Static compatibility pages | `/programs` → `/accelerator`; `/programs/launch-station` → `/launch-station`; `/about/team` → `/team`; `/about/newsroom` → `/newsroom`. |
 | Profile compatibility pages | All 15 `/about/<legacy-slug>` pages retain their existing `/team/<slug>` destinations. Exact routes, titles, and fallback labels are recorded in `tests/fixtures/route-contracts.json`. Preserve the existing profile fallback link ID. |
 | Redirect execution | External JavaScript uses `location.replace` and appends the current query string and fragment. Preserve `noindex, follow`, destination canonical, immediate meta refresh, and an ordinary fallback link when JavaScript is unavailable. |
 | Redirect analytics | Google, Vercel, and LinkedIn markup is enabled only for a production build with `VERCEL=1` and `VERCEL_ENV=production`. Preserve the LinkedIn no-JavaScript pixel. Executable scripts remain external and compatible with the existing CSP. |

@@ -73,7 +73,7 @@ test("resource perks keep their intentional category and item order", () => {
   assert.equal(categories.length, 4);
   assert.deepEqual(
     categories.map(([, category]) => category),
-    ["Engineering", "Productivity", "Finances", "Marketing"],
+    ["Engineering", "Productivity", "Finance", "Marketing"],
   );
 
   for (const [, category, items] of categories) {
@@ -134,10 +134,10 @@ test("Zettabyte is listed as an Engineering perk with its official mark", () => 
   assert.equal((zettabyteLogo.match(/<path\b/g) ?? []).length, 3);
 });
 
-test("Stripe is listed as a Finances perk with its purple wordmark", () => {
+test("Stripe is listed as a Finance perk with its purple wordmark", () => {
   const finances = content.slice(
-    content.indexOf('title: "Finances"'),
-    content.indexOf("          ],", content.indexOf('title: "Finances"')),
+    content.indexOf('title: "Finance"'),
+    content.indexOf("          ],", content.indexOf('title: "Finance"')),
   );
 
   assert.match(finances, /label: "Stripe"/);

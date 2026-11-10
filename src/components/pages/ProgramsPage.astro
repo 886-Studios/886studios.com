@@ -24,25 +24,17 @@ const getPillarPhoto = (photo: (typeof launchpad.benefits)[number]["photo"]) => 
 ---
 
 <div class="page program-page" id="page-programs">
-  <section class="prog-hero" aria-labelledby="prog-ikigai-heading">
+  <section class="prog-hero" aria-labelledby="prog-launchpad-heading">
     <div class="prog-hero-copy">
-      <h1 class="prog-wordmark" id="prog-ikigai-heading">
-        <span class="sr-only">{launchpad.name}</span>
-        <img
-          src="/assets/programs/ikigai-wordmark-white.png"
-          alt=""
-          width="1461"
-          height="452"
-          decoding="async"
-          aria-hidden="true"
-        />
+      <h1 class="program-heading" id="prog-launchpad-heading">
+        {launchpad.name}
       </h1>
-      <p class="prog-lead">
+      <p class="program-lead">
         {launchpad.lead.intro}{" "}<a href={launchpad.lead.operator.href}>{launchpad.lead.operator.label}</a>.{" "}{launchpad.lead.body}
       </p>
-      <div class="prog-hero-actions">
+      <div class="program-hero-actions">
         <a
-          class="btn-pri prog-cta"
+          class="btn-pri program-hero-cta"
           href={launchpad.cta.href}
           target="_blank"
           rel="noopener noreferrer"
@@ -51,11 +43,11 @@ const getPillarPhoto = (photo: (typeof launchpad.benefits)[number]["photo"]) => 
         >
           {launchpad.cta.label}
         </a>
-        <p class="prog-next-batch">{launchpad.status.summary}</p>
+        <p class="program-hero-status">{launchpad.status.summary}</p>
       </div>
     </div>
 
-    <aside class="prog-brief-card" aria-label="ikigai Launchpad facts">
+    <aside class="prog-brief-card" aria-label="886 Launchpad facts">
       <dl class="prog-brief-facts">
         {launchpad.facts.map((fact) => (
           <div class="prog-brief-fact">
@@ -70,7 +62,7 @@ const getPillarPhoto = (photo: (typeof launchpad.benefits)[number]["photo"]) => 
     </aside>
   </section>
 
-  <section class="prog-media" aria-label="ikigai Launchpad in session">
+  <section class="prog-media" aria-label="886 Launchpad in session">
     <figure class="prog-hero-photo">
       <img
         src={launchpad.heroPhoto.src}

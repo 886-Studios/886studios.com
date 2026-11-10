@@ -69,40 +69,6 @@
       max-width: 760px;
     }
 
-    .prog-wordmark {
-      width: min(60%, 300px);
-      margin: 0 0 24px;
-    }
-
-    .prog-wordmark img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .prog-lead {
-      margin: 0;
-      max-width: none;
-      color: var(--text-secondary);
-      font-size: clamp(1rem, 1.25vw, 1.12rem);
-      line-height: 1.72;
-      overflow-wrap: break-word;
-    }
-
-    .prog-lead a {
-      color: inherit;
-      text-decoration: underline;
-      text-underline-offset: 0.15em;
-    }
-
-    .prog-hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 12px 20px;
-      margin-top: 32px;
-    }
-
     .prog-cta {
       max-width: 100%;
       white-space: normal;
@@ -1257,22 +1223,6 @@
         gap: 24px;
         padding-top: var(--space-lg);
       }
-      .prog-wordmark {
-        width: min(60%, 220px);
-        margin-bottom: 22px;
-      }
-
-      .prog-lead {
-        font-size: 1rem;
-        line-height: 1.62;
-      }
-
-      .prog-hero-actions {
-        align-items: flex-start;
-        flex-direction: column;
-        margin-top: 24px;
-      }
-
       .prog-cta {
         width: min(100%, calc(100vw - 64px));
         min-width: 0;
@@ -1281,8 +1231,7 @@
         padding-inline: 16px 12px;
       }
 
-      .prog-cta,
-      .prog-lead {
+      .prog-cta {
         overflow-wrap: anywhere;
       }
 

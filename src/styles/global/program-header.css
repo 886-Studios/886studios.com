@@ -1,0 +1,64 @@
+/* Shared introduction styles for 886 Launchpad and 886 Residency. */
+.program-page .program-heading {
+  margin: 0 0 var(--space-md);
+  color: var(--text-primary);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.program-page .program-lead {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  line-height: 1.72;
+  overflow-wrap: anywhere;
+}
+
+.program-lead a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.program-hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: var(--space-lg);
+}
+
+.program-hero-cta {
+  max-width: 100%;
+  min-height: 48px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.program-page .program-hero-status {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 640px) {
+  .program-page .program-lead {
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  .program-hero-actions {
+    margin-top: var(--space-md);
+  }
+
+  .program-hero-cta {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+    padding-inline: 16px 12px;
+  }
+}

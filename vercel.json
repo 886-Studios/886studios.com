@@ -23,6 +23,26 @@
   ],
   "redirects": [
     {
+      "source": "/accelerator",
+      "destination": "/launchpad",
+      "permanent": true
+    },
+    {
+      "source": "/accelerator/",
+      "destination": "/launchpad",
+      "permanent": true
+    },
+    {
+      "source": "/ikigai-launchpad",
+      "destination": "/launchpad",
+      "permanent": true
+    },
+    {
+      "source": "/ikigai-launchpad/",
+      "destination": "/launchpad",
+      "permanent": true
+    },
+    {
       "source": "/security.txt",
       "destination": "/.well-known/security.txt",
       "permanent": true
@@ -179,12 +199,12 @@
     },
     {
       "source": "/programs",
-      "destination": "/ikigai-launchpad",
+      "destination": "/launchpad",
       "permanent": true
     },
     {
       "source": "/programs/",
-      "destination": "/ikigai-launchpad",
+      "destination": "/launchpad",
       "permanent": true
     },
     {
@@ -206,7 +226,7 @@
           "value": "withikigai.com"
         }
       ],
-      "destination": "https://www.886studios.com/ikigai-launchpad",
+      "destination": "https://www.886studios.com/launchpad",
       "statusCode": 301
     },
     {
@@ -217,7 +237,7 @@
           "value": "www.withikigai.com"
         }
       ],
-      "destination": "https://www.886studios.com/ikigai-launchpad",
+      "destination": "https://www.886studios.com/launchpad",
       "statusCode": 301
     },
     {
@@ -311,8 +331,8 @@
       "permanent": true
     },
     {
-      "source": "/:legacy(program|velocity-program|mentorship|tech-pilot-program)/:path*",
-      "destination": "/ikigai-launchpad",
+      "source": "/:legacy(program|velocity-program|mentorship)/:path*",
+      "destination": "/launchpad",
       "permanent": true
     },
     {

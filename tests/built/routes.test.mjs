@@ -56,11 +56,42 @@ test("886 Residency uses its new canonical route, schema, sitemap, and navigatio
   const sitemap = await readBuiltFile("sitemap.xml");
   assert.ok(sitemap.includes(`<loc>${url}</loc>`));
   assert.ok(!sitemap.includes("/launch-station</loc>"));
-  for (const route of ["/", "/residency", "/ikigai-launchpad", "/resources/application-guide"]) {
+  for (const route of ["/", "/residency", "/launchpad", "/resources/application-guide"]) {
     const links = tags(await readBuiltPage(route), "a");
     assert.ok(links.some((link) => link.href === "/residency"), `${route}: missing residency link`);
     assert.ok(!links.some((link) => /^\/(?:programs\/)?launch-station(?:[?#/]|$)/.test(link.href ?? "")), `${route}: stale residency link`);
   }
+});
+
+test("886 Launchpad uses the launchpad canonical URL, schema, and navigation", async () => {
+  const html = await readBuiltPage("/launchpad");
+  const url = "https://www.886studios.com/launchpad";
+  assert.equal(canonical(html), url);
+  assert.ok(!metadata(html, "robots")?.includes("noindex"));
+  assert.equal(textContent(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] ?? ""), "886 Launchpad");
+  const graph = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)]
+    .flatMap(([, json]) => JSON.parse(json)["@graph"] ?? []);
+  const service = graph.find((entry) => entry["@type"] === "Service");
+  assert.equal(service?.name, "886 Launchpad");
+  assert.equal(service?.url, url);
+  assert.equal(service?.["@id"], `${url}#launchpad`);
+  const sitemap = await readBuiltFile("sitemap.xml");
+  assert.ok(sitemap.includes(`<loc>${url}</loc>`));
+  assert.ok(!sitemap.includes("/ikigai-launchpad</loc>"));
+  assert.ok(!sitemap.includes("/accelerator</loc>"));
+  for (const route of ["/", "/launchpad", "/residency", "/resources/application-guide"]) {
+    const page = await readBuiltPage(route);
+    assert.ok(tags(page, "a").some((link) => link.href === "/launchpad"), route);
+    assert.ok(!tags(page, "a").some((link) => /^\/(?:ikigai-launchpad|accelerator)(?:[?#/]|$)/.test(link.href ?? "")), route);
+    assert.ok(!/ikigai-(?:logo|mark|wordmark)/i.test(page), route);
+  }
+});
+
+test("newsletter branding uses 886 Insights and retains the subscription destination", async () => {
+  const html = await readBuiltPage("/blog");
+  assert.match(textContent(html), /886 Insights/);
+  assert.ok(!html.includes("ikigai-insights-substack-wide"));
+  assert.ok(tags(html, "form").some((form) => form.action === "https://886studios.substack.com/subscribe"));
 });
 
 test("every resource route keeps its rendered guide, metadata, and structured data", async () => {
