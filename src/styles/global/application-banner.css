@@ -1,4 +1,7 @@
 .application-banner {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 190;
   margin-top: var(--nav-height);
   background: var(--purple-action);
   color: #fff;
@@ -105,6 +108,10 @@ body:has(.application-banner:not([hidden])) #page-home .hero {
 }
 
 @media (max-width: 880px) {
+  .application-banner {
+    top: 0;
+  }
+
   body:has(.application-banner:not([hidden])) #page-home .hero {
     padding-top: 34px;
   }

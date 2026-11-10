@@ -11,6 +11,7 @@ const { measurementId } = Astro.props;
 {
   measurementId && (
     <>
+      <script is:inline async src="https://www.googletagmanager.com/gtm.js?id=GTM-NC2CNQ3T"></script>
       <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}></script>
       <script is:inline src={initializationScript} data-google-analytics-id={measurementId}></script>
     </>
