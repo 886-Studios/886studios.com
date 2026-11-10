@@ -1472,6 +1472,11 @@ export const siteContent = {
               logoSrc: "/assets/logos/docsend.webp",
             },
             {
+              label: "Granola",
+              href: "https://www.granola.ai/",
+              logoSrc: "/assets/logos/granola.png",
+            },
+            {
               label: "Linear",
               href: "https://linear.app",
               logoSrc: "/assets/logos/linear.svg",

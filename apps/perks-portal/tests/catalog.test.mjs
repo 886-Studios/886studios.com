@@ -7,11 +7,15 @@ import { loadCatalog, matches, normalizeSort, sortPerks } from '../src/catalog.m
 const catalogPath=new URL('../private/catalog.json',import.meta.url);
 test('private catalog has sourced, redeemable records and distinguishes pending offers',{skip:!existsSync(catalogPath)},()=>{
   const catalog=loadCatalog(fileURLToPath(catalogPath));
-  assert.equal(catalog.perks.length,22);
-  assert.equal(catalog.perks.filter(p=>!p.pending).length,21);
+  assert.equal(catalog.perks.length,23);
+  assert.equal(catalog.perks.filter(p=>!p.pending).length,22);
   assert.ok(catalog.perks.find(p=>p.id==='zettabyte').pending);
   assert.ok(catalog.perks.find(p=>p.id==='linear'));
   assert.ok(catalog.perks.find(p=>p.id==='deel'));
+  const granola=catalog.perks.find(p=>p.id==='granola');
+  assert.ok(granola);
+  assert.equal(granola.logo,'/assets/logos/granola.png');
+  assert.equal(granola.category,'Productivity');
   const supabase=catalog.perks.find(p=>p.id==='supabase');
   assert.ok(supabase);
   assert.equal(supabase.logo,'/assets/logos/supabase.svg');
@@ -19,7 +23,7 @@ test('private catalog has sourced, redeemable records and distinguishes pending 
   assert.match(supabase.instructions,/claim link/i);
   for(const perk of catalog.perks){assert.ok(!/^(TBD|See below)$/i.test(perk.instructions));assert.ok(perk.source.startsWith('https://'));assert.ok(perk.about.length>=60&&perk.about.length<=360,perk.id);assert.ok(perk.aboutSource.startsWith('https://'));}
   const json=readFileSync(catalogPath,'utf8');
-  for(const excluded of ['Granola','Wispr Flow','Devin (Cognition)','PostHog','Perplexity'])assert.ok(!json.includes(excluded));
+  for(const excluded of ['Wispr Flow','Devin (Cognition)','PostHog','Perplexity'])assert.ok(!json.includes(excluded));
 });
 test('search combines category and words across benefits',()=>{
   const perk={name:'Partner',category:'Engineering',headline:'Cloud credits',description:'Build globally',about:'Tools for prototyping.',offer:'Starter benefit',eligibility:''};

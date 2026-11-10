@@ -181,11 +181,6 @@
   stroke: none;
 }
 
-.contact-action-link:hover svg,
-.contact-action-link:focus-visible svg {
-  transform: translate(2px, -2px);
-}
-
 .contact-action-link[href^="mailto:"]:hover svg,
 .contact-action-link[href^="mailto:"]:focus-visible svg {
   transform: translateX(2px);
@@ -281,19 +276,6 @@
 
 .about-news-headline a:hover {
   color: var(--purple-bright);
-}
-
-.about-news-headline svg {
-  display: inline-block;
-  width: 11px;
-  height: 11px;
-  margin-left: 3px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vertical-align: 0;
 }
 
 @media (max-width: 980px) {

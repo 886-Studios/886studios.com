@@ -1,6 +1,6 @@
 # 886 rebranding follow-up
 
-Branch: `rebrand/886-launchpad`. Final local review: November 10, 2026. This review does not push, merge, or deploy the branch.
+Rebrand source: `rebrand/886-launchpad`. Final local review and main integration: November 10, 2026. This workflow merges locally; it does not push or deploy.
 
 ## Completed in the website
 
@@ -60,3 +60,11 @@ These are follow-up items, not changes made by this branch. External account set
 - After deployment, verify actual HTTP redirects for the legacy program paths and both `withikigai.com` hosts, including query strings. Local preview verifies redirect markup and JavaScript; Vercel applies the HTTP rules and response headers.
 - Verify `/perks` and `/timer` proxy behavior on the deployed site; they are separate applications and are not served by Astro preview.
 - Coordinate the external profile, publication, application-portal, and email-template updates above with the launch.
+
+## Main integration verification
+
+- Integrated the latest `origin/main` at `72c38a0` before merging the rebrand into local `main`. The four recent main commits retain Granola support, portal polish, the sharing description, and descriptive alt text on repeated homepage photos.
+- Resolved the portal-renderer conflict by keeping main's complete renderer and changing only the eligibility footer to **886 Launchpad and 886 Residency**. Regenerated the conflicted content dates from Git history, preserving the November 9 homepage and November 6 resource updates.
+- All 14 files changed exclusively on main are preserved byte-for-byte. The five shared files were reviewed for both sets of changes. The image pipeline generated the matching Granola WebP logo, which is included alongside the new PNG.
+- The combined result passes production validation on Node 22.23.4: zero Astro errors, warnings, or hints; 52 source tests; 27 built-route tests; SEO checks for 83 indexable pages; and security checks across 107 generated pages. The portal passes 52 tests, with the same two optional integration checks skipped.
+- Repeated the 44 route/viewport browser checks against the combined result. Navigation, focus, announcement behavior, FAQ, and resource search/reset pass with no broken images, failed page or asset responses, console errors/warnings, blank pages, or horizontal overflow.

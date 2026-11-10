@@ -13,6 +13,7 @@
     "supabase:invite": "node --env-file-if-exists=.env.local scripts/create-supabase-claim.mjs",
     "founders:import": "node --env-file-if-exists=.env.local scripts/import-founders.mjs",
     "supabase:catalog": "node scripts/add-supabase-perk.mjs",
+    "granola:catalog": "node scripts/add-granola-perk.mjs",
     "validate": "npm test && npm run build",
     "preflight": "node --env-file-if-exists=.env.local scripts/preflight.mjs",
     "validate:release": "npm run preflight && npm run validate"
