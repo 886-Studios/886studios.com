@@ -26,7 +26,7 @@ export const socialLinks = [
   },
   {
     platform: "instagram",
-    href: "https://www.instagram.com/ikigai_launchpad/",
+    href: "https://www.instagram.com/886.studios/",
     ariaLabel: "886 Studios on Instagram",
   },
   {

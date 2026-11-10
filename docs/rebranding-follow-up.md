@@ -20,7 +20,7 @@ These are follow-up items, not changes made by this branch. External account set
 | Surface | Existing reference | Follow-up |
 | --- | --- | --- |
 | Substack publication | Website previously called it ikigai Insights; publication is hosted at `886studios.substack.com` | Set the publication name to **886 Insights** in Substack; review its About page, artwork, email header/footer, welcome email, and sender name. Keep the existing URL unless a separate migration is planned. |
-| Instagram | `instagram.com/ikigai_launchpad` | Update display name, biography, logo, and program link. Confirm an available handle before changing website links. |
+| Instagram | `instagram.com/886.studios` | Website links and structured-data profile references use the supplied **886.studios** handle. Review the account's display name, biography, logo, and program link in Instagram. |
 | Threads | `threads.net/@ikigai_launchpad` | Coordinate its profile/handle with Instagram, then update the website and structured-data profile links. |
 | Legacy domain | `withikigai.com` and `www.withikigai.com` | Keep redirects active for old links; verify the new destination after deployment. |
 | Timer application | `/timer` proxies `ikigai-timer.vercel.app` | Review the timer's visible title, logo, and Vercel project name in its own repository. |
