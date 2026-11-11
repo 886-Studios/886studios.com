@@ -31,8 +31,8 @@ export const socialLinks = [
   },
   {
     platform: "threads",
-    href: "https://www.threads.net/@ikigai_launchpad",
-    ariaLabel: "886 Launchpad on Threads",
+    href: "https://www.threads.net/@886.studios",
+    ariaLabel: "886 Studios on Threads",
   },
   {
     platform: "discord",
