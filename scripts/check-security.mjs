@@ -11,6 +11,16 @@ const scriptSources = policy?.split(";").map((directive) => directive.trim())
 assert.ok(scriptSources?.includes("'self'"), "A script CSP is required");
 assert.ok(!scriptSources.includes("'unsafe-inline'") && !scriptSources.includes("'unsafe-eval'"),
   "The script CSP must reject inline code and eval");
+const connectionSources = policy.split(";").map((directive) => directive.trim())
+  .find((directive) => directive.startsWith("connect-src "))?.split(/\s+/).slice(1);
+// These are used by the existing Google tag, including its Ads-linked destination.
+// Keep script execution strict while allowing measurement to leave the browser.
+for (const source of ["https://analytics.google.com", "https://*.analytics.google.com",
+  "https://*.google-analytics.com", "https://stats.g.doubleclick.net", "https://ad.doubleclick.net", "https://www.google.com"]) {
+  assert.ok(connectionSources?.includes(source), `Google measurement connection is blocked: ${source}`);
+}
+assert.ok(scriptSources.includes("https://googleads.g.doubleclick.net"),
+  "The existing Google Ads tag's script endpoint is blocked");
 
 const productionAnalytics = process.env.VERCEL === "1" && process.env.VERCEL_ENV === "production";
 const siteUrl = "https://www.886studios.com";
