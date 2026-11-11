@@ -243,6 +243,28 @@ npm run indexnow -- \
   --url=https://www.886studios.com/old-page
 ```
 
+The `indexnow.yml` workflow runs only after a successful Vercel deployment in the
+verified `Production – 886studios-redesign` environment. It fingerprints live
+canonical HTML, compares it with the last accepted production snapshot, and
+submits added, changed and removed URLs. It excludes private URLs and fails on
+fetch, noindex or submission errors without advancing state. Preview and failed
+deployments do not submit URLs. No deployment token or build-time submission is
+needed. The initial baseline was captured from production on 2026-11-10.
+
+Snapshots are retained as Actions artifacts for 90 days. If the most recent
+snapshot expires, the workflow fails rather than silently forgetting changes.
+Refresh the baseline deliberately with `node scripts/indexnow-after-deploy.mjs
+--baseline-only --output=scripts/data/indexnow-baseline.json`, then review/release
+it and increment `SNAPSHOT_NAME` in the workflow before resuming. For a network-only
+comparison with no submission, use `node scripts/indexnow-after-deploy.mjs
+--dry-run`; this prints the comparison without writing or advancing a snapshot.
+Accepted production snapshots live under the ignored `.artifacts/` directory.
+Changes to assets served at an unchanged URL without changes to HTML references
+may require the existing explicit `npm run indexnow -- --url=...` command.
+
+See [application conversion tracking](docs/application-conversion-tracking.md)
+for the separately managed portal's completion event and verification checklist.
+
 Google Search Console, Bing Webmaster Tools, Yandex Webmaster, and Baidu Search Resource
 Platform still require an owner account. Add the requested HTML meta verification token as
 the matching production variable listed under [Environment](#environment), then redeploy.

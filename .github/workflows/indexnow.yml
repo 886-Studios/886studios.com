@@ -1,0 +1,71 @@
+name: Notify IndexNow after production
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  SNAPSHOT_NAME: indexnow-production-snapshot-v1
+
+jobs:
+  notify:
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment.creator.login == 'vercel[bot]' &&
+      github.event.deployment.environment == 'Production – 886studios-redesign'
+    concurrency:
+      group: indexnow-production
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Restore the last accepted production snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import json, os, shutil, subprocess
+          from pathlib import Path
+          repo = os.environ["GH_REPO"]
+          name = os.environ["SNAPSHOT_NAME"]
+          def api(resource):
+              return json.loads(subprocess.check_output(["gh", "api", f"repos/{repo}/{resource}"]))
+          artifacts = api(f"actions/artifacts?name={name}&per_page=100")["artifacts"]
+          destination = Path(".artifacts/indexnow/previous")
+          destination.mkdir(parents=True, exist_ok=True)
+          for artifact in artifacts:
+              run_id = str(artifact["workflow_run"]["id"])
+              run = api(f"actions/runs/{run_id}")
+              if (run["path"] != ".github/workflows/indexnow.yml" or
+                  run["event"] != "deployment_status" or run["conclusion"] != "success"):
+                  continue
+              if artifact["expired"]:
+                  raise RuntimeError("Snapshot expired. Refresh the baseline and increment SNAPSHOT_NAME before resuming.")
+              subprocess.run(["gh", "run", "download", run_id, "--name", name, "--dir", str(destination)], check=True)
+              break
+          else:
+              if len(artifacts) == 100:
+                  raise RuntimeError("No trusted snapshot in the first 100 artifacts; investigate before resetting.")
+              shutil.copyfile("scripts/data/indexnow-baseline.json", destination / "production-snapshot.json")
+          PY
+      - name: Submit only changed live public URLs
+        run: node scripts/indexnow-after-deploy.mjs --previous=.artifacts/indexnow/previous/production-snapshot.json
+      - name: Preserve the accepted snapshot for the next deployment
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ${{ env.SNAPSHOT_NAME }}
+          path: .artifacts/indexnow/production-snapshot.json
+          retention-days: 90
+          if-no-files-found: error
