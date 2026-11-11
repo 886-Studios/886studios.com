@@ -636,7 +636,7 @@ export const portfolioCompanies = [
 
 export const siteContent = {
   announcement: {
-    message: "ikigai Launchpad has been rebranded to 886 Launchpad. Applications are open on a rolling basis.",
+    message: "ikigai Launchpad has been renamed to 886 Launchpad. Applications are open on a rolling basis.",
     ctaLabel: "Apply here",
   },
   nav: {
