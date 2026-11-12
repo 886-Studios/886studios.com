@@ -1,6 +1,7 @@
 {
   "calendarId": "cal-YDazDmfi5UlPvrC",
   "upcomingEventIds": [
+    "evt-3R7WP1Htr9BF9Bd",
     "evt-XqsLgMbdyFyluKH"
   ],
   "events": [
@@ -179,6 +180,17 @@
       "url": "https://luma.com/5p8v2ikh",
       "locationName": "Location TBD",
       "isOnline": false
+    },
+    {
+      "id": "evt-3R7WP1Htr9BF9Bd",
+      "title": "After Dark: 886 Studios × OpenAI",
+      "startAt": "2026-11-19T10:00:00.000Z",
+      "endAt": "2026-11-19T13:30:00.000Z",
+      "timezone": "Asia/Taipei",
+      "url": "https://luma.com/mh1te5xl",
+      "locationName": "Location TBD",
+      "isOnline": false,
+      "coverUrl": "https://images.lumacdn.com/uploads/io/79bebe10-0a7d-4a0d-8031-37f4f26e1e38.jpg"
     }
   ]
 }
