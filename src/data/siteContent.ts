@@ -1298,6 +1298,18 @@ export const siteContent = {
         },
       },
       {
+        title: "Twitch共同創辦人Kevin Lin分享創業歷程 鼓舞同學勇於實踐夢想",
+        href: "https://www.nccu.edu.tw/p/406-1000-19503,r17.php?Lang=zh-tw",
+        source: "National Chengchi University",
+        publishedAt: "2025-04-24",
+        image: {
+          src: "/assets/resources/news/kevin-lin-nccu-960.webp",
+          alt: "Kevin Lin sharing his entrepreneurial journey at National Chengchi University",
+          width: 1233,
+          height: 832,
+        },
+      },
+      {
         title: "Silicon Valley Founders Launch ikigai to Help Taiwanese Startups Go Global",
         href: "https://meet-global.bnext.com.tw/articles/view/48182",
         source: "Meet Global",
