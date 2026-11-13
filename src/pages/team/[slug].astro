@@ -15,8 +15,8 @@ export function getStaticPaths() {
 const { profile } = Astro.props as { profile: PartnerProfile };
 const profileDescription = getProfileDescription(profile);
 const profileImageSize = profile.legacySlug === "patryk-chojecki" ? 931 : 400;
-const profileImageWidth = profile.legacySlug === "james-hong" ? 1120 : profileImageSize;
-const profileImageHeight = profile.legacySlug === "james-hong" ? 1404 : profileImageSize;
+const profileImageWidth = profile.legacySlug === "james-hong" ? 500 : profileImageSize;
+const profileImageHeight = profile.legacySlug === "james-hong" ? 627 : profileImageSize;
 ---
 
 <BaseLayout
