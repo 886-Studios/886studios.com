@@ -13,6 +13,14 @@
       "destination": "https://ikigai-timer.vercel.app/:path*"
     },
     {
+      "source": "/itimer",
+      "destination": "https://ikigai-timer.vercel.app/itimer"
+    },
+    {
+      "source": "/itimer/:path*",
+      "destination": "https://ikigai-timer.vercel.app/itimer/:path*"
+    },
+    {
       "source": "/perks",
       "destination": "https://886-studios-perks.vercel.app/perks"
     },
