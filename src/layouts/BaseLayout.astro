@@ -40,6 +40,7 @@ interface Props {
   breadcrumbs?: BreadcrumbItem[];
   structuredData?: JsonLdObject | JsonLdObject[];
   hideFooterSocials?: boolean;
+  standalone?: boolean;
   canonical?: string | false;
 }
 
@@ -58,6 +59,7 @@ const {
   breadcrumbs,
   structuredData,
   hideFooterSocials = false,
+  standalone = false,
   canonical,
 } = Astro.props;
 
@@ -209,14 +211,18 @@ const structuredDataJson = canonicalUrl
   </head>
   <body class:list={[currentPath === "/" && "is-home", isPortfolioProfilePage && "is-portfolio-profile", isManifestoPage && "is-manifesto", isResourceGuide && "is-resource-guide"]}>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <header>
-      <SiteNav currentPath={currentPath} />
-    </header>
-    <ApplicationBanner />
+    {standalone ? <slot name="header" /> : (
+      <>
+        <header>
+          <SiteNav currentPath={currentPath} />
+        </header>
+        <ApplicationBanner />
+      </>
+    )}
     <main id="main-content" class="site-main" tabindex="-1">
       <slot />
     </main>
-    <SiteFooter hideSocials={hideFooterSocials} />
+    {standalone ? <slot name="footer" /> : <SiteFooter hideSocials={hideFooterSocials} />}
     <VercelAnalytics />
     {productionAnalyticsEnabled && <SpeedInsights />}
     <script>

@@ -1,0 +1,211 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { applicationUrl, siteConfig } from "../config/site";
+import { brand, socialLinks } from "../data/siteContent";
+import { socialIconPaths } from "../data/socialIcons";
+
+const socialDetails = {
+  x: { label: "X" },
+  linkedin: { label: "LinkedIn" },
+  instagram: { label: "Instagram" },
+  threads: { label: "Threads" },
+  discord: { label: "Discord" },
+  substack: { label: "Newsletter" },
+} as const;
+
+const socialOrder = ["x", "linkedin", "instagram", "threads", "discord", "substack"] as const;
+const links = [
+  { platform: "application", label: "Apply to 886 Launchpad", href: applicationUrl },
+  { platform: "website", label: "Website", href: `${siteConfig.url}/` },
+  ...socialOrder.map((platform) => ({
+    platform,
+    ...socialDetails[platform],
+    href: socialLinks.find((link) => link.platform === platform)!.href,
+  })),
+];
+const groups = [
+  { id: "explore", label: "Explore", links: links.slice(0, 2) },
+  { id: "socials", label: "Socials", links: links.slice(2, 6) },
+  { id: "community", label: "Community", links: links.slice(6) },
+];
+---
+
+<BaseLayout
+  title="Links | 886 Studios"
+  description="Connect with 886 Studios. Apply to 886 Launchpad, visit our website, follow our social channels, join Discord, and read our newsletter on Substack."
+  standalone
+>
+  <header slot="header" class="links-header">
+    <img src={brand.logoUrl} alt="" width={brand.logoWidth} height={brand.logoHeight} fetchpriority="high" />
+    <h1>886 Studios</h1>
+    <p>Build what matters.</p>
+  </header>
+
+  <div class="links-backdrop" aria-hidden="true"></div>
+
+  <nav class="links-hub" aria-label="886 Studios links">
+    {groups.map((group) => (
+      <section
+        class="links-group"
+        aria-label={group.id === "explore" ? "Main links" : undefined}
+        aria-labelledby={group.id === "explore" ? undefined : `links-${group.id}`}
+      >
+        {group.id !== "explore" && <h2 id={`links-${group.id}`}>{group.label}</h2>}
+        <ol class="links-list">
+          {group.links.map((link) => (
+            <li>
+              <a
+                class:list={["hub-link", link.platform === "application" && "hub-link--primary"]}
+                href={link.href}
+                data-analytics-event={link.platform === "application" ? "application_started" : "link_clicked"}
+                data-analytics-placement="links_page"
+                data-analytics-label={link.label}
+              >
+                {socialIconPaths[link.platform] && (
+                  <svg class="hub-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d={socialIconPaths[link.platform]} />
+                  </svg>
+                )}
+                <span class="hub-link-label">{link.label}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </nav>
+
+  <footer slot="footer" class="links-footer">© {new Date().getFullYear()} 886 Studios</footer>
+</BaseLayout>
+
+<style>
+  .links-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    /* Purple sampled from the supplied 886 logo. */
+    background: #8c43ff;
+  }
+
+  .links-header,
+  .links-hub,
+  .links-footer {
+    position: relative;
+    z-index: 1;
+    width: min(100% - 40px, 460px);
+    margin-inline: auto;
+  }
+
+  .links-header {
+    padding-top: 40px;
+    text-align: center;
+    color: #10081d;
+  }
+
+  .links-header img {
+    display: block;
+    width: 84px;
+    height: 84px;
+    margin: 0 auto 12px;
+    filter: brightness(0);
+  }
+
+  .links-header h1 {
+    font-size: 32px;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.045em;
+  }
+
+  .links-header p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #211035;
+  }
+
+  .links-hub {
+    margin-top: 30px;
+    display: grid;
+    gap: 24px;
+  }
+
+  .links-group h2 {
+    margin-bottom: 10px;
+    color: #10081d;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .links-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    list-style: none;
+  }
+
+  .links-group:first-child .links-list {
+    grid-template-columns: 1fr;
+  }
+
+  .hub-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 60px;
+    padding: 16px 12px;
+    border: 1px solid #09070d;
+    border-radius: 8px;
+    background: #09070d;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 160ms ease, transform 160ms ease;
+  }
+
+  .hub-link--primary {
+    min-height: 64px;
+  }
+
+  .hub-link:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+  }
+
+  .hub-link-icon {
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  .hub-link-label {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .links-footer {
+    padding-block: 32px 24px;
+    text-align: center;
+    font-size: 11px;
+    color: #211035;
+  }
+
+  @media (hover: hover) {
+    .hub-link:hover {
+      background: #21152f;
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hub-link {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>
