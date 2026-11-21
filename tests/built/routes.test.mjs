@@ -94,6 +94,14 @@ test("newsletter branding uses 886 Insights and retains the subscription destina
   assert.ok(tags(html, "form").some((form) => form.action === "https://886studios.substack.com/subscribe"));
 });
 
+test("the homepage provides a crawlable link to the public social links page", async () => {
+  const home = await readBuiltPage("/");
+  const page = await readBuiltPage("/links");
+  assert.ok(tags(home, "a").some((link) => link.href === "/links" && !link.rel?.split(/\s+/).includes("nofollow")));
+  assert.equal(canonical(page), "https://www.886studios.com/links");
+  assert.doesNotMatch(metadata(page, "robots") ?? "", /\bnoindex\b/);
+});
+
 test("page styles are included where used and stay out of the shared homepage CSS", async () => {
   async function builtStyles(route) {
     const html = await readBuiltPage(route);
