@@ -146,12 +146,13 @@ Vercel redirects, proxy rules, and response headers must be checked on a deploym
 | `npm run events:sync:dry-run` | Fetch Luma events and report changes without writing the archive. |
 | `npm run events:sync` | Fetch Luma events and update `src/data/luma-events.json`. |
 | `npm run content-dates:generate` | Regenerate content dates from Git history. |
-| `npm run images:optimize` | Generate WebP variants for configured images in `public/assets/`. |
+| `npm run images:optimize` | Refresh changed or missing WebP variants in `public/assets/`. Pass `-- --force` to re-encode all variants. |
 | `npm run indexnow:dry-run` | Inspect the generated IndexNow submission without sending it. |
 | `npm run indexnow` | Submit generated or explicitly provided production URLs to IndexNow. |
 
 The `dev`, `check`, and `build` commands generate content dates automatically; `build` also
-runs image optimization. These hooks can update generated source dates and image files.
+runs image optimization. These hooks can update generated source dates, image variants, and
+`scripts/data/image-variants.json`. Commit variant and manifest updates alongside their sources.
 Review any resulting diff before committing. Do not hand-edit `src/data/contentDates.generated.ts`.
 
 Built-route expectations live in `tests/fixtures/route-contracts.json`. Review and update
