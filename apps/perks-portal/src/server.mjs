@@ -1,4 +1,5 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { readdirSync } from 'node:fs';
+import { readFile, stat } from 'node:fs/promises';
 import { join, extname } from 'node:path';
 import { createAuth, createRateLimiter } from './auth.mjs';
 import { renderDirectory, renderLogin, renderSupabaseClaim } from './render.mjs';
@@ -84,10 +85,13 @@ export function createHandler({ root, code, secret, origin, basePath = '', secur
       const path = url.pathname.slice(basePath.length) || '/';
       if (req.method === 'GET' || req.method === 'HEAD') {
         if (path === '/robots.txt') return send(200, 'User-agent: *\nAllow: /\n', 'text/plain; charset=utf-8');
-        if (assets.has(path)) {
-          const asset = assets.get(path);
+        const asset = assets.get(path);
+        if (asset) {
+          const body = req.method === 'GET' ? await readFile(asset.path) : undefined;
+          const size = body?.length ?? (await stat(asset.path)).size;
           res.setHeader('Cache-Control', 'public, max-age=3600');
-          return send(200, readFileSync(asset.path), asset.type);
+          res.setHeader('Content-Length', size);
+          return send(200, body, asset.type);
         }
         if (accessServices && await accessServices.handle({ req, path, portalAuthorized: Boolean(auth?.valid(req.headers.cookie)), send, redirect, res })) return;
         // The encrypted invitation authorizes this single benefit, never catalog access.

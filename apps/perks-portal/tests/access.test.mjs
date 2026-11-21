@@ -59,6 +59,20 @@ test('locked HTML and every public asset contain no private partner data',async(
     assert.doesNotMatch(result.body,/Private Test Partner|private-referral|Confidential credit allowance|prototyping|test-portfolio-code-123/);
   }
 });
+
+test('public asset HEAD responses send the GET headers without a body', async () => {
+  const handler = make({ basePath: '/perks' });
+  const path = '/perks/styles.css';
+  const [get, head] = await Promise.all([request(handler, path), request(handler, path, { method: 'HEAD' })]);
+  assert.equal(get.status, 200);
+  assert.equal(head.status, 200);
+  assert.equal(head.body, '');
+  assert.equal(get.headers['content-length'], Buffer.byteLength(get.body));
+  assert.equal(get.headers['content-type'], 'text/css');
+  assert.equal(get.headers['cache-control'], 'public, max-age=3600');
+  assert.deepEqual(head.headers, get.headers);
+});
+
 test('private data and server files cannot be requested directly, even with a session',async()=>{
   const handler=make(); const signed=await login(handler);
   for(const path of ['/private/catalog.json','/private/source-records.json','/private/dev-access.json','/private/approved-emails.json','/private/claim-outbox.json','/src/server.mjs','/.env.local','/api/perks','/assets/../private/catalog.json','/%2e%2e/private/catalog.json','/assets/%2e%2e/%2e%2e/private/catalog.json','/index']) {
