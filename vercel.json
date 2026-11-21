@@ -826,6 +826,15 @@
       ]
     },
     {
+      "source": "/itimer",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
       "source": "/perks",
       "headers": [
         {

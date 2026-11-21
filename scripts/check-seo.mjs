@@ -1,6 +1,6 @@
 import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
-import { publicProxiedPages } from "../src/config/deployment.ts";
+import { indexableProxiedPages } from "../src/config/deployment.ts";
 import { hasValidBrandTitle } from "./lib/seo-title.mjs";
 
 const projectRoot = process.cwd();
@@ -444,7 +444,7 @@ for (const entry of sitemapEntries) {
 
 const expectedSitemapUrls = new Set([
   ...indexableCanonicals,
-  ...publicProxiedPages.map((route) => `${productionOrigin}${route}`),
+  ...indexableProxiedPages.map((route) => `${productionOrigin}${route}`),
 ]);
 for (const canonical of expectedSitemapUrls) {
   if (!sitemapUrls.has(canonical)) fail(`sitemap.xml: missing ${canonical}`);
@@ -556,11 +556,18 @@ if (!llms.includes("https://www.886studios.com/resources/y-combinator-101")) {
 
 const deploymentConfig = JSON.parse(await readFile(path.join(projectRoot, "vercel.json"), "utf8"));
 const rewrites = Array.isArray(deploymentConfig.rewrites) ? deploymentConfig.rewrites : [];
-for (const route of publicProxiedPages) {
+for (const route of indexableProxiedPages) {
   if (!rewrites.some(({ source, destination }) => source === route && /^https:\/\//.test(destination))) {
     fail(`${route}: missing Vercel rewrite for the public sitemap URL`);
   }
 }
+const itimerHeaders = deploymentConfig.headers?.find(({ source }) => source === "/itimer")?.headers;
+const itimerRobots = itimerHeaders?.find(({ key }) => key.toLowerCase() === "x-robots-tag")?.value ?? "";
+if (!itimerRobots.split(",").some((directive) => directive.trim().toLowerCase() === "noindex")) {
+  fail("/itimer: missing X-Robots-Tag noindex header");
+}
+if (sitemapUrls.has(`${productionOrigin}/itimer`)) fail("/itimer: noindex URL must stay out of the sitemap");
+
 const redirects = Array.isArray(deploymentConfig.redirects) ? deploymentConfig.redirects : [];
 for (const source of ["/accelerator", "/accelerator/", "/programs", "/programs/", "/ikigai-launchpad", "/ikigai-launchpad/"]) {
   if (!redirects.some((redirect) =>

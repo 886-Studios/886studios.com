@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { publicProxiedPages } from "../config/deployment";
+import { indexableProxiedPages } from "../config/deployment";
 import { siteConfig } from "../config/site";
 import { partnerProfiles } from "../data/partnerProfiles";
 import { contentDates } from "../data/contentDates.generated";
@@ -42,7 +42,7 @@ const staticRoutes = [
   { path: "/contact", priority: "0.6", changefreq: "monthly" },
   { path: "/links", priority: "0.5", changefreq: "monthly" },
   { path: "/privacy", priority: "0.3", changefreq: "yearly" },
-  ...publicProxiedPages.map((path) => ({ path, priority: "0.3", changefreq: "monthly" })),
+  ...indexableProxiedPages.map((path) => ({ path, priority: "0.3", changefreq: "monthly" })),
 ];
 
 const profileRoutes = partnerProfiles.map((profile) => ({
