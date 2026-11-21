@@ -1,5 +1,6 @@
 import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
+import { publicProxiedPages } from "../src/config/deployment.ts";
 import { hasValidBrandTitle } from "./lib/seo-title.mjs";
 
 const projectRoot = process.cwd();
@@ -441,11 +442,15 @@ for (const entry of sitemapEntries) {
   }
 }
 
-for (const canonical of indexableCanonicals) {
+const expectedSitemapUrls = new Set([
+  ...indexableCanonicals,
+  ...publicProxiedPages.map((route) => `${productionOrigin}${route}`),
+]);
+for (const canonical of expectedSitemapUrls) {
   if (!sitemapUrls.has(canonical)) fail(`sitemap.xml: missing ${canonical}`);
 }
 for (const url of sitemapUrls) {
-  if (!indexableCanonicals.has(url)) fail(`sitemap.xml: includes non-indexable or non-canonical URL ${url}`);
+  if (!expectedSitemapUrls.has(url)) fail(`sitemap.xml: includes non-indexable or non-canonical URL ${url}`);
 }
 
 const rssXml = await readFile(path.join(distRoot, "rss.xml"), "utf8");
@@ -520,6 +525,7 @@ for (const [index, item] of rssItems.entries()) {
 const robots = await readFile(path.join(distRoot, "robots.txt"), "utf8");
 if (!/^User-agent: \*$/m.test(robots)) fail("robots.txt: missing the general user-agent group");
 if (!/^Allow: \/$/m.test(robots)) fail("robots.txt: public crawling is not explicitly allowed");
+if (/^[ \t]*Disallow:[ \t]*[^\s#]/im.test(robots)) fail("robots.txt: public crawling must remain open to every user-agent");
 if (!/^Sitemap: https:\/\/www\.886studios\.com\/sitemap\.xml$/m.test(robots)) fail("robots.txt: missing the production sitemap directive");
 
 for (const crawler of [
@@ -549,6 +555,12 @@ if (!llms.includes("https://www.886studios.com/resources/y-combinator-101")) {
 }
 
 const deploymentConfig = JSON.parse(await readFile(path.join(projectRoot, "vercel.json"), "utf8"));
+const rewrites = Array.isArray(deploymentConfig.rewrites) ? deploymentConfig.rewrites : [];
+for (const route of publicProxiedPages) {
+  if (!rewrites.some(({ source, destination }) => source === route && /^https:\/\//.test(destination))) {
+    fail(`${route}: missing Vercel rewrite for the public sitemap URL`);
+  }
+}
 const redirects = Array.isArray(deploymentConfig.redirects) ? deploymentConfig.redirects : [];
 for (const source of ["/accelerator", "/accelerator/", "/programs", "/programs/", "/ikigai-launchpad", "/ikigai-launchpad/"]) {
   if (!redirects.some((redirect) =>
