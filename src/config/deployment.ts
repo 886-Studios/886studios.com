@@ -4,8 +4,8 @@ interface DeploymentEnvironment {
   VERCEL_ENV?: string;
 }
 
-// These public pages are served through Vercel rewrites and have no Astro build output.
-export const publicProxiedPages = ["/timer", "/itimer"] as const;
+// These indexable pages are served through Vercel rewrites and have no Astro build output.
+export const indexableProxiedPages = ["/timer"] as const;
 
 export function isProductionDeployment(environment: DeploymentEnvironment) {
   return environment.PROD === true &&
