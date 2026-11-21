@@ -94,6 +94,30 @@ test("newsletter branding uses 886 Insights and retains the subscription destina
   assert.ok(tags(html, "form").some((form) => form.action === "https://886studios.substack.com/subscribe"));
 });
 
+test("page styles are included where used and stay out of the shared homepage CSS", async () => {
+  async function builtStyles(route) {
+    const html = await readBuiltPage(route);
+    const inline = [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)].map(([, css]) => css);
+    const external = await Promise.all(tags(html, "link")
+      .filter((link) => link.rel === "stylesheet" && link.href?.startsWith("/_astro/"))
+      .map((link) => readBuiltFile(link.href)));
+    return [...inline, ...external].join("\n");
+  }
+
+  const homeStyles = await builtStyles("/");
+  for (const [route, selector] of [
+    ["/launchpad", /\.prog-testimonial-card\b/],
+    ["/residency", /\.launch-station-content\b/],
+    ["/blog", /\.blog-feature-link\b/],
+    ["/events", /\.events-year-stack\b/],
+    ["/contact", /\.contact-paths\b/],
+    ["/privacy", /\.privacy-notice\b/],
+  ]) {
+    assert.match(await builtStyles(route), selector, `${route} should include its page styles`);
+    assert.doesNotMatch(homeStyles, selector, `${route} styles should stay out of the shared CSS`);
+  }
+});
+
 test("every resource route keeps its rendered guide, metadata, and structured data", async () => {
   assert.deepEqual(await resourceRoutes(), fixtures.resources.map((fixture) => fixture.route).sort());
   for (const { route, ...expected } of fixtures.resources) {

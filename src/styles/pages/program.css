@@ -1,0 +1,128 @@
+/* Shared styles for 886 Launchpad and 886 Residency. */
+.program-page {
+  --prog-section-gap: clamp(48px, 5vw, 72px);
+  --prog-section-half-gap: clamp(24px, 2.5vw, 32px);
+  --prog-card-pad: clamp(20px, 2vw, 24px);
+  overflow-x: hidden;
+  overflow-x: clip;
+  background:
+    linear-gradient(180deg, rgba(12, 10, 22, 0.34) 0%, rgba(5, 5, 7, 0) 420px),
+    var(--bg);
+}
+
+.program-page .btn-pri {
+  transition: none;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.16);
+}
+
+.program-page .btn-pri::after {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  font-size: 0.95rem;
+}
+
+.program-page .btn-pri:hover {
+  transform: none;
+  background: var(--purple-action);
+  border-color: rgba(167, 139, 250, 0.44);
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.16);
+}
+
+.prog-brief-fact {
+  min-width: 0;
+}
+
+.prog-brief-fact dt {
+  margin-bottom: 5px;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.prog-brief-fact dd {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+}
+
+.prog-brief-fact strong {
+  color: var(--text-primary);
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 1.12;
+}
+
+.prog-brief-fact span {
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.program-page .program-heading {
+  margin: 0 0 var(--space-md);
+  color: var(--text-primary);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.program-page .program-lead {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  line-height: 1.72;
+  overflow-wrap: anywhere;
+}
+
+.program-lead a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.program-hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: var(--space-lg);
+}
+
+.program-hero-cta {
+  max-width: 100%;
+  min-height: 48px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.program-page .program-hero-status {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 640px) {
+  .program-page .program-lead {
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  .program-hero-actions {
+    margin-top: var(--space-md);
+  }
+
+  .program-hero-cta {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+    padding-inline: 16px 12px;
+  }
+}
