@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 import test from "node:test";
 import ts from "typescript";
+import * as launchpadSchedule from "../src/data/launchpadSchedule.ts";
 
 function loadData(path, dependencies) {
   const source = readFileSync(new URL(path, import.meta.url), "utf8");
@@ -17,6 +18,7 @@ function loadData(path, dependencies) {
 }
 const { siteContent } = loadData("../src/data/siteContent.ts", {
   "../config/site": { applicationUrl: "https://example.com/apply" },
+  "./launchpadSchedule": launchpadSchedule,
 });
 const { partnerProfiles } = loadData("../src/data/partnerProfiles.ts", {
   "./siteContent": { siteContent },

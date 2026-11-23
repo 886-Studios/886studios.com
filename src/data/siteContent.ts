@@ -1,7 +1,12 @@
 import { applicationUrl } from "../config/site";
+import {
+  launchpadFirstRoundBannerNote,
+  launchpadFirstRoundEndDate,
+  launchpadFirstRoundNote,
+  launchpadNextBatch,
+} from "./launchpadSchedule";
 
-const launchpadNextBatch = "Spring 2027";
-const launchpadScheduleNote = `Applications are open on a rolling basis. The next 886 Launchpad batch will take place in ${launchpadNextBatch}.`;
+const launchpadScheduleNote = `${launchpadFirstRoundNote} The next 886 Launchpad batch will take place in ${launchpadNextBatch}.`;
 
 export const brand = {
   name: "886 Studios",
@@ -636,7 +641,7 @@ export const portfolioCompanies = [
 
 export const siteContent = {
   announcement: {
-    message: "ikigai Launchpad has been renamed to 886 Launchpad. Applications are open on a rolling basis.",
+    message: `ikigai Launchpad has been renamed to 886 Launchpad. ${launchpadFirstRoundBannerNote}`,
     ctaLabel: "Apply here",
   },
   nav: {
@@ -775,7 +780,7 @@ export const siteContent = {
       status: {
         nextBatch: launchpadNextBatch,
         announcement: launchpadScheduleNote,
-        summary: `Rolling applications · Next batch: ${launchpadNextBatch}.`,
+        summary: `${launchpadFirstRoundNote} Next batch is ${launchpadNextBatch}.`,
       },
       cta: {
         label: "Apply to 886 Launchpad",
@@ -1009,8 +1014,8 @@ export const siteContent = {
             label: "Applications",
           },
           {
-            date: "Rolling",
-            label: "Application review",
+            date: launchpadFirstRoundEndDate,
+            label: "First round of acceptances ends",
           },
           {
             date: launchpadNextBatch,
@@ -1039,7 +1044,7 @@ export const siteContent = {
         },
         {
           question: "When is the next batch?",
-          answer: `The next batch is ${launchpadNextBatch}. Applications are open and reviewed on a rolling basis.`,
+          answer: `The next batch is ${launchpadNextBatch}. ${launchpadFirstRoundNote}`,
         },
         {
           question: "What are the investment terms?",
@@ -1248,7 +1253,7 @@ export const siteContent = {
       },
       accelerator: {
         title: "What about the accelerator?",
-        body: "Residents can apply to 886 Launchpad at any time through the same application process as everyone else. A desk isn't an acceptance, but working alongside us is a great way to get to know each other.",
+        body: `Residents can apply to 886 Launchpad through the same application process as everyone else. ${launchpadFirstRoundNote} A desk isn't an acceptance, but working alongside us is a great way to get to know each other.`,
         cta: { label: "Explore 886 Launchpad →", href: "/launchpad" },
       },
       joining: {
