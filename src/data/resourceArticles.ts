@@ -1,3 +1,5 @@
+import { launchpadFirstRoundNote } from "./launchpadSchedule";
+
 type ResourceLink = {
   label: string;
   href: string;
@@ -1249,7 +1251,7 @@ export const standaloneResourceArticles: ResourceArticle[] = [
       {
         title: "After the Interview",
         paragraphs: [
-          "If we have additional follow-up questions, our operations team will contact you via email. If our partners wish to have further discussions, we may request a second round of interviews. Applications are reviewed on a rolling basis, and we will contact you by email with next steps.",
+          `If we have additional follow-up questions, our operations team will contact you via email. If our partners wish to have further discussions, we may request a second round of interviews. ${launchpadFirstRoundNote} We will contact you by email with next steps.`,
           "Good luck to all applicants!",
         ],
       },

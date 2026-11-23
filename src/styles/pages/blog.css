@@ -12,6 +12,7 @@
 .blog-author-link:focus-visible,
 .blog-post-author-link:focus-visible,
 .blog-post-publication a:focus-visible,
+.blog-post-recruitment a:focus-visible,
 .blog-post-origin a:focus-visible {
   outline: 2px solid var(--purple-bright);
   outline-offset: 5px;
@@ -402,6 +403,19 @@
   padding: clamp(48px, 7vw, 76px) 32px clamp(80px, 10vw, 124px);
 }
 
+.blog-post-recruitment {
+  margin-bottom: var(--space-lg);
+  padding: var(--space-sm) var(--space-md);
+  border-inline-start: 2px solid var(--purple-bright);
+  background: color-mix(in srgb, var(--purple-bright) 8%, var(--bg));
+  color: var(--text-secondary);
+  line-height: var(--text-reading-line);
+}
+
+.blog-post-recruitment strong {
+  color: var(--text-primary);
+}
+
 .blog-post-content {
   min-width: 0;
   color: var(--text-secondary);
@@ -458,7 +472,8 @@
   font-weight: 650;
 }
 
-.blog-post-content a {
+.blog-post-content a,
+.blog-post-recruitment a {
   color: color-mix(in srgb, var(--text-primary) 76%, var(--purple-bright));
   text-decoration-color: color-mix(in srgb, var(--purple-bright) 55%, transparent);
   text-decoration-thickness: 1px;
@@ -468,7 +483,8 @@
     text-decoration-color 180ms ease;
 }
 
-.blog-post-content a:hover {
+.blog-post-content a:hover,
+.blog-post-recruitment a:hover {
   color: var(--purple-bright);
   text-decoration-color: var(--purple-bright);
 }
