@@ -55,11 +55,11 @@ export const pageMeta = {
     title: "886 Launchpad | Startup Accelerator in Taipei",
     description:
       "886 Launchpad is 886 Studios' 10-week, in-person Taipei accelerator with a standard $100K-for-8% SAFE, weekly mentor office hours, and investor access.",
-    ogImage: `${siteConfig.url}/assets/programs/ikigai-audience-theater-1920.webp`,
-    ogImageAlt: "Founders, mentors, and guests gathered for 886 Launchpad in Taipei",
-    ogImageWidth: 1920,
-    ogImageHeight: 1280,
-    ogImageType: "image/webp",
+    ogImage: `${siteConfig.url}/assets/programs/launchpad-batch-05-spring-2027-social.jpg`,
+    ogImageAlt: "Applications for 886 Launchpad batch #05 are open! Spring 2027. 886 Studios above Taipei's purple-lit skyline.",
+    ogImageWidth: 1200,
+    ogImageHeight: 630,
+    ogImageType: "image/jpeg",
   },
   launchStation: {
     title: "886 Residency: Founder Community in Taipei | 886 Studios",
