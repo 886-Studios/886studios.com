@@ -28,6 +28,12 @@ const staticRoutes = [
     lastmod: contentDates["/residency"],
   },
   { path: "/about", priority: "0.9", changefreq: "monthly" },
+  {
+    path: "/residency-perks",
+    priority: "0.6",
+    changefreq: "monthly",
+    lastmod: contentDates["/residency-perks"],
+  },
   { path: "/team", priority: "0.7", changefreq: "monthly" },
   { path: "/newsroom", priority: "0.7", changefreq: "monthly" },
   { path: "/events", priority: "0.7", changefreq: "daily" },

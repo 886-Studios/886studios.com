@@ -1,6 +1,7 @@
 ---
 import { siteContent } from "../../data/siteContent";
 import ProgramPerks from "../ProgramPerks.astro";
+import { residencyPerkCategories } from "../../data/residencyPerks";
 
 const { launchStation } = siteContent.programs;
 ---
@@ -120,7 +121,7 @@ const { launchStation } = siteContent.programs;
       </dl>
     </section>
 
-    <ProgramPerks id="ls-perks" program={launchStation.title} />
+    <ProgramPerks id="ls-perks" program={launchStation.title} categories={residencyPerkCategories} guideHref="/residency-perks" />
 
     <section class="launch-station-alternative" aria-labelledby="ls-launchpad-heading">
       <h2 id="ls-launchpad-heading">{launchStation.accelerator.title}</h2>
