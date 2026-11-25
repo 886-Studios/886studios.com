@@ -1206,7 +1206,7 @@ export const siteContent = {
         },
         {
           title: "Exclusive startup perks",
-          body: "Access offers from AWS, Notion, Ramp, OpenAI, and more.",
+          body: "Explore selected partner programs for Residency members, with eligibility and access details for each offer.",
         },
         {
           title: "Events & shared learning",

@@ -1,0 +1,85 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { contentDates } from "../data/contentDates.generated";
+import { residencyPerkCategories, residencyPerksReviewedAt, residencyPerkRequestHref } from "../data/residencyPerks";
+import "../styles/pages/residency-perks.css";
+
+const perkCount = residencyPerkCategories.reduce((total, category) => total + category.items.length, 0);
+---
+
+<BaseLayout
+  title="Residency Perks | Startup Tools & Benefits | 886 Studios"
+  description="Explore startup tools and partner benefits for eligible 886 Residency members, with clear eligibility requirements and help from the 886 team to request access."
+  dateModified={contentDates["/residency-perks"]}
+  breadcrumbs={[{ name: "886 Residency", path: "/residency" }, { name: "Residency perks", path: "/residency-perks" }]}
+  hideFooterSocials
+>
+  <div class="page residency-perks-page">
+    <header class="residency-perks-intro">
+      <a class="residency-perks-back" href="/residency"><span aria-hidden="true">←</span> 886 Residency</a>
+      <p class="residency-perks-eyebrow">MEMBER BENEFITS</p>
+      <h1>886 Residency perks<span aria-hidden="true">.</span></h1>
+      <p class="residency-perks-lead">More tools. More room to build.</p>
+      <p class="residency-perks-description">Explore partner programs for eligible Residency members, from your first workspace to your next stage of growth.</p>
+      <a class="btn-pri" href="#request-access">How to get access</a>
+    </header>
+
+    <div class="residency-perks-guidance">
+      <p><strong>Start with your company's eligibility.</strong> These programs are selected for Residency members. Each partner reviews applications, and some offers require funding, a company account or new-customer status.</p>
+      <span>{perkCount} partner programs</span>
+    </div>
+
+    <nav class="residency-perks-categories" aria-label="Perk categories">
+      {residencyPerkCategories.map((category) => <a href={`#${category.id}`}>{category.title} <span>{category.items.length}</span></a>)}
+    </nav>
+
+    <div class="residency-perks-catalog">
+      {residencyPerkCategories.map((category, index) => (
+        <section class="residency-perks-category" aria-labelledby={category.id}>
+          <header class="residency-perks-category-heading">
+            <span aria-hidden="true">0{index + 1}</span>
+            <h2 id={category.id} tabindex="-1">{category.title}</h2>
+          </header>
+          <div class="residency-perks-grid">
+            {category.items.map((perk) => (
+              <article class="residency-perk" data-perk-id={perk.id} aria-labelledby={`perk-${perk.id}`}>
+                <div class="residency-perk-brand">
+                  <span class="residency-perk-logo" aria-hidden="true">
+                    {perk.logoSrc ? <img src={perk.logoSrc} alt="" width="32" height="32" loading="lazy" decoding="async" /> : <span>BB</span>}
+                  </span>
+                  <h3 id={`perk-${perk.id}`}>{perk.label}</h3>
+                </div>
+                <p class="residency-perk-benefit">{perk.benefit}</p>
+                <p class="residency-perk-description">{perk.description}</p>
+                <details class="residency-perk-eligibility">
+                  <summary>Who can apply <span aria-hidden="true">+</span></summary>
+                  <ul>{perk.eligibility.map((condition) => <li>{condition}</li>)}</ul>
+                </details>
+                <div class="residency-perk-actions">
+                  <a href={residencyPerkRequestHref(perk.label)} aria-label={`Request ${perk.label} access`}>Request access <span aria-hidden="true">↗</span></a>
+                  <a href={perk.href} target="_blank" rel="noopener noreferrer">Program details <span aria-hidden="true">↗</span><span class="sr-only"> for {perk.label} (opens in a new tab)</span></a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <section class="residency-perks-access" aria-labelledby="request-access">
+      <div>
+        <p class="residency-perks-eyebrow">YOUR NEXT STEP</p>
+        <h2 id="request-access" tabindex="-1">Found something useful?</h2>
+        <p>Tell us which perks you need and a little about your company. We'll check your Residency membership and share the relevant partner links or introductions privately.</p>
+        <a class="btn-pri" href={residencyPerkRequestHref()}>Ask the 886 team</a>
+        <a class="residency-perks-email" href="mailto:carter@886studios.com">carter@886studios.com</a>
+      </div>
+      <ol>
+        <li><span>01</span><div><h3>Check the requirements</h3><p>Open “Who can apply” for the program you're interested in.</p></div></li>
+        <li><span>02</span><div><h3>Request your introduction</h3><p>Send your company website, work email and the perks you'd like to use.</p></div></li>
+        <li><span>03</span><div><h3>Apply with the partner</h3><p>The partner confirms your eligibility and final offer before activation.</p></div></li>
+      </ol>
+    </section>
+    <p class="residency-perks-note">Reviewed <time datetime={residencyPerksReviewedAt}>November 25, 2026</time>. Offers can change and are subject to partner approval. Residency membership does not guarantee approval or make your company an 886 Studios portfolio company.</p>
+  </div>
+</BaseLayout>

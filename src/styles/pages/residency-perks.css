@@ -1,0 +1,72 @@
+.residency-perks-page {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: var(--nav-height) 32px 80px;
+}
+
+.residency-perks-intro { max-width: 780px; padding-block: 48px; }
+.residency-perks-back { display: inline-flex; gap: 10px; color: var(--text-secondary); font-size: 14px; text-decoration: none; margin-bottom: 42px; }
+.residency-perks-back:hover { color: var(--purple-bright); }
+.residency-perks-eyebrow { color: var(--purple-bright); font-size: 12px; font-weight: 650; letter-spacing: .12em; margin-bottom: 14px; }
+.residency-perks-intro h1 { font-size: clamp(36px, 5.5vw, 64px); line-height: 1.05; letter-spacing: -.055em; font-weight: 650; }
+.residency-perks-intro h1 > span { color: var(--purple-bright); }
+.residency-perks-lead { font-size: clamp(21px, 3vw, 28px); line-height: 1.4; letter-spacing: -.025em; margin-top: 24px; }
+.residency-perks-description { max-width: 610px; color: var(--text-secondary); font-size: 17px; line-height: 1.7; margin: 12px 0 26px; }
+.residency-perks-page .btn-pri { gap: 20px; }
+.residency-perks-guidance { display: flex; align-items: center; gap: 48px; border-block: 1px solid var(--border-bright); padding: 24px 0; }
+.residency-perks-guidance p { max-width: 780px; color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+.residency-perks-guidance strong { color: var(--text-primary); font-weight: 550; }
+.residency-perks-guidance > span { color: var(--purple-bright); font-size: 13px; white-space: nowrap; margin-left: auto; }
+.residency-perks-categories { display: flex; flex-wrap: wrap; gap: 10px; padding: 24px 0 40px; }
+.residency-perks-categories a { display: inline-flex; align-items: center; gap: 16px; border: 1px solid var(--border-bright); border-radius: 6px; min-height: 42px; padding: 8px 14px; color: var(--text-secondary); text-decoration: none; font-size: 13px; }
+.residency-perks-categories a:hover { border-color: var(--purple-bright); color: var(--text-primary); }
+.residency-perks-categories a span { color: var(--text-muted); font-size: 12px; }
+.residency-perks-catalog { display: grid; gap: 48px; }
+.residency-perks-category-heading { display: flex; align-items: baseline; gap: 14px; margin-bottom: 20px; }
+.residency-perks-category-heading > span { color: var(--purple-bright); font-size: 12px; font-variant-numeric: tabular-nums; }
+.residency-perks-category-heading h2 { font-size: 23px; letter-spacing: -.025em; font-weight: 600; }
+.residency-perks-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start; }
+.residency-perk { min-width: 0; border: 1px solid var(--border-bright); border-radius: 12px; background: var(--bg-surface); padding: 28px; }
+.residency-perk-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+.residency-perk-logo { display: grid; place-items: center; flex: 0 0 44px; height: 44px; border-radius: 10px; background: var(--bg-elevated); border: 1px solid var(--border-bright); }
+.residency-perk-logo img { width: 28px; height: 28px; object-fit: contain; }
+.residency-perk-logo > span { font-size: 13px; font-weight: 650; color: var(--purple-bright); }
+.residency-perk-brand h3 { font-size: 16px; font-weight: 550; letter-spacing: -.01em; }
+.residency-perk-benefit { font-size: 24px; letter-spacing: -.035em; line-height: 1.25; font-weight: 550; text-wrap: balance; }
+.residency-perk-description { font-size: 14px; line-height: 1.75; color: var(--text-secondary); margin-top: 12px; min-height: 98px; }
+.residency-perk-eligibility { border-block: 1px solid var(--border); margin-top: 24px; }
+.residency-perk-eligibility summary { display: flex; justify-content: space-between; gap: 12px; padding: 15px 0; font-size: 13px; font-weight: 550; cursor: pointer; list-style: none; }
+.residency-perk-eligibility summary::-webkit-details-marker { display: none; }
+.residency-perk-eligibility summary > span { color: var(--purple-bright); font-size: 18px; line-height: 1; }
+.residency-perk-eligibility[open] summary > span { transform: rotate(45deg); }
+.residency-perk-eligibility ul { padding: 0 0 18px 18px; color: var(--text-secondary); font-size: 13px; line-height: 1.7; }
+.residency-perk-eligibility li + li { margin-top: 8px; }
+.residency-perk-actions { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; margin-top: 20px; }
+.residency-perk-actions a { color: var(--purple-bright); font-size: 13px; text-decoration: none; padding-block: 5px; }
+.residency-perk-actions a + a { color: var(--text-secondary); }
+.residency-perk-actions a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.residency-perks-access { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 64px; padding-block: 40px; border-block: 1px solid var(--border-bright); }
+.residency-perks-access h2 { font-size: clamp(26px, 3vw, 34px); letter-spacing: -.04em; line-height: 1.2; }
+.residency-perks-access p:not(.residency-perks-eyebrow) { color: var(--text-secondary); font-size: 15px; line-height: 1.75; margin-top: 16px; }
+.residency-perks-access .btn-pri { margin-top: 24px; }
+.residency-perks-email { display: block; width: fit-content; font-size: 13px; color: var(--text-secondary); margin-top: 16px; text-underline-offset: 4px; }
+.residency-perks-access ol { list-style: none; display: grid; gap: 24px; }
+.residency-perks-access li { display: flex; gap: 20px; }
+.residency-perks-access li > span { color: var(--purple-bright); font-size: 12px; padding-top: 3px; }
+.residency-perks-access h3 { font-size: 16px; font-weight: 550; }
+.residency-perks-access li p { margin-top: 4px !important; font-size: 14px !important; }
+.residency-perks-note { color: var(--text-muted); font-size: 12px; line-height: 1.8; max-width: 780px; margin-top: 24px; }
+
+@media (max-width: 700px) {
+  .residency-perks-page { padding: var(--nav-height) 24px 56px; }
+  .residency-perks-back { margin-bottom: 32px; }
+  .residency-perks-intro { padding-block: 32px; }
+  .residency-perks-guidance { display: block; }
+  .residency-perks-guidance > span { display: block; margin-top: 12px; }
+  .residency-perks-categories { gap: 8px; padding-bottom: 32px; }
+  .residency-perks-categories a { padding-inline: 12px; gap: 12px; }
+  .residency-perks-grid, .residency-perks-access { grid-template-columns: 1fr; }
+  .residency-perk { padding: 24px; }
+  .residency-perk-description { min-height: 0; }
+  .residency-perks-access { gap: 32px; margin-top: 48px; }
+}

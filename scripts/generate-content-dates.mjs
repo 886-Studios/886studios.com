@@ -195,6 +195,11 @@ async function generateContentDates() {
     "/residency": maxDate(
       await getSiteContentDate("programs", "launchStation"),
       getFileDate("src/components/pages/LaunchStationPage.astro"),
+      getFileDate("src/data/residencyPerks.ts"),
+    ),
+    "/residency-perks": maxDate(
+      getFileDate("src/pages/residency-perks.astro"),
+      getFileDate("src/data/residencyPerks.ts"),
     ),
     "/resources": maxDate(
       await getSiteContentDate("resources"),
