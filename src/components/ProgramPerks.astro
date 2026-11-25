@@ -16,8 +16,8 @@ const { id, program, categories = perks.categories, guideHref } = Astro.props;
   <header class="res-section-hdr">
     <div>
       <h2 class="section-h2 section-h2--compact" id={`${id}-heading`}>{perks.title}</h2>
-      <p>{guideHref ? "Explore partner programs for eligible Residency members." : `Access partner perks through ${program}.`}</p>
-      {guideHref && <a class="res-perks-guide" href={guideHref}>View Residency perks and eligibility <span aria-hidden="true">→</span></a>}
+      {!guideHref && <p>Access partner perks through {program}.</p>}
+      {guideHref && <a class="res-perks-guide" href={guideHref}>View Residency perks <span aria-hidden="true">→</span></a>}
     </div>
   </header>
 

@@ -22,13 +22,10 @@ export interface ResidencyPerk {
   label: string;
   logoSrc?: string;
   benefit: string;
-  description: string;
   eligibility: string[];
   href: string;
   sourcePage: string;
 }
-
-export const residencyPerksReviewedAt = "2026-11-25";
 
 export const residencyPerkCategories: { id: string; title: string; items: ResidencyPerk[] }[] = [
   {
@@ -39,8 +36,7 @@ export const residencyPerkCategories: { id: string; title: string; items: Reside
         id: "github",
         label: "GitHub",
         logoSrc: "/assets/logos/github.svg",
-        benefit: "$10,000 in platform credits",
-        description: "Credits for eligible GitHub Enterprise products, including Copilot, Actions and security tools, valid for up to 12 months.",
+        benefit: "$10,000 in credits for up to 12 months",
         eligibility: [
           "Partner-affiliated startups with outside funding, at Series B or earlier.",
           "No GitHub Enterprise plan in the past six months and no previous startup credits or licenses. Enterprise Cloud on GitHub.com only.",
@@ -52,11 +48,10 @@ export const residencyPerkCategories: { id: string; title: string; items: Reside
         id: "google-cloud",
         label: "Google Cloud",
         logoSrc: "/assets/logos/google-cloud.webp",
-        benefit: "Startup cloud support",
-        description: "Explore cloud credits and technical resources through our Taiwan startup connection. Ask us to confirm the current partner package before applying.",
+        benefit: "Google Cloud credits",
         eligibility: [
-          "The documented 886 partner offer is for Taiwan customers. Google reviews your company stage, funding and credit history.",
-          "Any Google Workspace benefit requires a customer who has never paid for Workspace.",
+          "Taiwan customers. Eligibility depends on company stage, funding and credit history.",
+          "Google Workspace benefit: customers who have never paid for Workspace.",
         ],
         href: "https://cloud.google.com/startup",
         sourcePage: "https://www.notion.so/3c3b93834d698139bb4ed1dfcd0c4e68",
@@ -71,8 +66,7 @@ export const residencyPerkCategories: { id: string; title: string; items: Reside
         id: "coda",
         label: "Coda / Superhuman Docs",
         logoSrc: "/assets/logos/coda.webp",
-        benefit: "6 months of the Team plan",
-        description: "Collaborative docs, tables and workflows, with unlimited Docs AI for approved partner applications. Coda is now Superhuman Docs.",
+        benefit: "6 months free: Team plan + AI",
         eligibility: [
           "Teams at businesses under five years old with less than $10M raised; a company website and business-domain email are required.",
           "No current paid subscription or payment in the last 30 days. The offer cannot be transferred or combined with another offer.",
@@ -85,10 +79,9 @@ export const residencyPerkCategories: { id: string; title: string; items: Reside
         label: "Miro",
         logoSrc: "/assets/logos/miro.webp",
         benefit: "Up to 6 months of Business + AI",
-        description: "A shared canvas for planning, workshops and product work. The current partner program includes community members as well as portfolio companies.",
         eligibility: [
           "Non-paying Miro customers with fewer than 100 employees, a business website and company-domain email.",
-          "The six-month offer requires a partner application link and proof of affiliation. Ask us for the current Residency application route.",
+          "Partner application link and proof of affiliation required for six months.",
         ],
         href: "https://miro.com/startups/",
         sourcePage: "https://www.notion.so/13fb93834d6980d0a065c832b089f7d9",
@@ -98,10 +91,9 @@ export const residencyPerkCategories: { id: string; title: string; items: Reside
         label: "Notion",
         logoSrc: "/assets/logos/notion.webp",
         benefit: "Up to 6 months of Business + AI",
-        description: "Keep your team's docs, projects and knowledge in one workspace. The trial length depends on Notion's review of your startup and partner affiliation.",
         eligibility: [
           "Non-paying customers with fewer than 100 employees, a valid work email and no previous Notion promotion.",
-          "Provide a working business website. Small teams, service businesses and applicants whose startup status cannot be verified may receive a shorter trial.",
+          "Business website required. Small teams, service businesses and unverified startups may receive a shorter trial.",
         ],
         href: "https://www.notion.com/startups",
         sourcePage: "https://www.notion.so/e063a2f3ccb44498808b87591972509f",
@@ -115,11 +107,9 @@ export const residencyPerkCategories: { id: string; title: string; items: Reside
       {
         id: "beyond-border",
         label: "Beyond Border",
-        benefit: "Founder immigration support",
-        description: "A partner introduction for founders exploring U.S. immigration options. Ask the team for the current scope and partner quote.",
+        benefit: "U.S. immigration services",
         eligibility: [
-          "Founders seeking support with a qualifying U.S. immigration case. The provider assesses which service fits your circumstances.",
-          "Confirm professional fees, government filing fees and included services directly with the provider before proceeding.",
+          "Founders with a qualifying U.S. immigration case.",
         ],
         href: "https://www.beyondborderglobal.com/",
         sourcePage: "https://www.notion.so/1f5b93834d69808fb4d1e4b5ff5ee778",
@@ -128,11 +118,9 @@ export const residencyPerkCategories: { id: string; title: string; items: Reside
         id: "carta",
         label: "Carta",
         logoSrc: "/assets/logos/carta.webp",
-        benefit: "Partner pricing for equity tools",
-        description: "Cap table and equity management for your startup. Ask us for the partner introduction and confirm the current discount with Carta.",
+        benefit: "Partner pricing",
         eligibility: [
-          "New Carta customers only. Partner discounts cannot be applied retroactively to existing customers.",
-          "The plan, discount and any implementation fees must be confirmed in your quote.",
+          "New customers only. Discounts cannot be applied retroactively.",
         ],
         href: "https://carta.com/partners/referral/",
         sourcePage: "https://www.notion.so/3bfb93834d69818092e3c2abe7459082",
@@ -147,11 +135,9 @@ export const residencyPerkCategories: { id: string; title: string; items: Reside
         id: "hubspot",
         label: "HubSpot",
         logoSrc: "/assets/logos/hubspot.webp",
-        benefit: "Startup pricing for your CRM",
-        description: "Sales, marketing and customer-service software with startup discounts. Your funding stage and chosen products determine the offer.",
+        benefit: "Startup discounts",
         eligibility: [
-          "New eligible Professional or Enterprise products; the partner program reviews your startup and funding stage.",
-          "Ask us for the Residency referral route and confirm the discount before purchasing.",
+          "New Professional or Enterprise products. Discount depends on funding stage.",
         ],
         href: "https://www.hubspot.com/startups/about",
         sourcePage: "https://www.notion.so/122b93834d698013b52bd5a1571d5491",
