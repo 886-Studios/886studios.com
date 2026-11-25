@@ -1206,7 +1206,7 @@ export const siteContent = {
         },
         {
           title: "Exclusive startup perks",
-          body: "Explore selected partner programs for Residency members, with eligibility and access details for each offer.",
+          body: "Access selected partner perks.",
         },
         {
           title: "Events & shared learning",

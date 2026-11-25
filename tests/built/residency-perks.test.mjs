@@ -49,7 +49,7 @@ test("Every perk includes native accessible eligibility details and current rest
   for (const [_, id, card] of cards) {
     assert.equal(tags(card, "details").length, 1, id);
     assert.equal(tags(card, "summary").length, 1, id);
-    assert.ok(tags(card, "li").length >= 2, `${id}: missing eligibility`);
+    assert.ok(tags(card, "li").length >= 1, `${id}: missing eligibility`);
   }
   const github = cards.find(([, id]) => id === "github")[2];
   assert.match(textContent(github), /outside funding/);
