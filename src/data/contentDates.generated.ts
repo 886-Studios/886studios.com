@@ -5,7 +5,7 @@ export const contentDates: Readonly<Record<string, string>> = {
   "/interview-guidebook": "2026-11-23",
   "/launchpad": "2026-11-23",
   "/residency": "2026-11-25",
-  "/residency-perks": "2026-11-25",
+  "/residency-perks": "2026-11-26",
   "/resources": "2026-11-13",
   "/resources/application-guide": "2026-11-23",
   "/resources/burn-rate-runway-guide": "2026-11-04",
