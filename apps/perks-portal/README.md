@@ -192,7 +192,9 @@ the catalog enters the private function; local credentials and source snapshots 
 
 ## Content and sources
 
-The complete private catalog is expected to contain 23 partner entries: 22 sourced offers (including Supabase and Granola) and Zettabyte, whose credit amount and redemption link are unconfirmed. Its entry explicitly asks founders to contact the team. Negotiations, rejected applications, and unavailable offers are excluded. The catalog test checks this inventory; an older local copy must be reconciled before release.
+The complete private catalog is expected to contain 25 partner entries: 24 sourced offers (including Supabase, Granola, PostHog and Microsoft for Startups) and Zettabyte, whose credit amount and redemption link are unconfirmed. Its entry explicitly asks founders to contact the team. Negotiations, rejected applications, and unavailable offers are excluded. The catalog test checks this inventory; an older local copy must be reconciled before release.
+
+On November 26, 2026, six offers were reviewed against current partner terms and logged in Notion Program Perks. Run `npm run residency:catalog` against the authoritative private catalog to add PostHog and Microsoft, correct Linear's community eligibility, update DocSend's funding tiers and Mercury's $1,100 bonus, and add the public AWS Founders application alongside the existing provider package. The updater preserves private partner links, codes and unrelated offers. Residency receives only the public AWS Founders tier; the provider Org ID remains restricted. Public program applications do not require an 886 referral code.
 
 The catalog was checked against the complete Notion founder-facing Perks database and Perks – Internal on September 22, 2026. Linear is included from its completed internal record. Zettabyte is included from the public 886 website and the August 31 partnership meeting note. Source URLs are retained per entry for maintenance but not rendered to portfolio visitors. Detailed source snapshots are kept locally in `private/source-records.json` and are never included in the build.
 
