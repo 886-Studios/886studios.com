@@ -3,6 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { contentDates } from "../data/contentDates.generated";
 import { residencyPerkCategories, residencyPerkRequestHref } from "../data/residencyPerks";
 import "../styles/pages/residency-perks.css";
+
+const perks = residencyPerkCategories.flatMap((category, categoryIndex) =>
+  category.items.map((perk) => ({ ...perk, category: category.title, categoryIndex })),
+).sort((a, b) => a.label.localeCompare(b.label, "en"));
 ---
 
 <BaseLayout
@@ -10,49 +14,72 @@ import "../styles/pages/residency-perks.css";
   description="Partner perks for 886 Residency members. View offers, eligibility requirements and access links."
   dateModified={contentDates["/residency-perks"]}
   breadcrumbs={[{ name: "886 Residency", path: "/residency" }, { name: "Residency perks", path: "/residency-perks" }]}
-  hideFooterSocials
+  standalone
 >
-  <div class="page residency-perks-page">
-    <header class="residency-perks-intro">
-      <a class="residency-perks-back" href="/residency"><span aria-hidden="true">←</span> 886 Residency</a>
-      <h1>886 Residency perks</h1>
-    </header>
-
-    <nav class="residency-perks-categories" aria-label="Perk categories">
-      {residencyPerkCategories.map((category) => <a href={`#${category.id}`}>{category.title} <span>{category.items.length}</span></a>)}
+  <header slot="header" class="residency-perks-header">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a class="brand" href="/" aria-label="886 Studios home"><img src="/assets/886-logo.avif" width="34" height="34" alt="886 Studios" /></a>
     </nav>
+  </header>
 
-    <div class="residency-perks-catalog">
-      {residencyPerkCategories.map((category, index) => (
-        <section class="residency-perks-category" aria-labelledby={category.id}>
-          <header class="residency-perks-category-heading">
-            <span aria-hidden="true">0{index + 1}</span>
-            <h2 id={category.id} tabindex="-1">{category.title}</h2>
-          </header>
-          <div class="residency-perks-grid">
-            {category.items.map((perk) => (
-              <article class="residency-perk" data-perk-id={perk.id} aria-labelledby={`perk-${perk.id}`}>
-                <div class="residency-perk-brand">
-                  <span class="residency-perk-logo" aria-hidden="true">
-                    {perk.logoSrc ? <img src={perk.logoSrc} alt="" width="32" height="32" loading="lazy" decoding="async" /> : <span>BB</span>}
-                  </span>
-                  <h3 id={`perk-${perk.id}`}>{perk.label}</h3>
-                </div>
-                <p class="residency-perk-benefit">{perk.benefit}</p>
-                <details class="residency-perk-eligibility">
-                  <summary>Eligibility <span aria-hidden="true">+</span></summary>
-                  <ul>{perk.eligibility.map((condition) => <li>{condition}</li>)}</ul>
-                </details>
-                <div class="residency-perk-actions">
-                  <a href={residencyPerkRequestHref(perk.label)} aria-label={`Request ${perk.label} access`}>Request access <span aria-hidden="true">↗</span></a>
-                  <a href={perk.href} target="_blank" rel="noopener noreferrer">Program details <span aria-hidden="true">↗</span><span class="sr-only"> for {perk.label} (opens in a new tab)</span></a>
-                </div>
-              </article>
-            ))}
+  <div class="directory-main residency-perks-page">
+    <header class="residency-perks-title"><h1>886 Residency perks</h1></header>
+    <section class="directory" aria-label="Partner perks">
+      <form class="filter-form" role="search" hidden>
+        <div class="search-row">
+          <div class="search-field">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6" /><path d="m16 16 5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+            <label class="sr-only" for="perk-search">Search partners or perks</label>
+            <input id="perk-search" name="q" type="search" placeholder="Search partners or perks" autocomplete="off" />
           </div>
-        </section>
-      ))}
-    </div>
-
+          <fieldset class="sort-toggle">
+            <legend class="sr-only">Sort by</legend>
+            <label class="sort-option"><input type="radio" name="sort" value="category" aria-label="Category" /><span>Category</span></label>
+            <label class="sort-option"><input type="radio" name="sort" value="alphabetical" aria-label="Alphabetical (A–Z)" checked /><span>A–Z</span></label>
+          </fieldset>
+        </div>
+        <div class="filters" role="group" aria-label="Filter by type">
+          {["", ...residencyPerkCategories.map(category => category.title)].map((category) => (
+            <button type="button" class:list={["filter", !category && "is-active"]} aria-pressed={!category} data-filter={category}>{category || "All perks"}</button>
+          ))}
+        </div>
+        <p class="result-count" id="result-count" role="status" aria-live="polite">{perks.length} partners</p>
+      </form>
+      <div class="list-header" aria-hidden="true"><span>Partner</span><span>Type</span><span>Perk</span></div>
+      <div class="perk-list">
+        {perks.map((perk, index) => (
+          <article data-perk-id={perk.id} data-category={perk.category} data-category-order={perk.categoryIndex} data-name-order={index} data-search={[perk.label, perk.category, perk.benefit, ...perk.eligibility].join(" ").toLowerCase()} aria-labelledby={`perk-${perk.id}`}>
+            <details class="perk-row" id={perk.id}>
+              <summary>
+                <span class="partner">
+                  <span class="partner-logo" aria-hidden="true">
+                    {perk.logoSrc ? <img src={perk.logoSrc} alt="" width="40" height="40" loading="lazy" decoding="async" /> : <span class="wordmark wordmark-beyond-border">BB</span>}
+                  </span>
+                  <span class="partner-name" id={`perk-${perk.id}`}>{perk.label}</span>
+                </span>
+                <span class="perk-type"><span class="mobile-field-label">Type</span><span>{perk.category}</span></span>
+                <span class="benefit"><span class="benefit-title">{perk.benefit}</span></span>
+                <span class="view-perk"><span class="closed-label">Details</span><span class="open-label">Close</span><svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+              </summary>
+              <div class="perk-detail">
+                <div class="detail-offer"><h2>Perk</h2><p>{perk.benefit}</p></div>
+                <div class="detail-eligibility"><h2>Eligibility</h2><ul>{perk.eligibility.map(condition => <li>{condition}</li>)}</ul></div>
+                <div class="detail-redemption">
+                  <div class="redemption-actions">
+                    <a class="button button-primary redeem-link" href={residencyPerkRequestHref(perk.label)} aria-label={`Request ${perk.label} access`}>Request access <span aria-hidden="true">↗</span></a>
+                    <div class="secondary-links"><a href={perk.href} target="_blank" rel="noopener noreferrer">Program details <span aria-hidden="true">↗</span><span class="sr-only"> for {perk.label} (opens in a new tab)</span></a></div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </article>
+        ))}
+      </div>
+      <div class="empty-state" hidden><h2>No perks found.</h2><button class="button button-subtle" type="button" data-reset>Clear filters</button></div>
+    </section>
+    <footer class="directory-footer"><a class="residency-perks-back" href="/residency">← 886 Residency</a></footer>
   </div>
+  <script>
+    import "../scripts/residency-perks";
+  </script>
 </BaseLayout>
