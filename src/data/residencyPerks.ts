@@ -1,5 +1,5 @@
 /**
- * Deliberate public allowlist, reviewed 2026-11-25. Never derive this from the
+ * Deliberate public allowlist, reviewed 2026-11-26. Never derive this from the
  * portfolio catalog or from a missing portfolio-only flag. Launch Station is
  * the former Residency program; its applicability tag is supporting evidence,
  * not permission to override a partner's eligibility text.
@@ -9,10 +9,12 @@
  * website catalog. Live /perks was checked but its catalog requires a session.
  * Public partner terms below take precedence over outdated benefit amounts.
  *
- * Excluded: OpenAI, Deel, Goodwin, Linear, Supabase and Granola require
+ * Excluded: OpenAI, Deel, Goodwin, Supabase and Granola require
  * portfolio backing; Stripe's restricted referral needs separate confirmation.
- * AWS has conflicting program applicability. Ramp has TBD eligibility.
- * Craft, DocSend, Mercury, UXY and Zettabyte lack sufficient eligibility detail.
+ * AWS Founders is a public application, separate from the restricted provider offer.
+ * Linear's current partner page explicitly includes the 886 Studios community;
+ * DocSend and Mercury have Residency applicability and current partner terms.
+ * Craft is portfolio-only; Ramp, UXY and Zettabyte remain unconfirmed.
  * Webflow stopped accepting startup applications on 2026-06-30:
  * https://help.webflow.com/hc/en-us/articles/33961217659923-How-to-redeem-your-Webflow-for-startups-discount
  * No private referral URLs, access codes, or partner contacts belong here.
@@ -24,6 +26,7 @@ export interface ResidencyPerk {
   benefit: string;
   eligibility: string[];
   href: string;
+  applicationHref?: string;
   sourcePage: string;
 }
 
@@ -32,6 +35,20 @@ export const residencyPerkCategories: { id: string; title: string; items: Reside
     id: "engineering",
     title: "Engineering",
     items: [
+      {
+        id: "aws-founders",
+        label: "AWS Activate Founders",
+        logoSrc: "/assets/logos/aws.webp",
+        benefit: "$1,000 in AWS credits",
+        eligibility: [
+          "Self-funded startups founded within the past 10 years, before Series B, with an AWS Paid Tier account.",
+          "New Activate applicants or applicants requesting more credits than previously received. Selected participants may receive up to $5,000.",
+          "Apply to the public Founders program; no partner Org ID required.",
+        ],
+        href: "https://aws.amazon.com/startups/credits/",
+        applicationHref: "https://aws.amazon.com/startups/credits/",
+        sourcePage: "https://www.notion.so/1a5b93834d6980daa926c9aa7957cee1",
+      },
       {
         id: "github",
         label: "GitHub",
@@ -56,6 +73,33 @@ export const residencyPerkCategories: { id: string; title: string; items: Reside
         href: "https://cloud.google.com/startup",
         sourcePage: "https://www.notion.so/3c3b93834d698139bb4ed1dfcd0c4e68",
       },
+      {
+        id: "microsoft",
+        label: "Microsoft for Startups",
+        logoSrc: "/assets/logos/microsoft.png",
+        benefit: "Azure startup credits",
+        eligibility: [
+          "Privately held, for-profit software startups before Series C, based where Azure is available, with no more than $350,000 in prior free Azure credits.",
+          "The no-referral path starts with $200 in credits; expanded benefits require approval. Agencies, consultancies, educational institutions, government entities and crypto mining businesses are excluded.",
+          "Azure charges apply after credits expire or run out.",
+        ],
+        href: "https://learn.microsoft.com/en-us/startups/microsoft-for-startups/application",
+        applicationHref: "https://portal.azure.com/?homeview=startup",
+        sourcePage: "https://www.notion.so/424b93834d6981ecb8c3d3fc67b32a28",
+      },
+      {
+        id: "posthog",
+        label: "PostHog",
+        logoSrc: "/assets/logos/posthog.svg",
+        benefit: "$50,000 in credits for 12 months",
+        eligibility: [
+          "Startups under two years old with less than $5M raised, a company-domain email and a PostHog account created on or after January 1, 2023.",
+          "One grant per founder and company, subject to approval. A paid plan is required; AI products, BAA fees and paid services are excluded.",
+        ],
+        href: "https://posthog.com/startups",
+        applicationHref: "https://app.posthog.com/startups",
+        sourcePage: "https://www.notion.so/424b93834d6981d082b8e4d86bf7cb8e",
+      },
     ],
   },
   {
@@ -73,6 +117,30 @@ export const residencyPerkCategories: { id: string; title: string; items: Reside
         ],
         href: "https://help.superhuman.com/hc/en-us/articles/46210187758477-Discounts-for-students-teachers-nonprofits-and-startups-on-Superhuman-Docs",
         sourcePage: "https://www.notion.so/122b93834d69804b80e4d6ec8c6a1409",
+      },
+      {
+        id: "docsend",
+        label: "DocSend",
+        logoSrc: "/assets/logos/docsend.webp",
+        benefit: "Up to 90% off your first year",
+        eligibility: [
+          "New customers on annual plans; one offer per startup.",
+          "Pre-seed and seed teams with up to $2M raised: 90% off Standard or Advanced. Series A up to $10M: 50% off Advanced. Series B and beyond up to $20M: 20% off Advanced.",
+        ],
+        href: "https://experience.dropbox.com/docsend/partner-signup",
+        sourcePage: "https://www.notion.so/12eb93834d698029a6b3c5ccf34862f9",
+      },
+      {
+        id: "linear",
+        label: "Linear",
+        logoSrc: "/assets/logos/linear.svg",
+        benefit: "3 months of Business free",
+        eligibility: [
+          "Eligible members of the 886 Studios community with fewer than 50 employees.",
+          "Workspace must never have had a paid plan. An admin must redeem the offer; one offer per workspace.",
+        ],
+        href: "https://linear.app/startups",
+        sourcePage: "https://www.notion.so/424b93834d6981729d49dc2f2d26ddb1",
       },
       {
         id: "miro",
@@ -124,6 +192,18 @@ export const residencyPerkCategories: { id: string; title: string; items: Reside
         ],
         href: "https://carta.com/partners/referral/",
         sourcePage: "https://www.notion.so/3bfb93834d69818092e3c2abe7459082",
+      },
+      {
+        id: "mercury",
+        label: "Mercury",
+        logoSrc: "/assets/logos/mercury.svg",
+        benefit: "Up to $1,100 in cash bonuses",
+        eligibility: [
+          "Companies registered in the U.S. or a U.S. territory, with existing or planned U.S. operations. Non-U.S. founders can apply, subject to country restrictions and account approval.",
+          "$1,000 after depositing $100,000 within 90 days of approval, plus $100 after spending $1,000 on debit or credit cards within 90 days.",
+        ],
+        href: "https://mercury.com/",
+        sourcePage: "https://www.notion.so/304b93834d6980479e82c58236fd6186",
       },
     ],
   },
