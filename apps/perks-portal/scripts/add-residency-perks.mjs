@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync, renameSync, unlinkSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { loadCatalog } from '../src/catalog.mjs';
 
-// Apply only the six reviewed offers to the authoritative private catalog.
+// Apply only the three confirmed partner offers to the authoritative private catalog.
 // Existing partner URLs, codes, catalog metadata and unrelated records stay intact.
 const catalogPath = fileURLToPath(new URL('../private/catalog.json', import.meta.url));
 const temporary = `${catalogPath}.residency-${process.pid}.tmp`;
@@ -35,53 +35,16 @@ try {
     instructions: 'Apply using the 886 Studios partner link. After approval, meet the deposit and card-spend milestones within the first 90 days. The current offer does not advertise a separate account-opening bonus.',
     programs, reviewedAt,
   });
+  // Remove only the public programs introduced on November 26; these are not 886 partnerships.
+  catalog.perks = catalog.perks.filter(perk => !['posthog', 'microsoft'].includes(perk.id));
   const aws = existing('aws');
-  const foundersMarker = '\n\nPublic Founders alternative:';
-  aws.instructions = aws.instructions.split(foundersMarker)[0] + foundersMarker + ' Self-funded teams can apply directly for $1,000 in AWS credits; selected participants may receive up to $5,000. Choose Founders, with no partner Org ID. Applicants must be founded within the past 10 years, before Series B, on AWS Paid Tier, and new to Activate or requesting more credits than previously received. The provider offer above is separate; its Org ID is not approved for general Residency distribution.';
-  const foundersHref = 'https://aws.amazon.com/startups/credits/';
-  aws.links = [...aws.links.filter(link => link.href !== foundersHref), { label: 'Apply to public AWS Founders', href: foundersHref }];
-  aws.reviewedAt = reviewedAt;
-  // Preserve the provider package's existing applicability; only the public tier is shared with Residency.
-  const additions = [
-    {
-      id: 'posthog', name: 'PostHog', category: 'Engineering',
-      headline: '$50,000 in credits for 12 months',
-      description: 'Product analytics and developer tools for startups.',
-      about: 'PostHog combines product analytics, session replay, feature flags, experiments and other developer tools. Teams can use it to understand product usage, test changes and investigate user experiences.',
-      aboutSource: 'https://posthog.com/', aboutReviewedAt: reviewedAt,
-      offer: '$50,000 in PostHog credits, valid for 12 months after approval.',
-      eligibility: 'Startups under two years old with less than $5M raised, a company-domain email and a PostHog account created on or after January 1, 2023. One grant per founder and company; an ineligible parent company cannot qualify through a new subsidiary. Approval is discretionary.',
-      instructions: 'Apply directly to the public startup program. Add a payment method and use a paid plan to apply credits. AI products, BAA fees and paid services are excluded; charges apply outside the credit allowance. No 886 referral code is required.',
-      href: 'https://app.posthog.com/startups', action: 'Apply',
-      links: [{ label: 'Program terms', href: 'https://posthog.com/startups' }],
-      source: 'https://www.notion.so/424b93834d6981d082b8e4d86bf7cb8e',
-      programs, logo: '/assets/logos/posthog.svg', pending: false, reviewedAt,
-    },
-    {
-      id: 'microsoft', name: 'Microsoft for Startups', category: 'Engineering',
-      headline: 'Azure startup credits',
-      description: 'Azure credits and resources for software startups.',
-      about: 'Microsoft for Startups offers Azure cloud resources and support for building software businesses. Azure provides infrastructure, databases, developer services and AI tools for running applications.',
-      aboutSource: 'https://www.microsoft.com/en/startups', aboutReviewedAt: reviewedAt,
-      offer: '$200 in starter Azure credits through the no-referral path. Expanded benefits are subject to Microsoft approval.',
-      eligibility: 'Privately held, for-profit software startups before Series C, based where Azure is available, with no more than $350,000 in prior free Azure credits. Educational institutions, government entities, agencies, consultancies and crypto mining businesses are excluded.',
-      instructions: 'Apply directly through the Azure startup portal without an investor referral code. Complete business verification for expanded benefits. Azure charges apply after credits expire or run out.',
-      href: 'https://portal.azure.com/?homeview=startup', action: 'Apply',
-      links: [{ label: 'Eligibility and application', href: 'https://learn.microsoft.com/en-us/startups/microsoft-for-startups/application' }],
-      source: 'https://www.notion.so/424b93834d6981ecb8c3d3fc67b32a28',
-      programs, logo: '/assets/logos/microsoft.png', pending: false, reviewedAt,
-    },
-  ];
-  for (const offer of additions) {
-    const index = catalog.perks.findIndex(perk => perk.id === offer.id);
-    if (index < 0) catalog.perks.push(offer);
-    else catalog.perks[index] = { ...catalog.perks[index], ...offer };
-  }
+  aws.instructions = aws.instructions.split('\n\nPublic Founders alternative:')[0];
+  aws.links = aws.links.filter(link => link.label !== 'Apply to public AWS Founders');
   writeFileSync(temporary, JSON.stringify(catalog, null, 2) + '\n', { mode: 0o600, flag: 'wx' });
   loadCatalog(temporary);
   if (readFileSync(catalogPath, 'utf8') === readFileSync(temporary, 'utf8')) unlinkSync(temporary);
   else renameSync(temporary, catalogPath);
-  console.log(`Updated six reviewed offers; catalog contains ${catalog.perks.length} entries.`);
+  console.log(`Updated confirmed partner offers; removed non-partner public programs; catalog contains ${catalog.perks.length} entries.`);
 } catch (error) {
   try { unlinkSync(temporary); } catch { /* No temporary output to remove. */ }
   console.error(`Unable to update Residency offers: ${error.message}`);

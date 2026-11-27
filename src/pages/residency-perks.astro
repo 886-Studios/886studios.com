@@ -66,7 +66,7 @@ const perks = residencyPerkCategories.flatMap((category, categoryIndex) =>
                 <div class="detail-eligibility"><h2>Eligibility</h2><ul>{perk.eligibility.map(condition => <li>{condition}</li>)}</ul></div>
                 <div class="detail-redemption">
                   <div class="redemption-actions">
-                    <a class="button button-primary redeem-link" href={perk.applicationHref ?? residencyPerkRequestHref(perk.label)} aria-label={perk.applicationHref ? `Apply to ${perk.label}` : `Request ${perk.label} access`}>{perk.applicationHref ? "Apply" : "Request access"} <span aria-hidden="true">↗</span></a>
+                    <a class="button button-primary redeem-link" href={residencyPerkRequestHref(perk.label)} aria-label={`Request ${perk.label} access`}>Request access <span aria-hidden="true">↗</span></a>
                     <div class="secondary-links"><a href={perk.href} target="_blank" rel="noopener noreferrer">Program details <span aria-hidden="true">↗</span><span class="sr-only"> for {perk.label} (opens in a new tab)</span></a></div>
                   </div>
                 </div>
